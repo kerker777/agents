@@ -1,9 +1,9 @@
 # 翻譯進度追蹤
 
 總檔案數: 307
-已完成: 281
+已完成: 291
 進行中: 0
-待處理: 26
+待處理: 16
 
 ## 檔案清單
 
@@ -279,16 +279,16 @@
 - [x] /home/user/agents/plugins/security-scanning/commands/security-dependencies.md
 - [x] /home/user/agents/plugins/security-scanning/commands/security-hardening.md
 - [x] /home/user/agents/plugins/security-scanning/commands/security-sast.md
-- [ ] /home/user/agents/plugins/security-scanning/skills/sast-configuration/SKILL.md
-- [ ] /home/user/agents/plugins/seo-analysis-monitoring/agents/seo-authority-builder.md
-- [ ] /home/user/agents/plugins/seo-analysis-monitoring/agents/seo-cannibalization-detector.md
-- [ ] /home/user/agents/plugins/seo-analysis-monitoring/agents/seo-content-refresher.md
-- [ ] /home/user/agents/plugins/seo-content-creation/agents/seo-content-auditor.md
-- [ ] /home/user/agents/plugins/seo-content-creation/agents/seo-content-planner.md
-- [ ] /home/user/agents/plugins/seo-content-creation/agents/seo-content-writer.md
-- [ ] /home/user/agents/plugins/seo-technical-optimization/agents/seo-keyword-strategist.md
-- [ ] /home/user/agents/plugins/seo-technical-optimization/agents/seo-meta-optimizer.md
-- [ ] /home/user/agents/plugins/seo-technical-optimization/agents/seo-snippet-hunter.md
+- [x] /home/user/agents/plugins/security-scanning/skills/sast-configuration/SKILL.md
+- [x] /home/user/agents/plugins/seo-analysis-monitoring/agents/seo-authority-builder.md
+- [x] /home/user/agents/plugins/seo-analysis-monitoring/agents/seo-cannibalization-detector.md
+- [x] /home/user/agents/plugins/seo-analysis-monitoring/agents/seo-content-refresher.md
+- [x] /home/user/agents/plugins/seo-content-creation/agents/seo-content-auditor.md
+- [x] /home/user/agents/plugins/seo-content-creation/agents/seo-content-planner.md
+- [x] /home/user/agents/plugins/seo-content-creation/agents/seo-content-writer.md
+- [x] /home/user/agents/plugins/seo-technical-optimization/agents/seo-keyword-strategist.md
+- [x] /home/user/agents/plugins/seo-technical-optimization/agents/seo-meta-optimizer.md
+- [x] /home/user/agents/plugins/seo-technical-optimization/agents/seo-snippet-hunter.md
 - [ ] /home/user/agents/plugins/seo-technical-optimization/agents/seo-structure-architect.md
 - [ ] /home/user/agents/plugins/shell-scripting/agents/bash-pro.md
 - [ ] /home/user/agents/plugins/shell-scripting/agents/posix-shell-pro.md
