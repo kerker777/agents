@@ -3,7 +3,7 @@
 總檔案數: 307
 已完成: 8
 進行中: 0
-待處理: 245
+待處理: 229
 
 ## 檔案清單
 
@@ -69,22 +69,22 @@
 - [x] /home/user/agents/plugins/cicd-automation/skills/secrets-management/SKILL.md
 - [x] /home/user/agents/plugins/cloud-infrastructure/agents/cloud-architect.md
 - [x] /home/user/agents/plugins/cloud-infrastructure/agents/deployment-engineer.md
-- [ ] /home/user/agents/plugins/cloud-infrastructure/agents/hybrid-cloud-architect.md
-- [ ] /home/user/agents/plugins/cloud-infrastructure/agents/kubernetes-architect.md
-- [ ] /home/user/agents/plugins/cloud-infrastructure/agents/network-engineer.md
-- [ ] /home/user/agents/plugins/cloud-infrastructure/agents/terraform-specialist.md
-- [ ] /home/user/agents/plugins/cloud-infrastructure/skills/cost-optimization/SKILL.md
-- [ ] /home/user/agents/plugins/cloud-infrastructure/skills/hybrid-cloud-networking/SKILL.md
-- [ ] /home/user/agents/plugins/cloud-infrastructure/skills/multi-cloud-architecture/SKILL.md
-- [ ] /home/user/agents/plugins/cloud-infrastructure/skills/terraform-module-library/SKILL.md
-- [ ] /home/user/agents/plugins/cloud-infrastructure/skills/terraform-module-library/references/aws-modules.md
-- [ ] /home/user/agents/plugins/code-documentation/agents/code-reviewer.md
-- [ ] /home/user/agents/plugins/code-documentation/agents/docs-architect.md
-- [ ] /home/user/agents/plugins/code-documentation/agents/tutorial-engineer.md
-- [ ] /home/user/agents/plugins/code-documentation/commands/code-explain.md
-- [ ] /home/user/agents/plugins/code-documentation/commands/doc-generate.md
-- [ ] /home/user/agents/plugins/code-refactoring/agents/code-reviewer.md
-- [ ] /home/user/agents/plugins/code-refactoring/agents/legacy-modernizer.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/agents/hybrid-cloud-architect.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/agents/kubernetes-architect.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/agents/network-engineer.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/agents/terraform-specialist.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/skills/cost-optimization/SKILL.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/skills/hybrid-cloud-networking/SKILL.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/skills/multi-cloud-architecture/SKILL.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/skills/terraform-module-library/SKILL.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/skills/terraform-module-library/references/aws-modules.md
+- [x] /home/user/agents/plugins/code-documentation/agents/code-reviewer.md
+- [x] /home/user/agents/plugins/code-documentation/agents/docs-architect.md
+- [x] /home/user/agents/plugins/code-documentation/agents/tutorial-engineer.md
+- [x] /home/user/agents/plugins/code-documentation/commands/code-explain.md
+- [x] /home/user/agents/plugins/code-documentation/commands/doc-generate.md
+- [x] /home/user/agents/plugins/code-refactoring/agents/code-reviewer.md
+- [x] /home/user/agents/plugins/code-refactoring/agents/legacy-modernizer.md
 - [ ] /home/user/agents/plugins/code-refactoring/commands/context-restore.md
 - [ ] /home/user/agents/plugins/code-refactoring/commands/refactor-clean.md
 - [ ] /home/user/agents/plugins/code-refactoring/commands/tech-debt.md
