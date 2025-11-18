@@ -3,7 +3,7 @@
 總檔案數: 307
 已完成: 8
 進行中: 0
-待處理: 229
+待處理: 213
 
 ## 檔案清單
 
@@ -85,22 +85,22 @@
 - [x] /home/user/agents/plugins/code-documentation/commands/doc-generate.md
 - [x] /home/user/agents/plugins/code-refactoring/agents/code-reviewer.md
 - [x] /home/user/agents/plugins/code-refactoring/agents/legacy-modernizer.md
-- [ ] /home/user/agents/plugins/code-refactoring/commands/context-restore.md
-- [ ] /home/user/agents/plugins/code-refactoring/commands/refactor-clean.md
-- [ ] /home/user/agents/plugins/code-refactoring/commands/tech-debt.md
-- [ ] /home/user/agents/plugins/code-review-ai/agents/architect-review.md
-- [ ] /home/user/agents/plugins/code-review-ai/commands/ai-review.md
-- [ ] /home/user/agents/plugins/codebase-cleanup/agents/code-reviewer.md
-- [ ] /home/user/agents/plugins/codebase-cleanup/agents/test-automator.md
-- [ ] /home/user/agents/plugins/codebase-cleanup/commands/deps-audit.md
-- [ ] /home/user/agents/plugins/codebase-cleanup/commands/refactor-clean.md
-- [ ] /home/user/agents/plugins/codebase-cleanup/commands/tech-debt.md
-- [ ] /home/user/agents/plugins/comprehensive-review/agents/architect-review.md
-- [ ] /home/user/agents/plugins/comprehensive-review/agents/code-reviewer.md
-- [ ] /home/user/agents/plugins/comprehensive-review/agents/security-auditor.md
-- [ ] /home/user/agents/plugins/comprehensive-review/commands/full-review.md
-- [ ] /home/user/agents/plugins/comprehensive-review/commands/pr-enhance.md
-- [ ] /home/user/agents/plugins/content-marketing/agents/content-marketer.md
+- [x] /home/user/agents/plugins/code-refactoring/commands/context-restore.md
+- [x] /home/user/agents/plugins/code-refactoring/commands/refactor-clean.md
+- [x] /home/user/agents/plugins/code-refactoring/commands/tech-debt.md
+- [x] /home/user/agents/plugins/code-review-ai/agents/architect-review.md
+- [x] /home/user/agents/plugins/code-review-ai/commands/ai-review.md
+- [x] /home/user/agents/plugins/codebase-cleanup/agents/code-reviewer.md
+- [x] /home/user/agents/plugins/codebase-cleanup/agents/test-automator.md
+- [x] /home/user/agents/plugins/codebase-cleanup/commands/deps-audit.md
+- [x] /home/user/agents/plugins/codebase-cleanup/commands/refactor-clean.md
+- [x] /home/user/agents/plugins/codebase-cleanup/commands/tech-debt.md
+- [x] /home/user/agents/plugins/comprehensive-review/agents/architect-review.md
+- [x] /home/user/agents/plugins/comprehensive-review/agents/code-reviewer.md
+- [x] /home/user/agents/plugins/comprehensive-review/agents/security-auditor.md
+- [x] /home/user/agents/plugins/comprehensive-review/commands/full-review.md
+- [x] /home/user/agents/plugins/comprehensive-review/commands/pr-enhance.md
+- [x] /home/user/agents/plugins/content-marketing/agents/content-marketer.md
 - [ ] /home/user/agents/plugins/content-marketing/agents/search-specialist.md
 - [ ] /home/user/agents/plugins/context-management/agents/context-manager.md
 - [ ] /home/user/agents/plugins/context-management/commands/context-restore.md

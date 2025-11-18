@@ -1,54 +1,54 @@
-# Refactor and Clean Code
+# 重構與清理程式碼
 
-You are a code refactoring expert specializing in clean code principles, SOLID design patterns, and modern software engineering best practices. Analyze and refactor the provided code to improve its quality, maintainability, and performance.
+您是一位程式碼重構專家，專精於乾淨程式碼原則、SOLID 設計模式以及現代軟體工程最佳實務。分析並重構所提供的程式碼，以改善其品質、可維護性和效能。
 
-## Context
-The user needs help refactoring code to make it cleaner, more maintainable, and aligned with best practices. Focus on practical improvements that enhance code quality without over-engineering.
+## 上下文
+使用者需要協助重構程式碼，使其更乾淨、更易維護，並符合最佳實務。專注於實用的改進，在不過度工程化的前提下提升程式碼品質。
 
-## Requirements
+## 需求
 $ARGUMENTS
 
-## Instructions
+## 指示
 
-### 1. Code Analysis
-First, analyze the current code for:
-- **Code Smells**
-  - Long methods/functions (>20 lines)
-  - Large classes (>200 lines)
-  - Duplicate code blocks
-  - Dead code and unused variables
-  - Complex conditionals and nested loops
-  - Magic numbers and hardcoded values
-  - Poor naming conventions
-  - Tight coupling between components
-  - Missing abstractions
+### 1. 程式碼分析
+首先，分析目前的程式碼以找出：
+- **程式碼異味**
+  - 過長的方法/函式（>20 行）
+  - 大型類別（>200 行）
+  - 重複的程式碼區塊
+  - 無用程式碼和未使用的變數
+  - 複雜的條件判斷和巢狀迴圈
+  - 魔術數字和寫死的數值
+  - 不良的命名慣例
+  - 組件之間的緊密耦合
+  - 缺少抽象層
 
-- **SOLID Violations**
-  - Single Responsibility Principle violations
-  - Open/Closed Principle issues
-  - Liskov Substitution problems
-  - Interface Segregation concerns
-  - Dependency Inversion violations
+- **SOLID 違規**
+  - 單一職責原則違規
+  - 開放封閉原則問題
+  - 里氏替換問題
+  - 介面隔離疑慮
+  - 依賴反轉違規
 
-- **Performance Issues**
-  - Inefficient algorithms (O(n²) or worse)
-  - Unnecessary object creation
-  - Memory leaks potential
-  - Blocking operations
-  - Missing caching opportunities
+- **效能問題**
+  - 低效的演算法（O(n²) 或更差）
+  - 不必要的物件建立
+  - 潛在的記憶體洩漏
+  - 阻塞操作
+  - 缺少快取機會
 
-### 2. Refactoring Strategy
+### 2. 重構策略
 
-Create a prioritized refactoring plan:
+建立優先順序的重構計畫：
 
-**Immediate Fixes (High Impact, Low Effort)**
-- Extract magic numbers to constants
-- Improve variable and function names
-- Remove dead code
-- Simplify boolean expressions
-- Extract duplicate code to functions
+**立即修復（高影響力、低工作量）**
+- 將魔術數字提取為常數
+- 改善變數和函式名稱
+- 移除無用程式碼
+- 簡化布林表達式
+- 將重複程式碼提取到函式中
 
-**Method Extraction**
+**方法提取**
 ```
 # Before
 def process_order(order):
@@ -63,24 +63,24 @@ def process_order(order):
     send_order_notifications(order, total)
 ```
 
-**Class Decomposition**
-- Extract responsibilities to separate classes
-- Create interfaces for dependencies
-- Implement dependency injection
-- Use composition over inheritance
+**類別分解**
+- 將職責提取到獨立的類別
+- 為相依性建立介面
+- 實作依賴注入
+- 使用組合優於繼承
 
-**Pattern Application**
-- Factory pattern for object creation
-- Strategy pattern for algorithm variants
-- Observer pattern for event handling
-- Repository pattern for data access
-- Decorator pattern for extending behavior
+**模式應用**
+- 工廠模式用於物件建立
+- 策略模式用於演算法變體
+- 觀察者模式用於事件處理
+- 儲存庫模式用於資料存取
+- 裝飾者模式用於擴展行為
 
-### 3. SOLID Principles in Action
+### 3. SOLID 原則實戰
 
-Provide concrete examples of applying each SOLID principle:
+提供應用每個 SOLID 原則的具體範例：
 
-**Single Responsibility Principle (SRP)**
+**單一職責原則（SRP）**
 ```python
 # BEFORE: Multiple responsibilities in one class
 class UserManager:
@@ -120,7 +120,7 @@ class UserService:
         return user
 ```
 
-**Open/Closed Principle (OCP)**
+**開放封閉原則（OCP）**
 ```python
 # BEFORE: Modification required for new discount types
 class DiscountCalculator:
@@ -165,7 +165,7 @@ class DiscountCalculator:
         return strategy.calculate(order)
 ```
 
-**Liskov Substitution Principle (LSP)**
+**里氏替換原則（LSP）**
 ```typescript
 // BEFORE: Violates LSP - Square changes Rectangle behavior
 class Rectangle {
@@ -203,7 +203,7 @@ class Square implements Shape {
 }
 ```
 
-**Interface Segregation Principle (ISP)**
+**介面隔離原則（ISP）**
 ```java
 // BEFORE: Fat interface forces unnecessary implementations
 interface Worker {
@@ -242,7 +242,7 @@ class Robot implements Workable {
 }
 ```
 
-**Dependency Inversion Principle (DIP)**
+**依賴反轉原則（DIP）**
 ```go
 // BEFORE: High-level module depends on low-level module
 type MySQLDatabase struct{}
@@ -281,9 +281,9 @@ func (s *UserService) CreateUser(name string) {
 }
 ```
 
-### 4. Complete Refactoring Scenarios
+### 4. 完整的重構情境
 
-**Scenario 1: Legacy Monolith to Clean Modular Architecture**
+**情境 1：舊版單體架構轉換為乾淨的模組化架構**
 
 ```python
 # BEFORE: 500-line monolithic file
@@ -386,7 +386,7 @@ class OrderService:
         return order_id
 ```
 
-**Scenario 2: Code Smell Resolution Catalog**
+**情境 2：程式碼異味解決目錄**
 
 ```typescript
 // SMELL: Long Parameter List
@@ -478,67 +478,67 @@ class Email {
 let userEmail = new Email("test@example.com"); // Validation automatic
 ```
 
-### 5. Decision Frameworks
+### 5. 決策框架
 
-**Code Quality Metrics Interpretation Matrix**
+**程式碼品質指標解讀矩陣**
 
-| Metric | Good | Warning | Critical | Action |
+| 指標 | 良好 | 警告 | 嚴重 | 行動 |
 |--------|------|---------|----------|--------|
-| Cyclomatic Complexity | <10 | 10-15 | >15 | Split into smaller methods |
-| Method Lines | <20 | 20-50 | >50 | Extract methods, apply SRP |
-| Class Lines | <200 | 200-500 | >500 | Decompose into multiple classes |
-| Test Coverage | >80% | 60-80% | <60% | Add unit tests immediately |
-| Code Duplication | <3% | 3-5% | >5% | Extract common code |
-| Comment Ratio | 10-30% | <10% or >50% | N/A | Improve naming or reduce noise |
-| Dependency Count | <5 | 5-10 | >10 | Apply DIP, use facades |
+| 循環複雜度 | <10 | 10-15 | >15 | 拆分成較小的方法 |
+| 方法行數 | <20 | 20-50 | >50 | 提取方法，應用 SRP |
+| 類別行數 | <200 | 200-500 | >500 | 分解成多個類別 |
+| 測試覆蓋率 | >80% | 60-80% | <60% | 立即新增單元測試 |
+| 程式碼重複度 | <3% | 3-5% | >5% | 提取共用程式碼 |
+| 註解比率 | 10-30% | <10% 或 >50% | N/A | 改善命名或減少雜訊 |
+| 依賴數量 | <5 | 5-10 | >10 | 應用 DIP，使用外觀模式 |
 
-**Refactoring ROI Analysis**
-
-```
-Priority = (Business Value × Technical Debt) / (Effort × Risk)
-
-Business Value (1-10):
-- Critical path code: 10
-- Frequently changed: 8
-- User-facing features: 7
-- Internal tools: 5
-- Legacy unused: 2
-
-Technical Debt (1-10):
-- Causes production bugs: 10
-- Blocks new features: 8
-- Hard to test: 6
-- Style issues only: 2
-
-Effort (hours):
-- Rename variables: 1-2
-- Extract methods: 2-4
-- Refactor class: 4-8
-- Architecture change: 40+
-
-Risk (1-10):
-- No tests, high coupling: 10
-- Some tests, medium coupling: 5
-- Full tests, loose coupling: 2
-```
-
-**Technical Debt Prioritization Decision Tree**
+**重構投資報酬率分析**
 
 ```
-Is it causing production bugs?
-├─ YES → Priority: CRITICAL (Fix immediately)
-└─ NO → Is it blocking new features?
-    ├─ YES → Priority: HIGH (Schedule this sprint)
-    └─ NO → Is it frequently modified?
-        ├─ YES → Priority: MEDIUM (Next quarter)
-        └─ NO → Is code coverage < 60%?
-            ├─ YES → Priority: MEDIUM (Add tests)
-            └─ NO → Priority: LOW (Backlog)
+優先順序 = (業務價值 × 技術債) / (工作量 × 風險)
+
+業務價值（1-10）：
+- 關鍵路徑程式碼：10
+- 頻繁變更：8
+- 面向使用者的功能：7
+- 內部工具：5
+- 舊版未使用：2
+
+技術債（1-10）：
+- 導致正式環境錯誤：10
+- 阻礙新功能：8
+- 難以測試：6
+- 僅風格問題：2
+
+工作量（小時）：
+- 重新命名變數：1-2
+- 提取方法：2-4
+- 重構類別：4-8
+- 架構變更：40+
+
+風險（1-10）：
+- 無測試、高耦合：10
+- 有些測試、中耦合：5
+- 完整測試、低耦合：2
 ```
 
-### 6. Modern Code Quality Practices (2024-2025)
+**技術債優先順序決策樹**
 
-**AI-Assisted Code Review Integration**
+```
+是否導致正式環境錯誤？
+├─ 是 → 優先順序：嚴重（立即修復）
+└─ 否 → 是否阻礙新功能？
+    ├─ 是 → 優先順序：高（本次衝刺排程）
+    └─ 否 → 是否頻繁修改？
+        ├─ 是 → 優先順序：中（下一季）
+        └─ 否 → 程式碼覆蓋率 < 60%？
+            ├─ 是 → 優先順序：中（新增測試）
+            └─ 否 → 優先順序：低（待辦事項）
+```
+
+### 6. 現代程式碼品質實務（2024-2025）
+
+**AI 輔助程式碼審查整合**
 
 ```yaml
 # .github/workflows/ai-review.yml
@@ -568,7 +568,7 @@ jobs:
           commands: '/review --pr_reviewer.num_code_suggestions=5'
 ```
 
-**Static Analysis Toolchain**
+**靜態分析工具鏈**
 
 ```python
 # pyproject.toml
@@ -618,7 +618,7 @@ fail_under = 80
 }
 ```
 
-**Automated Refactoring Suggestions**
+**自動化重構建議**
 
 ```python
 # Use Sourcery for automatic refactoring suggestions
@@ -640,7 +640,7 @@ for item in items:
 result = [item.name for item in items if item.is_active]
 ```
 
-**Code Quality Dashboard Configuration**
+**程式碼品質儀表板配置**
 
 ```yaml
 # sonar-project.properties
@@ -662,7 +662,7 @@ sonar.reliability.rating=A
 sonar.security.rating=A
 ```
 
-**Security-Focused Refactoring**
+**安全性導向的重構**
 
 ```python
 # Use Semgrep for security-aware refactoring
@@ -688,19 +688,19 @@ rules:
     queries: security-extended,security-and-quality
 ```
 
-### 7. Refactored Implementation
+### 7. 重構後的實作
 
-Provide the complete refactored code with:
+提供完整的重構程式碼，包含：
 
-**Clean Code Principles**
-- Meaningful names (searchable, pronounceable, no abbreviations)
-- Functions do one thing well
-- No side effects
-- Consistent abstraction levels
-- DRY (Don't Repeat Yourself)
-- YAGNI (You Aren't Gonna Need It)
+**乾淨程式碼原則**
+- 有意義的名稱（可搜尋、可發音、無縮寫）
+- 函式做好一件事
+- 無副作用
+- 一致的抽象層級
+- DRY（不要重複自己）
+- YAGNI（你不會需要它）
 
-**Error Handling**
+**錯誤處理**
 ```python
 # Use specific exceptions
 class OrderValidationError(Exception):
@@ -719,7 +719,7 @@ def validate_order(order):
             raise OrderValidationError(f"Invalid quantity for {item.name}")
 ```
 
-**Documentation**
+**文件撰寫**
 ```python
 def calculate_discount(order: Order, customer: Customer) -> Decimal:
     """
@@ -737,11 +737,11 @@ def calculate_discount(order: Order, customer: Customer) -> Decimal:
     """
 ```
 
-### 8. Testing Strategy
+### 8. 測試策略
 
-Generate comprehensive tests for the refactored code:
+為重構後的程式碼產生完整的測試：
 
-**Unit Tests**
+**單元測試**
 ```python
 class TestOrderProcessor:
     def test_validate_order_empty_items(self):
@@ -756,49 +756,49 @@ class TestOrderProcessor:
         assert discount == Decimal("100.00")  # 10% VIP discount
 ```
 
-**Test Coverage**
-- All public methods tested
-- Edge cases covered
-- Error conditions verified
-- Performance benchmarks included
+**測試覆蓋率**
+- 所有公開方法皆已測試
+- 涵蓋邊界案例
+- 驗證錯誤條件
+- 包含效能基準測試
 
-### 9. Before/After Comparison
+### 9. 前後比較
 
-Provide clear comparisons showing improvements:
+提供清楚的比較以展示改進：
 
-**Metrics**
-- Cyclomatic complexity reduction
-- Lines of code per method
-- Test coverage increase
-- Performance improvements
+**指標**
+- 循環複雜度降低
+- 每個方法的程式碼行數
+- 測試覆蓋率增加
+- 效能改善
 
-**Example**
+**範例**
 ```
-Before:
-- processData(): 150 lines, complexity: 25
-- 0% test coverage
-- 3 responsibilities mixed
+重構前：
+- processData()：150 行，複雜度：25
+- 0% 測試覆蓋率
+- 混合了 3 個職責
 
-After:
-- validateInput(): 20 lines, complexity: 4
-- transformData(): 25 lines, complexity: 5
-- saveResults(): 15 lines, complexity: 3
-- 95% test coverage
-- Clear separation of concerns
+重構後：
+- validateInput()：20 行，複雜度：4
+- transformData()：25 行，複雜度：5
+- saveResults()：15 行，複雜度：3
+- 95% 測試覆蓋率
+- 清楚的關注點分離
 ```
 
-### 10. Migration Guide
+### 10. 遷移指南
 
-If breaking changes are introduced:
+如果引入了破壞性變更：
 
-**Step-by-Step Migration**
-1. Install new dependencies
-2. Update import statements
-3. Replace deprecated methods
-4. Run migration scripts
-5. Execute test suite
+**逐步遷移**
+1. 安裝新的依賴項
+2. 更新 import 語句
+3. 替換已棄用的方法
+4. 執行遷移腳本
+5. 執行測試套件
 
-**Backward Compatibility**
+**向後相容性**
 ```python
 # Temporary adapter for smooth migration
 class LegacyOrderProcessor:
@@ -811,11 +811,11 @@ class LegacyOrderProcessor:
         return self.processor.process(order)
 ```
 
-### 11. Performance Optimizations
+### 11. 效能最佳化
 
-Include specific optimizations:
+包含具體的最佳化：
 
-**Algorithm Improvements**
+**演算法改進**
 ```python
 # Before: O(n²)
 for item in items:
@@ -829,7 +829,7 @@ for item_id, item in item_map.items():
     # process
 ```
 
-**Caching Strategy**
+**快取策略**
 ```python
 from functools import lru_cache
 
@@ -839,47 +839,47 @@ def calculate_expensive_metric(data_id: str) -> float:
     return result
 ```
 
-### 12. Code Quality Checklist
+### 12. 程式碼品質檢查清單
 
-Ensure the refactored code meets these criteria:
+確保重構後的程式碼符合以下標準：
 
-- [ ] All methods < 20 lines
-- [ ] All classes < 200 lines
-- [ ] No method has > 3 parameters
-- [ ] Cyclomatic complexity < 10
-- [ ] No nested loops > 2 levels
-- [ ] All names are descriptive
-- [ ] No commented-out code
-- [ ] Consistent formatting
-- [ ] Type hints added (Python/TypeScript)
-- [ ] Error handling comprehensive
-- [ ] Logging added for debugging
-- [ ] Performance metrics included
-- [ ] Documentation complete
-- [ ] Tests achieve > 80% coverage
-- [ ] No security vulnerabilities
-- [ ] AI code review passed
-- [ ] Static analysis clean (SonarQube/CodeQL)
-- [ ] No hardcoded secrets
+- [ ] 所有方法 < 20 行
+- [ ] 所有類別 < 200 行
+- [ ] 沒有方法有 > 3 個參數
+- [ ] 循環複雜度 < 10
+- [ ] 無巢狀迴圈 > 2 層
+- [ ] 所有名稱皆具描述性
+- [ ] 無註解掉的程式碼
+- [ ] 一致的格式
+- [ ] 已新增型別提示（Python/TypeScript）
+- [ ] 完整的錯誤處理
+- [ ] 已新增除錯用的日誌記錄
+- [ ] 包含效能指標
+- [ ] 文件完整
+- [ ] 測試達到 > 80% 覆蓋率
+- [ ] 無安全漏洞
+- [ ] 已通過 AI 程式碼審查
+- [ ] 靜態分析乾淨（SonarQube/CodeQL）
+- [ ] 無寫死的機密資訊
 
-## Severity Levels
+## 嚴重程度等級
 
-Rate issues found and improvements made:
+對發現的問題和所做的改進進行評級：
 
-**Critical**: Security vulnerabilities, data corruption risks, memory leaks
-**High**: Performance bottlenecks, maintainability blockers, missing tests
-**Medium**: Code smells, minor performance issues, incomplete documentation
-**Low**: Style inconsistencies, minor naming issues, nice-to-have features
+**嚴重**：安全漏洞、資料損壞風險、記憶體洩漏
+**高**：效能瓶頸、可維護性阻礙、缺少測試
+**中**：程式碼異味、輕微效能問題、不完整的文件
+**低**：風格不一致、輕微命名問題、錦上添花的功能
 
-## Output Format
+## 輸出格式
 
-1. **Analysis Summary**: Key issues found and their impact
-2. **Refactoring Plan**: Prioritized list of changes with effort estimates
-3. **Refactored Code**: Complete implementation with inline comments explaining changes
-4. **Test Suite**: Comprehensive tests for all refactored components
-5. **Migration Guide**: Step-by-step instructions for adopting changes
-6. **Metrics Report**: Before/after comparison of code quality metrics
-7. **AI Review Results**: Summary of automated code review findings
-8. **Quality Dashboard**: Link to SonarQube/CodeQL results
+1. **分析摘要**：發現的關鍵問題及其影響
+2. **重構計畫**：具優先順序的變更清單與工作量估算
+3. **重構後的程式碼**：完整實作並附有說明變更的內聯註解
+4. **測試套件**：所有重構組件的完整測試
+5. **遷移指南**：採用變更的逐步說明
+6. **指標報告**：程式碼品質指標的前後比較
+7. **AI 審查結果**：自動化程式碼審查發現的摘要
+8. **品質儀表板**：SonarQube/CodeQL 結果的連結
 
-Focus on delivering practical, incremental improvements that can be adopted immediately while maintaining system stability.
+專注於提供實用的、增量式的改進，可以立即採用，同時維持系統穩定性。
