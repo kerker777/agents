@@ -1,53 +1,53 @@
 ---
-description: Static Application Security Testing (SAST) for code vulnerability analysis across multiple languages and frameworks
+description: Static Application Security Testing (SAST) 用於跨多種語言和框架的程式碼漏洞分析
 globs: ['**/*.py', '**/*.js', '**/*.ts', '**/*.java', '**/*.rb', '**/*.go', '**/*.rs', '**/*.php']
 keywords: [sast, static analysis, code security, vulnerability scanning, bandit, semgrep, eslint, sonarqube, codeql, security patterns, code review, ast analysis]
 ---
 
-# SAST Security Plugin
+# SAST 安全外掛
 
-Static Application Security Testing (SAST) for comprehensive code vulnerability detection across multiple languages, frameworks, and security patterns.
+靜態應用程式安全測試（SAST）用於全面檢測跨多種語言、框架和安全模式的程式碼漏洞。
 
-## Capabilities
+## 功能特色
 
-- **Multi-language SAST**: Python, JavaScript/TypeScript, Java, Ruby, PHP, Go, Rust
-- **Tool integration**: Bandit, Semgrep, ESLint Security, SonarQube, CodeQL, PMD, SpotBugs, Brakeman, gosec, cargo-clippy
-- **Vulnerability patterns**: SQL injection, XSS, hardcoded secrets, path traversal, IDOR, CSRF, insecure deserialization
-- **Framework analysis**: Django, Flask, React, Express, Spring Boot, Rails, Laravel
-- **Custom rule authoring**: Semgrep pattern development for organization-specific security policies
+- **多語言 SAST**：支援 Python、JavaScript/TypeScript、Java、Ruby、PHP、Go、Rust
+- **工具整合**：Bandit、Semgrep、ESLint Security、SonarQube、CodeQL、PMD、SpotBugs、Brakeman、gosec、cargo-clippy
+- **漏洞模式**：SQL 注入、XSS、硬編碼機密資訊、路徑遍歷、IDOR、CSRF、不安全的反序列化
+- **框架分析**：Django、Flask、React、Express、Spring Boot、Rails、Laravel
+- **自訂規則撰寫**：開發 Semgrep 模式以符合組織特定的安全政策
 
-## When to Use This Tool
+## 使用時機
 
-Use for code review security analysis, injection vulnerabilities, hardcoded secrets, framework-specific patterns, custom security policy enforcement, pre-deployment validation, legacy code assessment, and compliance (OWASP, PCI-DSS, SOC2).
+適用於程式碼審查安全分析、注入漏洞檢測、硬編碼機密資訊掃描、框架特定模式檢查、自訂安全政策執行、部署前驗證、遺留程式碼評估，以及合規性檢查（OWASP、PCI-DSS、SOC2）。
 
-**Specialized tools**: Use `security-secrets.md` for advanced credential scanning, `security-owasp.md` for Top 10 mapping, `security-api.md` for REST/GraphQL endpoints.
+**專門工具**：使用 `security-secrets.md` 進行進階憑證掃描，使用 `security-owasp.md` 進行 Top 10 對應，使用 `security-api.md` 進行 REST/GraphQL 端點檢查。
 
-## SAST Tool Selection
+## SAST 工具選擇
 
-### Python: Bandit
+### Python：Bandit
 
 ```bash
-# Installation & scan
+# 安裝與掃描
 pip install bandit
 bandit -r . -f json -o bandit-report.json
-bandit -r . -ll -ii -f json  # High/Critical only
+bandit -r . -ll -ii -f json  # 僅高危/嚴重等級
 ```
 
-**Configuration**: `.bandit`
+**設定檔**：`.bandit`
 ```yaml
 exclude_dirs: ['/tests/', '/venv/', '/.tox/', '/build/']
 tests: [B201, B301, B302, B303, B304, B305, B307, B308, B312, B323, B324, B501, B502, B506, B602, B608]
 skips: [B101]
 ```
 
-### JavaScript/TypeScript: ESLint Security
+### JavaScript/TypeScript：ESLint Security
 
 ```bash
 npm install --save-dev eslint @eslint/plugin-security eslint-plugin-no-secrets
 eslint . --ext .js,.jsx,.ts,.tsx --format json > eslint-security.json
 ```
 
-**Configuration**: `.eslintrc-security.json`
+**設定檔**：`.eslintrc-security.json`
 ```json
 {
   "plugins": ["@eslint/plugin-security", "eslint-plugin-no-secrets"],
@@ -62,22 +62,22 @@ eslint . --ext .js,.jsx,.ts,.tsx --format json > eslint-security.json
 }
 ```
 
-### Multi-Language: Semgrep
+### 多語言：Semgrep
 
 ```bash
 pip install semgrep
 semgrep --config=auto --json --output=semgrep-report.json
 semgrep --config=p/security-audit --json
 semgrep --config=p/owasp-top-ten --json
-semgrep ci --config=auto  # CI mode
+semgrep ci --config=auto  # CI 模式
 ```
 
-**Custom Rules**: `.semgrep.yml`
+**自訂規則**：`.semgrep.yml`
 ```yaml
 rules:
   - id: sql-injection-format-string
     pattern: cursor.execute("... %s ..." % $VAR)
-    message: SQL injection via string formatting
+    message: 透過字串格式化的 SQL 注入
     severity: ERROR
     languages: [python]
     metadata:
@@ -86,7 +86,7 @@ rules:
 
   - id: dangerous-innerHTML
     pattern: $ELEM.innerHTML = $VAR
-    message: XSS via innerHTML assignment
+    message: 透過 innerHTML 賦值的 XSS 攻擊
     severity: ERROR
     languages: [javascript, typescript]
     metadata:
@@ -98,7 +98,7 @@ rules:
       - metavariable-regex:
           metavariable: $KEY
           regex: "(aws_access_key_id|AWS_ACCESS_KEY_ID)"
-    message: Hardcoded AWS credentials detected
+    message: 偵測到硬編碼的 AWS 憑證
     severity: ERROR
     languages: [python, javascript, java]
 
@@ -110,7 +110,7 @@ rules:
           metavariable: $PATH
           patterns:
             - pattern: $REQ.get(...)
-    message: Path traversal via user input
+    message: 透過使用者輸入的路徑遍歷攻擊
     severity: ERROR
     languages: [python]
 
@@ -125,64 +125,64 @@ rules:
             - pattern-either:
                 - pattern: $X + $Y
                 - pattern: f"...{$VAR}..."
-    message: Command injection via shell=True
+    message: 透過 shell=True 的命令注入攻擊
     severity: ERROR
     languages: [python]
 ```
 
-### Other Language Tools
+### 其他語言工具
 
-**Java**: `mvn spotbugs:check`
-**Ruby**: `brakeman -o report.json -f json`
-**Go**: `gosec -fmt=json -out=gosec.json ./...`
-**Rust**: `cargo clippy -- -W clippy::unwrap_used`
+**Java**：`mvn spotbugs:check`
+**Ruby**：`brakeman -o report.json -f json`
+**Go**：`gosec -fmt=json -out=gosec.json ./...`
+**Rust**：`cargo clippy -- -W clippy::unwrap_used`
 
-## Vulnerability Patterns
+## 漏洞模式
 
-### SQL Injection
+### SQL 注入
 
-**VULNERABLE**: String formatting/concatenation with user input in SQL queries
+**有漏洞**：在 SQL 查詢中使用字串格式化/串接搭配使用者輸入
 
-**SECURE**:
+**安全做法**：
 ```python
-# Parameterized queries
+# 參數化查詢
 cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
 User.objects.filter(id=user_id)  # ORM
 ```
 
-### Cross-Site Scripting (XSS)
+### 跨站腳本攻擊（XSS）
 
-**VULNERABLE**: Direct HTML manipulation with unsanitized user input (innerHTML, outerHTML, document.write)
+**有漏洞**：使用未消毒的使用者輸入直接操作 HTML（innerHTML、outerHTML、document.write）
 
-**SECURE**:
+**安全做法**：
 ```javascript
-// Use textContent for plain text
+// 純文字使用 textContent
 element.textContent = userInput;
 
-// React auto-escapes
+// React 自動跳脫
 <div>{userInput}</div>
 
-// Sanitize when HTML required
+// 需要 HTML 時進行消毒
 import DOMPurify from 'dompurify';
 element.innerHTML = DOMPurify.sanitize(userInput);
 ```
 
-### Hardcoded Secrets
+### 硬編碼機密資訊
 
-**VULNERABLE**: Hardcoded API keys, passwords, tokens in source code
+**有漏洞**：在原始碼中硬編碼 API 金鑰、密碼、權杖
 
-**SECURE**:
+**安全做法**：
 ```python
 import os
 API_KEY = os.environ.get('API_KEY')
 PASSWORD = os.getenv('DB_PASSWORD')
 ```
 
-### Path Traversal
+### 路徑遍歷
 
-**VULNERABLE**: Opening files using unsanitized user input
+**有漏洞**：使用未消毒的使用者輸入開啟檔案
 
-**SECURE**:
+**安全做法**：
 ```python
 import os
 ALLOWED_DIR = '/var/www/uploads'
@@ -195,47 +195,47 @@ with open(file_path, 'r') as f:
     content = f.read()
 ```
 
-### Insecure Deserialization
+### 不安全的反序列化
 
-**VULNERABLE**: pickle.loads(), yaml.load() with untrusted data
+**有漏洞**：對不受信任的資料使用 pickle.loads()、yaml.load()
 
-**SECURE**:
+**安全做法**：
 ```python
 import json
-data = json.loads(user_input)  # SECURE
+data = json.loads(user_input)  # 安全
 import yaml
-config = yaml.safe_load(user_input)  # SECURE
+config = yaml.safe_load(user_input)  # 安全
 ```
 
-### Command Injection
+### 命令注入
 
-**VULNERABLE**: os.system() or subprocess with shell=True and user input
+**有漏洞**：使用 os.system() 或帶有 shell=True 和使用者輸入的 subprocess
 
-**SECURE**:
+**安全做法**：
 ```python
-subprocess.run(['ping', '-c', '4', user_input])  # Array args
+subprocess.run(['ping', '-c', '4', user_input])  # 陣列參數
 import shlex
-safe_input = shlex.quote(user_input)  # Input validation
+safe_input = shlex.quote(user_input)  # 輸入驗證
 ```
 
-### Insecure Random
+### 不安全的亂數
 
-**VULNERABLE**: random module for security-critical operations
+**有漏洞**：在安全關鍵操作中使用 random 模組
 
-**SECURE**:
+**安全做法**：
 ```python
 import secrets
 token = secrets.token_hex(16)
 session_id = secrets.token_urlsafe(32)
 ```
 
-## Framework Security
+## 框架安全
 
 ### Django
 
-**VULNERABLE**: @csrf_exempt, DEBUG=True, weak SECRET_KEY, missing security middleware
+**有漏洞**：@csrf_exempt、DEBUG=True、弱 SECRET_KEY、缺少安全中介軟體
 
-**SECURE**:
+**安全做法**：
 ```python
 # settings.py
 DEBUG = False
@@ -255,9 +255,9 @@ X_FRAME_OPTIONS = 'DENY'
 
 ### Flask
 
-**VULNERABLE**: debug=True, weak secret_key, CORS wildcard
+**有漏洞**：debug=True、弱 secret_key、CORS 萬用字元
 
-**SECURE**:
+**安全做法**：
 ```python
 import os
 from flask_talisman import Talisman
@@ -269,9 +269,9 @@ CORS(app, origins=['https://example.com'])
 
 ### Express.js
 
-**VULNERABLE**: Missing helmet, CORS wildcard, no rate limiting
+**有漏洞**：缺少 helmet、CORS 萬用字元、無速率限制
 
-**SECURE**:
+**安全做法**：
 ```javascript
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
@@ -281,7 +281,7 @@ app.use(cors({ origin: 'https://example.com' }));
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
 ```
 
-## Multi-Language Scanner Implementation
+## 多語言掃描器實作
 
 ```python
 import json
@@ -310,7 +310,7 @@ class MultiLanguageSASTScanner:
         self.findings: List[SASTFinding] = []
 
     def detect_languages(self) -> List[str]:
-        """Auto-detect languages"""
+        """自動偵測語言"""
         languages = []
         indicators = {
             'python': ['*.py', 'requirements.txt'],
@@ -329,7 +329,7 @@ class MultiLanguageSASTScanner:
         return languages
 
     def run_comprehensive_sast(self) -> Dict[str, Any]:
-        """Execute all applicable SAST tools"""
+        """執行所有適用的 SAST 工具"""
         languages = self.detect_languages()
 
         scan_results = {
@@ -354,7 +354,7 @@ class MultiLanguageSASTScanner:
         return scan_results
 
     def run_semgrep_scan(self):
-        """Run Semgrep"""
+        """執行 Semgrep"""
         for ruleset in ['auto', 'p/security-audit', 'p/owasp-top-ten']:
             try:
                 result = subprocess.run([
@@ -378,10 +378,10 @@ class MultiLanguageSASTScanner:
                             confidence=f.get('extra', {}).get('metadata', {}).get('confidence', 'MEDIUM')
                         ))
             except Exception as e:
-                print(f"Semgrep {ruleset} failed: {e}")
+                print(f"Semgrep {ruleset} 執行失敗：{e}")
 
     def generate_summary(self) -> Dict[str, Any]:
-        """Generate statistics"""
+        """產生統計資料"""
         severity_counts = {'CRITICAL': 0, 'HIGH': 0, 'MEDIUM': 0, 'LOW': 0}
         for f in self.findings:
             severity_counts[f.severity] = severity_counts.get(f.severity, 0) + 1
@@ -393,13 +393,13 @@ class MultiLanguageSASTScanner:
         }
 
     def calculate_risk_score(self, severity_counts: Dict[str, int]) -> int:
-        """Risk score 0-100"""
+        """風險評分 0-100"""
         weights = {'CRITICAL': 10, 'HIGH': 7, 'MEDIUM': 4, 'LOW': 1}
         total = sum(weights[s] * c for s, c in severity_counts.items())
         return min(100, int((total / 50) * 100))
 ```
 
-## CI/CD Integration
+## CI/CD 整合
 
 ### GitHub Actions
 
@@ -452,22 +452,22 @@ sast:
       sast: bandit.json
 ```
 
-## Best Practices
+## 最佳實踐
 
-1. **Run early and often** - Pre-commit hooks and CI/CD
-2. **Combine multiple tools** - Different tools catch different vulnerabilities
-3. **Tune false positives** - Configure exclusions and thresholds
-4. **Prioritize findings** - Focus on CRITICAL/HIGH first
-5. **Framework-aware scanning** - Use specific rulesets
-6. **Custom rules** - Organization-specific patterns
-7. **Developer training** - Secure coding practices
-8. **Incremental remediation** - Fix gradually
-9. **Baseline management** - Track known issues
-10. **Regular updates** - Keep tools current
+1. **盡早且頻繁執行** - 使用 pre-commit hooks 和 CI/CD
+2. **結合多種工具** - 不同工具可捕捉不同的漏洞
+3. **調整誤報** - 設定排除項目和閾值
+4. **優先處理發現** - 先專注於嚴重/高危等級
+5. **框架感知掃描** - 使用特定規則集
+6. **自訂規則** - 組織特定的模式
+7. **開發人員培訓** - 安全編碼實踐
+8. **漸進式修復** - 逐步修正
+9. **基線管理** - 追蹤已知問題
+10. **定期更新** - 保持工具最新
 
-## Related Tools
+## 相關工具
 
-- **security-secrets.md** - Advanced credential detection
-- **security-owasp.md** - OWASP Top 10 assessment
-- **security-api.md** - API security testing
-- **security-scan.md** - Comprehensive security scanning
+- **security-secrets.md** - 進階憑證偵測
+- **security-owasp.md** - OWASP Top 10 評估
+- **security-api.md** - API 安全測試
+- **security-scan.md** - 全面安全掃描

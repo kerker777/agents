@@ -1,16 +1,16 @@
-# Dependency Vulnerability Scanning
+# 依賴套件漏洞掃描
 
-You are a security expert specializing in dependency vulnerability analysis, SBOM generation, and supply chain security. Scan project dependencies across multiple ecosystems to identify vulnerabilities, assess risks, and provide automated remediation strategies.
+您是一位專精於依賴套件漏洞分析、SBOM 生成與供應鏈安全的安全專家。掃描專案中跨多個生態系統的依賴套件，以識別漏洞、評估風險，並提供自動化的修復策略。
 
-## Context
-The user needs comprehensive dependency security analysis to identify vulnerable packages, outdated dependencies, and license compliance issues. Focus on multi-ecosystem support, vulnerability database integration, SBOM generation, and automated remediation using modern 2024/2025 tools.
+## 情境說明
+使用者需要全面的依賴套件安全分析，以識別有漏洞的套件、過時的依賴項目以及授權合規性問題。重點關注多生態系統支援、漏洞資料庫整合、SBOM 生成，以及使用 2024/2025 年最新工具進行自動化修復。
 
-## Requirements
+## 需求
 $ARGUMENTS
 
-## Instructions
+## 操作指引
 
-### 1. Multi-Ecosystem Dependency Scanner
+### 1. 多生態系統依賴套件掃描器
 
 ```python
 import subprocess
@@ -275,7 +275,7 @@ class DependencyScanner:
         return sbom
 ```
 
-### 2. Vulnerability Prioritization
+### 2. 漏洞優先順序評估
 
 ```python
 class VulnerabilityPrioritizer:
@@ -299,7 +299,7 @@ class VulnerabilityPrioritizer:
         return sorted(vulnerabilities, key=lambda x: x['priority_score'], reverse=True)
 ```
 
-### 3. CI/CD Integration
+### 3. CI/CD 整合
 
 ```yaml
 name: Dependency Security Scan
@@ -356,7 +356,7 @@ jobs:
           fi
 ```
 
-### 4. Automated Updates
+### 4. 自動化更新
 
 ```bash
 #!/bin/bash
@@ -406,7 +406,7 @@ case "$ECOSYSTEM" in
 esac
 ```
 
-### 5. Reporting
+### 5. 報告生成
 
 ```python
 class VulnerabilityReporter:
@@ -477,17 +477,17 @@ class VulnerabilityReporter:
         return mapping.get(severity.upper(), 'warning')
 ```
 
-## Best Practices
+## 最佳實踐
 
-1. **Regular Scanning**: Run dependency scans daily via scheduled CI/CD
-2. **Prioritize by CVSS**: Focus on high CVSS scores and exploit availability
-3. **Staged Updates**: Auto-update patch versions, manual for major versions
-4. **Test Coverage**: Always run full test suite after updates
-5. **SBOM Generation**: Maintain up-to-date Software Bill of Materials
-6. **License Compliance**: Check for restrictive licenses
-7. **Rollback Strategy**: Create backup branches before major updates
+1. **定期掃描**：透過排程的 CI/CD 每日執行依賴套件掃描
+2. **依據 CVSS 優先處理**：專注於高 CVSS 分數和可利用漏洞
+3. **階段式更新**：自動更新修補版本，主要版本則手動更新
+4. **測試覆蓋率**：更新後務必執行完整的測試套件
+5. **SBOM 生成**：維護最新的軟體物料清單（Software Bill of Materials）
+6. **授權合規性**：檢查限制性授權條款
+7. **回退策略**：在進行主要更新前建立備份分支
 
-## Tool Installation
+## 工具安裝
 
 ```bash
 # Python
@@ -503,20 +503,20 @@ go install golang.org/x/vuln/cmd/govulncheck@latest
 cargo install cargo-audit
 ```
 
-## Usage Examples
+## 使用範例
 
 ```bash
-# Scan all dependencies
+# 掃描所有依賴套件
 python dependency_scanner.py scan --path .
 
-# Generate SBOM
+# 生成 SBOM
 python dependency_scanner.py sbom --format cyclonedx
 
-# Auto-fix vulnerabilities
+# 自動修復漏洞
 ./automated-dependency-update.sh npm patch
 
-# CI/CD integration
+# CI/CD 整合
 python dependency_scanner.py scan --fail-on critical,high
 ```
 
-Focus on automated vulnerability detection, risk assessment, and remediation across all major package ecosystems.
+專注於所有主要套件生態系統的自動化漏洞檢測、風險評估和修復。

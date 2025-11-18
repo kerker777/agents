@@ -1,9 +1,9 @@
 # 翻譯進度追蹤
 
 總檔案數: 307
-已完成: 271
+已完成: 281
 進行中: 0
-待處理: 36
+待處理: 26
 
 ## 檔案清單
 
@@ -269,16 +269,16 @@
 - [x] /home/user/agents/plugins/python-development/skills/async-python-patterns/SKILL.md
 - [x] /home/user/agents/plugins/python-development/skills/python-packaging/SKILL.md
 - [x] /home/user/agents/plugins/python-development/skills/python-performance-optimization/SKILL.md
-- [ ] /home/user/agents/plugins/python-development/skills/python-testing-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/python-development/skills/uv-package-manager/SKILL.md
-- [ ] /home/user/agents/plugins/quantitative-trading/agents/quant-analyst.md
-- [ ] /home/user/agents/plugins/quantitative-trading/agents/risk-manager.md
-- [ ] /home/user/agents/plugins/security-compliance/agents/security-auditor.md
-- [ ] /home/user/agents/plugins/security-compliance/commands/compliance-check.md
-- [ ] /home/user/agents/plugins/security-scanning/agents/security-auditor.md
-- [ ] /home/user/agents/plugins/security-scanning/commands/security-dependencies.md
-- [ ] /home/user/agents/plugins/security-scanning/commands/security-hardening.md
-- [ ] /home/user/agents/plugins/security-scanning/commands/security-sast.md
+- [x] /home/user/agents/plugins/python-development/skills/python-testing-patterns/SKILL.md
+- [x] /home/user/agents/plugins/python-development/skills/uv-package-manager/SKILL.md
+- [x] /home/user/agents/plugins/quantitative-trading/agents/quant-analyst.md
+- [x] /home/user/agents/plugins/quantitative-trading/agents/risk-manager.md
+- [x] /home/user/agents/plugins/security-compliance/agents/security-auditor.md
+- [x] /home/user/agents/plugins/security-compliance/commands/compliance-check.md
+- [x] /home/user/agents/plugins/security-scanning/agents/security-auditor.md
+- [x] /home/user/agents/plugins/security-scanning/commands/security-dependencies.md
+- [x] /home/user/agents/plugins/security-scanning/commands/security-hardening.md
+- [x] /home/user/agents/plugins/security-scanning/commands/security-sast.md
 - [ ] /home/user/agents/plugins/security-scanning/skills/sast-configuration/SKILL.md
 - [ ] /home/user/agents/plugins/seo-analysis-monitoring/agents/seo-authority-builder.md
 - [ ] /home/user/agents/plugins/seo-analysis-monitoring/agents/seo-cannibalization-detector.md
