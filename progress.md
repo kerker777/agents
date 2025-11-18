@@ -3,7 +3,7 @@
 總檔案數: 307
 已完成: 8
 進行中: 0
-待處理: 213
+待處理: 197
 
 ## 檔案清單
 
@@ -101,22 +101,22 @@
 - [x] /home/user/agents/plugins/comprehensive-review/commands/full-review.md
 - [x] /home/user/agents/plugins/comprehensive-review/commands/pr-enhance.md
 - [x] /home/user/agents/plugins/content-marketing/agents/content-marketer.md
-- [ ] /home/user/agents/plugins/content-marketing/agents/search-specialist.md
-- [ ] /home/user/agents/plugins/context-management/agents/context-manager.md
-- [ ] /home/user/agents/plugins/context-management/commands/context-restore.md
-- [ ] /home/user/agents/plugins/context-management/commands/context-save.md
-- [ ] /home/user/agents/plugins/customer-sales-automation/agents/customer-support.md
-- [ ] /home/user/agents/plugins/customer-sales-automation/agents/sales-automator.md
-- [ ] /home/user/agents/plugins/data-engineering/agents/backend-architect.md
-- [ ] /home/user/agents/plugins/data-engineering/agents/data-engineer.md
-- [ ] /home/user/agents/plugins/data-engineering/commands/data-driven-feature.md
-- [ ] /home/user/agents/plugins/data-engineering/commands/data-pipeline.md
-- [ ] /home/user/agents/plugins/data-validation-suite/agents/backend-security-coder.md
-- [ ] /home/user/agents/plugins/database-cloud-optimization/agents/backend-architect.md
-- [ ] /home/user/agents/plugins/database-cloud-optimization/agents/cloud-architect.md
-- [ ] /home/user/agents/plugins/database-cloud-optimization/agents/database-architect.md
-- [ ] /home/user/agents/plugins/database-cloud-optimization/agents/database-optimizer.md
-- [ ] /home/user/agents/plugins/database-cloud-optimization/commands/cost-optimize.md
+- [x] /home/user/agents/plugins/content-marketing/agents/search-specialist.md
+- [x] /home/user/agents/plugins/context-management/agents/context-manager.md
+- [x] /home/user/agents/plugins/context-management/commands/context-restore.md
+- [x] /home/user/agents/plugins/context-management/commands/context-save.md
+- [x] /home/user/agents/plugins/customer-sales-automation/agents/customer-support.md
+- [x] /home/user/agents/plugins/customer-sales-automation/agents/sales-automator.md
+- [x] /home/user/agents/plugins/data-engineering/agents/backend-architect.md
+- [x] /home/user/agents/plugins/data-engineering/agents/data-engineer.md
+- [x] /home/user/agents/plugins/data-engineering/commands/data-driven-feature.md
+- [x] /home/user/agents/plugins/data-engineering/commands/data-pipeline.md
+- [x] /home/user/agents/plugins/data-validation-suite/agents/backend-security-coder.md
+- [x] /home/user/agents/plugins/database-cloud-optimization/agents/backend-architect.md
+- [x] /home/user/agents/plugins/database-cloud-optimization/agents/cloud-architect.md
+- [x] /home/user/agents/plugins/database-cloud-optimization/agents/database-architect.md
+- [x] /home/user/agents/plugins/database-cloud-optimization/agents/database-optimizer.md
+- [x] /home/user/agents/plugins/database-cloud-optimization/commands/cost-optimize.md
 - [ ] /home/user/agents/plugins/database-design/agents/database-architect.md
 - [ ] /home/user/agents/plugins/database-design/agents/sql-pro.md
 - [ ] /home/user/agents/plugins/database-design/skills/postgresql/SKILL.md
