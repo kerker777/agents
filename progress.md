@@ -3,7 +3,7 @@
 總檔案數: 307
 已完成: 8
 進行中: 0
-待處理: 101
+待處理: 85
 
 ## 檔案清單
 
@@ -213,22 +213,22 @@
 - [x] /home/user/agents/plugins/kubernetes-operations/skills/helm-chart-scaffolding/references/chart-structure.md
 - [x] /home/user/agents/plugins/kubernetes-operations/skills/k8s-manifest-generator/SKILL.md
 - [x] /home/user/agents/plugins/kubernetes-operations/skills/k8s-manifest-generator/references/deployment-spec.md
-- [ ] /home/user/agents/plugins/kubernetes-operations/skills/k8s-manifest-generator/references/service-spec.md
-- [ ] /home/user/agents/plugins/kubernetes-operations/skills/k8s-security-policies/SKILL.md
-- [ ] /home/user/agents/plugins/kubernetes-operations/skills/k8s-security-policies/references/rbac-patterns.md
-- [ ] /home/user/agents/plugins/llm-application-dev/agents/ai-engineer.md
-- [ ] /home/user/agents/plugins/llm-application-dev/agents/prompt-engineer.md
-- [ ] /home/user/agents/plugins/llm-application-dev/commands/ai-assistant.md
-- [ ] /home/user/agents/plugins/llm-application-dev/commands/langchain-agent.md
-- [ ] /home/user/agents/plugins/llm-application-dev/commands/prompt-optimize.md
-- [ ] /home/user/agents/plugins/llm-application-dev/skills/langchain-architecture/SKILL.md
-- [ ] /home/user/agents/plugins/llm-application-dev/skills/llm-evaluation/SKILL.md
-- [ ] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/assets/prompt-template-library.md
-- [ ] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/chain-of-thought.md
-- [ ] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/few-shot-learning.md
-- [ ] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/prompt-optimization.md
-- [ ] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/prompt-templates.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/k8s-manifest-generator/references/service-spec.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/k8s-security-policies/SKILL.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/k8s-security-policies/references/rbac-patterns.md
+- [x] /home/user/agents/plugins/llm-application-dev/agents/ai-engineer.md
+- [x] /home/user/agents/plugins/llm-application-dev/agents/prompt-engineer.md
+- [x] /home/user/agents/plugins/llm-application-dev/commands/ai-assistant.md
+- [x] /home/user/agents/plugins/llm-application-dev/commands/langchain-agent.md
+- [x] /home/user/agents/plugins/llm-application-dev/commands/prompt-optimize.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/langchain-architecture/SKILL.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/llm-evaluation/SKILL.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/SKILL.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/assets/prompt-template-library.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/chain-of-thought.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/few-shot-learning.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/prompt-optimization.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/prompt-templates.md
 - [ ] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/system-prompts.md
 - [ ] /home/user/agents/plugins/llm-application-dev/skills/rag-implementation/SKILL.md
 - [ ] /home/user/agents/plugins/machine-learning-ops/agents/data-scientist.md

@@ -3,65 +3,65 @@ name: llm-evaluation
 description: Implement comprehensive evaluation strategies for LLM applications using automated metrics, human feedback, and benchmarking. Use when testing LLM performance, measuring AI application quality, or establishing evaluation frameworks.
 ---
 
-# LLM Evaluation
+# LLM 評估
 
-Master comprehensive evaluation strategies for LLM applications, from automated metrics to human evaluation and A/B testing.
+掌握 LLM 應用的全面評估策略，從自動化指標到人工評估和 A/B 測試。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Measuring LLM application performance systematically
-- Comparing different models or prompts
-- Detecting performance regressions before deployment
-- Validating improvements from prompt changes
-- Building confidence in production systems
-- Establishing baselines and tracking progress over time
-- Debugging unexpected model behavior
+- 系統化地衡量 LLM 應用效能
+- 比較不同模型或提示詞
+- 在部署前偵測效能衰退
+- 驗證提示詞變更帶來的改進
+- 對生產系統建立信心
+- 建立基準並追蹤隨時間的進展
+- 除錯意外的模型行為
 
-## Core Evaluation Types
+## 核心評估類型
 
-### 1. Automated Metrics
-Fast, repeatable, scalable evaluation using computed scores.
+### 1. 自動化指標
+使用計算分數進行快速、可重複、可擴展的評估。
 
-**Text Generation:**
-- **BLEU**: N-gram overlap (translation)
-- **ROUGE**: Recall-oriented (summarization)
-- **METEOR**: Semantic similarity
-- **BERTScore**: Embedding-based similarity
-- **Perplexity**: Language model confidence
+**文字生成：**
+- **BLEU**：N-gram 重疊（翻譯）
+- **ROUGE**：以召回率為導向（摘要）
+- **METEOR**：語意相似度
+- **BERTScore**：基於嵌入的相似度
+- **Perplexity**：語言模型信心度
 
-**Classification:**
-- **Accuracy**: Percentage correct
-- **Precision/Recall/F1**: Class-specific performance
-- **Confusion Matrix**: Error patterns
-- **AUC-ROC**: Ranking quality
+**分類：**
+- **Accuracy**：正確百分比
+- **Precision/Recall/F1**：特定類別的效能
+- **Confusion Matrix**：錯誤模式
+- **AUC-ROC**：排名品質
 
-**Retrieval (RAG):**
-- **MRR**: Mean Reciprocal Rank
-- **NDCG**: Normalized Discounted Cumulative Gain
-- **Precision@K**: Relevant in top K
-- **Recall@K**: Coverage in top K
+**檢索 (RAG)：**
+- **MRR**：平均倒數排名
+- **NDCG**：正規化折扣累積增益
+- **Precision@K**：前 K 名中的相關項目
+- **Recall@K**：前 K 名的覆蓋率
 
-### 2. Human Evaluation
-Manual assessment for quality aspects difficult to automate.
+### 2. 人工評估
+對難以自動化的品質面向進行人工評估。
 
-**Dimensions:**
-- **Accuracy**: Factual correctness
-- **Coherence**: Logical flow
-- **Relevance**: Answers the question
-- **Fluency**: Natural language quality
-- **Safety**: No harmful content
-- **Helpfulness**: Useful to the user
+**維度：**
+- **Accuracy**：事實正確性
+- **Coherence**：邏輯流暢性
+- **Relevance**：回答問題
+- **Fluency**：自然語言品質
+- **Safety**：無有害內容
+- **Helpfulness**：對使用者有用
 
-### 3. LLM-as-Judge
-Use stronger LLMs to evaluate weaker model outputs.
+### 3. LLM 作為評審
+使用更強的 LLM 來評估較弱模型的輸出。
 
-**Approaches:**
-- **Pointwise**: Score individual responses
-- **Pairwise**: Compare two responses
-- **Reference-based**: Compare to gold standard
-- **Reference-free**: Judge without ground truth
+**方法：**
+- **Pointwise**：評分單一回應
+- **Pairwise**：比較兩個回應
+- **Reference-based**：與黃金標準比較
+- **Reference-free**：無需真實答案的判斷
 
-## Quick Start
+## 快速入門
 
 ```python
 from llm_eval import EvaluationSuite, Metric
@@ -94,9 +94,9 @@ print(f"Overall Accuracy: {results.metrics['accuracy']}")
 print(f"BLEU Score: {results.metrics['bleu']}")
 ```
 
-## Automated Metrics Implementation
+## 自動化指標實作
 
-### BLEU Score
+### BLEU 分數
 ```python
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 
@@ -117,7 +117,7 @@ bleu = calculate_bleu(
 )
 ```
 
-### ROUGE Score
+### ROUGE 分數
 ```python
 from rouge_score import rouge_scorer
 
@@ -153,7 +153,7 @@ def calculate_bertscore(references, hypotheses):
     }
 ```
 
-### Custom Metrics
+### 自訂指標
 ```python
 def calculate_groundedness(response, context):
     """Check if response is grounded in provided context."""
@@ -181,26 +181,26 @@ def calculate_factuality(claim, knowledge_base):
     pass
 ```
 
-## LLM-as-Judge Patterns
+## LLM 作為評審模式
 
-### Single Output Evaluation
+### 單一輸出評估
 ```python
 def llm_judge_quality(response, question):
     """Use GPT-5 to judge response quality."""
-    prompt = f"""Rate the following response on a scale of 1-10 for:
-1. Accuracy (factually correct)
-2. Helpfulness (answers the question)
-3. Clarity (well-written and understandable)
+    prompt = f"""請針對以下回應評分 1-10 分：
+1. 準確性（事實正確）
+2. 實用性（回答問題）
+3. 清晰度（寫得好且易於理解）
 
-Question: {question}
-Response: {response}
+問題：{question}
+回應：{response}
 
-Provide ratings in JSON format:
+請以 JSON 格式提供評分：
 {{
   "accuracy": <1-10>,
   "helpfulness": <1-10>,
   "clarity": <1-10>,
-  "reasoning": "<brief explanation>"
+  "reasoning": "<簡短說明>"
 }}
 """
 
@@ -213,24 +213,24 @@ Provide ratings in JSON format:
     return json.loads(result.choices[0].message.content)
 ```
 
-### Pairwise Comparison
+### 成對比較
 ```python
 def compare_responses(question, response_a, response_b):
     """Compare two responses using LLM judge."""
-    prompt = f"""Compare these two responses to the question and determine which is better.
+    prompt = f"""請比較這兩個對問題的回應，並判斷哪個更好。
 
-Question: {question}
+問題：{question}
 
-Response A: {response_a}
+回應 A：{response_a}
 
-Response B: {response_b}
+回應 B：{response_b}
 
-Which response is better and why? Consider accuracy, helpfulness, and clarity.
+哪個回應更好，為什麼？請考慮準確性、實用性和清晰度。
 
-Answer with JSON:
+請以 JSON 格式回答：
 {{
-  "winner": "A" or "B" or "tie",
-  "reasoning": "<explanation>",
+  "winner": "A" 或 "B" 或 "tie",
+  "reasoning": "<說明>",
   "confidence": <1-10>
 }}
 """
@@ -244,9 +244,9 @@ Answer with JSON:
     return json.loads(result.choices[0].message.content)
 ```
 
-## Human Evaluation Frameworks
+## 人工評估框架
 
-### Annotation Guidelines
+### 標註指南
 ```python
 class AnnotationTask:
     """Structure for human annotation task."""
@@ -264,15 +264,15 @@ class AnnotationTask:
             "ratings": {
                 "accuracy": {
                     "scale": "1-5",
-                    "description": "Is the response factually correct?"
+                    "description": "回應是否在事實上正確？"
                 },
                 "relevance": {
                     "scale": "1-5",
-                    "description": "Does it answer the question?"
+                    "description": "是否回答問題？"
                 },
                 "coherence": {
                     "scale": "1-5",
-                    "description": "Is it logically consistent?"
+                    "description": "是否邏輯一致？"
                 }
             },
             "issues": {
@@ -285,7 +285,7 @@ class AnnotationTask:
         }
 ```
 
-### Inter-Rater Agreement
+### 評審者間一致性
 ```python
 from sklearn.metrics import cohen_kappa_score
 
@@ -294,12 +294,12 @@ def calculate_agreement(rater1_scores, rater2_scores):
     kappa = cohen_kappa_score(rater1_scores, rater2_scores)
 
     interpretation = {
-        kappa < 0: "Poor",
-        kappa < 0.2: "Slight",
-        kappa < 0.4: "Fair",
-        kappa < 0.6: "Moderate",
-        kappa < 0.8: "Substantial",
-        kappa <= 1.0: "Almost Perfect"
+        kappa < 0: "差",
+        kappa < 0.2: "輕微",
+        kappa < 0.4: "尚可",
+        kappa < 0.6: "中等",
+        kappa < 0.8: "相當",
+        kappa <= 1.0: "幾乎完美"
     }
 
     return {
@@ -308,9 +308,9 @@ def calculate_agreement(rater1_scores, rater2_scores):
     }
 ```
 
-## A/B Testing
+## A/B 測試
 
-### Statistical Testing Framework
+### 統計測試框架
 ```python
 from scipy import stats
 import numpy as np
@@ -365,9 +365,9 @@ class ABTest:
             return "large"
 ```
 
-## Regression Testing
+## 回歸測試
 
-### Regression Detection
+### 回歸偵測
 ```python
 class RegressionDetector:
     def __init__(self, baseline_results, threshold=0.05):
@@ -403,9 +403,9 @@ class RegressionDetector:
         }
 ```
 
-## Benchmarking
+## 基準測試
 
-### Running Benchmarks
+### 執行基準測試
 ```python
 class BenchmarkRunner:
     def __init__(self, benchmark_dataset):
@@ -440,32 +440,32 @@ class BenchmarkRunner:
         }
 ```
 
-## Resources
+## 資源
 
-- **references/metrics.md**: Comprehensive metric guide
-- **references/human-evaluation.md**: Annotation best practices
-- **references/benchmarking.md**: Standard benchmarks
-- **references/a-b-testing.md**: Statistical testing guide
-- **references/regression-testing.md**: CI/CD integration
-- **assets/evaluation-framework.py**: Complete evaluation harness
-- **assets/benchmark-dataset.jsonl**: Example datasets
-- **scripts/evaluate-model.py**: Automated evaluation runner
+- **references/metrics.md**：全面的指標指南
+- **references/human-evaluation.md**：標註最佳實務
+- **references/benchmarking.md**：標準基準測試
+- **references/a-b-testing.md**：統計測試指南
+- **references/regression-testing.md**：CI/CD 整合
+- **assets/evaluation-framework.py**：完整的評估框架
+- **assets/benchmark-dataset.jsonl**：範例資料集
+- **scripts/evaluate-model.py**：自動化評估執行器
 
-## Best Practices
+## 最佳實務
 
-1. **Multiple Metrics**: Use diverse metrics for comprehensive view
-2. **Representative Data**: Test on real-world, diverse examples
-3. **Baselines**: Always compare against baseline performance
-4. **Statistical Rigor**: Use proper statistical tests for comparisons
-5. **Continuous Evaluation**: Integrate into CI/CD pipeline
-6. **Human Validation**: Combine automated metrics with human judgment
-7. **Error Analysis**: Investigate failures to understand weaknesses
-8. **Version Control**: Track evaluation results over time
+1. **多重指標**：使用多樣化的指標以獲得全面的視角
+2. **代表性資料**：在真實世界、多樣化的範例上測試
+3. **基準**：始終與基準效能進行比較
+4. **統計嚴謹性**：使用適當的統計測試進行比較
+5. **持續評估**：整合到 CI/CD 流程中
+6. **人工驗證**：結合自動化指標與人工判斷
+7. **錯誤分析**：調查失敗以了解弱點
+8. **版本控制**：隨時間追蹤評估結果
 
-## Common Pitfalls
+## 常見陷阱
 
-- **Single Metric Obsession**: Optimizing for one metric at the expense of others
-- **Small Sample Size**: Drawing conclusions from too few examples
-- **Data Contamination**: Testing on training data
-- **Ignoring Variance**: Not accounting for statistical uncertainty
-- **Metric Mismatch**: Using metrics not aligned with business goals
+- **單一指標執著**：以犧牲其他指標為代價來最佳化一個指標
+- **樣本數過小**：從太少範例中得出結論
+- **資料污染**：在訓練資料上測試
+- **忽略變異**：未考慮統計不確定性
+- **指標不匹配**：使用與業務目標不一致的指標

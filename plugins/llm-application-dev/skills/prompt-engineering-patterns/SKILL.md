@@ -3,58 +3,58 @@ name: prompt-engineering-patterns
 description: Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability in production. Use when optimizing prompts, improving LLM outputs, or designing production prompt templates.
 ---
 
-# Prompt Engineering Patterns
+# 提示詞工程模式
 
-Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability.
+掌握進階提示詞工程技術，最大化 LLM 的效能、可靠性和可控性。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Designing complex prompts for production LLM applications
-- Optimizing prompt performance and consistency
-- Implementing structured reasoning patterns (chain-of-thought, tree-of-thought)
-- Building few-shot learning systems with dynamic example selection
-- Creating reusable prompt templates with variable interpolation
-- Debugging and refining prompts that produce inconsistent outputs
-- Implementing system prompts for specialized AI assistants
+- 為生產環境 LLM 應用設計複雜的提示詞
+- 最佳化提示詞效能和一致性
+- 實作結構化推理模式（思維鏈、思維樹）
+- 建構具有動態範例選擇的少樣本學習系統
+- 建立具有變數插值的可重複使用提示詞模板
+- 除錯和改進產生不一致輸出的提示詞
+- 為專業 AI 助理實作系統提示詞
 
-## Core Capabilities
+## 核心能力
 
-### 1. Few-Shot Learning
-- Example selection strategies (semantic similarity, diversity sampling)
-- Balancing example count with context window constraints
-- Constructing effective demonstrations with input-output pairs
-- Dynamic example retrieval from knowledge bases
-- Handling edge cases through strategic example selection
+### 1. 少樣本學習
+- 範例選擇策略（語意相似度、多樣性取樣）
+- 在上下文視窗限制下平衡範例數量
+- 使用輸入-輸出配對建構有效的示範
+- 從知識庫動態檢索範例
+- 透過策略性範例選擇處理邊緣案例
 
-### 2. Chain-of-Thought Prompting
-- Step-by-step reasoning elicitation
-- Zero-shot CoT with "Let's think step by step"
-- Few-shot CoT with reasoning traces
-- Self-consistency techniques (sampling multiple reasoning paths)
-- Verification and validation steps
+### 2. 思維鏈提示
+- 逐步推理引導
+- 零樣本 CoT 使用「讓我們一步步思考」
+- 具有推理軌跡的少樣本 CoT
+- 自我一致性技術（取樣多個推理路徑）
+- 驗證與確認步驟
 
-### 3. Prompt Optimization
-- Iterative refinement workflows
-- A/B testing prompt variations
-- Measuring prompt performance metrics (accuracy, consistency, latency)
-- Reducing token usage while maintaining quality
-- Handling edge cases and failure modes
+### 3. 提示詞最佳化
+- 迭代改進工作流程
+- A/B 測試提示詞變體
+- 衡量提示詞效能指標（準確性、一致性、延遲）
+- 在維持品質的同時減少令牌使用
+- 處理邊緣案例和失敗模式
 
-### 4. Template Systems
-- Variable interpolation and formatting
-- Conditional prompt sections
-- Multi-turn conversation templates
-- Role-based prompt composition
-- Modular prompt components
+### 4. 模板系統
+- 變數插值和格式化
+- 條件式提示詞區段
+- 多輪對話模板
+- 基於角色的提示詞組合
+- 模組化提示詞元件
 
-### 5. System Prompt Design
-- Setting model behavior and constraints
-- Defining output formats and structure
-- Establishing role and expertise
-- Safety guidelines and content policies
-- Context setting and background information
+### 5. 系統提示詞設計
+- 設定模型行為和限制
+- 定義輸出格式和結構
+- 建立角色和專業知識
+- 安全指南和內容政策
+- 上下文設定和背景資訊
 
-## Quick Start
+## 快速入門
 
 ```python
 from prompt_optimizer import PromptTemplate, FewShotSelector
@@ -81,121 +81,121 @@ prompt = template.render(
 )
 ```
 
-## Key Patterns
+## 關鍵模式
 
-### Progressive Disclosure
-Start with simple prompts, add complexity only when needed:
+### 漸進式揭露
+從簡單提示詞開始，僅在需要時增加複雜性：
 
-1. **Level 1**: Direct instruction
-   - "Summarize this article"
+1. **第 1 級**：直接指令
+   - "摘要這篇文章"
 
-2. **Level 2**: Add constraints
-   - "Summarize this article in 3 bullet points, focusing on key findings"
+2. **第 2 級**：加入限制
+   - "以 3 個重點摘要這篇文章，著重於關鍵發現"
 
-3. **Level 3**: Add reasoning
-   - "Read this article, identify the main findings, then summarize in 3 bullet points"
+3. **第 3 級**：加入推理
+   - "閱讀這篇文章，識別主要發現，然後以 3 個重點摘要"
 
-4. **Level 4**: Add examples
-   - Include 2-3 example summaries with input-output pairs
+4. **第 4 級**：加入範例
+   - 包含 2-3 個帶有輸入-輸出配對的範例摘要
 
-### Instruction Hierarchy
+### 指令層級
 ```
-[System Context] → [Task Instruction] → [Examples] → [Input Data] → [Output Format]
+[系統上下文] → [任務指令] → [範例] → [輸入資料] → [輸出格式]
 ```
 
-### Error Recovery
-Build prompts that gracefully handle failures:
-- Include fallback instructions
-- Request confidence scores
-- Ask for alternative interpretations when uncertain
-- Specify how to indicate missing information
+### 錯誤恢復
+建構能優雅處理失敗的提示詞：
+- 包含降級指令
+- 要求信心分數
+- 不確定時要求替代解釋
+- 指定如何表示缺少的資訊
 
-## Best Practices
+## 最佳實務
 
-1. **Be Specific**: Vague prompts produce inconsistent results
-2. **Show, Don't Tell**: Examples are more effective than descriptions
-3. **Test Extensively**: Evaluate on diverse, representative inputs
-4. **Iterate Rapidly**: Small changes can have large impacts
-5. **Monitor Performance**: Track metrics in production
-6. **Version Control**: Treat prompts as code with proper versioning
-7. **Document Intent**: Explain why prompts are structured as they are
+1. **具體明確**：模糊的提示詞產生不一致的結果
+2. **展示，而非描述**：範例比描述更有效
+3. **廣泛測試**：在多樣化、具代表性的輸入上評估
+4. **快速迭代**：小改變可能產生大影響
+5. **監控效能**：在生產環境中追蹤指標
+6. **版本控制**：像程式碼一樣進行適當的版本管理
+7. **記錄意圖**：解釋為什麼提示詞如此結構化
 
-## Common Pitfalls
+## 常見陷阱
 
-- **Over-engineering**: Starting with complex prompts before trying simple ones
-- **Example pollution**: Using examples that don't match the target task
-- **Context overflow**: Exceeding token limits with excessive examples
-- **Ambiguous instructions**: Leaving room for multiple interpretations
-- **Ignoring edge cases**: Not testing on unusual or boundary inputs
+- **過度工程**：在嘗試簡單提示詞之前就開始使用複雜提示詞
+- **範例污染**：使用與目標任務不符的範例
+- **上下文溢位**：過多範例超出令牌限制
+- **模糊指令**：留下多種解釋的空間
+- **忽略邊緣案例**：未在不尋常或邊界輸入上測試
 
-## Integration Patterns
+## 整合模式
 
-### With RAG Systems
+### 與 RAG 系統整合
 ```python
 # Combine retrieved context with prompt engineering
-prompt = f"""Given the following context:
+prompt = f"""根據以下上下文：
 {retrieved_context}
 
 {few_shot_examples}
 
-Question: {user_question}
+問題：{user_question}
 
-Provide a detailed answer based solely on the context above. If the context doesn't contain enough information, explicitly state what's missing."""
+僅根據上述上下文提供詳細答案。如果上下文不包含足夠資訊，明確說明缺少什麼。"""
 ```
 
-### With Validation
+### 與驗證整合
 ```python
 # Add self-verification step
 prompt = f"""{main_task_prompt}
 
-After generating your response, verify it meets these criteria:
-1. Answers the question directly
-2. Uses only information from provided context
-3. Cites specific sources
-4. Acknowledges any uncertainty
+生成回應後，驗證它是否符合這些標準：
+1. 直接回答問題
+2. 僅使用提供的上下文資訊
+3. 引用具體來源
+4. 承認任何不確定性
 
-If verification fails, revise your response."""
+如果驗證失敗，請修改您的回應。"""
 ```
 
-## Performance Optimization
+## 效能最佳化
 
-### Token Efficiency
-- Remove redundant words and phrases
-- Use abbreviations consistently after first definition
-- Consolidate similar instructions
-- Move stable content to system prompts
+### 令牌效率
+- 移除冗餘的詞彙和片語
+- 在首次定義後一致使用縮寫
+- 合併類似的指令
+- 將穩定內容移至系統提示詞
 
-### Latency Reduction
-- Minimize prompt length without sacrificing quality
-- Use streaming for long-form outputs
-- Cache common prompt prefixes
-- Batch similar requests when possible
+### 延遲降低
+- 在不犧牲品質的情況下最小化提示詞長度
+- 對長篇輸出使用串流
+- 快取常見的提示詞前綴
+- 盡可能批次處理類似請求
 
-## Resources
+## 資源
 
-- **references/few-shot-learning.md**: Deep dive on example selection and construction
-- **references/chain-of-thought.md**: Advanced reasoning elicitation techniques
-- **references/prompt-optimization.md**: Systematic refinement workflows
-- **references/prompt-templates.md**: Reusable template patterns
-- **references/system-prompts.md**: System-level prompt design
-- **assets/prompt-template-library.md**: Battle-tested prompt templates
-- **assets/few-shot-examples.json**: Curated example datasets
-- **scripts/optimize-prompt.py**: Automated prompt optimization tool
+- **references/few-shot-learning.md**：深入探討範例選擇和建構
+- **references/chain-of-thought.md**：進階推理引導技術
+- **references/prompt-optimization.md**：系統化改進工作流程
+- **references/prompt-templates.md**：可重複使用的模板模式
+- **references/system-prompts.md**：系統級提示詞設計
+- **assets/prompt-template-library.md**：經過實戰考驗的提示詞模板
+- **assets/few-shot-examples.json**：精選的範例資料集
+- **scripts/optimize-prompt.py**：自動化提示詞最佳化工具
 
-## Success Metrics
+## 成功指標
 
-Track these KPIs for your prompts:
-- **Accuracy**: Correctness of outputs
-- **Consistency**: Reproducibility across similar inputs
-- **Latency**: Response time (P50, P95, P99)
-- **Token Usage**: Average tokens per request
-- **Success Rate**: Percentage of valid outputs
-- **User Satisfaction**: Ratings and feedback
+追蹤提示詞的這些關鍵績效指標：
+- **準確性**：輸出的正確性
+- **一致性**：類似輸入間的可重現性
+- **延遲**：回應時間（P50、P95、P99）
+- **令牌使用**：每個請求的平均令牌數
+- **成功率**：有效輸出的百分比
+- **使用者滿意度**：評分和回饋
 
-## Next Steps
+## 下一步
 
-1. Review the prompt template library for common patterns
-2. Experiment with few-shot learning for your specific use case
-3. Implement prompt versioning and A/B testing
-4. Set up automated evaluation pipelines
-5. Document your prompt engineering decisions and learnings
+1. 檢視提示詞模板庫以了解常見模式
+2. 針對您的特定使用案例試驗少樣本學習
+3. 實作提示詞版本管理和 A/B 測試
+4. 建立自動化評估流程
+5. 記錄您的提示詞工程決策和學習

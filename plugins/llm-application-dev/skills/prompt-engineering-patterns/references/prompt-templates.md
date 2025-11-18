@@ -1,8 +1,8 @@
-# Prompt Template Systems
+# 提示詞模板系統
 
-## Template Architecture
+## 模板架構
 
-### Basic Template Structure
+### 基本模板結構
 ```python
 class PromptTemplate:
     def __init__(self, template_string, variables=None):
@@ -18,7 +18,7 @@ class PromptTemplate:
 
 # Usage
 template = PromptTemplate(
-    template_string="Translate {text} from {source_lang} to {target_lang}",
+    template_string="將 {text} 從 {source_lang} 翻譯為 {target_lang}",
     variables=['text', 'source_lang', 'target_lang']
 )
 
@@ -29,7 +29,7 @@ prompt = template.render(
 )
 ```
 
-### Conditional Templates
+### 條件式模板
 ```python
 class ConditionalTemplate(PromptTemplate):
     def render(self, **kwargs):
@@ -54,7 +54,7 @@ class ConditionalTemplate(PromptTemplate):
             var_name = match.group(1)
             content = match.group(2)
             items = kwargs.get(var_name, [])
-            return '\\n'.join(content.replace('{{this}}', str(item)) for item in items)
+            return '\n'.join(content.replace('{{this}}', str(item)) for item in items)
 
         result = re.sub(each_pattern, replace_each, result, flags=re.DOTALL)
 
@@ -63,19 +63,19 @@ class ConditionalTemplate(PromptTemplate):
 
 # Usage
 template = ConditionalTemplate("""
-Analyze the following text:
+分析以下文字：
 {text}
 
 {{#if include_sentiment}}
-Provide sentiment analysis.
+提供情感分析。
 {{/if}}
 
 {{#if include_entities}}
-Extract named entities.
+擷取命名實體。
 {{/if}}
 
 {{#if examples}}
-Reference examples:
+參考範例：
 {{#each examples}}
 - {{this}}
 {{/each}}
@@ -83,7 +83,7 @@ Reference examples:
 """)
 ```
 
-### Modular Template Composition
+### 模組化模板組合
 ```python
 class ModularTemplate:
     def __init__(self):
@@ -99,126 +99,126 @@ class ModularTemplate:
                 component = self.components[component_name]
                 parts.append(component.format(**kwargs))
 
-        return '\\n\\n'.join(parts)
+        return '\n\n'.join(parts)
 
 # Usage
 builder = ModularTemplate()
 
-builder.register_component('system', "You are a {role}.")
-builder.register_component('context', "Context: {context}")
-builder.register_component('instruction', "Task: {task}")
-builder.register_component('examples', "Examples:\\n{examples}")
-builder.register_component('input', "Input: {input}")
-builder.register_component('format', "Output format: {format}")
+builder.register_component('system', "您是一位 {role}。")
+builder.register_component('context', "上下文：{context}")
+builder.register_component('instruction', "任務：{task}")
+builder.register_component('examples', "範例：\n{examples}")
+builder.register_component('input', "輸入：{input}")
+builder.register_component('format', "輸出格式：{format}")
 
 # Compose different templates for different scenarios
 basic_prompt = builder.render(
     ['system', 'instruction', 'input'],
     role='helpful assistant',
-    instruction='Summarize the text',
+    instruction='摘要文字',
     input='...'
 )
 
 advanced_prompt = builder.render(
     ['system', 'context', 'examples', 'instruction', 'input', 'format'],
     role='expert analyst',
-    context='Financial analysis',
+    context='財務分析',
     examples='...',
-    instruction='Analyze sentiment',
+    instruction='分析情感',
     input='...',
     format='JSON'
 )
 ```
 
-## Common Template Patterns
+## 常見模板模式
 
-### Classification Template
+### 分類模板
 ```python
 CLASSIFICATION_TEMPLATE = """
-Classify the following {content_type} into one of these categories: {categories}
+將以下 {content_type} 分類到以下類別之一：{categories}
 
 {{#if description}}
-Category descriptions:
+類別描述：
 {description}
 {{/if}}
 
 {{#if examples}}
-Examples:
+範例：
 {examples}
 {{/if}}
 
-{content_type}: {input}
+{content_type}：{input}
 
-Category:"""
+類別："""
 ```
 
-### Extraction Template
+### 擷取模板
 ```python
 EXTRACTION_TEMPLATE = """
-Extract structured information from the {content_type}.
+從 {content_type} 中擷取結構化資訊。
 
-Required fields:
+必填欄位：
 {field_definitions}
 
 {{#if examples}}
-Example extraction:
+範例擷取：
 {examples}
 {{/if}}
 
-{content_type}: {input}
+{content_type}：{input}
 
-Extracted information (JSON):"""
+擷取的資訊（JSON）："""
 ```
 
-### Generation Template
+### 生成模板
 ```python
 GENERATION_TEMPLATE = """
-Generate {output_type} based on the following {input_type}.
+根據以下 {input_type} 生成 {output_type}。
 
-Requirements:
+需求：
 {requirements}
 
 {{#if style}}
-Style: {style}
+風格：{style}
 {{/if}}
 
 {{#if constraints}}
-Constraints:
+限制：
 {constraints}
 {{/if}}
 
 {{#if examples}}
-Examples:
+範例：
 {examples}
 {{/if}}
 
-{input_type}: {input}
+{input_type}：{input}
 
-{output_type}:"""
+{output_type}："""
 ```
 
-### Transformation Template
+### 轉換模板
 ```python
 TRANSFORMATION_TEMPLATE = """
-Transform the input {source_format} to {target_format}.
+將輸入的 {source_format} 轉換為 {target_format}。
 
-Transformation rules:
+轉換規則：
 {rules}
 
 {{#if examples}}
-Example transformations:
+範例轉換：
 {examples}
 {{/if}}
 
-Input {source_format}:
+輸入 {source_format}：
 {input}
 
-Output {target_format}:"""
+輸出 {target_format}："""
 ```
 
-## Advanced Features
+## 進階功能
 
-### Template Inheritance
+### 模板繼承
 ```python
 class TemplateRegistry:
     def __init__(self):
@@ -240,17 +240,17 @@ class TemplateRegistry:
 registry = TemplateRegistry()
 
 registry.register('base_analysis', {
-    'system': 'You are an expert analyst.',
-    'format': 'Provide analysis in structured format.'
+    'system': '您是一位專業分析師。',
+    'format': '以結構化格式提供分析。'
 })
 
 registry.register('sentiment_analysis', {
-    'instruction': 'Analyze sentiment',
-    'format': 'Provide sentiment score from -1 to 1.'
+    'instruction': '分析情感',
+    'format': '提供從 -1 到 1 的情感分數。'
 }, parent='base_analysis')
 ```
 
-### Variable Validation
+### 變數驗證
 ```python
 class ValidatedTemplate:
     def __init__(self, template, schema):
@@ -285,7 +285,7 @@ class ValidatedTemplate:
 
 # Usage
 template = ValidatedTemplate(
-    template="Summarize in {length} words with {tone} tone",
+    template="以 {length} 字摘要，使用 {tone} 語氣",
     schema={
         'length': {'type': int, 'min': 10, 'max': 500},
         'tone': {'type': str, 'choices': ['formal', 'casual', 'technical']}
@@ -293,7 +293,7 @@ template = ValidatedTemplate(
 )
 ```
 
-### Template Caching
+### 模板快取
 ```python
 class CachedTemplate:
     def __init__(self, template):
@@ -320,9 +320,9 @@ class CachedTemplate:
         self.cache = {}
 ```
 
-## Multi-Turn Templates
+## 多輪模板
 
-### Conversation Template
+### 對話模板
 ```python
 class ConversationTemplate:
     def __init__(self, system_prompt):
@@ -341,14 +341,14 @@ class ConversationTemplate:
         return messages
 
     def render_as_text(self):
-        result = f"System: {self.system_prompt}\\n\\n"
+        result = f"系統：{self.system_prompt}\n\n"
         for msg in self.history:
             role = msg['role'].capitalize()
-            result += f"{role}: {msg['content']}\\n\\n"
+            result += f"{role}：{msg['content']}\n\n"
         return result
 ```
 
-### State-Based Templates
+### 基於狀態的模板
 ```python
 class StatefulTemplate:
     def __init__(self):
@@ -374,97 +374,97 @@ class StatefulTemplate:
 workflow = StatefulTemplate()
 
 workflow.register_state_template('init', """
-Welcome! Let's {task}.
-What is your {first_input}?
+歡迎！讓我們 {task}。
+您的 {first_input} 是什麼？
 """)
 
 workflow.register_state_template('processing', """
-Thanks! Processing {first_input}.
-Now, what is your {second_input}?
+謝謝！正在處理 {first_input}。
+現在，您的 {second_input} 是什麼？
 """)
 
 workflow.register_state_template('complete', """
-Great! Based on:
+太好了！根據：
 - {first_input}
 - {second_input}
 
-Here's the result: {result}
+這是結果：{result}
 """)
 ```
 
-## Best Practices
+## 最佳實務
 
-1. **Keep It DRY**: Use templates to avoid repetition
-2. **Validate Early**: Check variables before rendering
-3. **Version Templates**: Track changes like code
-4. **Test Variations**: Ensure templates work with diverse inputs
-5. **Document Variables**: Clearly specify required/optional variables
-6. **Use Type Hints**: Make variable types explicit
-7. **Provide Defaults**: Set sensible default values where appropriate
-8. **Cache Wisely**: Cache static templates, not dynamic ones
+1. **保持 DRY**：使用模板避免重複
+2. **提早驗證**：在渲染前檢查變數
+3. **版本化模板**：像程式碼一樣追蹤變更
+4. **測試變化**：確保模板適用於多樣化的輸入
+5. **記錄變數**：清楚指定必填/選填變數
+6. **使用型別提示**：明確指定變數型別
+7. **提供預設值**：在適當的地方設定合理的預設值
+8. **明智地快取**：快取靜態模板，而非動態模板
 
-## Template Libraries
+## 模板庫
 
-### Question Answering
+### 問答
 ```python
 QA_TEMPLATES = {
-    'factual': """Answer the question based on the context.
+    'factual': """根據上下文回答問題。
 
-Context: {context}
-Question: {question}
-Answer:""",
+上下文：{context}
+問題：{question}
+答案：""",
 
-    'multi_hop': """Answer the question by reasoning across multiple facts.
+    'multi_hop': """透過跨多個事實推理來回答問題。
 
-Facts: {facts}
-Question: {question}
+事實：{facts}
+問題：{question}
 
-Reasoning:""",
+推理：""",
 
-    'conversational': """Continue the conversation naturally.
+    'conversational': """自然地延續對話。
 
-Previous conversation:
+先前的對話：
 {history}
 
-User: {question}
-Assistant:"""
+使用者：{question}
+助理："""
 }
 ```
 
-### Content Generation
+### 內容生成
 ```python
 GENERATION_TEMPLATES = {
-    'blog_post': """Write a blog post about {topic}.
+    'blog_post': """撰寫一篇關於 {topic} 的部落格文章。
 
-Requirements:
-- Length: {word_count} words
-- Tone: {tone}
-- Include: {key_points}
+需求：
+- 長度：{word_count} 字
+- 語氣：{tone}
+- 包含：{key_points}
 
-Blog post:""",
+部落格文章：""",
 
-    'product_description': """Write a product description for {product}.
+    'product_description': """為 {product} 撰寫產品描述。
 
-Features: {features}
-Benefits: {benefits}
-Target audience: {audience}
+特色：{features}
+優點：{benefits}
+目標受眾：{audience}
 
-Description:""",
+描述：""",
 
-    'email': """Write a {type} email.
+    'email': """撰寫一封 {type} 電子郵件。
 
-To: {recipient}
-Context: {context}
-Key points: {key_points}
+收件人：{recipient}
+情境：{context}
+重點：{key_points}
 
-Email:"""
+電子郵件："""
 }
 ```
 
-## Performance Considerations
+## 效能考量
 
-- Pre-compile templates for repeated use
-- Cache rendered templates when variables are static
-- Minimize string concatenation in loops
-- Use efficient string formatting (f-strings, .format())
-- Profile template rendering for bottlenecks
+- 為重複使用預先編譯模板
+- 當變數是靜態的時快取已渲染的模板
+- 最小化迴圈中的字串串接
+- 使用高效的字串格式化（f-strings、.format()）
+- 分析模板渲染的瓶頸

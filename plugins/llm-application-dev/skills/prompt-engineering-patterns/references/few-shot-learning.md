@@ -1,13 +1,13 @@
-# Few-Shot Learning Guide
+# 少樣本學習指南
 
-## Overview
+## 概述
 
-Few-shot learning enables LLMs to perform tasks by providing a small number of examples (typically 1-10) within the prompt. This technique is highly effective for tasks requiring specific formats, styles, or domain knowledge.
+少樣本學習使 LLM 能夠透過在提示詞中提供少量範例（通常 1-10 個）來執行任務。這種技術對於需要特定格式、風格或領域知識的任務非常有效。
 
-## Example Selection Strategies
+## 範例選擇策略
 
-### 1. Semantic Similarity
-Select examples most similar to the input query using embedding-based retrieval.
+### 1. 語意相似度
+使用基於嵌入的檢索選擇與輸入查詢最相似的範例。
 
 ```python
 from sentence_transformers import SentenceTransformer
@@ -26,10 +26,10 @@ class SemanticExampleSelector:
         return [self.examples[i] for i in top_indices]
 ```
 
-**Best For**: Question answering, text classification, extraction tasks
+**最適合**：問答、文字分類、擷取任務
 
-### 2. Diversity Sampling
-Maximize coverage of different patterns and edge cases.
+### 2. 多樣性取樣
+最大化不同模式和邊緣案例的覆蓋範圍。
 
 ```python
 from sklearn.cluster import KMeans
@@ -55,10 +55,10 @@ class DiversityExampleSelector:
         return diverse_examples
 ```
 
-**Best For**: Demonstrating task variability, edge case handling
+**最適合**：展示任務變化性、邊緣案例處理
 
-### 3. Difficulty-Based Selection
-Gradually increase example complexity to scaffold learning.
+### 3. 基於難度的選擇
+逐步增加範例複雜度以搭建學習鷹架。
 
 ```python
 class ProgressiveExampleSelector:
@@ -72,10 +72,10 @@ class ProgressiveExampleSelector:
         return [self.examples[i * step] for i in range(k)]
 ```
 
-**Best For**: Complex reasoning tasks, code generation
+**最適合**：複雜推理任務、程式碼生成
 
-### 4. Error-Based Selection
-Include examples that address common failure modes.
+### 4. 基於錯誤的選擇
+包含處理常見失敗模式的範例。
 
 ```python
 class ErrorGuidedSelector:
@@ -93,12 +93,12 @@ class ErrorGuidedSelector:
         return selected
 ```
 
-**Best For**: Tasks with known failure patterns, safety-critical applications
+**最適合**：具有已知失敗模式的任務、安全關鍵應用
 
-## Example Construction Best Practices
+## 範例建構最佳實務
 
-### Format Consistency
-All examples should follow identical formatting:
+### 格式一致性
+所有範例應遵循相同的格式：
 
 ```python
 # Good: Consistent format
@@ -120,25 +120,25 @@ examples = [
 ]
 ```
 
-### Input-Output Alignment
-Ensure examples demonstrate the exact task you want the model to perform:
+### 輸入-輸出對齊
+確保範例展示您希望模型執行的確切任務：
 
 ```python
 # Good: Clear input-output relationship
 example = {
-    "input": "Sentiment: The movie was terrible and boring.",
-    "output": "Negative"
+    "input": "情感：這部電影糟糕又無聊。",
+    "output": "負面"
 }
 
 # Bad: Ambiguous relationship
 example = {
-    "input": "The movie was terrible and boring.",
-    "output": "This review expresses negative sentiment toward the film."
+    "input": "這部電影糟糕又無聊。",
+    "output": "這條評論對電影表達了負面情感。"
 }
 ```
 
-### Complexity Balance
-Include examples spanning the expected difficulty range:
+### 複雜度平衡
+包含涵蓋預期難度範圍的範例：
 
 ```python
 examples = [
@@ -153,19 +153,19 @@ examples = [
 ]
 ```
 
-## Context Window Management
+## 上下文視窗管理
 
-### Token Budget Allocation
-Typical distribution for a 4K context window:
+### 令牌預算分配
+4K 上下文視窗的典型分配：
 
 ```
-System Prompt:        500 tokens  (12%)
-Few-Shot Examples:   1500 tokens  (38%)
-User Input:           500 tokens  (12%)
-Response:            1500 tokens  (38%)
+系統提示詞：       500 令牌  (12%)
+少樣本範例：      1500 令牌  (38%)
+使用者輸入：       500 令牌  (12%)
+回應：           1500 令牌  (38%)
 ```
 
-### Dynamic Example Truncation
+### 動態範例截斷
 ```python
 class TokenAwareSelector:
     def __init__(self, examples, tokenizer, max_tokens=1500):
@@ -194,66 +194,66 @@ class TokenAwareSelector:
         return selected
 ```
 
-## Edge Case Handling
+## 邊緣案例處理
 
-### Include Boundary Examples
+### 包含邊界範例
 ```python
 edge_case_examples = [
     # Empty input
-    {"input": "", "output": "Please provide input text."},
+    {"input": "", "output": "請提供輸入文字。"},
 
     # Very long input (truncated in example)
-    {"input": "..." + "word " * 1000, "output": "Input exceeds maximum length."},
+    {"input": "..." + "word " * 1000, "output": "輸入超過最大長度。"},
 
     # Ambiguous input
-    {"input": "bank", "output": "Ambiguous: Could refer to financial institution or river bank."},
+    {"input": "bank", "output": "模稜兩可：可能指金融機構或河岸。"},
 
     # Invalid input
-    {"input": "!@#$%", "output": "Invalid input format. Please provide valid text."}
+    {"input": "!@#$%", "output": "無效的輸入格式。請提供有效文字。"}
 ]
 ```
 
-## Few-Shot Prompt Templates
+## 少樣本提示詞模板
 
-### Classification Template
+### 分類模板
 ```python
 def build_classification_prompt(examples, query, labels):
-    prompt = f"Classify the text into one of these categories: {', '.join(labels)}\n\n"
+    prompt = f"將文字分類到以下類別之一：{', '.join(labels)}\n\n"
 
     for ex in examples:
-        prompt += f"Text: {ex['input']}\nCategory: {ex['output']}\n\n"
+        prompt += f"文字：{ex['input']}\n類別：{ex['output']}\n\n"
 
-    prompt += f"Text: {query}\nCategory:"
+    prompt += f"文字：{query}\n類別："
     return prompt
 ```
 
-### Extraction Template
+### 擷取模板
 ```python
 def build_extraction_prompt(examples, query):
-    prompt = "Extract structured information from the text.\n\n"
+    prompt = "從文字中擷取結構化資訊。\n\n"
 
     for ex in examples:
-        prompt += f"Text: {ex['input']}\nExtracted: {json.dumps(ex['output'])}\n\n"
+        prompt += f"文字：{ex['input']}\n擷取：{json.dumps(ex['output'])}\n\n"
 
-    prompt += f"Text: {query}\nExtracted:"
+    prompt += f"文字：{query}\n擷取："
     return prompt
 ```
 
-### Transformation Template
+### 轉換模板
 ```python
 def build_transformation_prompt(examples, query):
-    prompt = "Transform the input according to the pattern shown in examples.\n\n"
+    prompt = "根據範例中顯示的模式轉換輸入。\n\n"
 
     for ex in examples:
-        prompt += f"Input: {ex['input']}\nOutput: {ex['output']}\n\n"
+        prompt += f"輸入：{ex['input']}\n輸出：{ex['output']}\n\n"
 
-    prompt += f"Input: {query}\nOutput:"
+    prompt += f"輸入：{query}\n輸出："
     return prompt
 ```
 
-## Evaluation and Optimization
+## 評估與最佳化
 
-### Example Quality Metrics
+### 範例品質指標
 ```python
 def evaluate_example_quality(example, validation_set):
     metrics = {
@@ -265,7 +265,7 @@ def evaluate_example_quality(example, validation_set):
     return metrics
 ```
 
-### A/B Testing Example Sets
+### A/B 測試範例集
 ```python
 class ExampleSetTester:
     def __init__(self, llm_client):
@@ -292,10 +292,10 @@ class ExampleSetTester:
         return {'accuracy': correct / len(test_queries)}
 ```
 
-## Advanced Techniques
+## 進階技術
 
-### Meta-Learning (Learning to Select)
-Train a small model to predict which examples will be most effective:
+### 元學習（學習選擇）
+訓練一個小型模型來預測哪些範例最有效：
 
 ```python
 from sklearn.ensemble import RandomForestClassifier
@@ -333,8 +333,8 @@ class LearnedExampleSelector:
         return [ex for _, ex in sorted(scores, reverse=True)[:k]]
 ```
 
-### Adaptive Example Count
-Dynamically adjust the number of examples based on task difficulty:
+### 自適應範例數量
+根據任務難度動態調整範例數量：
 
 ```python
 class AdaptiveExampleSelector:
@@ -353,17 +353,17 @@ class AdaptiveExampleSelector:
         return selected  # Return max_examples if never confident enough
 ```
 
-## Common Mistakes
+## 常見錯誤
 
-1. **Too Many Examples**: More isn't always better; can dilute focus
-2. **Irrelevant Examples**: Examples should match the target task closely
-3. **Inconsistent Formatting**: Confuses the model about output format
-4. **Overfitting to Examples**: Model copies example patterns too literally
-5. **Ignoring Token Limits**: Running out of space for actual input/output
+1. **過多範例**：更多不一定更好；可能會稀釋焦點
+2. **不相關範例**：範例應與目標任務緊密匹配
+3. **格式不一致**：混淆模型對輸出格式的理解
+4. **過度擬合範例**：模型過於照字面複製範例模式
+5. **忽略令牌限制**：用盡實際輸入/輸出的空間
 
-## Resources
+## 資源
 
-- Example dataset repositories
-- Pre-built example selectors for common tasks
-- Evaluation frameworks for few-shot performance
-- Token counting utilities for different models
+- 範例資料集儲存庫
+- 常見任務的預建範例選擇器
+- 少樣本效能評估框架
+- 不同模型的令牌計數工具
