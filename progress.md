@@ -3,7 +3,7 @@
 總檔案數: 307
 已完成: 8
 進行中: 0
-待處理: 165
+待處理: 149
 
 ## 檔案清單
 
@@ -149,22 +149,22 @@
 - [x] /home/user/agents/plugins/documentation-generation/agents/mermaid-expert.md
 - [x] /home/user/agents/plugins/documentation-generation/agents/reference-builder.md
 - [x] /home/user/agents/plugins/documentation-generation/agents/tutorial-engineer.md
-- [ ] /home/user/agents/plugins/documentation-generation/commands/doc-generate.md
-- [ ] /home/user/agents/plugins/error-debugging/agents/debugger.md
-- [ ] /home/user/agents/plugins/error-debugging/agents/error-detective.md
-- [ ] /home/user/agents/plugins/error-debugging/commands/error-analysis.md
-- [ ] /home/user/agents/plugins/error-debugging/commands/error-trace.md
-- [ ] /home/user/agents/plugins/error-debugging/commands/multi-agent-review.md
-- [ ] /home/user/agents/plugins/error-diagnostics/agents/debugger.md
-- [ ] /home/user/agents/plugins/error-diagnostics/agents/error-detective.md
-- [ ] /home/user/agents/plugins/error-diagnostics/commands/error-analysis.md
-- [ ] /home/user/agents/plugins/error-diagnostics/commands/error-trace.md
-- [ ] /home/user/agents/plugins/error-diagnostics/commands/smart-debug.md
-- [ ] /home/user/agents/plugins/framework-migration/agents/architect-review.md
-- [ ] /home/user/agents/plugins/framework-migration/agents/legacy-modernizer.md
-- [ ] /home/user/agents/plugins/framework-migration/commands/code-migrate.md
-- [ ] /home/user/agents/plugins/framework-migration/commands/deps-upgrade.md
-- [ ] /home/user/agents/plugins/framework-migration/commands/legacy-modernize.md
+- [x] /home/user/agents/plugins/documentation-generation/commands/doc-generate.md
+- [x] /home/user/agents/plugins/error-debugging/agents/debugger.md
+- [x] /home/user/agents/plugins/error-debugging/agents/error-detective.md
+- [x] /home/user/agents/plugins/error-debugging/commands/error-analysis.md
+- [x] /home/user/agents/plugins/error-debugging/commands/error-trace.md
+- [x] /home/user/agents/plugins/error-debugging/commands/multi-agent-review.md
+- [x] /home/user/agents/plugins/error-diagnostics/agents/debugger.md
+- [x] /home/user/agents/plugins/error-diagnostics/agents/error-detective.md
+- [x] /home/user/agents/plugins/error-diagnostics/commands/error-analysis.md
+- [x] /home/user/agents/plugins/error-diagnostics/commands/error-trace.md
+- [x] /home/user/agents/plugins/error-diagnostics/commands/smart-debug.md
+- [x] /home/user/agents/plugins/framework-migration/agents/architect-review.md
+- [x] /home/user/agents/plugins/framework-migration/agents/legacy-modernizer.md
+- [x] /home/user/agents/plugins/framework-migration/commands/code-migrate.md
+- [x] /home/user/agents/plugins/framework-migration/commands/deps-upgrade.md
+- [x] /home/user/agents/plugins/framework-migration/commands/legacy-modernize.md
 - [ ] /home/user/agents/plugins/framework-migration/skills/angular-migration/SKILL.md
 - [ ] /home/user/agents/plugins/framework-migration/skills/database-migration/SKILL.md
 - [ ] /home/user/agents/plugins/framework-migration/skills/dependency-upgrade/SKILL.md

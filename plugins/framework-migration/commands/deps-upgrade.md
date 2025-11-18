@@ -1,20 +1,20 @@
-# Dependency Upgrade Strategy
+# 相依性升級策略
 
-You are a dependency management expert specializing in safe, incremental upgrades of project dependencies. Plan and execute dependency updates with minimal risk, proper testing, and clear migration paths for breaking changes.
+您是一位專精於安全、漸進式升級專案相依性的相依性管理專家。規劃並執行相依性更新，處理重大變更，最小風險、適當測試，並為重大變更提供清晰的遷移路徑。
 
-## Context
-The user needs to upgrade project dependencies safely, handling breaking changes, ensuring compatibility, and maintaining stability. Focus on risk assessment, incremental upgrades, automated testing, and rollback strategies.
+## 情境說明
+使用者需要安全地升級專案相依性，處理重大變更、確保相容性並維持穩定性。專注於風險評估、漸進式升級、自動化測試與回復策略。
 
-## Requirements
+## 需求說明
 $ARGUMENTS
 
-## Instructions
+## 指示說明
 
-### 1. Dependency Update Analysis
+### 1. 相依性更新分析
 
-Assess current dependency state and upgrade needs:
+評估當前相依性狀態與升級需求：
 
-**Comprehensive Dependency Audit**
+**完整相依性稽核**
 ```python
 import json
 import subprocess
@@ -24,7 +24,7 @@ from packaging import version
 class DependencyAnalyzer:
     def analyze_update_opportunities(self):
         """
-        Analyze all dependencies for update opportunities
+        分析所有相依性的更新機會
         """
         analysis = {
             'dependencies': self._analyze_dependencies(),
@@ -32,14 +32,14 @@ class DependencyAnalyzer:
             'risk_assessment': self._assess_risks(),
             'priority_order': self._prioritize_updates()
         }
-        
+
         return analysis
-    
+
     def _analyze_dependencies(self):
-        """Analyze each dependency"""
+        """分析每個相依性"""
         deps = {}
-        
-        # NPM analysis
+
+        # NPM 分析
         if self._has_npm():
             npm_output = subprocess.run(
                 ['npm', 'outdated', '--json'],
@@ -56,12 +56,12 @@ class DependencyAnalyzer:
                         'type': info.get('type', 'dependencies'),
                         'ecosystem': 'npm',
                         'update_type': self._categorize_update(
-                            info['current'], 
+                            info['current'],
                             info['latest']
                         )
                     }
-        
-        # Python analysis
+
+        # Python 分析
         if self._has_python():
             pip_output = subprocess.run(
                 ['pip', 'list', '--outdated', '--format=json'],
@@ -80,15 +80,15 @@ class DependencyAnalyzer:
                             pkg_info['latest_version']
                         )
                     }
-        
+
         return deps
-    
+
     def _categorize_update(self, current_ver, latest_ver):
-        """Categorize update by semver"""
+        """依 semver 分類更新"""
         try:
             current = version.parse(current_ver)
             latest = version.parse(latest_ver)
-            
+
             if latest.major > current.major:
                 return 'major'
             elif latest.minor > current.minor:
@@ -101,16 +101,16 @@ class DependencyAnalyzer:
             return 'unknown'
 ```
 
-### 2. Breaking Change Detection
+### 2. 重大變更偵測
 
-Identify potential breaking changes:
+識別版本之間的潛在重大變更：
 
-**Breaking Change Scanner**
+**重大變更掃描器**
 ```python
 class BreakingChangeDetector:
     def detect_breaking_changes(self, package_name, current_version, target_version):
         """
-        Detect breaking changes between versions
+        偵測版本之間的重大變更
         """
         breaking_changes = {
             'api_changes': [],
@@ -119,11 +119,11 @@ class BreakingChangeDetector:
             'migration_required': False,
             'estimated_effort': 'low'
         }
-        
-        # Fetch changelog
+
+        # 取得變更日誌
         changelog = self._fetch_changelog(package_name, current_version, target_version)
-        
-        # Parse for breaking changes
+
+        # 解析重大變更
         breaking_patterns = [
             r'BREAKING CHANGE:',
             r'BREAKING:',
@@ -134,14 +134,14 @@ class BreakingChangeDetector:
             r'moved to',
             r'replaced by'
         ]
-        
+
         for pattern in breaking_patterns:
             matches = re.finditer(pattern, changelog, re.IGNORECASE)
             for match in matches:
                 context = self._extract_context(changelog, match.start())
                 breaking_changes['api_changes'].append(context)
-        
-        # Check for specific patterns
+
+        # 檢查特定模式
         if package_name == 'react':
             breaking_changes.update(self._check_react_breaking_changes(
                 current_version, target_version
@@ -150,234 +150,234 @@ class BreakingChangeDetector:
             breaking_changes.update(self._check_webpack_breaking_changes(
                 current_version, target_version
             ))
-        
-        # Estimate migration effort
+
+        # 估計遷移工作量
         breaking_changes['estimated_effort'] = self._estimate_effort(breaking_changes)
-        
+
         return breaking_changes
-    
+
     def _check_react_breaking_changes(self, current, target):
-        """React-specific breaking changes"""
+        """React 特定重大變更"""
         changes = {
             'api_changes': [],
             'migration_required': False
         }
-        
-        # React 15 to 16
+
+        # React 15 到 16
         if current.startswith('15') and target.startswith('16'):
             changes['api_changes'].extend([
-                'PropTypes moved to separate package',
-                'React.createClass deprecated',
-                'String refs deprecated'
+                'PropTypes 移至獨立套件',
+                'React.createClass 已棄用',
+                '字串 refs 已棄用'
             ])
             changes['migration_required'] = True
-        
-        # React 16 to 17
+
+        # React 16 到 17
         elif current.startswith('16') and target.startswith('17'):
             changes['api_changes'].extend([
-                'Event delegation changes',
-                'No event pooling',
-                'useEffect cleanup timing changes'
+                '事件委派變更',
+                '無事件池化',
+                'useEffect 清理時序變更'
             ])
-        
-        # React 17 to 18
+
+        # React 17 到 18
         elif current.startswith('17') and target.startswith('18'):
             changes['api_changes'].extend([
-                'Automatic batching',
-                'Stricter StrictMode',
-                'Suspense changes',
-                'New root API'
+                '自動批次處理',
+                '更嚴格的 StrictMode',
+                'Suspense 變更',
+                '新的 root API'
             ])
             changes['migration_required'] = True
-        
+
         return changes
 ```
 
-### 3. Migration Guide Generation
+### 3. 遷移指南產生
 
-Create detailed migration guides:
+建立詳細的遷移指南：
 
-**Migration Guide Generator**
+**遷移指南產生器**
 ```python
 def generate_migration_guide(package_name, current_version, target_version, breaking_changes):
     """
-    Generate step-by-step migration guide
+    產生逐步遷移指南
     """
     guide = f"""
-# Migration Guide: {package_name} {current_version} → {target_version}
+# 遷移指南：{package_name} {current_version} → {target_version}
 
-## Overview
-This guide will help you upgrade {package_name} from version {current_version} to {target_version}.
+## 概述
+本指南將協助您將 {package_name} 從版本 {current_version} 升級到 {target_version}。
 
-**Estimated time**: {estimate_migration_time(breaking_changes)}
-**Risk level**: {assess_risk_level(breaking_changes)}
-**Breaking changes**: {len(breaking_changes['api_changes'])}
+**預估時間**：{estimate_migration_time(breaking_changes)}
+**風險等級**：{assess_risk_level(breaking_changes)}
+**重大變更**：{len(breaking_changes['api_changes'])}
 
-## Pre-Migration Checklist
+## 遷移前檢查清單
 
-- [ ] Current test suite passing
-- [ ] Backup created / Git commit point marked
-- [ ] Dependencies compatibility checked
-- [ ] Team notified of upgrade
+- [ ] 當前測試套件通過
+- [ ] 已建立備份 / 標記 Git 提交點
+- [ ] 已檢查相依性相容性
+- [ ] 已通知團隊升級
 
-## Migration Steps
+## 遷移步驟
 
-### Step 1: Update Dependencies
+### 步驟 1：更新相依性
 
 ```bash
-# Create a new branch
+# 建立新分支
 git checkout -b upgrade/{package_name}-{target_version}
 
-# Update package
+# 更新套件
 npm install {package_name}@{target_version}
 
-# Update peer dependencies if needed
+# 若需要更新對等相依性
 {generate_peer_deps_commands(package_name, target_version)}
 ```
 
-### Step 2: Address Breaking Changes
+### 步驟 2：處理重大變更
 
 {generate_breaking_change_fixes(breaking_changes)}
 
-### Step 3: Update Code Patterns
+### 步驟 3：更新程式碼模式
 
 {generate_code_updates(package_name, current_version, target_version)}
 
-### Step 4: Run Codemods (if available)
+### 步驟 4：執行 Codemods（若可用）
 
 {generate_codemod_commands(package_name, target_version)}
 
-### Step 5: Test & Verify
+### 步驟 5：測試與驗證
 
 ```bash
-# Run linter to catch issues
+# 執行 linter 以捕捉問題
 npm run lint
 
-# Run tests
+# 執行測試
 npm test
 
-# Run type checking
+# 執行型別檢查
 npm run type-check
 
-# Manual testing checklist
+# 手動測試檢查清單
 ```
 
 {generate_test_checklist(package_name, breaking_changes)}
 
-### Step 6: Performance Validation
+### 步驟 6：效能驗證
 
 {generate_performance_checks(package_name)}
 
-## Rollback Plan
+## 回復計畫
 
-If issues arise, follow these steps to rollback:
+若發生問題，請遵循以下步驟回復：
 
 ```bash
-# Revert package version
+# 還原套件版本
 git checkout package.json package-lock.json
 npm install
 
-# Or use the backup branch
+# 或使用備份分支
 git checkout main
 git branch -D upgrade/{package_name}-{target_version}
 ```
 
-## Common Issues & Solutions
+## 常見問題與解決方案
 
 {generate_common_issues(package_name, target_version)}
 
-## Resources
+## 資源
 
-- [Official Migration Guide]({get_official_guide_url(package_name, target_version)})
-- [Changelog]({get_changelog_url(package_name, target_version)})
-- [Community Discussions]({get_community_url(package_name)})
+- [官方遷移指南]({get_official_guide_url(package_name, target_version)})
+- [變更日誌]({get_changelog_url(package_name, target_version)})
+- [社群討論]({get_community_url(package_name)})
 """
-    
+
     return guide
 ```
 
-### 4. Incremental Upgrade Strategy
+### 4. 漸進式升級策略
 
-Plan safe incremental upgrades:
+規劃安全的漸進式升級：
 
-**Incremental Upgrade Planner**
+**漸進式升級規劃器**
 ```python
 class IncrementalUpgrader:
     def plan_incremental_upgrade(self, package_name, current, target):
         """
-        Plan incremental upgrade path
+        規劃漸進式升級路徑
         """
-        # Get all versions between current and target
+        # 取得 current 與 target 之間的所有版本
         all_versions = self._get_versions_between(package_name, current, target)
-        
-        # Identify safe stopping points
+
+        # 識別安全停止點
         safe_versions = self._identify_safe_versions(all_versions)
-        
-        # Create upgrade path
+
+        # 建立升級路徑
         upgrade_path = self._create_upgrade_path(current, target, safe_versions)
-        
+
         plan = f"""
-## Incremental Upgrade Plan: {package_name}
+## 漸進式升級計畫：{package_name}
 
-### Current State
-- Version: {current}
-- Target: {target}
-- Total steps: {len(upgrade_path)}
+### 當前狀態
+- 版本：{current}
+- 目標：{target}
+- 總步驟：{len(upgrade_path)}
 
-### Upgrade Path
+### 升級路徑
 
 """
         for i, step in enumerate(upgrade_path, 1):
             plan += f"""
-#### Step {i}: Upgrade to {step['version']}
+#### 步驟 {i}：升級至 {step['version']}
 
-**Risk Level**: {step['risk_level']}
-**Breaking Changes**: {step['breaking_changes']}
+**風險等級**：{step['risk_level']}
+**重大變更**：{step['breaking_changes']}
 
 ```bash
-# Upgrade command
+# 升級指令
 npm install {package_name}@{step['version']}
 
-# Test command
+# 測試指令
 npm test -- --updateSnapshot
 
-# Verification
+# 驗證
 npm run integration-tests
 ```
 
-**Key Changes**:
+**主要變更**：
 {self._summarize_changes(step)}
 
-**Testing Focus**:
+**測試焦點**：
 {self._get_test_focus(step)}
 
 ---
 """
-        
+
         return plan
-    
+
     def _identify_safe_versions(self, versions):
-        """Identify safe intermediate versions"""
+        """識別安全的中間版本"""
         safe_versions = []
-        
+
         for v in versions:
-            # Safe versions are typically:
-            # - Last patch of each minor version
-            # - Versions with long stability period
-            # - Versions before major API changes
-            if (self._is_last_patch(v, versions) or 
+            # 安全版本通常是：
+            # - 每個次版本的最後修補版本
+            # - 具有長期穩定期的版本
+            # - 主要 API 變更前的版本
+            if (self._is_last_patch(v, versions) or
                 self._has_stability_period(v) or
                 self._is_pre_breaking_change(v)):
                 safe_versions.append(v)
-        
+
         return safe_versions
 ```
 
-### 5. Automated Testing Strategy
+### 5. 自動化測試策略
 
-Ensure upgrades don't break functionality:
+確保升級不會破壞功能：
 
-**Upgrade Test Suite**
+**升級測試套件**
 ```javascript
 // upgrade-tests.js
 const { runUpgradeTests } = require('./upgrade-test-framework');
@@ -385,7 +385,7 @@ const { runUpgradeTests } = require('./upgrade-test-framework');
 async function testDependencyUpgrade(packageName, targetVersion) {
     const testSuite = {
         preUpgrade: async () => {
-            // Capture baseline
+            // 捕捉基準線
             const baseline = {
                 unitTests: await runTests('unit'),
                 integrationTests: await runTests('integration'),
@@ -393,12 +393,12 @@ async function testDependencyUpgrade(packageName, targetVersion) {
                 performance: await capturePerformanceMetrics(),
                 bundleSize: await measureBundleSize()
             };
-            
+
             return baseline;
         },
-        
+
         postUpgrade: async (baseline) => {
-            // Run same tests after upgrade
+            // 升級後執行相同測試
             const results = {
                 unitTests: await runTests('unit'),
                 integrationTests: await runTests('integration'),
@@ -406,10 +406,10 @@ async function testDependencyUpgrade(packageName, targetVersion) {
                 performance: await capturePerformanceMetrics(),
                 bundleSize: await measureBundleSize()
             };
-            
-            // Compare results
+
+            // 比較結果
             const comparison = compareResults(baseline, results);
-            
+
             return {
                 passed: comparison.passed,
                 failures: comparison.failures,
@@ -417,39 +417,39 @@ async function testDependencyUpgrade(packageName, targetVersion) {
                 improvements: comparison.improvements
             };
         },
-        
+
         smokeTests: [
             async () => {
-                // Critical path testing
+                // 關鍵路徑測試
                 await testCriticalUserFlows();
             },
             async () => {
-                // API compatibility
+                // API 相容性
                 await testAPICompatibility();
             },
             async () => {
-                // Build process
+                // 建置流程
                 await testBuildProcess();
             }
         ]
     };
-    
+
     return runUpgradeTests(testSuite);
 }
 ```
 
-### 6. Compatibility Matrix
+### 6. 相容性矩陣
 
-Check compatibility across dependencies:
+檢查相依性之間的相容性：
 
-**Compatibility Checker**
+**相容性檢查器**
 ```python
 def generate_compatibility_matrix(dependencies):
     """
-    Generate compatibility matrix for dependencies
+    為相依性產生相容性矩陣
     """
     matrix = {}
-    
+
     for dep_name, dep_info in dependencies.items():
         matrix[dep_name] = {
             'current': dep_info['current'],
@@ -458,174 +458,174 @@ def generate_compatibility_matrix(dependencies):
             'conflicts': find_conflicts(dep_name, dep_info['latest']),
             'peer_requirements': get_peer_requirements(dep_name, dep_info['latest'])
         }
-    
-    # Generate report
-    report = """
-## Dependency Compatibility Matrix
 
-| Package | Current | Target | Compatible With | Conflicts | Action Required |
+    # 產生報告
+    report = """
+## 相依性相容性矩陣
+
+| 套件 | 當前 | 目標 | 相容性 | 衝突 | 所需行動 |
 |---------|---------|--------|-----------------|-----------|-----------------|
 """
-    
+
     for pkg, info in matrix.items():
         compatible = '✅' if not info['conflicts'] else '⚠️'
-        conflicts = ', '.join(info['conflicts']) if info['conflicts'] else 'None'
-        action = 'Safe to upgrade' if not info['conflicts'] else 'Resolve conflicts first'
-        
+        conflicts = ', '.join(info['conflicts']) if info['conflicts'] else '無'
+        action = '安全升級' if not info['conflicts'] else '先解決衝突'
+
         report += f"| {pkg} | {info['current']} | {info['target']} | {compatible} | {conflicts} | {action} |\n"
-    
+
     return report
 
 def check_compatibility(package_name, version):
-    """Check what this package is compatible with"""
-    # Check package.json or requirements.txt
+    """檢查此套件與什麼相容"""
+    # 檢查 package.json 或 requirements.txt
     peer_deps = get_peer_dependencies(package_name, version)
     compatible_packages = []
-    
+
     for peer_pkg, peer_version_range in peer_deps.items():
         if is_installed(peer_pkg):
             current_peer_version = get_installed_version(peer_pkg)
             if satisfies_version_range(current_peer_version, peer_version_range):
                 compatible_packages.append(f"{peer_pkg}@{current_peer_version}")
-    
+
     return compatible_packages
 ```
 
-### 7. Rollback Strategy
+### 7. 回復策略
 
-Implement safe rollback procedures:
+實作安全的回復程序：
 
-**Rollback Manager**
+**回復管理器**
 ```bash
 #!/bin/bash
 # rollback-dependencies.sh
 
-# Create rollback point
+# 建立回復點
 create_rollback_point() {
-    echo "📌 Creating rollback point..."
-    
-    # Save current state
+    echo "📌 建立回復點..."
+
+    # 儲存當前狀態
     cp package.json package.json.backup
     cp package-lock.json package-lock.json.backup
-    
-    # Git tag
-    git tag -a "pre-upgrade-$(date +%Y%m%d-%H%M%S)" -m "Pre-upgrade snapshot"
-    
-    # Database snapshot if needed
+
+    # Git 標籤
+    git tag -a "pre-upgrade-$(date +%Y%m%d-%H%M%S)" -m "升級前快照"
+
+    # 若需要資料庫快照
     if [ -f "database-backup.sh" ]; then
         ./database-backup.sh
     fi
-    
-    echo "✅ Rollback point created"
+
+    echo "✅ 回復點已建立"
 }
 
-# Perform rollback
+# 執行回復
 rollback() {
-    echo "🔄 Performing rollback..."
-    
-    # Restore package files
+    echo "🔄 執行回復..."
+
+    # 還原套件檔案
     mv package.json.backup package.json
     mv package-lock.json.backup package-lock.json
-    
-    # Reinstall dependencies
+
+    # 重新安裝相依性
     rm -rf node_modules
     npm ci
-    
-    # Run post-rollback tests
+
+    # 執行回復後測試
     npm test
-    
-    echo "✅ Rollback complete"
+
+    echo "✅ 回復完成"
 }
 
-# Verify rollback
+# 驗證回復
 verify_rollback() {
-    echo "🔍 Verifying rollback..."
-    
-    # Check critical functionality
+    echo "🔍 驗證回復..."
+
+    # 檢查關鍵功能
     npm run test:critical
-    
-    # Check service health
+
+    # 檢查服務健康狀態
     curl -f http://localhost:3000/health || exit 1
-    
-    echo "✅ Rollback verified"
+
+    echo "✅ 回復已驗證"
 }
 ```
 
-### 8. Batch Update Strategy
+### 8. 批次更新策略
 
-Handle multiple updates efficiently:
+有效處理多個更新：
 
-**Batch Update Planner**
+**批次更新規劃器**
 ```python
 def plan_batch_updates(dependencies):
     """
-    Plan efficient batch updates
+    規劃有效的批次更新
     """
-    # Group by update type
+    # 依更新類型分組
     groups = {
         'patch': [],
         'minor': [],
         'major': [],
         'security': []
     }
-    
+
     for dep, info in dependencies.items():
         if info.get('has_security_vulnerability'):
             groups['security'].append(dep)
         else:
             groups[info['update_type']].append(dep)
-    
-    # Create update batches
+
+    # 建立更新批次
     batches = []
-    
-    # Batch 1: Security updates (immediate)
+
+    # 批次 1：安全性更新（立即）
     if groups['security']:
         batches.append({
             'priority': 'CRITICAL',
-            'name': 'Security Updates',
+            'name': '安全性更新',
             'packages': groups['security'],
             'strategy': 'immediate',
             'testing': 'full'
         })
-    
-    # Batch 2: Patch updates (safe)
+
+    # 批次 2：修補更新（安全）
     if groups['patch']:
         batches.append({
             'priority': 'HIGH',
-            'name': 'Patch Updates',
+            'name': '修補更新',
             'packages': groups['patch'],
             'strategy': 'grouped',
             'testing': 'smoke'
         })
-    
-    # Batch 3: Minor updates (careful)
+
+    # 批次 3：次版本更新（謹慎）
     if groups['minor']:
         batches.append({
             'priority': 'MEDIUM',
-            'name': 'Minor Updates',
+            'name': '次版本更新',
             'packages': groups['minor'],
             'strategy': 'incremental',
             'testing': 'regression'
         })
-    
-    # Batch 4: Major updates (planned)
+
+    # 批次 4：主版本更新（計劃性）
     if groups['major']:
         batches.append({
             'priority': 'LOW',
-            'name': 'Major Updates',
+            'name': '主版本更新',
             'packages': groups['major'],
             'strategy': 'individual',
             'testing': 'comprehensive'
         })
-    
+
     return generate_batch_plan(batches)
 ```
 
-### 9. Framework-Specific Upgrades
+### 9. 框架特定升級
 
-Handle framework upgrades:
+處理框架升級：
 
-**Framework Upgrade Guides**
+**框架升級指南**
 ```python
 framework_upgrades = {
     'angular': {
@@ -641,9 +641,9 @@ framework_upgrades = {
             'npm run e2e'
         ],
         'common_issues': {
-            'ivy_renderer': 'Enable Ivy in tsconfig.json',
-            'strict_mode': 'Update TypeScript configurations',
-            'deprecated_apis': 'Use Angular migration schematics'
+            'ivy_renderer': '在 tsconfig.json 中啟用 Ivy',
+            'strict_mode': '更新 TypeScript 設定',
+            'deprecated_apis': '使用 Angular 遷移 schematics'
         }
     },
     'react': {
@@ -664,8 +664,8 @@ framework_upgrades = {
         'breaking_changes': {
             '2_to_3': [
                 'Composition API',
-                'Multiple root elements',
-                'Teleport component',
+                '多個根元素',
+                'Teleport 元件',
                 'Fragments'
             ]
         }
@@ -673,9 +673,9 @@ framework_upgrades = {
 }
 ```
 
-### 10. Post-Upgrade Monitoring
+### 10. 升級後監控
 
-Monitor application after upgrades:
+升級後監控應用程式：
 
 ```javascript
 // post-upgrade-monitoring.js
@@ -695,13 +695,13 @@ const monitoring = {
             'gzip_size': { threshold: 1.5, unit: 'MB' }
         }
     },
-    
+
     checkHealth: async function() {
         const results = {};
-        
+
         for (const [category, metrics] of Object.entries(this.metrics)) {
             results[category] = {};
-            
+
             for (const [metric, config] of Object.entries(metrics)) {
                 const value = await this.measureMetric(metric);
                 results[category][metric] = {
@@ -712,40 +712,40 @@ const monitoring = {
                 };
             }
         }
-        
+
         return results;
     },
-    
+
     generateReport: function(results) {
-        let report = '## Post-Upgrade Health Check\n\n';
-        
+        let report = '## 升級後健康檢查\n\n';
+
         for (const [category, metrics] of Object.entries(results)) {
             report += `### ${category}\n\n`;
-            report += '| Metric | Value | Threshold | Status |\n';
+            report += '| 指標 | 值 | 閾值 | 狀態 |\n';
             report += '|--------|-------|-----------|--------|\n';
-            
+
             for (const [metric, data] of Object.entries(metrics)) {
                 const status = data.status === 'PASS' ? '✅' : '❌';
                 report += `| ${metric} | ${data.value}${data.unit} | ${data.threshold}${data.unit} | ${status} |\n`;
             }
-            
+
             report += '\n';
         }
-        
+
         return report;
     }
 };
 ```
 
-## Output Format
+## 輸出格式
 
-1. **Upgrade Overview**: Summary of available updates with risk assessment
-2. **Priority Matrix**: Ordered list of updates by importance and safety
-3. **Migration Guides**: Step-by-step guides for each major upgrade
-4. **Compatibility Report**: Dependency compatibility analysis
-5. **Test Strategy**: Automated tests for validating upgrades
-6. **Rollback Plan**: Clear procedures for reverting if needed
-7. **Monitoring Dashboard**: Post-upgrade health metrics
-8. **Timeline**: Realistic schedule for implementing upgrades
+1. **升級概述**：包含風險評估的可用更新摘要
+2. **優先順序矩陣**：依重要性與安全性排序的更新清單
+3. **遷移指南**：每個主要升級的逐步指南
+4. **相容性報告**：相依性相容性分析
+5. **測試策略**：驗證升級的自動化測試
+6. **回復計畫**：需要時還原的清晰程序
+7. **監控儀表板**：升級後健康指標
+8. **時間表**：實作升級的實際排程
 
-Focus on safe, incremental upgrades that maintain system stability while keeping dependencies current and secure.
+專注於安全、漸進式升級，在保持相依性最新與安全的同時維持系統穩定性。
