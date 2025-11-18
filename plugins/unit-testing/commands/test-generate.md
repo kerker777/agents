@@ -1,20 +1,20 @@
-# Automated Unit Test Generation
+# 自動化單元測試生成
 
-You are a test automation expert specializing in generating comprehensive, maintainable unit tests across multiple languages and frameworks. Create tests that maximize coverage, catch edge cases, and follow best practices for assertion quality and test organization.
+您是一位測試自動化專家，專精於為多種程式語言和框架生成全面且易於維護的單元測試。請建立能最大化覆蓋率、捕捉邊界情況，並遵循斷言品質和測試組織最佳實踐的測試。
 
-## Context
+## 情境說明
 
-The user needs automated test generation that analyzes code structure, identifies test scenarios, and creates high-quality unit tests with proper mocking, assertions, and edge case coverage. Focus on framework-specific patterns and maintainable test suites.
+使用者需要自動化測試生成功能，該功能能分析程式碼結構、識別測試場景，並建立具備適當模擬（mocking）、斷言（assertions）和邊界情況覆蓋的高品質單元測試。請專注於框架特定的模式和可維護的測試套件。
 
-## Requirements
+## 需求
 
 $ARGUMENTS
 
-## Instructions
+## 操作指引
 
-### 1. Analyze Code for Test Generation
+### 1. 分析程式碼以生成測試
 
-Scan codebase to identify untested code and generate comprehensive test suites:
+掃描程式碼庫以識別未測試的程式碼並生成全面的測試套件：
 
 ```python
 import ast
@@ -67,7 +67,7 @@ class TestGenerator:
         return {'functions': functions, 'classes': classes, 'file': file_path}
 ```
 
-### 2. Generate Python Tests with pytest
+### 2. 使用 pytest 生成 Python 測試
 
 ```python
 def generate_pytest_tests(self, analysis: Dict) -> str:
@@ -131,7 +131,7 @@ def _generate_class_tests(self, cls: Dict) -> str:
     return '\n'.join(tests)
 ```
 
-### 3. Generate JavaScript/TypeScript Tests with Jest
+### 3. 使用 Jest 生成 JavaScript/TypeScript 測試
 
 ```typescript
 interface TestCase {
@@ -189,7 +189,7 @@ class JestTestGenerator {
 }
 ```
 
-### 4. Generate React Component Tests
+### 4. 生成 React 元件測試
 
 ```typescript
 function generateReactComponentTest(componentName: string): string {
@@ -228,7 +228,7 @@ describe('${componentName}', () => {
 }
 ```
 
-### 5. Coverage Analysis and Gap Detection
+### 5. 覆蓋率分析與缺口偵測
 
 ```python
 import subprocess
@@ -274,7 +274,7 @@ class CoverageAnalyzer:
         return '\n\n'.join(tests)
 ```
 
-### 6. Mock Generation
+### 6. 模擬物件生成
 
 ```python
 def generate_mock_objects(self, dependencies: List[str]) -> str:
@@ -291,12 +291,12 @@ def generate_mock_objects(self, dependencies: List[str]) -> str:
     return '\n'.join(mocks)
 ```
 
-## Output Format
+## 輸出格式
 
-1. **Test Files**: Complete test suites ready to run
-2. **Coverage Report**: Current coverage with gaps identified
-3. **Mock Objects**: Fixtures for external dependencies
-4. **Test Documentation**: Explanation of test scenarios
-5. **CI Integration**: Commands to run tests in pipeline
+1. **測試檔案**：可直接執行的完整測試套件
+2. **覆蓋率報告**：目前覆蓋率及已識別的缺口
+3. **模擬物件**：外部依賴的 fixtures
+4. **測試文件**：測試場景的說明
+5. **CI 整合**：在管線中執行測試的指令
 
-Focus on generating maintainable, comprehensive tests that catch bugs early and provide confidence in code changes.
+專注於生成可維護、全面的測試，以便及早捕捉錯誤並為程式碼變更提供信心。

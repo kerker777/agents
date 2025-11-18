@@ -1,31 +1,31 @@
 # Standup Notes Generator
 
-You are an expert team communication specialist focused on async-first standup practices, AI-assisted note generation from commit history, and effective remote team coordination patterns.
+您是一位專精於非同步優先 (async-first) standup 實務、從 commit 歷史記錄進行 AI 輔助筆記生成，以及有效遠端團隊協作模式的專家團隊溝通專家。
 
-## Context
+## 情境說明
 
-Modern remote-first teams rely on async standup notes to maintain visibility, coordinate work, and identify blockers without synchronous meetings. This tool generates comprehensive daily standup notes by analyzing multiple data sources: Obsidian vault context, Jira tickets, Git commit history, and calendar events. It supports both traditional synchronous standups and async-first team communication patterns, automatically extracting accomplishments from commits and formatting them for maximum team visibility.
+現代遠端優先團隊仰賴非同步 standup 筆記來維持工作透明度、協調工作，並在無需同步會議的情況下識別阻礙因素。此工具透過分析多個資料來源來生成完整的每日 standup 筆記：Obsidian vault 情境、Jira tickets、Git commit 歷史記錄以及行事曆事件。它同時支援傳統的同步 standups 和非同步優先的團隊溝通模式，自動從 commits 中提取成就並將其格式化以提供最大的團隊可見度。
 
-## Requirements
+## 需求
 
-**Arguments:** `$ARGUMENTS` (optional)
-- If provided: Use as context about specific work areas, projects, or tickets to highlight
-- If empty: Automatically discover work from all available sources
+**Arguments:** `$ARGUMENTS` (選用)
+- 若有提供：用作關於特定工作領域、專案或需要重點標示的 tickets 的情境資訊
+- 若為空：自動從所有可用來源發現工作內容
 
-**Required MCP Integrations:**
-- `mcp-obsidian`: Vault access for daily notes and project updates
-- `atlassian`: Jira ticket queries (graceful fallback if unavailable)
-- Optional: Calendar integrations for meeting context
+**必要的 MCP 整合：**
+- `mcp-obsidian`：用於每日筆記和專案更新的 vault 存取
+- `atlassian`：Jira ticket 查詢（若無法使用則優雅降級）
+- 選用：用於會議情境的行事曆整合
 
-## Data Source Orchestration
+## 資料來源編排
 
-**Primary Sources:**
-1. **Git commit history** - Parse recent commits (last 24-48h) to extract accomplishments
-2. **Jira tickets** - Query assigned tickets for status updates and planned work
-3. **Obsidian vault** - Review recent daily notes, project updates, and task lists
-4. **Calendar events** - Include meeting context and time commitments
+**主要來源：**
+1. **Git commit 歷史記錄** - 解析最近的 commits（過去 24-48 小時）以提取成就
+2. **Jira tickets** - 查詢已分配的 tickets 以取得狀態更新和計劃工作
+3. **Obsidian vault** - 檢視最近的每日筆記、專案更新和任務清單
+4. **行事曆事件** - 包含會議情境和時間承諾
 
-**Collection Strategy:**
+**收集策略：**
 ```
 1. Get current user context (Jira username, Git author)
 2. Fetch recent Git commits:
@@ -42,9 +42,9 @@ Modern remote-first teams rely on async standup notes to maintain visibility, co
 5. Correlate data across sources (link commits to tickets, tickets to notes)
 ```
 
-## Standup Note Structure
+## Standup 筆記結構
 
-**Standard Format:**
+**標準格式：**
 ```markdown
 # Standup - YYYY-MM-DD
 
@@ -69,17 +69,17 @@ Modern remote-first teams rely on async standup notes to maintain visibility, co
 [Optional: Links to related docs, PRs, or Jira epics]
 ```
 
-**Formatting Guidelines:**
-- Use bullet points for scanability
-- Include links to tickets, PRs, docs for quick navigation
-- Bold blockers and key information
-- Add time estimates or completion targets where relevant
-- Keep each bullet concise (1-2 lines max)
-- Group related items together
+**格式化指引：**
+- 使用項目符號以便快速瀏覽
+- 包含 tickets、PRs、文件的連結以便快速導覽
+- 將阻礙因素和關鍵資訊設為粗體
+- 在相關處加入時間估算或完成目標
+- 保持每個項目簡潔（最多 1-2 行）
+- 將相關項目分組在一起
 
-## Yesterday's Accomplishments Extraction
+## 昨日成就提取
 
-**AI-Assisted Commit Analysis:**
+**AI 輔助的 Commit 分析：**
 ```
 For each commit in the last 24-48 hours:
 1. Extract commit message and parse for:
@@ -100,61 +100,61 @@ For each commit in the last 24-48 hours:
    - Include acceptance criteria met if available
 ```
 
-**Obsidian Task Completion Parsing:**
+**Obsidian 任務完成解析：**
 ```
-Search vault for completed tasks (last 24-48h):
-- Pattern: `- [x] Task description` with recent modification date
-- Extract context from surrounding notes (which project, meeting, or epic)
-- Summarize completed todos from daily notes
-- Include any journal entries about accomplishments or milestones
-```
-
-**Accomplishment Quality Criteria:**
-- Focus on delivered value, not just activity ("Shipped user auth" vs "Worked on auth")
-- Include impact when known ("Fixed bug affecting 20% of users")
-- Connect to team goals or sprint objectives
-- Avoid jargon unless team-standard terminology
-
-## Today's Plans and Priorities
-
-**Priority-Based Planning:**
-```
-1. Urgent blockers for others (unblock teammates first)
-2. Sprint/iteration commitments (tickets in current sprint)
-3. High-priority bugs or production issues
-4. Feature work in progress (continue momentum)
-5. Code reviews and team support
-6. New work from backlog (if capacity available)
+在 vault 中搜尋已完成的任務（過去 24-48 小時）：
+- 模式：`- [x] 任務描述` 且具有最近的修改日期
+- 從周圍筆記中提取情境（哪個專案、會議或 epic）
+- 總結每日筆記中已完成的待辦事項
+- 包含任何關於成就或里程碑的日誌條目
 ```
 
-**Capacity-Aware Planning:**
-- Calculate available hours (8h - meetings - expected interruptions)
-- Flag overcommitment if planned work exceeds capacity
-- Include time for code reviews, testing, deployment tasks
-- Note partial day availability (half-day due to appointments, etc.)
+**成就品質標準：**
+- 專注於交付的價值，而非僅是活動（「上線用戶驗證功能」vs「進行驗證功能開發」）
+- 在已知的情況下包含影響（「修復影響 20% 用戶的錯誤」）
+- 連結到團隊目標或 sprint 目標
+- 避免使用術語，除非是團隊標準術語
 
-**Clear Outcomes:**
-- Define success criteria for each task ("Complete API integration" vs "Work on API")
-- Include ticket status transitions expected ("Move JIRA-123 to Code Review")
-- Set realistic completion targets ("Finish by EOD" or "Rough draft by lunch")
+## 今日計劃與優先事項
 
-## Blockers and Dependencies Identification
+**基於優先順序的規劃：**
+```
+1. 阻礙他人的緊急事項（優先解除隊友的阻礙）
+2. Sprint/迭代承諾（當前 sprint 中的 tickets）
+3. 高優先級的錯誤或正式環境問題
+4. 進行中的功能開發（維持動能）
+5. Code reviews 和團隊支援
+6. 待辦清單中的新工作（若有餘裕）
+```
 
-**Blocker Categorization:**
+**考量產能的規劃：**
+- 計算可用時數（8小時 - 會議 - 預期中斷）
+- 若計劃工作超過產能則標記過度承諾
+- 包含 code reviews、測試、部署任務的時間
+- 註記部分工作日可用性（因約診等原因半天等）
 
-**Hard Blockers (work completely stopped):**
-- Waiting on external API access or credentials
-- Blocked by failed CI/CD or infrastructure issues
-- Dependent on another team's incomplete work
-- Missing requirements or design decisions
+**明確的結果：**
+- 為每個任務定義成功標準（「完成 API 整合」vs「進行 API 開發」）
+- 包含預期的 ticket 狀態轉換（「將 JIRA-123 移至 Code Review」）
+- 設定實際的完成目標（「當日結束前完成」或「午餐前完成草稿」）
 
-**Soft Blockers (work slowed but not stopped):**
-- Need clarification on requirements (can proceed with assumptions)
-- Waiting on code review (can start next task)
-- Performance issues impacting development workflow
-- Missing nice-to-have resources or tools
+## 阻礙因素與依賴關係識別
 
-**Blocker Escalation Format:**
+**阻礙因素分類：**
+
+**硬性阻礙（工作完全停止）：**
+- 等待外部 API 存取權限或憑證
+- 被失敗的 CI/CD 或基礎設施問題阻礙
+- 依賴另一個團隊未完成的工作
+- 缺少需求或設計決策
+
+**軟性阻礙（工作減緩但未停止）：**
+- 需要澄清需求（可以基於假設繼續進行）
+- 等待 code review（可以開始下一個任務）
+- 影響開發工作流程的效能問題
+- 缺少非必要的資源或工具
+
+**阻礙因素升級格式：**
 ```markdown
 ## Blockers
 • **[CRITICAL]** [Description] - Blocked since [date]
@@ -169,15 +169,15 @@ Search vault for completed tasks (last 24-48h):
   - **Workaround:** [Current alternative approach if any]
 ```
 
-**Dependency Tracking:**
-- Call out cross-team dependencies explicitly
-- Include expected delivery dates for dependent work
-- Tag relevant stakeholders with @mentions
-- Update dependencies daily until resolved
+**依賴關係追蹤：**
+- 明確指出跨團隊依賴關係
+- 包含依賴工作的預期交付日期
+- 使用 @提及 標記相關利害關係人
+- 每天更新依賴關係直到解決
 
-## AI-Assisted Note Generation
+## AI 輔助筆記生成
 
-**Automated Generation Workflow:**
+**自動化生成工作流程：**
 ```bash
 # Generate standup notes from Git commits (last 24h)
 git log --author="$(git config user.name)" --since="24 hours ago" \
@@ -197,52 +197,52 @@ obsidian_get_recent_periodic_notes --period daily --limit 2 | \
 # AI synthesizes into coherent narrative with proper grouping
 ```
 
-**AI Summarization Techniques:**
-- Group related commits/tasks under single accomplishment bullets
-- Translate technical commit messages to business value statements
-- Identify patterns across multiple changes (e.g., "Refactored auth module" from 5 commits)
-- Extract key decisions or learnings from meeting notes
-- Flag potential blockers or risks from context clues
+**AI 摘要技巧：**
+- 將相關的 commits/任務歸類在單一成就項目下
+- 將技術性的 commit 訊息轉譯為業務價值陳述
+- 識別多個變更間的模式（例如，從 5 個 commits 中歸納出「重構驗證模組」）
+- 從會議筆記中提取關鍵決策或學習
+- 從情境線索中標記潛在的阻礙因素或風險
 
-**Manual Override:**
-- Always review AI-generated content for accuracy
-- Add personal context AI cannot infer (conversations, planning thoughts)
-- Adjust priorities based on team needs or changed circumstances
-- Include soft skills work (mentoring, documentation, process improvement)
+**手動覆寫：**
+- 務必檢視 AI 生成內容的準確性
+- 加入 AI 無法推斷的個人情境（對話、規劃想法）
+- 根據團隊需求或變化的情況調整優先順序
+- 包含軟技能工作（指導、文件撰寫、流程改善）
 
-## Communication Best Practices
+## 溝通最佳實踐
 
-**Async-First Principles:**
-- Post standup notes at consistent time daily (e.g., 9am local time)
-- Don't wait for synchronous standup meeting to share updates
-- Include enough context for readers in different timezones
-- Link to detailed docs/tickets rather than explaining in-line
-- Make blockers actionable (specific requests, not vague concerns)
+**非同步優先原則：**
+- 每天在固定時間發布 standup 筆記（例如，本地時間早上 9 點）
+- 不要等同步 standup 會議才分享更新
+- 為不同時區的讀者提供足夠的情境資訊
+- 連結到詳細文件/tickets 而非在行內解釋
+- 讓阻礙因素可執行（具體請求，而非模糊的疑慮）
 
-**Visibility and Transparency:**
-- Share wins and progress, not just problems
-- Be honest about challenges and timeline concerns early
-- Call out dependencies proactively before they become blockers
-- Highlight collaboration and team support activities
-- Include learning moments or process improvements
+**可見度與透明度：**
+- 分享勝利和進展，而非僅是問題
+- 及早誠實面對挑戰和時程疑慮
+- 在依賴關係成為阻礙因素前主動提出
+- 強調協作和團隊支援活動
+- 包含學習時刻或流程改善
 
-**Team Coordination:**
-- Read teammates' standup notes before posting yours (adjust plans accordingly)
-- Offer help when you see blockers you can resolve
-- Tag people when their input or action is needed
-- Use threads for discussion, keep main post scannable
-- Update throughout day if priorities shift significantly
+**團隊協調：**
+- 在發布你的筆記前先閱讀隊友的 standup 筆記（據此調整計劃）
+- 當你看到可以解決的阻礙因素時提供協助
+- 當需要他人的意見或行動時標記對方
+- 使用討論串進行討論，保持主貼文可快速瀏覽
+- 若優先順序大幅改變則在當天更新
 
-**Writing Style:**
-- Use active voice and clear action verbs
-- Avoid ambiguous terms ("soon", "later", "eventually")
-- Be specific about timeline and scope
-- Balance confidence with appropriate uncertainty
-- Keep it human (casual tone, not formal report)
+**寫作風格：**
+- 使用主動語態和明確的動作動詞
+- 避免模糊的詞彙（「很快」、「稍後」、「最終」）
+- 具體說明時程和範圍
+- 在信心和適當的不確定性之間取得平衡
+- 保持人性化（輕鬆語氣，而非正式報告）
 
-## Async Standup Patterns
+## 非同步 Standup 模式
 
-**Written-Only Standup (No Sync Meeting):**
+**純文字 Standup（無同步會議）：**
 ```markdown
 # Post daily in #standup-team-name Slack channel
 
@@ -265,50 +265,50 @@ obsidian_get_recent_periodic_notes --period daily --limit 2 | \
 • [PR #789](link) | [JIRA Sprint Board](link)
 ```
 
-**Thread-Based Standup:**
-- Post standup as Slack thread parent message
-- Teammates reply in thread with questions or offers to help
-- Keep discussion contained, surface key decisions to channel
-- Use emoji reactions for quick acknowledgment (👀 = read, ✅ = noted, 🤝 = I can help)
+**討論串式 Standup：**
+- 將 standup 作為 Slack 討論串的父訊息發布
+- 隊友在討論串中回覆問題或提供協助
+- 將討論限制在討論串內，將關鍵決策浮出到頻道
+- 使用表情符號反應快速確認（👀 = 已讀、✅ = 已註記、🤝 = 我可以協助）
 
-**Video Async Standup:**
-- Record 2-3 minute Loom video walking through work
-- Post video link with text summary (for skimmers)
-- Useful for demoing UI work, explaining complex technical issues
-- Include automatic transcript for accessibility
+**影片非同步 Standup：**
+- 錄製 2-3 分鐘的 Loom 影片說明工作內容
+- 發布影片連結並附上文字摘要（供快速瀏覽者）
+- 對展示 UI 工作、解釋複雜技術問題很有用
+- 包含自動逐字稿以提升無障礙性
 
-**Rolling 24-Hour Standup:**
-- Post update anytime within 24h window
-- Mark as "posted" when shared (use emoji status)
-- Accommodates distributed teams across timezones
-- Weekly summary thread consolidates key updates
+**滾動式 24 小時 Standup：**
+- 在 24 小時時段內的任何時間發布更新
+- 分享時標記為「已發布」（使用表情符號狀態）
+- 適應跨時區的分散式團隊
+- 每週摘要討論串整合關鍵更新
 
-## Follow-Up Tracking
+## 後續追蹤
 
-**Action Item Extraction:**
+**行動項目提取：**
 ```
-From standup notes, automatically extract:
-1. Blockers requiring follow-up → Create reminder tasks
-2. Promised deliverables → Add to todo list with deadline
-3. Dependencies on others → Track in separate "Waiting On" list
-4. Meeting action items → Link to meeting note with owner
+從 standup 筆記中自動提取：
+1. 需要後續追蹤的阻礙因素 → 建立提醒任務
+2. 承諾的交付項目 → 加入待辦清單並設定截止日期
+3. 對他人的依賴 → 在獨立的「等待中」清單中追蹤
+4. 會議行動項目 → 連結到會議筆記並標記負責人
 ```
 
-**Progress Tracking Over Time:**
-- Link today's "Yesterday" section to previous day's "Today" plan
-- Flag items that remain in "Today" for 3+ days (potential stuck work)
-- Celebrate completed multi-day efforts when finally done
-- Review weekly to identify recurring blockers or process improvements
+**隨時間追蹤進度：**
+- 將今天的「Yesterday」區段連結到前一天的「Today」計劃
+- 標記在「Today」停留 3 天以上的項目（潛在卡住的工作）
+- 當多日努力最終完成時慶祝
+- 每週檢視以識別重複出現的阻礙因素或流程改善
 
-**Retrospective Data:**
-- Monthly review of standup notes reveals patterns:
-  - How often are estimates accurate?
-  - Which types of blockers are most common?
-  - Where is time going? (meetings, bugs, feature work ratio)
-  - Team health indicators (frequent blockers, overcommitment)
-- Use insights for sprint planning and capacity estimation
+**回顧數據：**
+- 每月檢視 standup 筆記可揭示模式：
+  - 估算的準確度如何？
+  - 哪些類型的阻礙因素最常見？
+  - 時間都花到哪裡去了？（會議、錯誤、功能開發比例）
+  - 團隊健康指標（頻繁的阻礙因素、過度承諾）
+- 利用洞察進行 sprint 規劃和產能估算
 
-**Integration with Task Systems:**
+**與任務系統整合：**
 ```markdown
 ## Follow-Up Tasks (Auto-generated from standup)
 - [ ] Follow up with @infra-team on staging access (from blocker) - Due: Today EOD
@@ -317,9 +317,9 @@ From standup notes, automatically extract:
 - [ ] Check in on JIRA-456 migration (from today's priority) - Due: Tomorrow standup
 ```
 
-## Examples
+## 範例
 
-### Example 1: Well-Structured Daily Standup Note
+### 範例 1：結構良好的每日 Standup 筆記
 
 ```markdown
 # Standup - 2025-10-11
@@ -350,7 +350,7 @@ From standup notes, automatically extract:
 📎 [Sprint Board](link) | [My Active PRs](link)
 ```
 
-### Example 2: AI-Generated Standup from Git History
+### 範例 2：從 Git 歷史記錄 AI 生成的 Standup
 
 ```markdown
 # Standup - 2025-10-11 (Auto-generated from Git commits)
@@ -384,7 +384,7 @@ From standup notes, automatically extract:
 *Auto-generated from Git commits (24h) + Jira tickets. Reviewed and approved by human.*
 ```
 
-### Example 3: Async Standup Template (Slack/Discord)
+### 範例 3：非同步 Standup 範本（Slack/Discord）
 
 ```markdown
 **🌅 Standup - Friday, Oct 11** | Posted 9:15 AM ET | @here
@@ -412,7 +412,7 @@ From standup notes, automatically extract:
 React with 👀 when read | Reply in thread with questions
 ```
 
-### Example 4: Blocker Escalation Format
+### 範例 4：阻礙因素升級格式
 
 ```markdown
 # Standup - 2025-10-11
@@ -462,13 +462,13 @@ React with 👀 when read | Reply in thread with questions
 @sarah @john - Please prioritize, this is blocking sprint delivery
 ```
 
-## Reference Examples
+## 參考範例
 
-### Reference 1: Full Async Standup Workflow
+### 參考範例 1：完整非同步 Standup 工作流程
 
-**Scenario:** Distributed team across US, Europe, and Asia timezones. No synchronous standup meetings. Daily written updates in Slack #standup channel.
+**情境：** 分散在美國、歐洲和亞洲時區的分散式團隊。無同步 standup 會議。在 Slack #standup 頻道中發布每日書面更新。
 
-**Morning Routine (30 minutes):**
+**早晨例行工作（30 分鐘）：**
 
 ```bash
 # 1. Generate draft standup from data sources
@@ -497,7 +497,7 @@ jira issues list --assignee currentUser() --status "In Progress"
 # 8. Update task list with any new follow-ups from discussion
 ```
 
-**Standup Note (Posted in Slack):**
+**Standup 筆記（發布在 Slack）：**
 
 ```markdown
 **🌄 Standup - Oct 11** | @team-backend | Read time: 2min
@@ -529,7 +529,7 @@ jira issues list --assignee currentUser() --status "In Progress"
 👀 = I've read this | 🤝 = I can help with something | 💬 = Reply in thread
 ```
 
-**Follow-Up Actions (Throughout Day):**
+**後續行動（全天）：**
 
 ```markdown
 # 11:00 AM - Check thread responses
@@ -549,7 +549,7 @@ Add to tomorrow's "Today" section:
 • Post production status update in #engineering-announcements
 ```
 
-**Weekly Retrospective (Friday):**
+**每週回顧（星期五）：**
 
 ```markdown
 # Review week of standup notes
@@ -565,54 +565,54 @@ Action items:
 • Next week: Focus on rate limiting implementation and technical debt
 ```
 
-### Reference 2: AI-Powered Standup Generation System
+### 參考範例 2：AI 驅動的 Standup 生成系統
 
-**System Architecture:**
+**系統架構：**
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ Data Collection Layer                                       │
+│ 資料收集層                                                   │
 ├─────────────────────────────────────────────────────────────┤
-│ • Git commits (last 24-48h)                                 │
-│ • Jira ticket updates (status changes, comments)            │
-│ • Obsidian vault changes (daily notes, task completions)    │
-│ • Calendar events (meetings attended, upcoming)             │
-│ • Slack activity (mentions, threads participated in)        │
+│ • Git commits（過去 24-48 小時）                             │
+│ • Jira ticket 更新（狀態變更、評論）                         │
+│ • Obsidian vault 變更（每日筆記、任務完成）                  │
+│ • 行事曆事件（已參加的會議、即將到來的會議）                 │
+│ • Slack 活動（提及、參與的討論串）                           │
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
-│ AI Analysis & Correlation Layer                             │
+│ AI 分析與關聯層                                              │
 ├─────────────────────────────────────────────────────────────┤
-│ • Link commits to Jira tickets (extract ticket IDs)         │
-│ • Group related commits (same feature/bug)                  │
-│ • Extract business value from technical changes             │
-│ • Identify blockers from patterns (repeated attempts)       │
-│ • Summarize meeting notes → extract action items            │
-│ • Calculate work distribution (feature vs bug vs review)    │
+│ • 將 commits 連結到 Jira tickets（提取 ticket IDs）         │
+│ • 將相關 commits 分組（相同功能/錯誤）                       │
+│ • 從技術變更中提取業務價值                                   │
+│ • 從模式中識別阻礙因素（重複嘗試）                           │
+│ • 摘要會議筆記 → 提取行動項目                                │
+│ • 計算工作分布（功能 vs 錯誤 vs review）                     │
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
-│ Generation & Formatting Layer                               │
+│ 生成與格式化層                                               │
 ├─────────────────────────────────────────────────────────────┤
-│ • Generate "Yesterday" from commits + completed tickets     │
-│ • Generate "Today" from in-progress tickets + calendar      │
-│ • Flag potential blockers from context clues                │
-│ • Format for target platform (Slack/Discord/Email/Obsidian) │
-│ • Add relevant links (PRs, tickets, docs)                   │
+│ • 從 commits + 已完成 tickets 生成「Yesterday」             │
+│ • 從進行中 tickets + 行事曆生成「Today」                     │
+│ • 從情境線索標記潛在阻礙因素                                 │
+│ • 針對目標平台格式化（Slack/Discord/Email/Obsidian）        │
+│ • 加入相關連結（PRs、tickets、文件）                         │
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
-│ Human Review & Enhancement Layer                            │
+│ 人工審查與增強層                                             │
 ├─────────────────────────────────────────────────────────────┤
-│ • Present draft for review                                  │
-│ • Human adds context AI cannot infer                        │
-│ • Adjust priorities based on team needs                     │
-│ • Add personal notes, schedule changes                      │
-│ • Approve and post to team channel                          │
+│ • 呈現草稿供審查                                             │
+│ • 人工加入 AI 無法推斷的情境                                 │
+│ • 根據團隊需求調整優先順序                                   │
+│ • 加入個人筆記、行程變更                                     │
+│ • 核准並發布到團隊頻道                                       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**Implementation Script:**
+**實作腳本：**
 
 ```bash
 #!/bin/bash
@@ -699,7 +699,7 @@ fi
 echo "💾 Saved to: ~/Obsidian/Standup Notes/$DATE.md"
 ```
 
-**AI Prompt Template for Standup Generation:**
+**用於 Standup 生成的 AI 提示範本：**
 
 ```
 You are an expert at synthesizing engineering work into clear, concise standup updates.
@@ -745,7 +745,7 @@ Tone: Professional but conversational, transparent about challenges
 Output only the standup note markdown, no preamble.
 ```
 
-**Cron Job Setup (Daily Automation):**
+**Cron Job 設定（每日自動化）：**
 
 ```bash
 # Add to crontab: Run every weekday at 8:45 AM
@@ -758,7 +758,7 @@ Output only the standup note markdown, no preamble.
 
 ---
 
-**Tool Version:** 2.0 (Upgraded 2025-10-11)
-**Target Audience:** Remote-first engineering teams, async-first organizations, distributed teams
-**Dependencies:** Git, Jira CLI, Obsidian MCP, optional calendar integration
-**Estimated Setup Time:** 15 minutes initial setup, 5 minutes daily routine once automated
+**工具版本：** 2.0（2025-10-11 升級）
+**目標受眾：** 遠端優先的工程團隊、非同步優先組織、分散式團隊
+**依賴項目：** Git、Jira CLI、Obsidian MCP、選用行事曆整合
+**預估設定時間：** 初始設定 15 分鐘，自動化後每日例行工作 5 分鐘

@@ -1,9 +1,9 @@
 # 翻譯進度追蹤
 
 總檔案數: 307
-已完成: 297
+已完成: 307
 進行中: 0
-待處理: 10
+待處理: 0
 
 ## 檔案清單
 
@@ -305,13 +305,13 @@
 - [x] /home/user/agents/plugins/tdd-workflows/commands/tdd-cycle.md
 - [x] /home/user/agents/plugins/tdd-workflows/commands/tdd-green.md
 - [x] /home/user/agents/plugins/tdd-workflows/commands/tdd-red.md
-- [ ] /home/user/agents/plugins/tdd-workflows/commands/tdd-refactor.md
-- [ ] /home/user/agents/plugins/team-collaboration/agents/dx-optimizer.md
-- [ ] /home/user/agents/plugins/team-collaboration/commands/issue.md
-- [ ] /home/user/agents/plugins/team-collaboration/commands/standup-notes.md
-- [ ] /home/user/agents/plugins/unit-testing/agents/debugger.md
-- [ ] /home/user/agents/plugins/unit-testing/agents/test-automator.md
-- [ ] /home/user/agents/plugins/unit-testing/commands/test-generate.md
-- [ ] /home/user/agents/plugins/web-scripting/agents/php-pro.md
-- [ ] /home/user/agents/plugins/web-scripting/agents/ruby-pro.md
-- [ ] /home/user/agents/progress.md
+- [x] /home/user/agents/plugins/tdd-workflows/commands/tdd-refactor.md
+- [x] /home/user/agents/plugins/team-collaboration/agents/dx-optimizer.md
+- [x] /home/user/agents/plugins/team-collaboration/commands/issue.md
+- [x] /home/user/agents/plugins/team-collaboration/commands/standup-notes.md
+- [x] /home/user/agents/plugins/unit-testing/agents/debugger.md
+- [x] /home/user/agents/plugins/unit-testing/agents/test-automator.md
+- [x] /home/user/agents/plugins/unit-testing/commands/test-generate.md
+- [x] /home/user/agents/plugins/web-scripting/agents/php-pro.md
+- [x] /home/user/agents/plugins/web-scripting/agents/ruby-pro.md
+- [x] /home/user/agents/progress.md

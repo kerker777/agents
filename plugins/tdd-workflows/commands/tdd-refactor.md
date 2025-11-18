@@ -1,117 +1,117 @@
-Refactor code with confidence using comprehensive test safety net:
+運用全面的測試安全網，自信地重構程式碼：
 
-[Extended thinking: This tool uses the tdd-orchestrator agent (opus model) for sophisticated refactoring while maintaining all tests green. It applies design patterns, improves code quality, and optimizes performance with the safety of comprehensive test coverage.]
+[Extended thinking: 此工具使用 tdd-orchestrator agent（opus model）進行精密的重構，同時保持所有測試通過。它應用設計模式、改善程式碼品質，並在全面測試覆蓋的安全保障下優化效能。]
 
-## Usage
+## 使用方式
 
-Use Task tool with subagent_type="tdd-orchestrator" to perform safe refactoring.
+使用 Task 工具並設定 subagent_type="tdd-orchestrator" 來執行安全的重構。
 
-Prompt: "Refactor this code while keeping all tests green: $ARGUMENTS. Apply TDD refactor phase:
+提示詞：「重構此程式碼並保持所有測試通過：$ARGUMENTS。應用 TDD 重構階段：
 
-## Core Process
+## 核心流程
 
-**1. Pre-Assessment**
-- Run tests to establish green baseline
-- Analyze code smells and test coverage
-- Document current performance metrics
-- Create incremental refactoring plan
+**1. 預先評估**
+- 執行測試以建立綠燈基準線
+- 分析程式碼異味（code smells）和測試覆蓋率
+- 記錄當前效能指標
+- 建立漸進式重構計畫
 
-**2. Code Smell Detection**
-- Duplicated code → Extract methods/classes
-- Long methods → Decompose into focused functions
-- Large classes → Split responsibilities
-- Long parameter lists → Parameter objects
-- Feature Envy → Move methods to appropriate classes
-- Primitive Obsession → Value objects
-- Switch statements → Polymorphism
-- Dead code → Remove
+**2. 程式碼異味偵測**
+- 重複程式碼 → 提取方法/類別
+- 過長方法 → 拆解為專注的函式
+- 大型類別 → 分割職責
+- 過長參數列表 → 參數物件
+- Feature Envy（依戀情結）→ 將方法移至適當的類別
+- Primitive Obsession（基本型別偏執）→ 值物件
+- Switch 陳述式 → 多型
+- 死程式碼 → 移除
 
-**3. Design Patterns**
-- Apply Creational (Factory, Builder, Singleton)
-- Apply Structural (Adapter, Facade, Decorator)
-- Apply Behavioral (Strategy, Observer, Command)
-- Apply Domain (Repository, Service, Value Objects)
-- Use patterns only where they add clear value
+**3. 設計模式**
+- 應用創建型模式（Factory、Builder、Singleton）
+- 應用結構型模式（Adapter、Facade、Decorator）
+- 應用行為型模式（Strategy、Observer、Command）
+- 應用領域模式（Repository、Service、Value Objects）
+- 僅在模式能帶來明確價值時才使用
 
-**4. SOLID Principles**
-- Single Responsibility: One reason to change
-- Open/Closed: Open for extension, closed for modification
-- Liskov Substitution: Subtypes substitutable
-- Interface Segregation: Small, focused interfaces
-- Dependency Inversion: Depend on abstractions
+**4. SOLID 原則**
+- Single Responsibility（單一職責）：一個改變的理由
+- Open/Closed（開放封閉）：對擴充開放，對修改封閉
+- Liskov Substitution（里氏替換）：子型別可替換
+- Interface Segregation（介面隔離）：小型、專注的介面
+- Dependency Inversion（依賴反轉）：依賴於抽象
 
-**5. Refactoring Techniques**
-- Extract Method/Variable/Interface
-- Inline unnecessary indirection
-- Rename for clarity
-- Move Method/Field to appropriate classes
-- Replace Magic Numbers with constants
-- Encapsulate fields
-- Replace Conditional with Polymorphism
-- Introduce Null Object
+**5. 重構技術**
+- Extract Method/Variable/Interface（提取方法/變數/介面）
+- Inline（內聯）不必要的間接層
+- Rename（重新命名）以提升清晰度
+- Move Method/Field（移動方法/欄位）至適當的類別
+- Replace Magic Numbers（替換魔術數字）為常數
+- Encapsulate（封裝）欄位
+- Replace Conditional with Polymorphism（以多型替換條件式）
+- Introduce Null Object（引入空物件）
 
-**6. Performance Optimization**
-- Profile to identify bottlenecks
-- Optimize algorithms and data structures
-- Implement caching where beneficial
-- Reduce database queries (N+1 elimination)
-- Lazy loading and pagination
-- Always measure before and after
+**6. 效能優化**
+- 進行效能分析以識別瓶頸
+- 優化演算法和資料結構
+- 在有益的情況下實作快取
+- 減少資料庫查詢（消除 N+1 問題）
+- 延遲載入和分頁
+- 始終在優化前後進行測量
 
-**7. Incremental Steps**
-- Make small, atomic changes
-- Run tests after each modification
-- Commit after each successful refactoring
-- Keep refactoring separate from behavior changes
-- Use scaffolding when needed
+**7. 漸進式步驟**
+- 進行小型、原子性的變更
+- 每次修改後執行測試
+- 每次成功重構後提交
+- 將重構與行為變更分開
+- 需要時使用鷹架（scaffolding）
 
-**8. Architecture Evolution**
-- Layer separation and dependency management
-- Module boundaries and interface definition
-- Event-driven patterns for decoupling
-- Database access pattern optimization
+**8. 架構演進**
+- 分層隔離和依賴管理
+- 模組邊界和介面定義
+- 事件驅動模式以解耦
+- 資料庫存取模式優化
 
-**9. Safety Verification**
-- Run full test suite after each change
-- Performance regression testing
-- Mutation testing for test effectiveness
-- Rollback plan for major changes
+**9. 安全驗證**
+- 每次變更後執行完整測試套件
+- 效能回歸測試
+- 變異測試（mutation testing）以評估測試有效性
+- 重大變更的回滾計畫
 
-**10. Advanced Patterns**
-- Strangler Fig: Gradual legacy replacement
-- Branch by Abstraction: Large-scale changes
-- Parallel Change: Expand-contract pattern
-- Mikado Method: Dependency graph navigation
+**10. 進階模式**
+- Strangler Fig：漸進式替換遺留系統
+- Branch by Abstraction：大規模變更
+- Parallel Change：擴展-收縮模式
+- Mikado Method：依賴圖導航
 
-## Output Requirements
+## 輸出需求
 
-- Refactored code with improvements applied
-- Test results (all green)
-- Before/after metrics comparison
-- Applied refactoring techniques list
-- Performance improvement measurements
-- Remaining technical debt assessment
+- 應用改善後的重構程式碼
+- 測試結果（全部通過）
+- 前後指標比較
+- 應用的重構技術清單
+- 效能改善測量結果
+- 剩餘技術債評估
 
-## Safety Checklist
+## 安全檢查清單
 
-Before committing:
-- ✓ All tests pass (100% green)
-- ✓ No functionality regression
-- ✓ Performance metrics acceptable
-- ✓ Code coverage maintained/improved
-- ✓ Documentation updated
+提交前：
+- ✓ 所有測試通過（100% 綠燈）
+- ✓ 無功能性退化
+- ✓ 效能指標可接受
+- ✓ 程式碼覆蓋率維持/改善
+- ✓ 文件已更新
 
-## Recovery Protocol
+## 復原協議
 
-If tests fail:
-- Immediately revert last change
-- Identify breaking refactoring
-- Apply smaller incremental changes
-- Use version control for safe experimentation
+如果測試失敗：
+- 立即還原上次變更
+- 識別造成中斷的重構
+- 應用更小的漸進式變更
+- 使用版本控制進行安全實驗
 
-## Example: Extract Method Pattern
+## 範例：Extract Method Pattern
 
-**Before:**
+**重構前：**
 ```typescript
 class OrderProcessor {
   processOrder(order: Order): ProcessResult {
@@ -134,7 +134,7 @@ class OrderProcessor {
 }
 ```
 
-**After:**
+**重構後：**
 ```typescript
 class OrderProcessor {
   async processOrder(order: Order): Promise<ProcessResult> {
@@ -160,6 +160,6 @@ class OrderProcessor {
 }
 ```
 
-**Applied:** Extract Method, Value Objects, Dependency Injection, Async patterns
+**應用技術：** Extract Method、Value Objects、Dependency Injection、Async patterns
 
-Code to refactor: $ARGUMENTS"
+要重構的程式碼：$ARGUMENTS"
