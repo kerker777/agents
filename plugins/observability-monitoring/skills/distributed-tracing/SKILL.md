@@ -1,27 +1,27 @@
 ---
 name: distributed-tracing
-description: Implement distributed tracing with Jaeger and Tempo to track requests across microservices and identify performance bottlenecks. Use when debugging microservices, analyzing request flows, or implementing observability for distributed systems.
+description: 使用 Jaeger 和 Tempo 實作分散式追蹤，以追蹤微服務之間的請求並識別效能瓶頸。適用於除錯微服務、分析請求流程，或為分散式系統實作可觀測性。
 ---
 
-# Distributed Tracing
+# 分散式追蹤 (Distributed Tracing)
 
-Implement distributed tracing with Jaeger and Tempo for request flow visibility across microservices.
+使用 Jaeger 和 Tempo 實作分散式追蹤，以在微服務之間取得請求流程的可見性。
 
-## Purpose
+## 目的
 
-Track requests across distributed systems to understand latency, dependencies, and failure points.
+追蹤分散式系統中的請求，以了解延遲、依賴關係和失敗點。
 
-## When to Use
+## 使用時機
 
-- Debug latency issues
-- Understand service dependencies
-- Identify bottlenecks
-- Trace error propagation
-- Analyze request paths
+- 除錯延遲問題
+- 了解服務依賴關係
+- 識別瓶頸
+- 追蹤錯誤傳播
+- 分析請求路徑
 
-## Distributed Tracing Concepts
+## 分散式追蹤概念
 
-### Trace Structure
+### Trace 結構
 ```
 Trace (Request ID: abc123)
   ↓
@@ -33,23 +33,23 @@ Span (api-gateway) [80ms]
       └→ Span (database) [40ms]
 ```
 
-### Key Components
-- **Trace** - End-to-end request journey
-- **Span** - Single operation within a trace
-- **Context** - Metadata propagated between services
-- **Tags** - Key-value pairs for filtering
-- **Logs** - Timestamped events within a span
+### 核心元件
+- **Trace（追蹤）** - 端到端的請求旅程
+- **Span（跨度）** - 追蹤中的單一操作
+- **Context（上下文）** - 在服務之間傳播的元資料
+- **Tags（標籤）** - 用於過濾的鍵值對
+- **Logs（日誌）** - Span 中帶有時間戳記的事件
 
-## Jaeger Setup
+## Jaeger 設定
 
-### Kubernetes Deployment
+### Kubernetes 部署
 
 ```bash
-# Deploy Jaeger Operator
+# 部署 Jaeger Operator
 kubectl create namespace observability
 kubectl create -f https://github.com/jaegertracing/jaeger-operator/releases/download/v1.51.0/jaeger-operator.yaml -n observability
 
-# Deploy Jaeger instance
+# 部署 Jaeger 實例
 kubectl apply -f - <<EOF
 apiVersion: jaegertracing.io/v1
 kind: Jaeger
@@ -88,11 +88,11 @@ services:
       - COLLECTOR_ZIPKIN_HOST_PORT=:9411
 ```
 
-**Reference:** See `references/jaeger-setup.md`
+**參考資料：** 請參閱 `references/jaeger-setup.md`
 
-## Application Instrumentation
+## 應用程式埋點 (Instrumentation)
 
-### OpenTelemetry (Recommended)
+### OpenTelemetry（推薦）
 
 #### Python (Flask)
 ```python
@@ -235,9 +235,9 @@ func getUsers(ctx context.Context) ([]User, error) {
 }
 ```
 
-**Reference:** See `references/instrumentation.md`
+**參考資料：** 請參閱 `references/instrumentation.md`
 
-## Context Propagation
+## 上下文傳播 (Context Propagation)
 
 ### HTTP Headers
 ```
@@ -245,7 +245,7 @@ traceparent: 00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-01
 tracestate: congo=t61rcWkgMzE
 ```
 
-### Propagation in HTTP Requests
+### HTTP 請求中的傳播
 
 #### Python
 ```python
@@ -267,9 +267,9 @@ propagation.inject(context.active(), headers);
 axios.get('http://downstream-service/api', { headers });
 ```
 
-## Tempo Setup (Grafana)
+## Tempo 設定 (Grafana)
 
-### Kubernetes Deployment
+### Kubernetes 部署
 
 ```yaml
 apiVersion: v1
@@ -325,77 +325,77 @@ spec:
           name: tempo-config
 ```
 
-**Reference:** See `assets/jaeger-config.yaml.template`
+**參考資料：** 請參閱 `assets/jaeger-config.yaml.template`
 
-## Sampling Strategies
+## 採樣策略 (Sampling Strategies)
 
-### Probabilistic Sampling
+### 機率採樣 (Probabilistic Sampling)
 ```yaml
-# Sample 1% of traces
+# 採樣 1% 的追蹤
 sampler:
   type: probabilistic
   param: 0.01
 ```
 
-### Rate Limiting Sampling
+### 速率限制採樣 (Rate Limiting Sampling)
 ```yaml
-# Sample max 100 traces per second
+# 每秒最多採樣 100 個追蹤
 sampler:
   type: ratelimiting
   param: 100
 ```
 
-### Adaptive Sampling
+### 自適應採樣 (Adaptive Sampling)
 ```python
 from opentelemetry.sdk.trace.sampling import ParentBased, TraceIdRatioBased
 
-# Sample based on trace ID (deterministic)
+# 基於 trace ID 的採樣（確定性）
 sampler = ParentBased(root=TraceIdRatioBased(0.01))
 ```
 
-## Trace Analysis
+## Trace 分析
 
-### Finding Slow Requests
+### 尋找慢速請求
 
-**Jaeger Query:**
+**Jaeger 查詢：**
 ```
 service=my-service
 duration > 1s
 ```
 
-### Finding Errors
+### 尋找錯誤
 
-**Jaeger Query:**
+**Jaeger 查詢：**
 ```
 service=my-service
 error=true
 tags.http.status_code >= 500
 ```
 
-### Service Dependency Graph
+### 服務依賴圖 (Service Dependency Graph)
 
-Jaeger automatically generates service dependency graphs showing:
-- Service relationships
-- Request rates
-- Error rates
-- Average latencies
+Jaeger 會自動產生服務依賴圖，顯示：
+- 服務關係
+- 請求速率
+- 錯誤率
+- 平均延遲
 
-## Best Practices
+## 最佳實踐
 
-1. **Sample appropriately** (1-10% in production)
-2. **Add meaningful tags** (user_id, request_id)
-3. **Propagate context** across all service boundaries
-4. **Log exceptions** in spans
-5. **Use consistent naming** for operations
-6. **Monitor tracing overhead** (<1% CPU impact)
-7. **Set up alerts** for trace errors
-8. **Implement distributed context** (baggage)
-9. **Use span events** for important milestones
-10. **Document instrumentation** standards
+1. **適當採樣**（生產環境 1-10%）
+2. **新增有意義的標籤**（user_id、request_id）
+3. **在所有服務邊界傳播上下文**
+4. **在 Span 中記錄例外狀況**
+5. **使用一致的命名**來命名操作
+6. **監控追蹤開銷**（CPU 影響 <1%）
+7. **設定追蹤錯誤的告警**
+8. **實作分散式上下文**（baggage）
+9. **使用 Span 事件**標記重要里程碑
+10. **記錄埋點**標準
 
-## Integration with Logging
+## 與日誌整合
 
-### Correlated Logs
+### 關聯日誌 (Correlated Logs)
 ```python
 import logging
 from opentelemetry import trace
@@ -412,27 +412,27 @@ def process_request():
     )
 ```
 
-## Troubleshooting
+## 疑難排解
 
-**No traces appearing:**
-- Check collector endpoint
-- Verify network connectivity
-- Check sampling configuration
-- Review application logs
+**沒有追蹤出現：**
+- 檢查 collector 端點
+- 驗證網路連線
+- 檢查採樣設定
+- 檢視應用程式日誌
 
-**High latency overhead:**
-- Reduce sampling rate
-- Use batch span processor
-- Check exporter configuration
+**高延遲開銷：**
+- 降低採樣率
+- 使用批次 span 處理器
+- 檢查 exporter 設定
 
-## Reference Files
+## 參考檔案
 
-- `references/jaeger-setup.md` - Jaeger installation
-- `references/instrumentation.md` - Instrumentation patterns
-- `assets/jaeger-config.yaml.template` - Jaeger configuration
+- `references/jaeger-setup.md` - Jaeger 安裝
+- `references/instrumentation.md` - 埋點模式
+- `assets/jaeger-config.yaml.template` - Jaeger 設定
 
-## Related Skills
+## 相關技能
 
-- `prometheus-configuration` - For metrics
-- `grafana-dashboards` - For visualization
-- `slo-implementation` - For latency SLOs
+- `prometheus-configuration` - 用於指標收集
+- `grafana-dashboards` - 用於視覺化
+- `slo-implementation` - 用於延遲 SLO

@@ -1,52 +1,52 @@
 ---
 name: billing-automation
-description: Build automated billing systems for recurring payments, invoicing, subscription lifecycle, and dunning management. Use when implementing subscription billing, automating invoicing, or managing recurring payment systems.
+description: 建立自動化帳務系統，用於處理定期付款、發票開立、訂閱生命週期和逾期付款管理。適用於實作訂閱計費、自動化發票開立或管理定期付款系統。
 ---
 
-# Billing Automation
+# Billing Automation（帳務自動化）
 
-Master automated billing systems including recurring billing, invoice generation, dunning management, proration, and tax calculation.
+精通自動化帳務系統，包括定期計費、發票生成、逾期付款管理、按比例計費和稅務計算。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Implementing SaaS subscription billing
-- Automating invoice generation and delivery
-- Managing failed payment recovery (dunning)
-- Calculating prorated charges for plan changes
-- Handling sales tax, VAT, and GST
-- Processing usage-based billing
-- Managing billing cycles and renewals
+- 實作 SaaS 訂閱計費
+- 自動化發票生成與遞送
+- 管理付款失敗回收（dunning）
+- 計算方案變更的按比例費用
+- 處理銷售稅、VAT 和 GST
+- 處理用量計費
+- 管理計費週期和續約
 
-## Core Concepts
+## 核心概念
 
-### 1. Billing Cycles
-**Common Intervals:**
-- Monthly (most common for SaaS)
-- Annual (discounted long-term)
-- Quarterly
-- Weekly
-- Custom (usage-based, per-seat)
+### 1. 計費週期
+**常見間隔：**
+- 月繳（SaaS 最常見）
+- 年繳（長期優惠折扣）
+- 季繳
+- 週繳
+- 自訂（用量計費、按席次計費）
 
-### 2. Subscription States
+### 2. 訂閱狀態
 ```
 trial → active → past_due → canceled
               → paused → resumed
 ```
 
-### 3. Dunning Management
-Automated process to recover failed payments through:
-- Retry schedules
-- Customer notifications
-- Grace periods
-- Account restrictions
+### 3. Dunning 管理
+透過以下方式自動回收失敗付款的流程：
+- 重試排程
+- 客戶通知
+- 寬限期
+- 帳號限制
 
-### 4. Proration
-Adjusting charges when:
-- Upgrading/downgrading mid-cycle
-- Adding/removing seats
-- Changing billing frequency
+### 4. 按比例計費（Proration）
+在以下情況調整費用：
+- 週期中升級/降級
+- 新增/移除席次
+- 變更計費頻率
 
-## Quick Start
+## 快速開始
 
 ```python
 from billing import BillingEngine, Subscription
@@ -66,7 +66,7 @@ subscription = billing.create_subscription(
 billing.process_billing_cycle(subscription.id)
 ```
 
-## Subscription Lifecycle Management
+## 訂閱生命週期管理
 
 ```python
 from datetime import datetime, timedelta
@@ -126,7 +126,7 @@ class Subscription:
             return self.current_period_start + timedelta(days=7)
 ```
 
-## Billing Cycle Processing
+## 計費週期處理
 
 ```python
 class BillingEngine:
@@ -205,7 +205,7 @@ class BillingEngine:
             return PaymentResult(success=False, error=str(e))
 ```
 
-## Dunning Management
+## Dunning 管理
 
 ```python
 class DunningManager:
@@ -278,7 +278,7 @@ class DunningManager:
         )
 ```
 
-## Proration
+## 按比例計費
 
 ```python
 class ProrationCalculator:
@@ -328,7 +328,7 @@ class ProrationCalculator:
         }
 ```
 
-## Tax Calculation
+## 稅務計算
 
 ```python
 class TaxCalculator:
@@ -397,7 +397,7 @@ class TaxCalculator:
         pass
 ```
 
-## Invoice Generation
+## 發票生成
 
 ```python
 class Invoice:
@@ -476,7 +476,7 @@ class Invoice:
         )
 ```
 
-## Usage-Based Billing
+## 用量計費
 
 ```python
 class UsageBillingEngine:
@@ -529,31 +529,31 @@ class UsageBillingEngine:
         return charge
 ```
 
-## Resources
+## 參考資源
 
-- **references/billing-cycles.md**: Billing cycle management
-- **references/dunning-management.md**: Failed payment recovery
-- **references/proration.md**: Prorated charge calculations
-- **references/tax-calculation.md**: Tax/VAT/GST handling
-- **references/invoice-lifecycle.md**: Invoice state management
-- **assets/billing-state-machine.yaml**: Billing workflow
-- **assets/invoice-template.html**: Invoice templates
-- **assets/dunning-policy.yaml**: Dunning configuration
+- **references/billing-cycles.md**：計費週期管理
+- **references/dunning-management.md**：付款失敗回收
+- **references/proration.md**：按比例費用計算
+- **references/tax-calculation.md**：稅務/VAT/GST 處理
+- **references/invoice-lifecycle.md**：發票狀態管理
+- **assets/billing-state-machine.yaml**：計費工作流程
+- **assets/invoice-template.html**：發票模板
+- **assets/dunning-policy.yaml**：Dunning 配置
 
-## Best Practices
+## 最佳實踐
 
-1. **Automate Everything**: Minimize manual intervention
-2. **Clear Communication**: Notify customers of billing events
-3. **Flexible Retry Logic**: Balance recovery with customer experience
-4. **Accurate Proration**: Fair calculation for plan changes
-5. **Tax Compliance**: Calculate correct tax for jurisdiction
-6. **Audit Trail**: Log all billing events
-7. **Graceful Degradation**: Handle edge cases without breaking
+1. **全面自動化**：減少人工介入
+2. **清楚溝通**：通知客戶所有計費事件
+3. **彈性重試邏輯**：平衡回收與客戶體驗
+4. **精確按比例計費**：公平計算方案變更費用
+5. **稅務合規**：為管轄區計算正確稅額
+6. **稽核軌跡**：記錄所有計費事件
+7. **優雅降級**：處理邊緣案例而不中斷
 
-## Common Pitfalls
+## 常見陷阱
 
-- **Incorrect Proration**: Not accounting for partial periods
-- **Missing Tax**: Forgetting to add tax to invoices
-- **Aggressive Dunning**: Canceling too quickly
-- **No Notifications**: Not informing customers of failures
-- **Hardcoded Cycles**: Not supporting custom billing dates
+- **按比例計費錯誤**：未考慮部分週期
+- **遺漏稅務**：忘記在發票中加入稅額
+- **過度激進的 Dunning**：過快取消訂閱
+- **無通知**：未告知客戶付款失敗
+- **硬編碼週期**：不支援自訂計費日期

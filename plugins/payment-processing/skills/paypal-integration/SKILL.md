@@ -1,59 +1,59 @@
 ---
 name: paypal-integration
-description: Integrate PayPal payment processing with support for express checkout, subscriptions, and refund management. Use when implementing PayPal payments, processing online transactions, or building e-commerce checkout flows.
+description: 整合 PayPal 金流處理，支援快速結帳、訂閱制及退款管理。適用於實作 PayPal 付款、處理線上交易或建置電子商務結帳流程。
 ---
 
-# PayPal Integration
+# PayPal 整合
 
-Master PayPal payment integration including Express Checkout, IPN handling, recurring billing, and refund workflows.
+精通 PayPal 付款整合，包括 Express Checkout（快速結帳）、IPN 處理、定期扣款及退款工作流程。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Integrating PayPal as a payment option
-- Implementing express checkout flows
-- Setting up recurring billing with PayPal
-- Processing refunds and payment disputes
-- Handling PayPal webhooks (IPN)
-- Supporting international payments
-- Implementing PayPal subscriptions
+- 整合 PayPal 作為付款選項
+- 實作快速結帳流程
+- 使用 PayPal 設定定期扣款
+- 處理退款及付款爭議
+- 處理 PayPal webhooks（IPN）
+- 支援國際付款
+- 實作 PayPal 訂閱制
 
-## Core Concepts
+## 核心概念
 
-### 1. Payment Products
-**PayPal Checkout**
-- One-time payments
-- Express checkout experience
-- Guest and PayPal account payments
+### 1. 付款產品
+**PayPal Checkout（結帳）**
+- 單次付款
+- 快速結帳體驗
+- 訪客及 PayPal 帳戶付款
 
-**PayPal Subscriptions**
-- Recurring billing
-- Subscription plans
-- Automatic renewals
+**PayPal Subscriptions（訂閱制）**
+- 定期扣款
+- 訂閱方案
+- 自動續約
 
-**PayPal Payouts**
-- Send money to multiple recipients
-- Marketplace and platform payments
+**PayPal Payouts（批次付款）**
+- 發送款項給多位收款人
+- 市集及平台付款
 
-### 2. Integration Methods
-**Client-Side (JavaScript SDK)**
-- Smart Payment Buttons
-- Hosted payment flow
-- Minimal backend code
+### 2. 整合方式
+**客戶端（JavaScript SDK）**
+- Smart Payment Buttons（智慧付款按鈕）
+- 託管式付款流程
+- 最少的後端程式碼
 
-**Server-Side (REST API)**
-- Full control over payment flow
-- Custom checkout UI
-- Advanced features
+**伺服器端（REST API）**
+- 完整控制付款流程
+- 自訂結帳介面
+- 進階功能
 
-### 3. IPN (Instant Payment Notification)
-- Webhook-like payment notifications
-- Asynchronous payment updates
-- Verification required
+### 3. IPN（Instant Payment Notification，即時付款通知）
+- 類似 webhook 的付款通知
+- 非同步付款更新
+- 需要驗證
 
-## Quick Start
+## 快速開始
 
 ```javascript
-// Frontend - PayPal Smart Buttons
+// 前端 - PayPal Smart Buttons
 <div id="paypal-button-container"></div>
 
 <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
@@ -70,10 +70,10 @@ Master PayPal payment integration including Express Checkout, IPN handling, recu
     },
     onApprove: function(data, actions) {
       return actions.order.capture().then(function(details) {
-        // Payment successful
+        // 付款成功
         console.log('Transaction completed by ' + details.payer.name.given_name);
 
-        // Send to backend for verification
+        // 發送到後端進行驗證
         fetch('/api/paypal/capture', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
@@ -86,38 +86,38 @@ Master PayPal payment integration including Express Checkout, IPN handling, recu
 ```
 
 ```python
-# Backend - Verify and capture order
+# 後端 - 驗證並擷取訂單
 from paypalrestsdk import Payment
 import paypalrestsdk
 
 paypalrestsdk.configure({
-    "mode": "sandbox",  # or "live"
+    "mode": "sandbox",  # 或 "live"
     "client_id": "YOUR_CLIENT_ID",
     "client_secret": "YOUR_CLIENT_SECRET"
 })
 
 def capture_paypal_order(order_id):
-    """Capture a PayPal order."""
+    """擷取 PayPal 訂單。"""
     payment = Payment.find(order_id)
 
     if payment.execute({"payer_id": payment.payer.payer_info.payer_id}):
-        # Payment successful
+        # 付款成功
         return {
             'status': 'success',
             'transaction_id': payment.id,
             'amount': payment.transactions[0].amount.total
         }
     else:
-        # Payment failed
+        # 付款失敗
         return {
             'status': 'failed',
             'error': payment.error
         }
 ```
 
-## Express Checkout Implementation
+## Express Checkout 實作
 
-### Server-Side Order Creation
+### 伺服器端訂單建立
 ```python
 import requests
 import json
@@ -130,7 +130,7 @@ class PayPalClient:
         self.access_token = self.get_access_token()
 
     def get_access_token(self):
-        """Get OAuth access token."""
+        """取得 OAuth 存取權杖。"""
         url = f"{self.base_url}/v1/oauth2/token"
         headers = {"Accept": "application/json", "Accept-Language": "en_US"}
 
@@ -144,7 +144,7 @@ class PayPalClient:
         return response.json()['access_token']
 
     def create_order(self, amount, currency='USD'):
-        """Create a PayPal order."""
+        """建立 PayPal 訂單。"""
         url = f"{self.base_url}/v2/checkout/orders"
         headers = {
             "Content-Type": "application/json",
@@ -165,7 +165,7 @@ class PayPalClient:
         return response.json()
 
     def capture_order(self, order_id):
-        """Capture payment for an order."""
+        """擷取訂單的付款。"""
         url = f"{self.base_url}/v2/checkout/orders/{order_id}/capture"
         headers = {
             "Content-Type": "application/json",
@@ -176,7 +176,7 @@ class PayPalClient:
         return response.json()
 
     def get_order_details(self, order_id):
-        """Get order details."""
+        """取得訂單詳情。"""
         url = f"{self.base_url}/v2/checkout/orders/{order_id}"
         headers = {
             "Authorization": f"Bearer {self.access_token}"
@@ -186,9 +186,9 @@ class PayPalClient:
         return response.json()
 ```
 
-## IPN (Instant Payment Notification) Handling
+## IPN（Instant Payment Notification，即時付款通知）處理
 
-### IPN Verification and Processing
+### IPN 驗證與處理
 ```python
 from flask import Flask, request
 import requests
@@ -198,15 +198,15 @@ app = Flask(__name__)
 
 @app.route('/ipn', methods=['POST'])
 def handle_ipn():
-    """Handle PayPal IPN notifications."""
-    # Get IPN message
+    """處理 PayPal IPN 通知。"""
+    # 取得 IPN 訊息
     ipn_data = request.form.to_dict()
 
-    # Verify IPN with PayPal
+    # 向 PayPal 驗證 IPN
     if not verify_ipn(ipn_data):
         return 'IPN verification failed', 400
 
-    # Process IPN based on transaction type
+    # 根據交易類型處理 IPN
     payment_status = ipn_data.get('payment_status')
     txn_type = ipn_data.get('txn_type')
 
@@ -220,57 +220,57 @@ def handle_ipn():
     return 'IPN processed', 200
 
 def verify_ipn(ipn_data):
-    """Verify IPN message authenticity."""
-    # Add 'cmd' parameter
+    """驗證 IPN 訊息真實性。"""
+    # 新增 'cmd' 參數
     verify_data = ipn_data.copy()
     verify_data['cmd'] = '_notify-validate'
 
-    # Send back to PayPal for verification
-    paypal_url = 'https://ipnpb.sandbox.paypal.com/cgi-bin/webscr'  # or production URL
+    # 回傳給 PayPal 進行驗證
+    paypal_url = 'https://ipnpb.sandbox.paypal.com/cgi-bin/webscr'  # 或正式環境 URL
 
     response = requests.post(paypal_url, data=verify_data)
 
     return response.text == 'VERIFIED'
 
 def handle_payment_completed(ipn_data):
-    """Process completed payment."""
+    """處理已完成的付款。"""
     txn_id = ipn_data.get('txn_id')
     payer_email = ipn_data.get('payer_email')
     mc_gross = ipn_data.get('mc_gross')
     item_name = ipn_data.get('item_name')
 
-    # Check if already processed (prevent duplicates)
+    # 檢查是否已處理（防止重複）
     if is_transaction_processed(txn_id):
         return
 
-    # Update database
-    # Send confirmation email
-    # Fulfill order
+    # 更新資料庫
+    # 發送確認郵件
+    # 履行訂單
     print(f"Payment completed: {txn_id}, Amount: ${mc_gross}")
 
 def handle_refund(ipn_data):
-    """Handle refund."""
+    """處理退款。"""
     parent_txn_id = ipn_data.get('parent_txn_id')
     mc_gross = ipn_data.get('mc_gross')
 
-    # Process refund in your system
+    # 在系統中處理退款
     print(f"Refund processed: {parent_txn_id}, Amount: ${mc_gross}")
 
 def handle_chargeback(ipn_data):
-    """Handle payment reversal/chargeback."""
+    """處理付款撤銷／拒付。"""
     txn_id = ipn_data.get('txn_id')
     reason_code = ipn_data.get('reason_code')
 
-    # Handle chargeback
+    # 處理拒付
     print(f"Chargeback: {txn_id}, Reason: {reason_code}")
 ```
 
-## Subscription/Recurring Billing
+## 訂閱制／定期扣款
 
-### Create Subscription Plan
+### 建立訂閱方案
 ```python
 def create_subscription_plan(name, amount, interval='MONTH'):
-    """Create a subscription plan."""
+    """建立訂閱方案。"""
     client = PayPalClient(CLIENT_ID, CLIENT_SECRET)
 
     url = f"{client.base_url}/v1/billing/plans"
@@ -280,7 +280,7 @@ def create_subscription_plan(name, amount, interval='MONTH'):
     }
 
     payload = {
-        "product_id": "PRODUCT_ID",  # Create product first
+        "product_id": "PRODUCT_ID",  # 先建立產品
         "name": name,
         "billing_cycles": [{
             "frequency": {
@@ -289,7 +289,7 @@ def create_subscription_plan(name, amount, interval='MONTH'):
             },
             "tenure_type": "REGULAR",
             "sequence": 1,
-            "total_cycles": 0,  # Infinite
+            "total_cycles": 0,  # 無限次
             "pricing_scheme": {
                 "fixed_price": {
                     "value": str(amount),
@@ -312,7 +312,7 @@ def create_subscription_plan(name, amount, interval='MONTH'):
     return response.json()
 
 def create_subscription(plan_id, subscriber_email):
-    """Create a subscription for a customer."""
+    """為客戶建立訂閱。"""
     client = PayPalClient(CLIENT_ID, CLIENT_SECRET)
 
     url = f"{client.base_url}/v1/billing/subscriptions"
@@ -335,7 +335,7 @@ def create_subscription(plan_id, subscriber_email):
     response = requests.post(url, headers=headers, json=payload)
     subscription = response.json()
 
-    # Get approval URL
+    # 取得核准 URL
     for link in subscription.get('links', []):
         if link['rel'] == 'approve':
             return {
@@ -344,11 +344,11 @@ def create_subscription(plan_id, subscriber_email):
             }
 ```
 
-## Refund Workflows
+## 退款工作流程
 
 ```python
 def create_refund(capture_id, amount=None, note=None):
-    """Create a refund for a captured payment."""
+    """為已擷取的付款建立退款。"""
     client = PayPalClient(CLIENT_ID, CLIENT_SECRET)
 
     url = f"{client.base_url}/v2/payments/captures/{capture_id}/refund"
@@ -371,7 +371,7 @@ def create_refund(capture_id, amount=None, note=None):
     return response.json()
 
 def get_refund_details(refund_id):
-    """Get refund details."""
+    """取得退款詳情。"""
     client = PayPalClient(CLIENT_ID, CLIENT_SECRET)
 
     url = f"{client.base_url}/v2/payments/refunds/{refund_id}"
@@ -383,85 +383,85 @@ def get_refund_details(refund_id):
     return response.json()
 ```
 
-## Error Handling
+## 錯誤處理
 
 ```python
 class PayPalError(Exception):
-    """Custom PayPal error."""
+    """自訂 PayPal 錯誤。"""
     pass
 
 def handle_paypal_api_call(api_function):
-    """Wrapper for PayPal API calls with error handling."""
+    """PayPal API 呼叫的錯誤處理包裝器。"""
     try:
         result = api_function()
         return result
     except requests.exceptions.RequestException as e:
-        # Network error
+        # 網路錯誤
         raise PayPalError(f"Network error: {str(e)}")
     except Exception as e:
-        # Other errors
+        # 其他錯誤
         raise PayPalError(f"PayPal API error: {str(e)}")
 
-# Usage
+# 使用方式
 try:
     order = handle_paypal_api_call(lambda: client.create_order(25.00))
 except PayPalError as e:
-    # Handle error appropriately
+    # 適當處理錯誤
     log_error(e)
 ```
 
-## Testing
+## 測試
 
 ```python
-# Use sandbox credentials
+# 使用沙箱憑證
 SANDBOX_CLIENT_ID = "..."
 SANDBOX_SECRET = "..."
 
-# Test accounts
-# Create test buyer and seller accounts at developer.paypal.com
+# 測試帳號
+# 在 developer.paypal.com 建立測試買家和賣家帳號
 
 def test_payment_flow():
-    """Test complete payment flow."""
+    """測試完整付款流程。"""
     client = PayPalClient(SANDBOX_CLIENT_ID, SANDBOX_SECRET, mode='sandbox')
 
-    # Create order
+    # 建立訂單
     order = client.create_order(10.00)
     assert 'id' in order
 
-    # Get approval URL
+    # 取得核准 URL
     approval_url = next((link['href'] for link in order['links'] if link['rel'] == 'approve'), None)
     assert approval_url is not None
 
-    # After approval (manual step with test account)
-    # Capture order
+    # 核准後（使用測試帳號的手動步驟）
+    # 擷取訂單
     # captured = client.capture_order(order['id'])
     # assert captured['status'] == 'COMPLETED'
 ```
 
-## Resources
+## 資源
 
-- **references/express-checkout.md**: Express Checkout implementation guide
-- **references/ipn-handling.md**: IPN verification and processing
-- **references/refund-workflows.md**: Refund handling patterns
-- **references/billing-agreements.md**: Recurring billing setup
-- **assets/paypal-client.py**: Production PayPal client
-- **assets/ipn-processor.py**: IPN webhook processor
-- **assets/recurring-billing.py**: Subscription management
+- **references/express-checkout.md**：Express Checkout 實作指南
+- **references/ipn-handling.md**：IPN 驗證與處理
+- **references/refund-workflows.md**：退款處理模式
+- **references/billing-agreements.md**：定期扣款設定
+- **assets/paypal-client.py**：正式環境 PayPal 客戶端
+- **assets/ipn-processor.py**：IPN webhook 處理器
+- **assets/recurring-billing.py**：訂閱管理
 
-## Best Practices
+## 最佳實踐
 
-1. **Always Verify IPN**: Never trust IPN without verification
-2. **Idempotent Processing**: Handle duplicate IPN notifications
-3. **Error Handling**: Implement robust error handling
-4. **Logging**: Log all transactions and errors
-5. **Test Thoroughly**: Use sandbox extensively
-6. **Webhook Backup**: Don't rely solely on client-side callbacks
-7. **Currency Handling**: Always specify currency explicitly
+1. **務必驗證 IPN**：永遠不要在未驗證的情況下信任 IPN
+2. **冪等處理**：處理重複的 IPN 通知
+3. **錯誤處理**：實作健全的錯誤處理
+4. **日誌記錄**：記錄所有交易和錯誤
+5. **徹底測試**：廣泛使用沙箱環境
+6. **Webhook 備援**：不要僅依賴客戶端回呼
+7. **幣別處理**：總是明確指定幣別
 
-## Common Pitfalls
+## 常見陷阱
 
-- **Not Verifying IPN**: Accepting IPN without verification
-- **Duplicate Processing**: Not checking for duplicate transactions
-- **Wrong Environment**: Mixing sandbox and production URLs/credentials
-- **Missing Webhooks**: Not handling all payment states
-- **Hardcoded Values**: Not making configurable for different environments
+- **未驗證 IPN**：在未驗證的情況下接受 IPN
+- **重複處理**：未檢查重複交易
+- **錯誤環境**：混用沙箱和正式環境的 URL／憑證
+- **遺漏 Webhooks**：未處理所有付款狀態
+- **硬編碼值**：未針對不同環境設定可配置選項

@@ -1,50 +1,50 @@
 ---
 name: grafana-dashboards
-description: Create and manage production Grafana dashboards for real-time visualization of system and application metrics. Use when building monitoring dashboards, visualizing metrics, or creating operational observability interfaces.
+description: 建立與管理正式環境 Grafana 儀表板，用於即時視覺化系統與應用程式指標。適用於建置監控儀表板、視覺化指標或建立操作可觀測性介面。
 ---
 
-# Grafana Dashboards
+# Grafana 儀表板
 
-Create and manage production-ready Grafana dashboards for comprehensive system observability.
+建立與管理正式環境就緒的 Grafana 儀表板，以達成全面的系統可觀測性。
 
-## Purpose
+## 目的
 
-Design effective Grafana dashboards for monitoring applications, infrastructure, and business metrics.
+設計有效的 Grafana 儀表板，用於監控應用程式、基礎架構與業務指標。
 
-## When to Use
+## 使用時機
 
-- Visualize Prometheus metrics
-- Create custom dashboards
-- Implement SLO dashboards
-- Monitor infrastructure
-- Track business KPIs
+- 視覺化 Prometheus 指標
+- 建立自訂儀表板
+- 實作 SLO（服務水準目標）儀表板
+- 監控基礎架構
+- 追蹤業務 KPI
 
-## Dashboard Design Principles
+## 儀表板設計原則
 
-### 1. Hierarchy of Information
+### 1. 資訊層級架構
 ```
 ┌─────────────────────────────────────┐
-│  Critical Metrics (Big Numbers)     │
+│  關鍵指標（大數字）                  │
 ├─────────────────────────────────────┤
-│  Key Trends (Time Series)           │
+│  重要趨勢（時間序列）                │
 ├─────────────────────────────────────┤
-│  Detailed Metrics (Tables/Heatmaps) │
+│  詳細指標（表格/熱力圖）             │
 └─────────────────────────────────────┘
 ```
 
-### 2. RED Method (Services)
-- **Rate** - Requests per second
-- **Errors** - Error rate
-- **Duration** - Latency/response time
+### 2. RED 方法（服務）
+- **Rate（請求率）** - 每秒請求數
+- **Errors（錯誤率）** - 錯誤率
+- **Duration（持續時間）** - 延遲/回應時間
 
-### 3. USE Method (Resources)
-- **Utilization** - % time resource is busy
-- **Saturation** - Queue length/wait time
-- **Errors** - Error count
+### 3. USE 方法（資源）
+- **Utilization（使用率）** - 資源忙碌時間百分比
+- **Saturation（飽和度）** - 佇列長度/等待時間
+- **Errors（錯誤）** - 錯誤計數
 
-## Dashboard Structure
+## 儀表板結構
 
-### API Monitoring Dashboard
+### API 監控儀表板
 
 ```json
 {
@@ -102,11 +102,11 @@ Design effective Grafana dashboards for monitoring applications, infrastructure,
 }
 ```
 
-**Reference:** See `assets/api-dashboard.json`
+**參考：** 請參閱 `assets/api-dashboard.json`
 
-## Panel Types
+## 面板類型
 
-### 1. Stat Panel (Single Value)
+### 1. Stat 面板（單一數值）
 ```json
 {
   "type": "stat",
@@ -138,7 +138,7 @@ Design effective Grafana dashboards for monitoring applications, infrastructure,
 }
 ```
 
-### 2. Time Series Graph
+### 2. 時間序列圖表
 ```json
 {
   "type": "graph",
@@ -153,7 +153,7 @@ Design effective Grafana dashboards for monitoring applications, infrastructure,
 }
 ```
 
-### 3. Table Panel
+### 3. 表格面板
 ```json
 {
   "type": "table",
@@ -180,7 +180,7 @@ Design effective Grafana dashboards for monitoring applications, infrastructure,
 }
 ```
 
-### 4. Heatmap
+### 4. 熱力圖
 ```json
 {
   "type": "heatmap",
@@ -196,9 +196,9 @@ Design effective Grafana dashboards for monitoring applications, infrastructure,
 }
 ```
 
-## Variables
+## 變數
 
-### Query Variables
+### 查詢變數
 ```json
 {
   "templating": {
@@ -224,12 +224,12 @@ Design effective Grafana dashboards for monitoring applications, infrastructure,
 }
 ```
 
-### Use Variables in Queries
+### 在查詢中使用變數
 ```
 sum(rate(http_requests_total{namespace="$namespace", service=~"$service"}[5m]))
 ```
 
-## Alerts in Dashboards
+## 儀表板中的告警
 
 ```json
 {
@@ -261,7 +261,7 @@ sum(rate(http_requests_total{namespace="$namespace", service=~"$service"}[5m]))
 }
 ```
 
-## Dashboard Provisioning
+## 儀表板佈建
 
 **dashboards.yml:**
 ```yaml
@@ -279,59 +279,59 @@ providers:
       path: /etc/grafana/dashboards
 ```
 
-## Common Dashboard Patterns
+## 常見儀表板模式
 
-### Infrastructure Dashboard
+### 基礎架構儀表板
 
-**Key Panels:**
-- CPU utilization per node
-- Memory usage per node
-- Disk I/O
-- Network traffic
-- Pod count by namespace
-- Node status
+**關鍵面板：**
+- 每個節點的 CPU 使用率
+- 每個節點的記憶體使用量
+- 磁碟 I/O
+- 網路流量
+- 依命名空間的 Pod 數量
+- 節點狀態
 
-**Reference:** See `assets/infrastructure-dashboard.json`
+**參考：** 請參閱 `assets/infrastructure-dashboard.json`
 
-### Database Dashboard
+### 資料庫儀表板
 
-**Key Panels:**
-- Queries per second
-- Connection pool usage
-- Query latency (P50, P95, P99)
-- Active connections
-- Database size
-- Replication lag
-- Slow queries
+**關鍵面板：**
+- 每秒查詢數
+- 連線池使用率
+- 查詢延遲（P50、P95、P99）
+- 活躍連線數
+- 資料庫大小
+- 複製延遲
+- 慢查詢
 
-**Reference:** See `assets/database-dashboard.json`
+**參考：** 請參閱 `assets/database-dashboard.json`
 
-### Application Dashboard
+### 應用程式儀表板
 
-**Key Panels:**
-- Request rate
-- Error rate
-- Response time (percentiles)
-- Active users/sessions
-- Cache hit rate
-- Queue length
+**關鍵面板：**
+- 請求率
+- 錯誤率
+- 回應時間（百分位數）
+- 活躍使用者/會話
+- 快取命中率
+- 佇列長度
 
-## Best Practices
+## 最佳實務
 
-1. **Start with templates** (Grafana community dashboards)
-2. **Use consistent naming** for panels and variables
-3. **Group related metrics** in rows
-4. **Set appropriate time ranges** (default: Last 6 hours)
-5. **Use variables** for flexibility
-6. **Add panel descriptions** for context
-7. **Configure units** correctly
-8. **Set meaningful thresholds** for colors
-9. **Use consistent colors** across dashboards
-10. **Test with different time ranges**
+1. **從範本開始**（Grafana 社群儀表板）
+2. **使用一致的命名**規範於面板與變數
+3. **將相關指標分組**於列中
+4. **設定適當的時間範圍**（預設值：最近 6 小時）
+5. **使用變數**以增加彈性
+6. **新增面板說明**以提供背景資訊
+7. **正確設定單位**
+8. **設定有意義的閾值**以定義顏色
+9. **跨儀表板使用一致的顏色**
+10. **使用不同時間範圍進行測試**
 
-## Dashboard as Code
+## 儀表板即程式碼
 
-### Terraform Provisioning
+### Terraform 佈建
 
 ```hcl
 resource "grafana_dashboard" "api_monitoring" {
@@ -344,7 +344,7 @@ resource "grafana_folder" "monitoring" {
 }
 ```
 
-### Ansible Provisioning
+### Ansible 佈建
 
 ```yaml
 - name: Deploy Grafana dashboards
@@ -356,14 +356,14 @@ resource "grafana_folder" "monitoring" {
   notify: restart grafana
 ```
 
-## Reference Files
+## 參考檔案
 
-- `assets/api-dashboard.json` - API monitoring dashboard
-- `assets/infrastructure-dashboard.json` - Infrastructure dashboard
-- `assets/database-dashboard.json` - Database monitoring dashboard
-- `references/dashboard-design.md` - Dashboard design guide
+- `assets/api-dashboard.json` - API 監控儀表板
+- `assets/infrastructure-dashboard.json` - 基礎架構儀表板
+- `assets/database-dashboard.json` - 資料庫監控儀表板
+- `references/dashboard-design.md` - 儀表板設計指南
 
-## Related Skills
+## 相關技能
 
-- `prometheus-configuration` - For metric collection
-- `slo-implementation` - For SLO dashboards
+- `prometheus-configuration` - 用於指標收集
+- `slo-implementation` - 用於 SLO 儀表板

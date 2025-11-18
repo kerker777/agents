@@ -1,86 +1,86 @@
 ---
 name: slo-implementation
-description: Define and implement Service Level Indicators (SLIs) and Service Level Objectives (SLOs) with error budgets and alerting. Use when establishing reliability targets, implementing SRE practices, or measuring service performance.
+description: 定義和實作服務等級指標（SLI）、服務等級目標（SLO），包含錯誤預算和告警機制。適用於建立可靠性目標、實施 SRE 實務，或衡量服務效能。
 ---
 
-# SLO Implementation
+# SLO 實作
 
-Framework for defining and implementing Service Level Indicators (SLIs), Service Level Objectives (SLOs), and error budgets.
+定義和實作服務等級指標（Service Level Indicators, SLI）、服務等級目標（Service Level Objectives, SLO）和錯誤預算的框架。
 
-## Purpose
+## 目的
 
-Implement measurable reliability targets using SLIs, SLOs, and error budgets to balance reliability with innovation velocity.
+使用 SLI、SLO 和錯誤預算實作可衡量的可靠性目標，以平衡可靠性與創新速度。
 
-## When to Use
+## 使用時機
 
-- Define service reliability targets
-- Measure user-perceived reliability
-- Implement error budgets
-- Create SLO-based alerts
-- Track reliability goals
+- 定義服務可靠性目標
+- 衡量使用者感知的可靠性
+- 實作錯誤預算
+- 建立基於 SLO 的告警
+- 追蹤可靠性目標
 
-## SLI/SLO/SLA Hierarchy
+## SLI/SLO/SLA 層級架構
 
 ```
-SLA (Service Level Agreement)
-  ↓ Contract with customers
-SLO (Service Level Objective)
-  ↓ Internal reliability target
-SLI (Service Level Indicator)
-  ↓ Actual measurement
+SLA (Service Level Agreement, 服務等級協議)
+  ↓ 與客戶的契約
+SLO (Service Level Objective, 服務等級目標)
+  ↓ 內部可靠性目標
+SLI (Service Level Indicator, 服務等級指標)
+  ↓ 實際測量值
 ```
 
-## Defining SLIs
+## 定義 SLI
 
-### Common SLI Types
+### 常見的 SLI 類型
 
-#### 1. Availability SLI
+#### 1. 可用性 SLI
 ```promql
-# Successful requests / Total requests
+# 成功請求數 / 總請求數
 sum(rate(http_requests_total{status!~"5.."}[28d]))
 /
 sum(rate(http_requests_total[28d]))
 ```
 
-#### 2. Latency SLI
+#### 2. 延遲 SLI
 ```promql
-# Requests below latency threshold / Total requests
+# 低於延遲閾值的請求數 / 總請求數
 sum(rate(http_request_duration_seconds_bucket{le="0.5"}[28d]))
 /
 sum(rate(http_request_duration_seconds_count[28d]))
 ```
 
-#### 3. Durability SLI
+#### 3. 持久性 SLI
 ```
-# Successful writes / Total writes
+# 成功寫入數 / 總寫入數
 sum(storage_writes_successful_total)
 /
 sum(storage_writes_total)
 ```
 
-**Reference:** See `references/slo-definitions.md`
+**參考：** 請見 `references/slo-definitions.md`
 
-## Setting SLO Targets
+## 設定 SLO 目標
 
-### Availability SLO Examples
+### 可用性 SLO 範例
 
-| SLO % | Downtime/Month | Downtime/Year |
-|-------|----------------|---------------|
-| 99%   | 7.2 hours      | 3.65 days     |
-| 99.9% | 43.2 minutes   | 8.76 hours    |
-| 99.95%| 21.6 minutes   | 4.38 hours    |
-| 99.99%| 4.32 minutes   | 52.56 minutes |
+| SLO % | 每月停機時間 | 每年停機時間 |
+|-------|-------------|-------------|
+| 99%   | 7.2 小時    | 3.65 天     |
+| 99.9% | 43.2 分鐘   | 8.76 小時   |
+| 99.95%| 21.6 分鐘   | 4.38 小時   |
+| 99.99%| 4.32 分鐘   | 52.56 分鐘  |
 
-### Choose Appropriate SLOs
+### 選擇適當的 SLO
 
-**Consider:**
-- User expectations
-- Business requirements
-- Current performance
-- Cost of reliability
-- Competitor benchmarks
+**考量因素：**
+- 使用者期望
+- 業務需求
+- 目前效能
+- 可靠性成本
+- 競爭對手基準
 
-**Example SLOs:**
+**SLO 範例：**
 ```yaml
 slos:
   - name: api_availability
@@ -100,21 +100,21 @@ slos:
       sum(rate(http_request_duration_seconds_count[28d]))
 ```
 
-## Error Budget Calculation
+## 錯誤預算計算
 
-### Error Budget Formula
+### 錯誤預算公式
 
 ```
-Error Budget = 1 - SLO Target
+錯誤預算 = 1 - SLO 目標值
 ```
 
-**Example:**
-- SLO: 99.9% availability
-- Error Budget: 0.1% = 43.2 minutes/month
-- Current Error: 0.05% = 21.6 minutes/month
-- Remaining Budget: 50%
+**範例：**
+- SLO：99.9% 可用性
+- 錯誤預算：0.1% = 43.2 分鐘/月
+- 當前錯誤：0.05% = 21.6 分鐘/月
+- 剩餘預算：50%
 
-### Error Budget Policy
+### 錯誤預算政策
 
 ```yaml
 error_budget_policy:
@@ -128,9 +128,9 @@ error_budget_policy:
     action: Feature freeze, focus on reliability
 ```
 
-**Reference:** See `references/error-budget.md`
+**參考：** 請見 `references/error-budget.md`
 
-## SLO Implementation
+## SLO 實作
 
 ### Prometheus Recording Rules
 
@@ -140,14 +140,14 @@ groups:
   - name: sli_rules
     interval: 30s
     rules:
-      # Availability SLI
+      # 可用性 SLI
       - record: sli:http_availability:ratio
         expr: |
           sum(rate(http_requests_total{status!~"5.."}[28d]))
           /
           sum(rate(http_requests_total[28d]))
 
-      # Latency SLI (requests < 500ms)
+      # 延遲 SLI (請求 < 500ms)
       - record: sli:http_latency:ratio
         expr: |
           sum(rate(http_request_duration_seconds_bucket{le="0.5"}[28d]))
@@ -157,19 +157,19 @@ groups:
   - name: slo_rules
     interval: 5m
     rules:
-      # SLO compliance (1 = meeting SLO, 0 = violating)
+      # SLO 合規性 (1 = 符合 SLO, 0 = 違反)
       - record: slo:http_availability:compliance
         expr: sli:http_availability:ratio >= bool 0.999
 
       - record: slo:http_latency:compliance
         expr: sli:http_latency:ratio >= bool 0.99
 
-      # Error budget remaining (percentage)
+      # 剩餘錯誤預算 (百分比)
       - record: slo:http_availability:error_budget_remaining
         expr: |
           (sli:http_availability:ratio - 0.999) / (1 - 0.999) * 100
 
-      # Error budget burn rate
+      # 錯誤預算消耗率
       - record: slo:http_availability:burn_rate_5m
         expr: |
           (1 - (
@@ -179,15 +179,15 @@ groups:
           )) / (1 - 0.999)
 ```
 
-### SLO Alerting Rules
+### SLO 告警規則
 
 ```yaml
 groups:
   - name: slo_alerts
     interval: 1m
     rules:
-      # Fast burn: 14.4x rate, 1 hour window
-      # Consumes 2% error budget in 1 hour
+      # 快速消耗：14.4 倍速率，1 小時視窗
+      # 1 小時內消耗 2% 錯誤預算
       - alert: SLOErrorBudgetBurnFast
         expr: |
           slo:http_availability:burn_rate_1h > 14.4
@@ -197,11 +197,11 @@ groups:
         labels:
           severity: critical
         annotations:
-          summary: "Fast error budget burn detected"
-          description: "Error budget burning at {{ $value }}x rate"
+          summary: "偵測到快速錯誤預算消耗"
+          description: "錯誤預算以 {{ $value }} 倍速率消耗中"
 
-      # Slow burn: 6x rate, 6 hour window
-      # Consumes 5% error budget in 6 hours
+      # 緩慢消耗：6 倍速率，6 小時視窗
+      # 6 小時內消耗 5% 錯誤預算
       - alert: SLOErrorBudgetBurnSlow
         expr: |
           slo:http_availability:burn_rate_6h > 6
@@ -211,50 +211,50 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "Slow error budget burn detected"
-          description: "Error budget burning at {{ $value }}x rate"
+          summary: "偵測到緩慢錯誤預算消耗"
+          description: "錯誤預算以 {{ $value }} 倍速率消耗中"
 
-      # Error budget exhausted
+      # 錯誤預算耗盡
       - alert: SLOErrorBudgetExhausted
         expr: slo:http_availability:error_budget_remaining < 0
         for: 5m
         labels:
           severity: critical
         annotations:
-          summary: "SLO error budget exhausted"
-          description: "Error budget remaining: {{ $value }}%"
+          summary: "SLO 錯誤預算已耗盡"
+          description: "剩餘錯誤預算：{{ $value }}%"
 ```
 
-## SLO Dashboard
+## SLO 儀表板
 
-**Grafana Dashboard Structure:**
+**Grafana 儀表板結構：**
 
 ```
 ┌────────────────────────────────────┐
-│ SLO Compliance (Current)           │
-│ ✓ 99.95% (Target: 99.9%)          │
+│ SLO 合規性（當前）                  │
+│ ✓ 99.95% (目標：99.9%)             │
 ├────────────────────────────────────┤
-│ Error Budget Remaining: 65%        │
+│ 剩餘錯誤預算：65%                   │
 │ ████████░░ 65%                     │
 ├────────────────────────────────────┤
-│ SLI Trend (28 days)                │
-│ [Time series graph]                │
+│ SLI 趨勢（28 天）                   │
+│ [時間序列圖表]                      │
 ├────────────────────────────────────┤
-│ Burn Rate Analysis                 │
-│ [Burn rate by time window]         │
+│ 消耗率分析                          │
+│ [依時間視窗的消耗率]                │
 └────────────────────────────────────┘
 ```
 
-**Example Queries:**
+**查詢範例：**
 
 ```promql
-# Current SLO compliance
+# 當前 SLO 合規性
 sli:http_availability:ratio * 100
 
-# Error budget remaining
+# 剩餘錯誤預算
 slo:http_availability:error_budget_remaining
 
-# Days until error budget exhausted (at current burn rate)
+# 錯誤預算耗盡前的天數（以當前消耗率計算）
 (slo:http_availability:error_budget_remaining / 100)
 *
 28
@@ -262,10 +262,10 @@ slo:http_availability:error_budget_remaining
 (1 - sli:http_availability:ratio) * (1 - 0.999)
 ```
 
-## Multi-Window Burn Rate Alerts
+## 多視窗消耗率告警
 
 ```yaml
-# Combination of short and long windows reduces false positives
+# 結合短期和長期視窗以減少誤報
 rules:
   - alert: SLOBurnRateHigh
     expr: |
@@ -284,46 +284,46 @@ rules:
       severity: critical
 ```
 
-## SLO Review Process
+## SLO 審查流程
 
-### Weekly Review
-- Current SLO compliance
-- Error budget status
-- Trend analysis
-- Incident impact
+### 每週審查
+- 當前 SLO 合規性
+- 錯誤預算狀態
+- 趨勢分析
+- 事件影響
 
-### Monthly Review
-- SLO achievement
-- Error budget usage
-- Incident postmortems
-- SLO adjustments
+### 每月審查
+- SLO 達成情況
+- 錯誤預算使用情況
+- 事件事後檢討
+- SLO 調整
 
-### Quarterly Review
-- SLO relevance
-- Target adjustments
-- Process improvements
-- Tooling enhancements
+### 每季審查
+- SLO 相關性
+- 目標調整
+- 流程改善
+- 工具增強
 
-## Best Practices
+## 最佳實務
 
-1. **Start with user-facing services**
-2. **Use multiple SLIs** (availability, latency, etc.)
-3. **Set achievable SLOs** (don't aim for 100%)
-4. **Implement multi-window alerts** to reduce noise
-5. **Track error budget** consistently
-6. **Review SLOs regularly**
-7. **Document SLO decisions**
-8. **Align with business goals**
-9. **Automate SLO reporting**
-10. **Use SLOs for prioritization**
+1. **從面向使用者的服務開始**
+2. **使用多個 SLI**（可用性、延遲等）
+3. **設定可達成的 SLO**（不要追求 100%）
+4. **實作多視窗告警**以減少雜訊
+5. **持續追蹤錯誤預算**
+6. **定期審查 SLO**
+7. **記錄 SLO 決策**
+8. **與業務目標對齊**
+9. **自動化 SLO 報告**
+10. **使用 SLO 進行優先順序排序**
 
-## Reference Files
+## 參考檔案
 
-- `assets/slo-template.md` - SLO definition template
-- `references/slo-definitions.md` - SLO definition patterns
-- `references/error-budget.md` - Error budget calculations
+- `assets/slo-template.md` - SLO 定義範本
+- `references/slo-definitions.md` - SLO 定義模式
+- `references/error-budget.md` - 錯誤預算計算
 
-## Related Skills
+## 相關技能
 
-- `prometheus-configuration` - For metric collection
-- `grafana-dashboards` - For SLO visualization
+- `prometheus-configuration` - 用於指標收集
+- `grafana-dashboards` - 用於 SLO 視覺化

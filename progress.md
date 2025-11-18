@@ -1,9 +1,9 @@
 # 翻譯進度追蹤
 
 總檔案數: 307
-已完成: 251
+已完成: 261
 進行中: 0
-待處理: 56
+待處理: 46
 
 ## 檔案清單
 
@@ -249,16 +249,16 @@
 - [x] /home/user/agents/plugins/observability-monitoring/agents/performance-engineer.md
 - [x] /home/user/agents/plugins/observability-monitoring/commands/monitor-setup.md
 - [x] /home/user/agents/plugins/observability-monitoring/commands/slo-implement.md
-- [ ] /home/user/agents/plugins/observability-monitoring/skills/distributed-tracing/SKILL.md
-- [ ] /home/user/agents/plugins/observability-monitoring/skills/grafana-dashboards/SKILL.md
-- [ ] /home/user/agents/plugins/observability-monitoring/skills/prometheus-configuration/SKILL.md
-- [ ] /home/user/agents/plugins/observability-monitoring/skills/slo-implementation/SKILL.md
-- [ ] /home/user/agents/plugins/payment-processing/agents/payment-integration.md
-- [ ] /home/user/agents/plugins/payment-processing/skills/billing-automation/SKILL.md
-- [ ] /home/user/agents/plugins/payment-processing/skills/paypal-integration/SKILL.md
-- [ ] /home/user/agents/plugins/payment-processing/skills/pci-compliance/SKILL.md
-- [ ] /home/user/agents/plugins/payment-processing/skills/stripe-integration/SKILL.md
-- [ ] /home/user/agents/plugins/performance-testing-review/agents/performance-engineer.md
+- [x] /home/user/agents/plugins/observability-monitoring/skills/distributed-tracing/SKILL.md
+- [x] /home/user/agents/plugins/observability-monitoring/skills/grafana-dashboards/SKILL.md
+- [x] /home/user/agents/plugins/observability-monitoring/skills/prometheus-configuration/SKILL.md
+- [x] /home/user/agents/plugins/observability-monitoring/skills/slo-implementation/SKILL.md
+- [x] /home/user/agents/plugins/payment-processing/agents/payment-integration.md
+- [x] /home/user/agents/plugins/payment-processing/skills/billing-automation/SKILL.md
+- [x] /home/user/agents/plugins/payment-processing/skills/paypal-integration/SKILL.md
+- [x] /home/user/agents/plugins/payment-processing/skills/pci-compliance/SKILL.md
+- [x] /home/user/agents/plugins/payment-processing/skills/stripe-integration/SKILL.md
+- [x] /home/user/agents/plugins/performance-testing-review/agents/performance-engineer.md
 - [ ] /home/user/agents/plugins/performance-testing-review/agents/test-automator.md
 - [ ] /home/user/agents/plugins/performance-testing-review/commands/ai-review.md
 - [ ] /home/user/agents/plugins/performance-testing-review/commands/multi-agent-review.md
