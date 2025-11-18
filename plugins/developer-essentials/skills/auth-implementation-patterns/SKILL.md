@@ -1,58 +1,58 @@
 ---
 name: auth-implementation-patterns
-description: Master authentication and authorization patterns including JWT, OAuth2, session management, and RBAC to build secure, scalable access control systems. Use when implementing auth systems, securing APIs, or debugging security issues.
+description: 精通身份驗證與授權模式，包括 JWT、OAuth2、會話管理和 RBAC，以建立安全且可擴展的存取控制系統。適用於實作認證系統、保護 API 或除錯安全問題。
 ---
 
-# Authentication & Authorization Implementation Patterns
+# 身份驗證與授權實作模式
 
-Build secure, scalable authentication and authorization systems using industry-standard patterns and modern best practices.
+使用業界標準模式和現代最佳實務，建立安全且可擴展的身份驗證與授權系統。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Implementing user authentication systems
-- Securing REST or GraphQL APIs
-- Adding OAuth2/social login
-- Implementing role-based access control (RBAC)
-- Designing session management
-- Migrating authentication systems
-- Debugging auth issues
-- Implementing SSO or multi-tenancy
+- 實作使用者身份驗證系統
+- 保護 REST 或 GraphQL API
+- 加入 OAuth2/社群登入
+- 實作角色型存取控制 (RBAC)
+- 設計會話管理
+- 遷移身份驗證系統
+- 除錯認證問題
+- 實作 SSO 或多租戶
 
-## Core Concepts
+## 核心概念
 
-### 1. Authentication vs Authorization
+### 1. 身份驗證 vs 授權
 
-**Authentication (AuthN)**: Who are you?
-- Verifying identity (username/password, OAuth, biometrics)
-- Issuing credentials (sessions, tokens)
-- Managing login/logout
+**身份驗證 (AuthN)**: 你是誰？
+- 驗證身份（使用者名稱/密碼、OAuth、生物辨識）
+- 核發憑證（會話、權杖）
+- 管理登入/登出
 
-**Authorization (AuthZ)**: What can you do?
-- Permission checking
-- Role-based access control (RBAC)
-- Resource ownership validation
-- Policy enforcement
+**授權 (AuthZ)**: 你能做什麼？
+- 權限檢查
+- 角色型存取控制 (RBAC)
+- 資源擁有權驗證
+- 政策執行
 
-### 2. Authentication Strategies
+### 2. 身份驗證策略
 
-**Session-Based:**
-- Server stores session state
-- Session ID in cookie
-- Traditional, simple, stateful
+**基於會話：**
+- 伺服器儲存會話狀態
+- 會話 ID 存於 cookie
+- 傳統、簡單、有狀態
 
-**Token-Based (JWT):**
-- Stateless, self-contained
-- Scales horizontally
-- Can store claims
+**基於權杖 (JWT)：**
+- 無狀態、自包含
+- 水平擴展
+- 可儲存聲明
 
-**OAuth2/OpenID Connect:**
-- Delegate authentication
-- Social login (Google, GitHub)
-- Enterprise SSO
+**OAuth2/OpenID Connect：**
+- 委派身份驗證
+- 社群登入（Google、GitHub）
+- 企業 SSO
 
-## JWT Authentication
+## JWT 身份驗證
 
-### Pattern 1: JWT Implementation
+### 模式 1：JWT 實作
 
 ```typescript
 // JWT structure: header.payload.signature
@@ -122,7 +122,7 @@ app.get('/api/profile', authenticate, (req, res) => {
 });
 ```
 
-### Pattern 2: Refresh Token Flow
+### 模式 2：刷新權杖流程
 
 ```typescript
 interface StoredRefreshToken {
@@ -217,9 +217,9 @@ app.post('/api/auth/logout', authenticate, async (req, res) => {
 });
 ```
 
-## Session-Based Authentication
+## 基於會話的身份驗證
 
-### Pattern 1: Express Session
+### 模式 1：Express 會話
 
 ```typescript
 import session from 'express-session';
@@ -289,9 +289,9 @@ app.post('/api/auth/logout', (req, res) => {
 });
 ```
 
-## OAuth2 / Social Login
+## OAuth2 / 社群登入
 
-### Pattern 1: OAuth2 with Passport.js
+### 模式 1：使用 Passport.js 的 OAuth2
 
 ```typescript
 import passport from 'passport';
@@ -347,9 +347,9 @@ app.get(
 );
 ```
 
-## Authorization Patterns
+## 授權模式
 
-### Pattern 1: Role-Based Access Control (RBAC)
+### 模式 1：角色型存取控制 (RBAC)
 
 ```typescript
 enum Role {
@@ -395,7 +395,7 @@ app.delete('/api/users/:id',
 );
 ```
 
-### Pattern 2: Permission-Based Access Control
+### 模式 2：權限型存取控制
 
 ```typescript
 enum Permission {
@@ -449,7 +449,7 @@ app.get('/api/users',
 );
 ```
 
-### Pattern 3: Resource Ownership
+### 模式 3：資源擁有權
 
 ```typescript
 // Check if user owns resource
@@ -501,9 +501,9 @@ app.put('/api/posts/:id',
 );
 ```
 
-## Security Best Practices
+## 安全最佳實務
 
-### Pattern 1: Password Security
+### 模式 1：密碼安全
 
 ```typescript
 import bcrypt from 'bcrypt';
@@ -570,7 +570,7 @@ app.post('/api/auth/register', async (req, res) => {
 });
 ```
 
-### Pattern 2: Rate Limiting
+### 模式 2：速率限制
 
 ```typescript
 import rateLimit from 'express-rate-limit';
@@ -601,34 +601,34 @@ app.post('/api/auth/login', loginLimiter, async (req, res) => {
 app.use('/api/', apiLimiter);
 ```
 
-## Best Practices
+## 最佳實務
 
-1. **Never Store Plain Passwords**: Always hash with bcrypt/argon2
-2. **Use HTTPS**: Encrypt data in transit
-3. **Short-Lived Access Tokens**: 15-30 minutes max
-4. **Secure Cookies**: httpOnly, secure, sameSite flags
-5. **Validate All Input**: Email format, password strength
-6. **Rate Limit Auth Endpoints**: Prevent brute force attacks
-7. **Implement CSRF Protection**: For session-based auth
-8. **Rotate Secrets Regularly**: JWT secrets, session secrets
-9. **Log Security Events**: Login attempts, failed auth
-10. **Use MFA When Possible**: Extra security layer
+1. **絕不儲存明文密碼**：始終使用 bcrypt/argon2 進行雜湊
+2. **使用 HTTPS**：加密傳輸中的資料
+3. **短期存取權杖**：最多 15-30 分鐘
+4. **安全的 Cookie**：httpOnly、secure、sameSite 標籤
+5. **驗證所有輸入**：電子郵件格式、密碼強度
+6. **限制認證端點速率**：防止暴力破解攻擊
+7. **實作 CSRF 保護**：針對基於會話的認證
+8. **定期輪換密鑰**：JWT 密鑰、會話密鑰
+9. **記錄安全事件**：登入嘗試、認證失敗
+10. **盡可能使用 MFA**：額外的安全層
 
-## Common Pitfalls
+## 常見陷阱
 
-- **Weak Passwords**: Enforce strong password policies
-- **JWT in localStorage**: Vulnerable to XSS, use httpOnly cookies
-- **No Token Expiration**: Tokens should expire
-- **Client-Side Auth Checks Only**: Always validate server-side
-- **Insecure Password Reset**: Use secure tokens with expiration
-- **No Rate Limiting**: Vulnerable to brute force
-- **Trusting Client Data**: Always validate on server
+- **弱密碼**：強制執行強密碼政策
+- **JWT 存於 localStorage**：容易受 XSS 攻擊，應使用 httpOnly cookie
+- **沒有權杖過期**：權杖應該會過期
+- **僅在客戶端檢查認證**：始終在伺服器端驗證
+- **不安全的密碼重設**：使用有過期時間的安全權杖
+- **沒有速率限制**：容易受暴力破解攻擊
+- **信任客戶端資料**：始終在伺服器端驗證
 
-## Resources
+## 資源
 
-- **references/jwt-best-practices.md**: JWT implementation guide
-- **references/oauth2-flows.md**: OAuth2 flow diagrams and examples
-- **references/session-security.md**: Secure session management
-- **assets/auth-security-checklist.md**: Security review checklist
-- **assets/password-policy-template.md**: Password requirements template
-- **scripts/token-validator.ts**: JWT validation utility
+- **references/jwt-best-practices.md**：JWT 實作指南
+- **references/oauth2-flows.md**：OAuth2 流程圖和範例
+- **references/session-security.md**：安全會話管理
+- **assets/auth-security-checklist.md**：安全審查檢查清單
+- **assets/password-policy-template.md**：密碼需求範本
+- **scripts/token-validator.ts**：JWT 驗證工具

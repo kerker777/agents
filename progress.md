@@ -3,7 +3,7 @@
 總檔案數: 307
 已完成: 8
 進行中: 0
-待處理: 181
+待處理: 165
 
 ## 檔案清單
 
@@ -133,22 +133,22 @@
 - [x] /home/user/agents/plugins/deployment-strategies/agents/terraform-specialist.md
 - [x] /home/user/agents/plugins/deployment-validation/agents/cloud-architect.md
 - [x] /home/user/agents/plugins/deployment-validation/commands/config-validate.md
-- [ ] /home/user/agents/plugins/developer-essentials/skills/auth-implementation-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/developer-essentials/skills/code-review-excellence/SKILL.md
-- [ ] /home/user/agents/plugins/developer-essentials/skills/debugging-strategies/SKILL.md
-- [ ] /home/user/agents/plugins/developer-essentials/skills/e2e-testing-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/developer-essentials/skills/error-handling-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/developer-essentials/skills/git-advanced-workflows/SKILL.md
-- [ ] /home/user/agents/plugins/developer-essentials/skills/monorepo-management/SKILL.md
-- [ ] /home/user/agents/plugins/developer-essentials/skills/sql-optimization-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/distributed-debugging/agents/devops-troubleshooter.md
-- [ ] /home/user/agents/plugins/distributed-debugging/agents/error-detective.md
-- [ ] /home/user/agents/plugins/distributed-debugging/commands/debug-trace.md
-- [ ] /home/user/agents/plugins/documentation-generation/agents/api-documenter.md
-- [ ] /home/user/agents/plugins/documentation-generation/agents/docs-architect.md
-- [ ] /home/user/agents/plugins/documentation-generation/agents/mermaid-expert.md
-- [ ] /home/user/agents/plugins/documentation-generation/agents/reference-builder.md
-- [ ] /home/user/agents/plugins/documentation-generation/agents/tutorial-engineer.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/auth-implementation-patterns/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/code-review-excellence/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/debugging-strategies/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/e2e-testing-patterns/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/error-handling-patterns/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/git-advanced-workflows/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/monorepo-management/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/sql-optimization-patterns/SKILL.md
+- [x] /home/user/agents/plugins/distributed-debugging/agents/devops-troubleshooter.md
+- [x] /home/user/agents/plugins/distributed-debugging/agents/error-detective.md
+- [x] /home/user/agents/plugins/distributed-debugging/commands/debug-trace.md
+- [x] /home/user/agents/plugins/documentation-generation/agents/api-documenter.md
+- [x] /home/user/agents/plugins/documentation-generation/agents/docs-architect.md
+- [x] /home/user/agents/plugins/documentation-generation/agents/mermaid-expert.md
+- [x] /home/user/agents/plugins/documentation-generation/agents/reference-builder.md
+- [x] /home/user/agents/plugins/documentation-generation/agents/tutorial-engineer.md
 - [ ] /home/user/agents/plugins/documentation-generation/commands/doc-generate.md
 - [ ] /home/user/agents/plugins/error-debugging/agents/debugger.md
 - [ ] /home/user/agents/plugins/error-debugging/agents/error-detective.md
