@@ -3,26 +3,26 @@ name: javascript-testing-patterns
 description: Implement comprehensive testing strategies using Jest, Vitest, and Testing Library for unit tests, integration tests, and end-to-end testing with mocking, fixtures, and test-driven development. Use when writing JavaScript/TypeScript tests, setting up test infrastructure, or implementing TDD/BDD workflows.
 ---
 
-# JavaScript Testing Patterns
+# JavaScript 測試模式
 
-Comprehensive guide for implementing robust testing strategies in JavaScript/TypeScript applications using modern testing frameworks and best practices.
+全面指南，介紹如何使用現代測試框架和最佳實踐，在 JavaScript/TypeScript 應用程式中實作穩健的測試策略。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Setting up test infrastructure for new projects
-- Writing unit tests for functions and classes
-- Creating integration tests for APIs and services
-- Implementing end-to-end tests for user flows
-- Mocking external dependencies and APIs
-- Testing React, Vue, or other frontend components
-- Implementing test-driven development (TDD)
-- Setting up continuous testing in CI/CD pipelines
+- 為新專案建立測試基礎架構
+- 為函式和類別撰寫單元測試
+- 為 API 和服務建立整合測試
+- 為使用者流程實作端對端測試
+- 模擬外部相依性和 API
+- 測試 React、Vue 或其他前端元件
+- 實作測試驅動開發 (TDD)
+- 在 CI/CD 流程中建立持續測試
 
-## Testing Frameworks
+## 測試框架
 
-### Jest - Full-Featured Testing Framework
+### Jest - 功能完整的測試框架
 
-**Setup:**
+**設定：**
 ```typescript
 // jest.config.ts
 import type { Config } from 'jest';
@@ -51,9 +51,9 @@ const config: Config = {
 export default config;
 ```
 
-### Vitest - Fast, Vite-Native Testing
+### Vitest - 快速、Vite 原生測試
 
-**Setup:**
+**設定：**
 ```typescript
 // vitest.config.ts
 import { defineConfig } from 'vitest/config';
@@ -72,9 +72,9 @@ export default defineConfig({
 });
 ```
 
-## Unit Testing Patterns
+## 單元測試模式
 
-### Pattern 1: Testing Pure Functions
+### 模式 1：測試純函式
 
 ```typescript
 // utils/calculator.ts
@@ -125,7 +125,7 @@ describe('Calculator', () => {
 });
 ```
 
-### Pattern 2: Testing Classes
+### 模式 2：測試類別
 
 ```typescript
 // services/user.service.ts
@@ -206,7 +206,7 @@ describe('UserService', () => {
 });
 ```
 
-### Pattern 3: Testing Async Functions
+### 模式 3：測試非同步函式
 
 ```typescript
 // services/api.service.ts
@@ -293,9 +293,9 @@ describe('ApiService', () => {
 });
 ```
 
-## Mocking Patterns
+## 模擬模式
 
-### Pattern 1: Mocking Modules
+### 模式 1：模擬模組
 
 ```typescript
 // services/email.service.ts
@@ -357,7 +357,7 @@ describe('EmailService', () => {
 });
 ```
 
-### Pattern 2: Dependency Injection for Testing
+### 模式 2：用於測試的依賴注入
 
 ```typescript
 // services/user.service.ts
@@ -434,7 +434,7 @@ describe('UserService', () => {
 });
 ```
 
-### Pattern 3: Spying on Functions
+### 模式 3：監視函式
 
 ```typescript
 // utils/logger.ts
@@ -482,9 +482,9 @@ describe('OrderService', () => {
 });
 ```
 
-## Integration Testing
+## 整合測試
 
-### Pattern 1: API Integration Tests
+### 模式 1：API 整合測試
 
 ```typescript
 // tests/integration/user.api.test.ts
@@ -630,7 +630,7 @@ describe('User API Integration Tests', () => {
 });
 ```
 
-### Pattern 2: Database Integration Tests
+### 模式 2：資料庫整合測試
 
 ```typescript
 // tests/integration/user.repository.test.ts
@@ -706,9 +706,9 @@ describe('UserRepository Integration Tests', () => {
 });
 ```
 
-## Frontend Testing with Testing Library
+## 使用 Testing Library 進行前端測試
 
-### Pattern 1: React Component Testing
+### 模式 1：React 元件測試
 
 ```typescript
 // components/UserForm.tsx
@@ -795,7 +795,7 @@ describe('UserForm', () => {
 });
 ```
 
-### Pattern 2: Testing Hooks
+### 模式 2：測試 Hooks
 
 ```typescript
 // hooks/useCounter.ts
@@ -866,7 +866,7 @@ describe('useCounter', () => {
 });
 ```
 
-## Test Fixtures and Factories
+## 測試固件和工廠函式
 
 ```typescript
 // tests/fixtures/user.fixture.ts
@@ -902,7 +902,7 @@ describe('UserService', () => {
 });
 ```
 
-## Snapshot Testing
+## 快照測試
 
 ```typescript
 // components/UserCard.test.tsx
@@ -931,7 +931,7 @@ describe('UserCard', () => {
 });
 ```
 
-## Coverage Reports
+## 涵蓋率報告
 
 ```typescript
 // package.json
@@ -944,27 +944,27 @@ describe('UserCard', () => {
 }
 ```
 
-## Best Practices
+## 最佳實踐
 
-1. **Follow AAA Pattern**: Arrange, Act, Assert
-2. **One assertion per test**: Or logically related assertions
-3. **Descriptive test names**: Should describe what is being tested
-4. **Use beforeEach/afterEach**: For setup and teardown
-5. **Mock external dependencies**: Keep tests isolated
-6. **Test edge cases**: Not just happy paths
-7. **Avoid implementation details**: Test behavior, not implementation
-8. **Use test factories**: For consistent test data
-9. **Keep tests fast**: Mock slow operations
-10. **Write tests first (TDD)**: When possible
-11. **Maintain test coverage**: Aim for 80%+ coverage
-12. **Use TypeScript**: For type-safe tests
-13. **Test error handling**: Not just success cases
-14. **Use data-testid sparingly**: Prefer semantic queries
-15. **Clean up after tests**: Prevent test pollution
+1. **遵循 AAA 模式**：安排（Arrange）、執行（Act）、斷言（Assert）
+2. **每個測試一個斷言**：或邏輯上相關的斷言
+3. **描述性的測試名稱**：應該描述正在測試的內容
+4. **使用 beforeEach/afterEach**：用於設定和清理
+5. **模擬外部相依性**：保持測試隔離
+6. **測試邊界案例**：不只是快樂路徑
+7. **避免實作細節**：測試行為而非實作
+8. **使用測試工廠函式**：獲得一致的測試資料
+9. **保持測試快速**：模擬慢速操作
+10. **先寫測試 (TDD)**：盡可能
+11. **維持測試涵蓋率**：目標 80% 以上的涵蓋率
+12. **使用 TypeScript**：進行型別安全的測試
+13. **測試錯誤處理**：不只是成功案例
+14. **謹慎使用 data-testid**：優先使用語意查詢
+15. **測試後清理**：防止測試污染
 
-## Common Patterns
+## 常見模式
 
-### Test Organization
+### 測試組織
 
 ```typescript
 describe('UserService', () => {
@@ -981,7 +981,7 @@ describe('UserService', () => {
 });
 ```
 
-### Testing Promises
+### 測試 Promises
 
 ```typescript
 // Using async/await
@@ -996,7 +996,7 @@ it('should throw error', async () => {
 });
 ```
 
-### Testing Timers
+### 測試計時器
 
 ```typescript
 import { vi } from 'vitest';
@@ -1017,7 +1017,7 @@ it('should call function after delay', () => {
 });
 ```
 
-## Resources
+## 資源
 
 - **Jest Documentation**: https://jestjs.io/
 - **Vitest Documentation**: https://vitest.dev/

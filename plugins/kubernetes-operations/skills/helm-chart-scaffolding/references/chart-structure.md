@@ -1,8 +1,8 @@
-# Helm Chart Structure Reference
+# Helm Chart 結構參考
 
-Complete guide to Helm chart organization, file conventions, and best practices.
+Helm chart 組織、檔案慣例和最佳實踐的完整指南。
 
-## Standard Chart Directory Structure
+## 標準 Chart 目錄結構
 
 ```
 my-app/
@@ -36,9 +36,9 @@ my-app/
         └── app.conf
 ```
 
-## Chart.yaml Specification
+## Chart.yaml 規格
 
-### API Version v2 (Helm 3+)
+### API 版本 v2（Helm 3+）
 
 ```yaml
 apiVersion: v2                    # Required: API version
@@ -76,28 +76,28 @@ dependencies:                     # Chart dependencies
     alias: db
 ```
 
-## Chart Types
+## Chart 類型
 
 ### Application Chart
 ```yaml
 type: application
 ```
-- Standard Kubernetes applications
-- Can be installed and managed
-- Contains templates for K8s resources
+- 標準 Kubernetes 應用程式
+- 可安裝和管理
+- 包含 K8s 資源的範本
 
 ### Library Chart
 ```yaml
 type: library
 ```
-- Shared template helpers
-- Cannot be installed directly
-- Used as dependency by other charts
-- No templates/ directory
+- 共用範本輔助函式
+- 無法直接安裝
+- 作為其他 chart 的相依性使用
+- 沒有 templates/ 目錄
 
-## Values Files Organization
+## Values 檔案組織
 
-### values.yaml (defaults)
+### values.yaml（預設值）
 ```yaml
 # Global values (shared with subcharts)
 global:
@@ -164,7 +164,7 @@ serviceMonitor:
   interval: 30s
 ```
 
-### values.schema.json (validation)
+### values.schema.json（驗證）
 ```json
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
@@ -195,16 +195,16 @@ serviceMonitor:
 }
 ```
 
-## Template Files
+## 範本檔案
 
-### Template Naming Conventions
+### 範本命名慣例
 
-- **Lowercase with hyphens**: `deployment.yaml`, `service-account.yaml`
-- **Partial templates**: Prefix with underscore `_helpers.tpl`
-- **Tests**: Place in `templates/tests/`
-- **CRDs**: Place in `crds/` (not templated)
+- **小寫加連字號**：`deployment.yaml`、`service-account.yaml`
+- **部分範本**：以底線為前綴 `_helpers.tpl`
+- **測試**：放在 `templates/tests/`
+- **CRD**：放在 `crds/`（不範本化）
 
-### Common Templates
+### 常見範本
 
 #### _helpers.tpl
 ```yaml
@@ -286,9 +286,9 @@ Get the application URL by running:
 {{- end }}
 ```
 
-## Dependencies Management
+## 相依性管理
 
-### Declaring Dependencies
+### 宣告相依性
 
 ```yaml
 # Chart.yaml
@@ -305,7 +305,7 @@ dependencies:
     alias: db                      # Reference as .Values.db
 ```
 
-### Managing Dependencies
+### 管理相依性
 
 ```bash
 # Update dependencies
@@ -320,7 +320,7 @@ helm dependency build
 
 ### Chart.lock
 
-Generated automatically by `helm dependency update`:
+由 `helm dependency update` 自動產生：
 
 ```yaml
 dependencies:
@@ -333,7 +333,7 @@ generated: "2024-01-01T00:00:00Z"
 
 ## .helmignore
 
-Exclude files from chart package:
+從 chart 套件中排除檔案：
 
 ```
 # Development files
@@ -363,9 +363,9 @@ test/
 *.iml
 ```
 
-## Custom Resource Definitions (CRDs)
+## 自訂資源定義（CRD）
 
-Place CRDs in `crds/` directory:
+將 CRD 放在 `crds/` 目錄：
 
 ```
 crds/
@@ -373,33 +373,33 @@ crds/
 └── another-crd.yaml
 ```
 
-**Important CRD notes:**
-- CRDs are installed before any templates
-- CRDs are NOT templated (no `{{ }}` syntax)
-- CRDs are NOT upgraded or deleted with chart
-- Use `helm install --skip-crds` to skip installation
+**重要 CRD 注意事項：**
+- CRD 在任何範本之前安裝
+- CRD 不會範本化（沒有 `{{ }}` 語法）
+- CRD 不會隨 chart 升級或刪除
+- 使用 `helm install --skip-crds` 跳過安裝
 
-## Chart Versioning
+## Chart 版本控制
 
-### Semantic Versioning
+### 語意化版本控制
 
-- **Chart Version**: Increment when chart changes
-  - MAJOR: Breaking changes
-  - MINOR: New features, backward compatible
-  - PATCH: Bug fixes
+- **Chart 版本**：chart 變更時遞增
+  - MAJOR：破壞性變更
+  - MINOR：新功能，向後相容
+  - PATCH：錯誤修正
 
-- **App Version**: Application version being deployed
-  - Can be any string
-  - Not required to follow SemVer
+- **應用程式版本**：正在部署的應用程式版本
+  - 可以是任何字串
+  - 不需要遵循 SemVer
 
 ```yaml
 version: 2.3.1      # Chart version
 appVersion: "1.5.0" # Application version
 ```
 
-## Chart Testing
+## Chart 測試
 
-### Test Files
+### 測試檔案
 
 ```yaml
 # templates/tests/test-connection.yaml
@@ -419,7 +419,7 @@ spec:
   restartPolicy: Never
 ```
 
-### Running Tests
+### 執行測試
 
 ```bash
 helm test my-release
@@ -428,7 +428,7 @@ helm test my-release --logs
 
 ## Hooks
 
-Helm hooks allow intervention at specific points:
+Helm hooks 允許在特定時間點介入：
 
 ```yaml
 apiVersion: batch/v1
@@ -441,42 +441,42 @@ metadata:
     "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
 ```
 
-### Hook Types
+### Hook 類型
 
-- `pre-install`: Before templates rendered
-- `post-install`: After all resources loaded
-- `pre-delete`: Before any resources deleted
-- `post-delete`: After all resources deleted
-- `pre-upgrade`: Before upgrade
-- `post-upgrade`: After upgrade
-- `pre-rollback`: Before rollback
-- `post-rollback`: After rollback
-- `test`: Run with `helm test`
+- `pre-install`：範本轉譯前
+- `post-install`：所有資源載入後
+- `pre-delete`：任何資源刪除前
+- `post-delete`：所有資源刪除後
+- `pre-upgrade`：升級前
+- `post-upgrade`：升級後
+- `pre-rollback`：回滾前
+- `post-rollback`：回滾後
+- `test`：使用 `helm test` 執行
 
-### Hook Weight
+### Hook 權重
 
-Controls hook execution order (-5 to 5, lower runs first)
+控制 hook 執行順序（-5 到 5，數字小的先執行）
 
-### Hook Deletion Policies
+### Hook 刪除策略
 
-- `before-hook-creation`: Delete previous hook before new one
-- `hook-succeeded`: Delete after successful execution
-- `hook-failed`: Delete if hook fails
+- `before-hook-creation`：建立新 hook 前刪除先前的 hook
+- `hook-succeeded`：成功執行後刪除
+- `hook-failed`：hook 失敗時刪除
 
-## Best Practices
+## 最佳實踐
 
-1. **Use helpers** for repeated template logic
-2. **Quote strings** in templates: `{{ .Values.name | quote }}`
-3. **Validate values** with values.schema.json
-4. **Document all values** in values.yaml
-5. **Use semantic versioning** for chart versions
-6. **Pin dependency versions** exactly
-7. **Include NOTES.txt** with usage instructions
-8. **Add tests** for critical functionality
-9. **Use hooks** for database migrations
-10. **Keep charts focused** - one application per chart
+1. **對重複的範本邏輯使用輔助函式**
+2. **在範本中引用字串**：`{{ .Values.name | quote }}`
+3. **使用 values.schema.json 驗證值**
+4. **在 values.yaml 中記錄所有值**
+5. **對 chart 版本使用語意化版本控制**
+6. **精確固定相依性版本**
+7. **包含 NOTES.txt** 提供使用說明
+8. **為關鍵功能新增測試**
+9. **使用 hooks** 進行資料庫遷移
+10. **保持 chart 專注** - 每個 chart 一個應用程式
 
-## Chart Repository Structure
+## Chart 儲存庫結構
 
 ```
 helm-charts/
@@ -487,13 +487,13 @@ helm-charts/
 └── another-chart-2.0.0.tgz
 ```
 
-### Creating Repository Index
+### 建立儲存庫索引
 
 ```bash
 helm repo index . --url https://charts.example.com
 ```
 
-## Related Resources
+## 相關資源
 
 - [Helm Documentation](https://helm.sh/docs/)
 - [Chart Template Guide](https://helm.sh/docs/chart_template_guide/)

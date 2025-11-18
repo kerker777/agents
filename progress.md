@@ -3,7 +3,7 @@
 總檔案數: 307
 已完成: 8
 進行中: 0
-待處理: 117
+待處理: 101
 
 ## 檔案清單
 
@@ -197,22 +197,22 @@
 - [x] /home/user/agents/plugins/javascript-typescript/agents/javascript-pro.md
 - [x] /home/user/agents/plugins/javascript-typescript/agents/typescript-pro.md
 - [x] /home/user/agents/plugins/javascript-typescript/commands/typescript-scaffold.md
-- [ ] /home/user/agents/plugins/javascript-typescript/skills/javascript-testing-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/javascript-typescript/skills/modern-javascript-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/javascript-typescript/skills/nodejs-backend-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/javascript-typescript/skills/typescript-advanced-types/SKILL.md
-- [ ] /home/user/agents/plugins/julia-development/agents/julia-pro.md
-- [ ] /home/user/agents/plugins/jvm-languages/agents/csharp-pro.md
-- [ ] /home/user/agents/plugins/jvm-languages/agents/java-pro.md
-- [ ] /home/user/agents/plugins/jvm-languages/agents/scala-pro.md
-- [ ] /home/user/agents/plugins/kubernetes-operations/agents/kubernetes-architect.md
-- [ ] /home/user/agents/plugins/kubernetes-operations/skills/gitops-workflow/SKILL.md
-- [ ] /home/user/agents/plugins/kubernetes-operations/skills/gitops-workflow/references/argocd-setup.md
-- [ ] /home/user/agents/plugins/kubernetes-operations/skills/gitops-workflow/references/sync-policies.md
-- [ ] /home/user/agents/plugins/kubernetes-operations/skills/helm-chart-scaffolding/SKILL.md
-- [ ] /home/user/agents/plugins/kubernetes-operations/skills/helm-chart-scaffolding/references/chart-structure.md
-- [ ] /home/user/agents/plugins/kubernetes-operations/skills/k8s-manifest-generator/SKILL.md
-- [ ] /home/user/agents/plugins/kubernetes-operations/skills/k8s-manifest-generator/references/deployment-spec.md
+- [x] /home/user/agents/plugins/javascript-typescript/skills/javascript-testing-patterns/SKILL.md
+- [x] /home/user/agents/plugins/javascript-typescript/skills/modern-javascript-patterns/SKILL.md
+- [x] /home/user/agents/plugins/javascript-typescript/skills/nodejs-backend-patterns/SKILL.md
+- [x] /home/user/agents/plugins/javascript-typescript/skills/typescript-advanced-types/SKILL.md
+- [x] /home/user/agents/plugins/julia-development/agents/julia-pro.md
+- [x] /home/user/agents/plugins/jvm-languages/agents/csharp-pro.md
+- [x] /home/user/agents/plugins/jvm-languages/agents/java-pro.md
+- [x] /home/user/agents/plugins/jvm-languages/agents/scala-pro.md
+- [x] /home/user/agents/plugins/kubernetes-operations/agents/kubernetes-architect.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/gitops-workflow/SKILL.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/gitops-workflow/references/argocd-setup.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/gitops-workflow/references/sync-policies.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/helm-chart-scaffolding/SKILL.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/helm-chart-scaffolding/references/chart-structure.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/k8s-manifest-generator/SKILL.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/k8s-manifest-generator/references/deployment-spec.md
 - [ ] /home/user/agents/plugins/kubernetes-operations/skills/k8s-manifest-generator/references/service-spec.md
 - [ ] /home/user/agents/plugins/kubernetes-operations/skills/k8s-security-policies/SKILL.md
 - [ ] /home/user/agents/plugins/kubernetes-operations/skills/k8s-security-policies/references/rbac-patterns.md

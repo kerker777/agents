@@ -3,26 +3,26 @@ name: modern-javascript-patterns
 description: Master ES6+ features including async/await, destructuring, spread operators, arrow functions, promises, modules, iterators, generators, and functional programming patterns for writing clean, efficient JavaScript code. Use when refactoring legacy code, implementing modern patterns, or optimizing JavaScript applications.
 ---
 
-# Modern JavaScript Patterns
+# 現代 JavaScript 模式
 
-Comprehensive guide for mastering modern JavaScript (ES6+) features, functional programming patterns, and best practices for writing clean, maintainable, and performant code.
+全面掌握現代 JavaScript (ES6+) 特性、函式式程式設計模式,以及編寫簡潔、可維護和高效能程式碼的最佳實踐。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Refactoring legacy JavaScript to modern syntax
-- Implementing functional programming patterns
-- Optimizing JavaScript performance
-- Writing maintainable and readable code
-- Working with asynchronous operations
-- Building modern web applications
-- Migrating from callbacks to Promises/async-await
-- Implementing data transformation pipelines
+- 將舊版 JavaScript 重構為現代語法
+- 實作函式式程式設計模式
+- 最佳化 JavaScript 效能
+- 撰寫可維護且易讀的程式碼
+- 處理非同步操作
+- 建構現代化的網頁應用程式
+- 從回呼函式遷移到 Promises/async-await
+- 實作資料轉換管線
 
-## ES6+ Core Features
+## ES6+ 核心特性
 
-### 1. Arrow Functions
+### 1. 箭頭函式
 
-**Syntax and Use Cases:**
+**語法和使用案例：**
 ```javascript
 // Traditional function
 function add(a, b) {
@@ -48,7 +48,7 @@ const processUser = user => {
 const createUser = (name, age) => ({ name, age });
 ```
 
-**Lexical 'this' Binding:**
+**詞彙 'this' 綁定：**
 ```javascript
 class Counter {
   constructor() {
@@ -76,9 +76,9 @@ class Counter {
 }
 ```
 
-### 2. Destructuring
+### 2. 解構賦值
 
-**Object Destructuring:**
+**物件解構：**
 ```javascript
 const user = {
   id: 1,
@@ -112,7 +112,7 @@ function greet({ name, age = 18 }) {
 greet(user);
 ```
 
-**Array Destructuring:**
+**陣列解構：**
 ```javascript
 const numbers = [1, 2, 3, 4, 5];
 
@@ -139,9 +139,9 @@ const [x, y] = getCoordinates();
 const [one, two, three = 0] = [1, 2];
 ```
 
-### 3. Spread and Rest Operators
+### 3. 展開運算子和其餘運算子
 
-**Spread Operator:**
+**展開運算子：**
 ```javascript
 // Array spreading
 const arr1 = [1, 2, 3];
@@ -166,7 +166,7 @@ const newArr = [...arr1, 4, 5];
 const newObj = { ...user, age: 30 };
 ```
 
-**Rest Parameters:**
+**其餘參數：**
 ```javascript
 // Collect function arguments
 function sum(...numbers) {
@@ -187,7 +187,7 @@ const { id, ...userData } = user;
 const [first, ...rest] = [1, 2, 3, 4, 5];
 ```
 
-### 4. Template Literals
+### 4. 樣板字面值
 
 ```javascript
 // Basic usage
@@ -220,7 +220,7 @@ const html = highlight`Name: ${name}, Age: ${age}`;
 // Output: "Name: <mark>John</mark>, Age: <mark>30</mark>"
 ```
 
-### 5. Enhanced Object Literals
+### 5. 增強的物件字面值
 
 ```javascript
 const name = 'John';
@@ -260,11 +260,11 @@ const createUser = (name, ...props) => {
 const user = createUser('John', ['age', 30], ['email', 'john@example.com']);
 ```
 
-## Asynchronous Patterns
+## 非同步模式
 
 ### 1. Promises
 
-**Creating and Using Promises:**
+**建立和使用 Promises：**
 ```javascript
 // Creating a promise
 const fetchUser = (id) => {
@@ -293,7 +293,7 @@ fetchUser(1)
   .catch(error => console.error(error));
 ```
 
-**Promise Combinators:**
+**Promise 組合器：**
 ```javascript
 // Promise.all - Wait for all promises
 const promises = [
@@ -331,7 +331,7 @@ Promise.any(promises)
 
 ### 2. Async/Await
 
-**Basic Usage:**
+**基本用法：**
 ```javascript
 // Async function always returns a Promise
 async function fetchUser(id) {
@@ -368,7 +368,7 @@ async function parallel() {
 }
 ```
 
-**Advanced Patterns:**
+**進階模式：**
 ```javascript
 // Async IIFE
 (async () => {
@@ -408,11 +408,11 @@ async function withTimeout(promise, ms) {
 }
 ```
 
-## Functional Programming Patterns
+## 函式式程式設計模式
 
-### 1. Array Methods
+### 1. 陣列方法
 
-**Map, Filter, Reduce:**
+**Map、Filter、Reduce：**
 ```javascript
 const users = [
   { id: 1, name: 'John', age: 30, active: true },
@@ -449,7 +449,7 @@ const result = users
   .join(', ');
 ```
 
-**Advanced Array Methods:**
+**進階陣列方法：**
 ```javascript
 // Find - First matching element
 const user = users.find(u => u.id === 2);
@@ -479,9 +479,9 @@ const numbers = Array.from({ length: 5 }, (_, i) => i + 1);
 const arr = Array.of(1, 2, 3);
 ```
 
-### 2. Higher-Order Functions
+### 2. 高階函式
 
-**Functions as Arguments:**
+**函式作為參數：**
 ```javascript
 // Custom forEach
 function forEach(array, callback) {
@@ -511,7 +511,7 @@ function filter(array, predicate) {
 }
 ```
 
-**Functions Returning Functions:**
+**回傳函式的函式：**
 ```javascript
 // Currying
 const multiply = a => b => a * b;
@@ -550,7 +550,7 @@ const fibonacci = memoize((n) => {
 });
 ```
 
-### 3. Composition and Piping
+### 3. 組合和管線
 
 ```javascript
 // Function composition
@@ -585,7 +585,7 @@ const user = processUser({
 });
 ```
 
-### 4. Pure Functions and Immutability
+### 4. 純函式和不可變性
 
 ```javascript
 // Impure function (modifies input)
@@ -635,7 +635,7 @@ const deepClone = obj => JSON.parse(JSON.stringify(obj));
 const structuredClone = obj => globalThis.structuredClone(obj);
 ```
 
-## Modern Class Features
+## 現代類別特性
 
 ```javascript
 // Class syntax
@@ -696,7 +696,7 @@ class Admin extends User {
 }
 ```
 
-## Modules (ES6)
+## 模組 (ES6)
 
 ```javascript
 // Exporting
@@ -735,7 +735,7 @@ if (condition) {
 }
 ```
 
-## Iterators and Generators
+## 迭代器和生成器
 
 ```javascript
 // Custom iterator
@@ -800,7 +800,7 @@ for await (const page of fetchPages('/api/users')) {
 }
 ```
 
-## Modern Operators
+## 現代運算子
 
 ```javascript
 // Optional chaining
@@ -832,7 +832,7 @@ obj.count ||= 1;  // obj.count = 1
 obj.count &&= 2;  // obj.count = 2
 ```
 
-## Performance Optimization
+## 效能最佳化
 
 ```javascript
 // Debounce
@@ -873,36 +873,36 @@ const doubled = lazyMap(numbers, x => x * 2);
 const first = doubled.next().value;  // Only computes first value
 ```
 
-## Best Practices
+## 最佳實踐
 
-1. **Use const by default**: Only use let when reassignment is needed
-2. **Prefer arrow functions**: Especially for callbacks
-3. **Use template literals**: Instead of string concatenation
-4. **Destructure objects and arrays**: For cleaner code
-5. **Use async/await**: Instead of Promise chains
-6. **Avoid mutating data**: Use spread operator and array methods
-7. **Use optional chaining**: Prevent "Cannot read property of undefined"
-8. **Use nullish coalescing**: For default values
-9. **Prefer array methods**: Over traditional loops
-10. **Use modules**: For better code organization
-11. **Write pure functions**: Easier to test and reason about
-12. **Use meaningful variable names**: Self-documenting code
-13. **Keep functions small**: Single responsibility principle
-14. **Handle errors properly**: Use try/catch with async/await
-15. **Use strict mode**: `'use strict'` for better error catching
+1. **預設使用 const**：只在需要重新賦值時使用 let
+2. **優先使用箭頭函式**：特別是在回呼函式中
+3. **使用樣板字面值**：取代字串串接
+4. **解構物件和陣列**：讓程式碼更簡潔
+5. **使用 async/await**：取代 Promise 鏈
+6. **避免修改資料**：使用展開運算子和陣列方法
+7. **使用可選鏈**：防止「無法讀取 undefined 的屬性」錯誤
+8. **使用空值合併**：設定預設值
+9. **優先使用陣列方法**：取代傳統迴圈
+10. **使用模組**：更好的程式碼組織
+11. **撰寫純函式**：更容易測試和推理
+12. **使用有意義的變數名稱**：自我說明的程式碼
+13. **保持函式簡短**：單一職責原則
+14. **正確處理錯誤**：在 async/await 中使用 try/catch
+15. **使用嚴格模式**：`'use strict'` 以獲得更好的錯誤捕捉
 
-## Common Pitfalls
+## 常見陷阱
 
-1. **this binding confusion**: Use arrow functions or bind()
-2. **Async/await without error handling**: Always use try/catch
-3. **Promise creation unnecessary**: Don't wrap already async functions
-4. **Mutation of objects**: Use spread operator or Object.assign()
-5. **Forgetting await**: Async functions return promises
-6. **Blocking event loop**: Avoid synchronous operations
-7. **Memory leaks**: Clean up event listeners and timers
-8. **Not handling promise rejections**: Use catch() or try/catch
+1. **this 綁定混淆**：使用箭頭函式或 bind()
+2. **沒有錯誤處理的 async/await**：始終使用 try/catch
+3. **不必要的 Promise 建立**：不要包裝已經是非同步的函式
+4. **物件的修改**：使用展開運算子或 Object.assign()
+5. **忘記 await**：非同步函式回傳 promises
+6. **阻塞事件迴圈**：避免同步操作
+7. **記憶體洩漏**：清理事件監聽器和計時器
+8. **未處理 promise 拒絕**：使用 catch() 或 try/catch
 
-## Resources
+## 資源
 
 - **MDN Web Docs**: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 - **JavaScript.info**: https://javascript.info/

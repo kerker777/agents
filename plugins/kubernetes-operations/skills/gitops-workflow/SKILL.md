@@ -3,33 +3,33 @@ name: gitops-workflow
 description: Implement GitOps workflows with ArgoCD and Flux for automated, declarative Kubernetes deployments with continuous reconciliation. Use when implementing GitOps practices, automating Kubernetes deployments, or setting up declarative infrastructure management.
 ---
 
-# GitOps Workflow
+# GitOps 工作流程
 
-Complete guide to implementing GitOps workflows with ArgoCD and Flux for automated Kubernetes deployments.
+使用 ArgoCD 和 Flux 實施 GitOps 工作流程，實現自動化 Kubernetes 部署的完整指南。
 
-## Purpose
+## 目的
 
-Implement declarative, Git-based continuous delivery for Kubernetes using ArgoCD or Flux CD, following OpenGitOps principles.
+使用 ArgoCD 或 Flux CD 為 Kubernetes 實施宣告式、基於 Git 的持續交付，遵循 OpenGitOps 原則。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Set up GitOps for Kubernetes clusters
-- Automate application deployments from Git
-- Implement progressive delivery strategies
-- Manage multi-cluster deployments
-- Configure automated sync policies
-- Set up secret management in GitOps
+- 為 Kubernetes 叢集設定 GitOps
+- 從 Git 自動化應用程式部署
+- 實施漸進式交付策略
+- 管理多叢集部署
+- 配置自動同步策略
+- 在 GitOps 中設定密鑰管理
 
-## OpenGitOps Principles
+## OpenGitOps 原則
 
-1. **Declarative** - Entire system described declaratively
-2. **Versioned and Immutable** - Desired state stored in Git
-3. **Pulled Automatically** - Software agents pull desired state
-4. **Continuously Reconciled** - Agents reconcile actual vs desired state
+1. **宣告式** - 整個系統以宣告方式描述
+2. **版本化與不可變** - 所需狀態儲存於 Git
+3. **自動拉取** - 軟體代理拉取所需狀態
+4. **持續協調** - 代理協調實際與所需狀態
 
-## ArgoCD Setup
+## ArgoCD 設定
 
-### 1. Installation
+### 1. 安裝
 
 ```bash
 # Create namespace
@@ -42,9 +42,9 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
-**Reference:** See `references/argocd-setup.md` for detailed setup
+**參考資料：**詳細設定請參閱 `references/argocd-setup.md`
 
-### 2. Repository Structure
+### 2. 儲存庫結構
 
 ```
 gitops-repo/
@@ -64,7 +64,7 @@ gitops-repo/
     └── projects/
 ```
 
-### 3. Create Application
+### 3. 建立 Application
 
 ```yaml
 # argocd/applications/my-app.yaml
@@ -90,7 +90,7 @@ spec:
     - CreateNamespace=true
 ```
 
-### 4. App of Apps Pattern
+### 4. App of Apps 模式
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -111,9 +111,9 @@ spec:
     automated: {}
 ```
 
-## Flux CD Setup
+## Flux CD 設定
 
-### 1. Installation
+### 1. 安裝
 
 ```bash
 # Install Flux CLI
@@ -128,7 +128,7 @@ flux bootstrap github \
   --personal
 ```
 
-### 2. Create GitRepository
+### 2. 建立 GitRepository
 
 ```yaml
 apiVersion: source.toolkit.fluxcd.io/v1
@@ -143,7 +143,7 @@ spec:
     branch: main
 ```
 
-### 3. Create Kustomization
+### 3. 建立 Kustomization
 
 ```yaml
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -160,11 +160,11 @@ spec:
     name: my-app
 ```
 
-## Sync Policies
+## 同步策略
 
-### Auto-Sync Configuration
+### 自動同步配置
 
-**ArgoCD:**
+**ArgoCD：**
 ```yaml
 syncPolicy:
   automated:
@@ -179,7 +179,7 @@ syncPolicy:
       maxDuration: 3m
 ```
 
-**Flux:**
+**Flux：**
 ```yaml
 spec:
   interval: 1m
@@ -188,11 +188,11 @@ spec:
   timeout: 5m
 ```
 
-**Reference:** See `references/sync-policies.md`
+**參考資料：**請參閱 `references/sync-policies.md`
 
-## Progressive Delivery
+## 漸進式交付
 
-### Canary Deployment with ArgoCD Rollouts
+### 使用 ArgoCD Rollouts 的金絲雀部署
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -211,7 +211,7 @@ spec:
       - setWeight: 100
 ```
 
-### Blue-Green Deployment
+### 藍綠部署
 
 ```yaml
 strategy:
@@ -221,7 +221,7 @@ strategy:
     autoPromotionEnabled: false
 ```
 
-## Secret Management
+## 密鑰管理
 
 ### External Secrets Operator
 
@@ -252,34 +252,34 @@ kubeseal --format yaml < secret.yaml > sealed-secret.yaml
 # Commit sealed-secret.yaml to Git
 ```
 
-## Best Practices
+## 最佳實踐
 
-1. **Use separate repos or branches** for different environments
-2. **Implement RBAC** for Git repositories
-3. **Enable notifications** for sync failures
-4. **Use health checks** for custom resources
-5. **Implement approval gates** for production
-6. **Keep secrets out of Git** (use External Secrets)
-7. **Use App of Apps pattern** for organization
-8. **Tag releases** for easy rollback
-9. **Monitor sync status** with alerts
-10. **Test changes** in staging first
+1. **針對不同環境使用不同的儲存庫或分支**
+2. **實施 RBAC** 用於 Git 儲存庫
+3. **啟用通知** 用於同步失敗
+4. **對自訂資源使用健康檢查**
+5. **為正式環境實施核准關卡**
+6. **將密鑰排除於 Git 之外**（使用 External Secrets）
+7. **使用 App of Apps 模式** 進行組織管理
+8. **標記發布版本** 以便輕鬆回滾
+9. **監控同步狀態** 並配置告警
+10. **先在測試環境測試變更**
 
-## Troubleshooting
+## 疑難排解
 
-**Sync failures:**
+**同步失敗：**
 ```bash
 argocd app get my-app
 argocd app sync my-app --prune
 ```
 
-**Out of sync status:**
+**不同步狀態：**
 ```bash
 argocd app diff my-app
 argocd app sync my-app --force
 ```
 
-## Related Skills
+## 相關技能
 
-- `k8s-manifest-generator` - For creating manifests
-- `helm-chart-scaffolding` - For packaging applications
+- `k8s-manifest-generator` - 用於建立 manifest
+- `helm-chart-scaffolding` - 用於封裝應用程式
