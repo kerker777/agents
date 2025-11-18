@@ -1,146 +1,146 @@
-Orchestrate multi-agent incident response with modern SRE practices for rapid resolution and learning:
+使用現代化 SRE 實踐編排多代理事件回應，以實現快速解決和學習：
 
-[Extended thinking: This workflow implements a comprehensive incident command system (ICS) following modern SRE principles. Multiple specialized agents collaborate through defined phases: detection/triage, investigation/mitigation, communication/coordination, and resolution/postmortem. The workflow emphasizes speed without sacrificing accuracy, maintains clear communication channels, and ensures every incident becomes a learning opportunity through blameless postmortems and systematic improvements.]
+[延伸思考：此工作流程實施了遵循現代化 SRE 原則的全面事件指揮系統（ICS）。多個專業代理透過定義的階段協作：檢測/分類、調查/緩解、溝通/協調和解決/事後檢討。工作流程強調在不犧牲準確度的情況下提高速度，維護清晰的溝通管道，並透過無責備的事後檢討和系統性改進確保每次事件都成為學習機會。]
 
-## Configuration
+## 配置
 
-### Severity Levels
-- **P0/SEV-1**: Complete outage, security breach, data loss - immediate all-hands response
-- **P1/SEV-2**: Major degradation, significant user impact - rapid response required
-- **P2/SEV-3**: Minor degradation, limited impact - standard response
-- **P3/SEV-4**: Cosmetic issues, no user impact - scheduled resolution
+### 嚴重程度級別
+- **P0/SEV-1**：完全中斷、安全漏洞、資料遺失 - 立即全員回應
+- **P1/SEV-2**：嚴重降級、顯著的使用者影響 - 需要快速回應
+- **P2/SEV-3**：輕微降級、有限的影響 - 標準回應
+- **P3/SEV-4**：外觀問題、無使用者影響 - 排定解決
 
-### Incident Types
-- Performance degradation
-- Service outage
-- Security incident
-- Data integrity issue
-- Infrastructure failure
-- Third-party service disruption
+### 事件類型
+- 效能降級
+- 服務中斷
+- 安全事件
+- 資料完整性問題
+- 基礎設施故障
+- 第三方服務中斷
 
-## Phase 1: Detection & Triage
+## 階段 1：檢測與分類
 
-### 1. Incident Detection and Classification
-- Use Task tool with subagent_type="incident-responder"
-- Prompt: "URGENT: Detect and classify incident: $ARGUMENTS. Analyze alerts from PagerDuty/Opsgenie/monitoring. Determine: 1) Incident severity (P0-P3), 2) Affected services and dependencies, 3) User impact and business risk, 4) Initial incident command structure needed. Check error budgets and SLO violations."
-- Output: Severity classification, impact assessment, incident command assignments, SLO status
-- Context: Initial alerts, monitoring dashboards, recent changes
+### 1. 事件檢測和分類
+- 使用 Task 工具，subagent_type="incident-responder"
+- 提示：「緊急：檢測和分類事件：$ARGUMENTS。分析來自 PagerDuty/Opsgenie/監控的告警。確定：1）事件嚴重程度（P0-P3），2）受影響的服務和相依性，3）使用者影響和業務風險，4）所需的初始事件指揮結構。檢查錯誤預算和 SLO 違規。」
+- 輸出：嚴重程度分類、影響評估、事件指揮分配、SLO 狀態
+- 情境：初始告警、監控儀表板、最近的變更
 
-### 2. Observability Analysis
-- Use Task tool with subagent_type="observability-monitoring::observability-engineer"
-- Prompt: "Perform rapid observability sweep for incident: $ARGUMENTS. Query: 1) Distributed tracing (OpenTelemetry/Jaeger), 2) Metrics correlation (Prometheus/Grafana/DataDog), 3) Log aggregation (ELK/Splunk), 4) APM data, 5) Real User Monitoring. Identify anomalies, error patterns, and service degradation points."
-- Output: Observability findings, anomaly detection, service health matrix, trace analysis
-- Context: Severity level from step 1, affected services
+### 2. 可觀測性分析
+- 使用 Task 工具，subagent_type="observability-monitoring::observability-engineer"
+- 提示：「對事件執行快速可觀測性掃描：$ARGUMENTS。查詢：1）分散式追蹤（OpenTelemetry/Jaeger），2）指標關聯（Prometheus/Grafana/DataDog），3）日誌彙整（ELK/Splunk），4）APM 資料，5）真實使用者監控。識別異常、錯誤模式和服務降級點。」
+- 輸出：可觀測性發現、異常檢測、服務健康矩陣、追蹤分析
+- 情境：步驟 1 的嚴重程度級別、受影響的服務
 
-### 3. Initial Mitigation
-- Use Task tool with subagent_type="incident-responder"
-- Prompt: "Implement immediate mitigation for P$SEVERITY incident: $ARGUMENTS. Actions: 1) Traffic throttling/rerouting if needed, 2) Feature flag disabling for affected features, 3) Circuit breaker activation, 4) Rollback assessment for recent deployments, 5) Scale resources if capacity-related. Prioritize user experience restoration."
-- Output: Mitigation actions taken, temporary fixes applied, rollback decisions
-- Context: Observability findings, severity classification
+### 3. 初始緩解
+- 使用 Task 工具，subagent_type="incident-responder"
+- 提示：「對 P$SEVERITY 事件實施即時緩解：$ARGUMENTS。行動：1）如果需要，進行流量節流/重新路由，2）停用受影響功能的功能旗標，3）斷路器啟動，4）評估最近部署的回滾，5）如果與容量相關則擴展資源。優先考慮使用者體驗恢復。」
+- 輸出：採取的緩解行動、應用的臨時修復、回滾決策
+- 情境：可觀測性發現、嚴重程度分類
 
-## Phase 2: Investigation & Root Cause Analysis
+## 階段 2：調查與根本原因分析
 
-### 4. Deep System Debugging
-- Use Task tool with subagent_type="error-debugging::debugger"
-- Prompt: "Conduct deep debugging for incident: $ARGUMENTS using observability data. Investigate: 1) Stack traces and error logs, 2) Database query performance and locks, 3) Network latency and timeouts, 4) Memory leaks and CPU spikes, 5) Dependency failures and cascading errors. Apply Five Whys analysis."
-- Output: Root cause identification, contributing factors, dependency impact map
-- Context: Observability analysis, mitigation status
+### 4. 深度系統除錯
+- 使用 Task 工具，subagent_type="error-debugging::debugger"
+- 提示：「使用可觀測性資料對事件進行深度除錯：$ARGUMENTS。調查：1）堆疊追蹤和錯誤日誌，2）資料庫查詢效能和鎖定，3）網路延遲和逾時，4）記憶體洩漏和 CPU 尖峰，5）相依性故障和串聯錯誤。應用五個為什麼分析。」
+- 輸出：根本原因識別、貢獻因素、相依性影響圖
+- 情境：可觀測性分析、緩解狀態
 
-### 5. Security Assessment
-- Use Task tool with subagent_type="security-scanning::security-auditor"
-- Prompt: "Assess security implications of incident: $ARGUMENTS. Check: 1) DDoS attack indicators, 2) Authentication/authorization failures, 3) Data exposure risks, 4) Certificate issues, 5) Suspicious access patterns. Review WAF logs, security groups, and audit trails."
-- Output: Security assessment, breach analysis, vulnerability identification
-- Context: Root cause findings, system logs
+### 5. 安全性評估
+- 使用 Task 工具，subagent_type="security-scanning::security-auditor"
+- 提示：「評估事件的安全性影響：$ARGUMENTS。檢查：1）DDoS 攻擊指標，2）身份驗證/授權失敗，3）資料暴露風險，4）憑證問題，5）可疑的存取模式。查看 WAF 日誌、安全群組和稽核軌跡。」
+- 輸出：安全性評估、漏洞分析、漏洞識別
+- 情境：根本原因發現、系統日誌
 
-### 6. Performance Engineering Analysis
-- Use Task tool with subagent_type="application-performance::performance-engineer"
-- Prompt: "Analyze performance aspects of incident: $ARGUMENTS. Examine: 1) Resource utilization patterns, 2) Query optimization opportunities, 3) Caching effectiveness, 4) Load balancer health, 5) CDN performance, 6) Autoscaling triggers. Identify bottlenecks and capacity issues."
-- Output: Performance bottlenecks, resource recommendations, optimization opportunities
-- Context: Debug findings, current mitigation state
+### 6. 效能工程分析
+- 使用 Task 工具，subagent_type="application-performance::performance-engineer"
+- 提示：「分析事件的效能方面：$ARGUMENTS。檢查：1）資源使用率模式，2）查詢最佳化機會，3）快取有效性，4）負載平衡器健康狀態，5）CDN 效能，6）自動擴展觸發器。識別瓶頸和容量問題。」
+- 輸出：效能瓶頸、資源建議、最佳化機會
+- 情境：除錯發現、當前緩解狀態
 
-## Phase 3: Resolution & Recovery
+## 階段 3：解決與復原
 
-### 7. Fix Implementation
-- Use Task tool with subagent_type="backend-development::backend-architect"
-- Prompt: "Design and implement production fix for incident: $ARGUMENTS based on root cause. Requirements: 1) Minimal viable fix for rapid deployment, 2) Risk assessment and rollback capability, 3) Staged rollout plan with monitoring, 4) Validation criteria and health checks. Consider both immediate fix and long-term solution."
-- Output: Fix implementation, deployment strategy, validation plan, rollback procedures
-- Context: Root cause analysis, performance findings, security assessment
+### 7. 修復實施
+- 使用 Task 工具，subagent_type="backend-development::backend-architect"
+- 提示：「根據根本原因為事件設計和實施正式環境修復：$ARGUMENTS。要求：1）快速部署的最小可行修復，2）風險評估和回滾能力，3）帶監控的階段推出計畫，4）驗證標準和健康檢查。同時考慮即時修復和長期解決方案。」
+- 輸出：修復實施、部署策略、驗證計畫、回滾程序
+- 情境：根本原因分析、效能發現、安全性評估
 
-### 8. Deployment and Validation
-- Use Task tool with subagent_type="deployment-strategies::deployment-engineer"
-- Prompt: "Execute emergency deployment for incident fix: $ARGUMENTS. Process: 1) Blue-green or canary deployment, 2) Progressive rollout with monitoring, 3) Health check validation at each stage, 4) Rollback triggers configured, 5) Real-time monitoring during deployment. Coordinate with incident command."
-- Output: Deployment status, validation results, monitoring dashboard, rollback readiness
-- Context: Fix implementation, current system state
+### 8. 部署和驗證
+- 使用 Task 工具，subagent_type="deployment-strategies::deployment-engineer"
+- 提示：「執行事件修復的緊急部署：$ARGUMENTS。流程：1）藍綠或金絲雀部署，2）帶監控的漸進式推出，3）每個階段的健康檢查驗證，4）配置回滾觸發器，5）部署期間的即時監控。與事件指揮協調。」
+- 輸出：部署狀態、驗證結果、監控儀表板、回滾準備
+- 情境：修復實施、當前系統狀態
 
-## Phase 4: Communication & Coordination
+## 階段 4：溝通與協調
 
-### 9. Stakeholder Communication
-- Use Task tool with subagent_type="content-marketing::content-marketer"
-- Prompt: "Manage incident communication for: $ARGUMENTS. Create: 1) Status page updates (public-facing), 2) Internal engineering updates (technical details), 3) Executive summary (business impact/ETA), 4) Customer support briefing (talking points), 5) Timeline documentation with key decisions. Update every 15-30 minutes based on severity."
-- Output: Communication artifacts, status updates, stakeholder briefings, timeline log
-- Context: All previous phases, current resolution status
+### 9. 利害關係人溝通
+- 使用 Task 工具，subagent_type="content-marketing::content-marketer"
+- 提示：「管理事件溝通：$ARGUMENTS。建立：1）狀態頁面更新（面向公眾），2）內部工程更新（技術細節），3）主管摘要（業務影響/ETA），4）客戶支援簡報（談話要點），5）帶關鍵決策的時間軸文件。根據嚴重程度每 15-30 分鐘更新一次。」
+- 輸出：溝通文件、狀態更新、利害關係人簡報、時間軸日誌
+- 情境：所有先前階段、當前解決狀態
 
-### 10. Customer Impact Assessment
-- Use Task tool with subagent_type="incident-responder"
-- Prompt: "Assess and document customer impact for incident: $ARGUMENTS. Analyze: 1) Affected user segments and geography, 2) Failed transactions or data loss, 3) SLA violations and contractual implications, 4) Customer support ticket volume, 5) Revenue impact estimation. Prepare proactive customer outreach list."
-- Output: Customer impact report, SLA analysis, outreach recommendations
-- Context: Resolution progress, communication status
+### 10. 客戶影響評估
+- 使用 Task 工具，subagent_type="incident-responder"
+- 提示：「評估和記錄事件的客戶影響：$ARGUMENTS。分析：1）受影響的使用者區段和地理位置，2）失敗的交易或資料遺失，3）SLA 違規和合約影響，4）客戶支援工單量，5）營收影響估計。準備主動客戶聯繫清單。」
+- 輸出：客戶影響報告、SLA 分析、聯繫建議
+- 情境：解決進度、溝通狀態
 
-## Phase 5: Postmortem & Prevention
+## 階段 5：事後檢討與預防
 
-### 11. Blameless Postmortem
-- Use Task tool with subagent_type="documentation-generation::docs-architect"
-- Prompt: "Conduct blameless postmortem for incident: $ARGUMENTS. Document: 1) Complete incident timeline with decisions, 2) Root cause and contributing factors (systems focus), 3) What went well in response, 4) What could improve, 5) Action items with owners and deadlines, 6) Lessons learned for team education. Follow SRE postmortem best practices."
-- Output: Postmortem document, action items list, process improvements, training needs
-- Context: Complete incident history, all agent outputs
+### 11. 無責備的事後檢討
+- 使用 Task 工具，subagent_type="documentation-generation::docs-architect"
+- 提示：「對事件進行無責備的事後檢討：$ARGUMENTS。記錄：1）帶決策的完整事件時間軸，2）根本原因和貢獻因素（系統焦點），3）回應中做得好的地方，4）可以改進的地方，5）帶負責人和期限的行動項目，6）團隊教育的經驗教訓。遵循 SRE 事後檢討最佳實踐。」
+- 輸出：事後檢討文件、行動項目清單、流程改進、培訓需求
+- 情境：完整的事件歷史、所有代理輸出
 
-### 12. Monitoring and Alert Enhancement
-- Use Task tool with subagent_type="observability-monitoring::observability-engineer"
-- Prompt: "Enhance monitoring to prevent recurrence of: $ARGUMENTS. Implement: 1) New alerts for early detection, 2) SLI/SLO adjustments if needed, 3) Dashboard improvements for visibility, 4) Runbook automation opportunities, 5) Chaos engineering scenarios for testing. Ensure alerts are actionable and reduce noise."
-- Output: New monitoring configuration, alert rules, dashboard updates, runbook automation
-- Context: Postmortem findings, root cause analysis
+### 12. 監控和告警增強
+- 使用 Task 工具，subagent_type="observability-monitoring::observability-engineer"
+- 提示：「增強監控以防止再次發生：$ARGUMENTS。實施：1）用於早期檢測的新告警，2）如有需要調整 SLI/SLO，3）儀表板改進以提高可見性，4）操作手冊自動化機會，5）用於測試的混沌工程場景。確保告警可操作並減少雜訊。」
+- 輸出：新監控配置、告警規則、儀表板更新、操作手冊自動化
+- 情境：事後檢討發現、根本原因分析
 
-### 13. System Hardening
-- Use Task tool with subagent_type="backend-development::backend-architect"
-- Prompt: "Design system improvements to prevent incident: $ARGUMENTS. Propose: 1) Architecture changes for resilience (circuit breakers, bulkheads), 2) Graceful degradation strategies, 3) Capacity planning adjustments, 4) Technical debt prioritization, 5) Dependency reduction opportunities. Create implementation roadmap."
-- Output: Architecture improvements, resilience patterns, technical debt items, roadmap
-- Context: Postmortem action items, performance analysis
+### 13. 系統強化
+- 使用 Task 工具，subagent_type="backend-development::backend-architect"
+- 提示：「設計系統改進以防止事件：$ARGUMENTS。提議：1）彈性架構變更（斷路器、艙壁），2）優雅降級策略，3）容量規劃調整，4）技術債優先順序，5）減少相依性的機會。建立實施路線圖。」
+- 輸出：架構改進、彈性模式、技術債項目、路線圖
+- 情境：事後檢討行動項目、效能分析
 
-## Success Criteria
+## 成功標準
 
-### Immediate Success (During Incident)
-- Service restoration within SLA targets
-- Accurate severity classification within 5 minutes
-- Stakeholder communication every 15-30 minutes
-- No cascading failures or incident escalation
-- Clear incident command structure maintained
+### 即時成功（事件期間）
+- 在 SLA 目標內恢復服務
+- 在 5 分鐘內準確的嚴重程度分類
+- 每 15-30 分鐘與利害關係人溝通
+- 無串聯故障或事件升級
+- 維護清晰的事件指揮結構
 
-### Long-term Success (Post-Incident)
-- Comprehensive postmortem within 48 hours
-- All action items assigned with deadlines
-- Monitoring improvements deployed within 1 week
-- Runbook updates completed
-- Team training conducted on lessons learned
-- Error budget impact assessed and communicated
+### 長期成功（事件後）
+- 在 48 小時內完成全面的事後檢討
+- 所有行動項目都已分配期限
+- 在 1 週內部署監控改進
+- 完成操作手冊更新
+- 就經驗教訓進行團隊培訓
+- 評估和溝通錯誤預算影響
 
-## Coordination Protocols
+## 協調協定
 
-### Incident Command Structure
-- **Incident Commander**: Decision authority, coordination
-- **Technical Lead**: Technical investigation and resolution
-- **Communications Lead**: Stakeholder updates
-- **Subject Matter Experts**: Specific system expertise
+### 事件指揮結構
+- **事件指揮官**：決策權、協調
+- **技術負責人**：技術調查和解決
+- **溝通負責人**：利害關係人更新
+- **主題專家**：特定系統專業知識
 
-### Communication Channels
-- War room (Slack/Teams channel or Zoom)
-- Status page updates (StatusPage, Statusly)
-- PagerDuty/Opsgenie for alerting
-- Confluence/Notion for documentation
+### 溝通管道
+- 作戰室（Slack/Teams 頻道或 Zoom）
+- 狀態頁面更新（StatusPage、Statusly）
+- PagerDuty/Opsgenie 用於告警
+- Confluence/Notion 用於文件
 
-### Handoff Requirements
-- Each phase provides clear context to the next
-- All findings documented in shared incident doc
-- Decision rationale recorded for postmortem
-- Timestamp all significant events
+### 交接要求
+- 每個階段都向下一個階段提供清晰的情境
+- 所有發現記錄在共享的事件文件中
+- 為事後檢討記錄決策理由
+- 為所有重大事件加上時間戳記
 
-Production incident requiring immediate response: $ARGUMENTS
+需要立即回應的正式環境事件：$ARGUMENTS

@@ -3,7 +3,7 @@
 總檔案數: 307
 已完成: 8
 進行中: 0
-待處理: 133
+待處理: 117
 
 ## 檔案清單
 
@@ -181,22 +181,22 @@
 - [x] /home/user/agents/plugins/full-stack-orchestration/agents/security-auditor.md
 - [x] /home/user/agents/plugins/full-stack-orchestration/agents/test-automator.md
 - [x] /home/user/agents/plugins/full-stack-orchestration/commands/full-stack-feature.md
-- [ ] /home/user/agents/plugins/functional-programming/agents/elixir-pro.md
-- [ ] /home/user/agents/plugins/game-development/agents/minecraft-bukkit-pro.md
-- [ ] /home/user/agents/plugins/game-development/agents/unity-developer.md
-- [ ] /home/user/agents/plugins/git-pr-workflows/agents/code-reviewer.md
-- [ ] /home/user/agents/plugins/git-pr-workflows/commands/git-workflow.md
-- [ ] /home/user/agents/plugins/git-pr-workflows/commands/onboard.md
-- [ ] /home/user/agents/plugins/git-pr-workflows/commands/pr-enhance.md
-- [ ] /home/user/agents/plugins/hr-legal-compliance/agents/hr-pro.md
-- [ ] /home/user/agents/plugins/hr-legal-compliance/agents/legal-advisor.md
-- [ ] /home/user/agents/plugins/incident-response/agents/devops-troubleshooter.md
-- [ ] /home/user/agents/plugins/incident-response/agents/incident-responder.md
-- [ ] /home/user/agents/plugins/incident-response/commands/incident-response.md
-- [ ] /home/user/agents/plugins/incident-response/commands/smart-fix.md
-- [ ] /home/user/agents/plugins/javascript-typescript/agents/javascript-pro.md
-- [ ] /home/user/agents/plugins/javascript-typescript/agents/typescript-pro.md
-- [ ] /home/user/agents/plugins/javascript-typescript/commands/typescript-scaffold.md
+- [x] /home/user/agents/plugins/functional-programming/agents/elixir-pro.md
+- [x] /home/user/agents/plugins/game-development/agents/minecraft-bukkit-pro.md
+- [x] /home/user/agents/plugins/game-development/agents/unity-developer.md
+- [x] /home/user/agents/plugins/git-pr-workflows/agents/code-reviewer.md
+- [x] /home/user/agents/plugins/git-pr-workflows/commands/git-workflow.md
+- [x] /home/user/agents/plugins/git-pr-workflows/commands/onboard.md
+- [x] /home/user/agents/plugins/git-pr-workflows/commands/pr-enhance.md
+- [x] /home/user/agents/plugins/hr-legal-compliance/agents/hr-pro.md
+- [x] /home/user/agents/plugins/hr-legal-compliance/agents/legal-advisor.md
+- [x] /home/user/agents/plugins/incident-response/agents/devops-troubleshooter.md
+- [x] /home/user/agents/plugins/incident-response/agents/incident-responder.md
+- [x] /home/user/agents/plugins/incident-response/commands/incident-response.md
+- [x] /home/user/agents/plugins/incident-response/commands/smart-fix.md
+- [x] /home/user/agents/plugins/javascript-typescript/agents/javascript-pro.md
+- [x] /home/user/agents/plugins/javascript-typescript/agents/typescript-pro.md
+- [x] /home/user/agents/plugins/javascript-typescript/commands/typescript-scaffold.md
 - [ ] /home/user/agents/plugins/javascript-typescript/skills/javascript-testing-patterns/SKILL.md
 - [ ] /home/user/agents/plugins/javascript-typescript/skills/modern-javascript-patterns/SKILL.md
 - [ ] /home/user/agents/plugins/javascript-typescript/skills/nodejs-backend-patterns/SKILL.md

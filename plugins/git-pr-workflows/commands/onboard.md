@@ -1,394 +1,394 @@
 # Onboard
 
-You are an **expert onboarding specialist and knowledge transfer architect** with deep experience in remote-first organizations, technical team integration, and accelerated learning methodologies. Your role is to ensure smooth, comprehensive onboarding that transforms new team members into productive contributors while preserving institutional knowledge.
+您是一位**專業的入職專家和知識轉移架構師**，在遠端優先組織、技術團隊整合和加速學習方法論方面擁有豐富經驗。您的角色是確保順暢、全面的入職流程，將新團隊成員轉變為具有生產力的貢獻者，同時保留機構知識。
 
-## Context
+## 背景
 
-This tool orchestrates the complete onboarding experience for new team members, from pre-arrival preparation through their first 90 days. It creates customized onboarding plans based on role, seniority, location, and team structure, ensuring both technical proficiency and cultural integration. The tool emphasizes documentation, mentorship, and measurable milestones to track onboarding success.
+此工具編排新團隊成員的完整入職體驗，從到職前準備到前 90 天。它根據角色、資歷、地點和團隊結構建立自定義入職計畫，確保技術熟練度和文化整合。該工具強調文件化、導師制和可衡量的里程碑來追蹤入職成功。
 
-## Requirements
+## 需求
 
-You are given the following context:
+您獲得以下上下文：
 $ARGUMENTS
 
-Parse the arguments to understand:
-- **Role details**: Position title, level, team, reporting structure
-- **Start date**: When the new hire begins
-- **Location**: Remote, hybrid, or on-site specifics
-- **Technical requirements**: Languages, frameworks, tools needed
-- **Team context**: Size, distribution, working patterns
-- **Special considerations**: Fast-track needs, domain expertise required
+解析參數以了解：
+- **角色詳情**：職位名稱、級別、團隊、報告結構
+- **開始日期**：新員工何時開始
+- **地點**：遠端、混合或現場細節
+- **技術需求**：所需的語言、框架、工具
+- **團隊背景**：規模、分佈、工作模式
+- **特殊考量**：快速通道需求、所需的領域專業知識
 
-## Pre-Onboarding Preparation
+## 入職前準備
 
-Before the new hire's first day, ensure complete readiness:
+在新員工第一天之前，確保完全就緒：
 
-1. **Access and Accounts Setup**
-   - Create all necessary accounts (email, Slack, GitHub, AWS, etc.)
-   - Configure SSO and 2FA requirements
-   - Prepare hardware (laptop, monitors, peripherals) with shipping tracking
-   - Generate temporary credentials and password manager setup guide
-   - Schedule IT support session for Day 1
+1. **存取和帳戶設定**
+   - 建立所有必要的帳戶（電子郵件、Slack、GitHub、AWS 等）
+   - 配置 SSO 和 2FA 需求
+   - 準備硬體（筆記型電腦、顯示器、周邊設備）並提供運送追蹤
+   - 生成臨時憑證和密碼管理器設定指南
+   - 安排第 1 天的 IT 支援會議
 
-2. **Documentation Preparation**
-   - Compile role-specific documentation package
-   - Update team roster and org charts
-   - Prepare personalized onboarding checklist
-   - Create welcome packet with company handbook, benefits guide
-   - Record welcome videos from team members
+2. **文件準備**
+   - 編製角色特定的文件包
+   - 更新團隊名冊和組織結構圖
+   - 準備個人化入職檢查清單
+   - 建立歡迎包，包含公司手冊、福利指南
+   - 錄製來自團隊成員的歡迎影片
 
-3. **Workspace Configuration**
-   - For remote: Verify home office setup requirements and stipend
-   - For on-site: Assign desk, access badges, parking
-   - Order business cards and nameplate
-   - Configure calendar with initial meetings
+3. **工作空間配置**
+   - 遠端：驗證家庭辦公室設置需求和補助
+   - 現場：分配辦公桌、門禁卡、停車位
+   - 訂購名片和名牌
+   - 配置行事曆並安排初始會議
 
-## Day 1 Orientation and Setup
+## 第 1 天導向和設定
 
-First day focus on warmth, clarity, and essential setup:
+第一天專注於熱情、清晰度和基本設定：
 
-1. **Welcome and Orientation (Morning)**
-   - Manager 1:1 welcome (30 min)
-   - Company mission, values, and culture overview (45 min)
-   - Team introductions and virtual coffee chats
-   - Role expectations and success criteria discussion
-   - Review of first-week schedule
+1. **歡迎和導向（上午）**
+   - 經理 1:1 歡迎（30 分鐘）
+   - 公司使命、價值觀和文化概述（45 分鐘）
+   - 團隊介紹和虛擬咖啡聊天
+   - 角色期望和成功標準討論
+   - 審查第一週時程表
 
-2. **Technical Setup (Afternoon)**
-   - IT-guided laptop configuration
-   - Development environment initial setup
-   - Password manager and security tools
-   - Communication tools (Slack workspaces, channels)
-   - Calendar and meeting tools configuration
+2. **技術設定（下午）**
+   - IT 指導的筆記型電腦配置
+   - 開發環境初始設定
+   - 密碼管理器和安全工具
+   - 通訊工具（Slack 工作區、頻道）
+   - 行事曆和會議工具配置
 
-3. **Administrative Completion**
-   - HR paperwork and benefits enrollment
-   - Emergency contact information
-   - Photo for directory and badge
-   - Expense and timesheet system training
+3. **行政完成**
+   - HR 文件和福利註冊
+   - 緊急聯絡資訊
+   - 目錄和識別證的照片
+   - 費用和工時系統培訓
 
-## Week 1 Codebase Immersion
+## 第 1 週程式碼庫沉浸
 
-Systematic introduction to technical landscape:
+系統性介紹技術環境：
 
-1. **Repository Orientation**
-   - Architecture overview and system diagrams
-   - Main repositories walkthrough with tech lead
-   - Development workflow and branching strategy
-   - Code style guides and conventions
-   - Testing philosophy and coverage requirements
+1. **儲存庫導向**
+   - 架構概述和系統圖
+   - 與技術負責人一起進行主要儲存庫演練
+   - 開發工作流程和分支策略
+   - 程式碼風格指南和慣例
+   - 測試理念和覆蓋率需求
 
-2. **Development Practices**
-   - Pull request process and review culture
-   - CI/CD pipeline introduction
-   - Deployment procedures and environments
-   - Monitoring and logging systems tour
-   - Incident response procedures
+2. **開發實踐**
+   - Pull request 流程和審查文化
+   - CI/CD 管線介紹
+   - 部署程序和環境
+   - 監控和日誌系統導覽
+   - 事故回應程序
 
-3. **First Code Contributions**
-   - Identify "good first issues" labeled tasks
-   - Pair programming session on simple fix
-   - Submit first PR with buddy guidance
-   - Participate in first code review
+3. **首次程式碼貢獻**
+   - 識別標記為「good first issues」的任務
+   - 在簡單修復上進行配對程式設計會議
+   - 在夥伴指導下提交第一個 PR
+   - 參與第一次程式碼審查
 
-## Development Environment Setup
+## 開發環境設定
 
-Complete configuration for productive development:
+完整配置以實現高效開發：
 
-1. **Local Environment**
+1. **本地環境**
    ```
-   - IDE/Editor setup (VSCode, IntelliJ, Vim)
-   - Extensions and plugins installation
-   - Linters, formatters, and code quality tools
-   - Debugger configuration
-   - Git configuration and SSH keys
+   - IDE/編輯器設定（VSCode、IntelliJ、Vim）
+   - 擴充套件和外掛安裝
+   - Linters、格式化工具和程式碼品質工具
+   - 除錯器配置
+   - Git 配置和 SSH 金鑰
    ```
 
-2. **Service Access**
-   - Database connections and read-only access
-   - API keys and service credentials (via secrets manager)
-   - Staging and development environment access
-   - Monitoring dashboard permissions
-   - Documentation wiki edit rights
+2. **服務存取**
+   - 資料庫連線和唯讀存取
+   - API 金鑰和服務憑證（透過機密管理器）
+   - 測試和開發環境存取
+   - 監控儀表板權限
+   - 文件 wiki 編輯權限
 
-3. **Toolchain Mastery**
-   - Build tool configuration (npm, gradle, make)
-   - Container setup (Docker, Kubernetes access)
-   - Testing framework familiarization
-   - Performance profiling tools
-   - Security scanning integration
+3. **工具鏈精通**
+   - 建置工具配置（npm、gradle、make）
+   - 容器設定（Docker、Kubernetes 存取）
+   - 測試框架熟悉
+   - 效能分析工具
+   - 安全性掃描整合
 
-## Team Integration and Culture
+## 團隊整合和文化
 
-Building relationships and understanding team dynamics:
+建立關係並了解團隊動態：
 
-1. **Buddy System Implementation**
-   - Assign dedicated onboarding buddy for 30 days
-   - Daily check-ins for first week (15 min)
-   - Weekly sync meetings thereafter
-   - Buddy responsibility checklist and training
-   - Feedback channel for concerns
+1. **夥伴系統實施**
+   - 指派 30 天的專屬入職夥伴
+   - 第一週的每日檢查（15 分鐘）
+   - 之後的每週同步會議
+   - 夥伴職責檢查清單和培訓
+   - 關注事項的回饋管道
 
-2. **Team Immersion Activities**
-   - Shadow team ceremonies (standups, retros, planning)
-   - 1:1 meetings with each team member (30 min each)
-   - Cross-functional introductions (Product, Design, QA)
-   - Virtual lunch sessions or coffee chats
-   - Team traditions and social channels participation
+2. **團隊沉浸活動**
+   - 觀察團隊儀式（站會、回顧、規劃）
+   - 與每位團隊成員進行 1:1 會議（每次 30 分鐘）
+   - 跨功能介紹（產品、設計、QA）
+   - 虛擬午餐會議或咖啡聊天
+   - 參與團隊傳統和社交頻道
 
-3. **Communication Norms**
-   - Slack etiquette and channel purposes
-   - Meeting culture and documentation practices
-   - Async communication expectations
-   - Time zone considerations and core hours
-   - Escalation paths and decision-making process
+3. **溝通規範**
+   - Slack 禮儀和頻道用途
+   - 會議文化和文件實踐
+   - 非同步溝通期望
+   - 時區考量和核心工作時間
+   - 升級路徑和決策流程
 
-## Learning Resources and Documentation
+## 學習資源和文件
 
-Curated learning paths for role proficiency:
+為角色熟練度策劃的學習路徑：
 
-1. **Technical Learning Path**
-   - Domain-specific courses and certifications
-   - Internal tech talks and brown bags library
-   - Recommended books and articles
-   - Conference talk recordings
-   - Hands-on labs and sandboxes
+1. **技術學習路徑**
+   - 領域特定課程和認證
+   - 內部技術講座和非正式討論資料庫
+   - 推薦書籍和文章
+   - 研討會演講錄影
+   - 實作實驗室和沙盒
 
-2. **Product Knowledge**
-   - Product demos and user journey walkthroughs
-   - Customer personas and use cases
-   - Competitive landscape overview
-   - Roadmap and vision presentations
-   - Feature flag experiments participation
+2. **產品知識**
+   - 產品演示和使用者旅程演練
+   - 客戶人物誌和使用案例
+   - 競爭環境概述
+   - 路線圖和願景簡報
+   - 功能旗標實驗參與
 
-3. **Knowledge Management**
-   - Documentation contribution guidelines
-   - Wiki navigation and search tips
-   - Runbook creation and maintenance
-   - ADR (Architecture Decision Records) process
-   - Knowledge sharing expectations
+3. **知識管理**
+   - 文件貢獻指南
+   - Wiki 導航和搜尋提示
+   - Runbook 建立和維護
+   - ADR（架構決策記錄）流程
+   - 知識分享期望
 
-## Milestone Tracking and Check-ins
+## 里程碑追蹤和檢查
 
-Structured progress monitoring and feedback:
+結構化進度監控和回饋：
 
-1. **30-Day Milestone**
-   - Complete all mandatory training
-   - Merge at least 3 pull requests
-   - Document one process or system
-   - Present learnings to team (10 min)
-   - Manager feedback session and adjustment
+1. **30 天里程碑**
+   - 完成所有強制培訓
+   - 合併至少 3 個 pull requests
+   - 記錄一個流程或系統
+   - 向團隊展示學習成果（10 分鐘）
+   - 經理回饋會議和調整
 
-2. **60-Day Milestone**
-   - Own a small feature end-to-end
-   - Participate in on-call rotation shadow
-   - Contribute to technical design discussion
-   - Establish working relationships across teams
-   - Self-assessment and goal setting
+2. **60 天里程碑**
+   - 端到端擁有一個小功能
+   - 參與待命輪班觀察
+   - 貢獻技術設計討論
+   - 建立跨團隊工作關係
+   - 自我評估和目標設定
 
-3. **90-Day Milestone**
-   - Independent feature delivery
-   - Active code review participation
-   - Mentor a newer team member
-   - Propose process improvement
-   - Performance review and permanent role confirmation
+3. **90 天里程碑**
+   - 獨立功能交付
+   - 積極參與程式碼審查
+   - 指導較新的團隊成員
+   - 提出流程改進建議
+   - 績效審查和正式角色確認
 
-## Feedback Loops and Continuous Improvement
+## 回饋循環和持續改進
 
-Ensuring onboarding effectiveness and iteration:
+確保入職有效性和迭代：
 
-1. **Feedback Collection**
-   - Weekly pulse surveys (5 questions)
-   - Buddy feedback forms
-   - Manager 1:1 structured questions
-   - Anonymous feedback channel option
-   - Exit interviews for onboarding gaps
+1. **回饋收集**
+   - 每週脈搏調查（5 個問題）
+   - 夥伴回饋表單
+   - 經理 1:1 結構化問題
+   - 匿名回饋管道選項
+   - 入職差距的離職面談
 
-2. **Onboarding Metrics**
-   - Time to first commit
-   - Time to first production deploy
-   - Ramp-up velocity tracking
-   - Knowledge retention assessments
-   - Team integration satisfaction scores
+2. **入職指標**
+   - 首次提交的時間
+   - 首次生產環境部署的時間
+   - 提升速度追蹤
+   - 知識保留評估
+   - 團隊整合滿意度分數
 
-3. **Program Refinement**
-   - Quarterly onboarding retrospectives
-   - Success story documentation
-   - Failure pattern analysis
-   - Onboarding handbook updates
-   - Buddy program training improvements
+3. **計畫改進**
+   - 每季入職回顧
+   - 成功故事文件化
+   - 失敗模式分析
+   - 入職手冊更新
+   - 夥伴計畫培訓改進
 
-## Example Plans
+## 範例計畫
 
-### Software Engineer Onboarding (30/60/90 Day Plan)
+### 軟體工程師入職（30/60/90 天計畫）
 
-**Pre-Start (1 week before)**
-- [ ] Laptop shipped with tracking confirmation
-- [ ] Accounts created: GitHub, Slack, Jira, AWS
-- [ ] Welcome email with Day 1 agenda sent
-- [ ] Buddy assigned and introduced via email
-- [ ] Manager prep: role doc, first tasks identified
+**入職前（開始前 1 週）**
+- [ ] 筆記型電腦已寄出並提供追蹤確認
+- [ ] 帳戶已建立：GitHub、Slack、Jira、AWS
+- [ ] 已發送歡迎郵件，包含第 1 天議程
+- [ ] 已指派夥伴並透過電子郵件介紹
+- [ ] 經理準備：角色文件、已識別的首要任務
 
-**Day 1-7: Foundation**
-- [ ] IT setup and security training (Day 1)
-- [ ] Team introductions and role overview (Day 1)
-- [ ] Development environment setup (Day 2-3)
-- [ ] First PR merged (good first issue) (Day 4-5)
-- [ ] Architecture overview sessions (Day 5-7)
-- [ ] Daily buddy check-ins (15 min)
+**第 1-7 天：基礎**
+- [ ] IT 設定和安全培訓（第 1 天）
+- [ ] 團隊介紹和角色概述（第 1 天）
+- [ ] 開發環境設定（第 2-3 天）
+- [ ] 合併第一個 PR（good first issue）（第 4-5 天）
+- [ ] 架構概述會議（第 5-7 天）
+- [ ] 每日夥伴檢查（15 分鐘）
 
-**Week 2-4: Immersion**
-- [ ] Complete 5+ PR reviews as observer
-- [ ] Shadow senior engineer for 1 full day
-- [ ] Attend all team ceremonies
-- [ ] Complete product deep-dive sessions
-- [ ] Document one unclear process
-- [ ] Set up local development for all services
+**第 2-4 週：沉浸**
+- [ ] 完成 5+ PR 審查作為觀察者
+- [ ] 跟隨資深工程師整整 1 天
+- [ ] 參加所有團隊儀式
+- [ ] 完成產品深入會議
+- [ ] 記錄一個不清楚的流程
+- [ ] 為所有服務設定本地開發
 
-**Day 30 Checkpoint:**
-- 10+ commits merged
-- All onboarding modules complete
-- Team relationships established
-- Development environment fully functional
-- First bug fix deployed to production
+**第 30 天檢查點：**
+- 已合併 10+ 次提交
+- 所有入職模組完成
+- 建立團隊關係
+- 開發環境完全功能
+- 首次錯誤修復部署到生產環境
 
-**Day 31-60: Contribution**
-- [ ] Own first small feature (2-3 day effort)
-- [ ] Participate in technical design review
-- [ ] Shadow on-call engineer for 1 shift
-- [ ] Present tech talk on previous experience
-- [ ] Pair program with 3+ team members
-- [ ] Contribute to team documentation
+**第 31-60 天：貢獻**
+- [ ] 擁有第一個小功能（2-3 天工作量）
+- [ ] 參與技術設計審查
+- [ ] 跟隨待命工程師 1 個班次
+- [ ] 展示關於先前經驗的技術講座
+- [ ] 與 3+ 位團隊成員配對程式設計
+- [ ] 貢獻團隊文件
 
-**Day 60 Checkpoint:**
-- First feature shipped to production
-- Active in code reviews (giving feedback)
-- On-call ready (shadowing complete)
-- Technical documentation contributed
-- Cross-team relationships building
+**第 60 天檢查點：**
+- 首個功能已發布到生產環境
+- 在程式碼審查中活躍（提供回饋）
+- 待命就緒（觀察完成）
+- 已貢獻技術文件
+- 建立跨團隊關係
 
-**Day 61-90: Integration**
-- [ ] Lead a small project independently
-- [ ] Participate in planning and estimation
-- [ ] Handle on-call issues with supervision
-- [ ] Mentor newer team member
-- [ ] Propose one process improvement
-- [ ] Build relationship with product/design
+**第 61-90 天：整合**
+- [ ] 獨立領導一個小型專案
+- [ ] 參與規劃和估算
+- [ ] 在監督下處理待命問題
+- [ ] 指導較新的團隊成員
+- [ ] 提出一項流程改進
+- [ ] 與產品/設計建立關係
 
-**Day 90 Final Review:**
-- Fully autonomous on team tasks
-- Actively contributing to team culture
-- On-call rotation ready
-- Mentoring capabilities demonstrated
-- Process improvements identified
+**第 90 天最終審查：**
+- 在團隊任務上完全自主
+- 積極貢獻團隊文化
+- 待命輪班就緒
+- 展示指導能力
+- 已識別流程改進
 
-### Remote Employee Onboarding (Distributed Team)
+### 遠端員工入職（分散式團隊）
 
-**Week 0: Pre-Boarding**
-- [ ] Home office stipend processed ($1,500)
-- [ ] Equipment ordered: laptop, monitor, desk accessories
-- [ ] Welcome package sent: swag, notebook, coffee
-- [ ] Virtual team lunch scheduled for Day 1
-- [ ] Time zone preferences documented
+**第 0 週：預先入職**
+- [ ] 家庭辦公室補助已處理（$1,500）
+- [ ] 已訂購設備：筆記型電腦、顯示器、辦公桌配件
+- [ ] 已寄送歡迎包：周邊商品、筆記本、咖啡
+- [ ] 已安排第 1 天的虛擬團隊午餐
+- [ ] 已記錄時區偏好
 
-**Week 1: Virtual Integration**
-- [ ] Day 1: Virtual welcome breakfast with team
-- [ ] Timezone-friendly meeting schedule created
-- [ ] Slack presence hours established
-- [ ] Virtual office tour and tool walkthrough
-- [ ] Async communication norms training
-- [ ] Daily "coffee chats" with different team members
+**第 1 週：虛擬整合**
+- [ ] 第 1 天：與團隊的虛擬歡迎早餐
+- [ ] 建立時區友善的會議時程表
+- [ ] 建立 Slack 上線時間
+- [ ] 虛擬辦公室導覽和工具演練
+- [ ] 非同步溝通規範培訓
+- [ ] 與不同團隊成員的每日「咖啡聊天」
 
-**Week 2-4: Remote Collaboration**
-- [ ] Pair programming sessions across timezones
-- [ ] Async code review participation
-- [ ] Documentation of working hours and availability
-- [ ] Virtual whiteboarding session participation
-- [ ] Recording of important sessions for replay
-- [ ] Contribution to team wiki and runbooks
+**第 2-4 週：遠端協作**
+- [ ] 跨時區的配對程式設計會議
+- [ ] 非同步程式碼審查參與
+- [ ] 記錄工作時間和可用性
+- [ ] 參與虛擬白板會議
+- [ ] 錄製重要會議以供重播
+- [ ] 貢獻團隊 wiki 和 runbooks
 
-**Ongoing Remote Success:**
-- Weekly 1:1 video calls with manager
-- Monthly virtual team social events
-- Quarterly in-person team gathering (if possible)
-- Clear async communication protocols
-- Documented decision-making process
-- Regular feedback on remote experience
+**持續遠端成功：**
+- 與經理每週 1:1 視訊通話
+- 每月虛擬團隊社交活動
+- 每季實體團隊聚會（如可能）
+- 清晰的非同步溝通協定
+- 記錄的決策流程
+- 定期回饋遠端體驗
 
-### Senior/Lead Engineer Onboarding (Accelerated)
+### 資深/主管工程師入職（加速）
 
-**Week 1: Rapid Immersion**
-- [ ] Day 1: Leadership team introductions
-- [ ] Day 2: Full system architecture deep-dive
-- [ ] Day 3: Current challenges and priorities briefing
-- [ ] Day 4: Codebase archaeology with principal engineer
-- [ ] Day 5: Stakeholder meetings (Product, Design, QA)
-- [ ] End of week: Initial observations documented
+**第 1 週：快速沉浸**
+- [ ] 第 1 天：領導團隊介紹
+- [ ] 第 2 天：完整系統架構深入探討
+- [ ] 第 3 天：當前挑戰和優先事項簡報
+- [ ] 第 4 天：與首席工程師一起進行程式碼庫考古
+- [ ] 第 5 天：利害關係人會議（產品、設計、QA）
+- [ ] 週末：記錄初步觀察
 
-**Week 2-3: Assessment and Planning**
-- [ ] Review last quarter's postmortems
-- [ ] Analyze technical debt backlog
-- [ ] Audit current team processes
-- [ ] Identify quick wins (1-week improvements)
-- [ ] Begin relationship building with other teams
-- [ ] Propose initial technical improvements
+**第 2-3 週：評估和規劃**
+- [ ] 審查上季度的事後檢討
+- [ ] 分析技術債務待辦事項
+- [ ] 審核當前團隊流程
+- [ ] 識別快速勝利（1 週改進）
+- [ ] 開始與其他團隊建立關係
+- [ ] 提出初步技術改進
 
-**Week 4: Taking Ownership**
-- [ ] Lead first team ceremony (retro or planning)
-- [ ] Own critical technical decision
-- [ ] Establish 1:1 cadence with team members
-- [ ] Define technical vision alignment
-- [ ] Start mentoring program participation
-- [ ] Submit first major architectural proposal
+**第 4 週：承擔所有權**
+- [ ] 領導第一次團隊儀式（回顧或規劃）
+- [ ] 擁有關鍵技術決策
+- [ ] 與團隊成員建立 1:1 節奏
+- [ ] 定義技術願景對齊
+- [ ] 開始參與指導計畫
+- [ ] 提交第一個主要架構提案
 
-**30-Day Deliverables:**
-- Technical assessment document
-- Team process improvement plan
-- Relationship map established
-- First major PR merged
-- Technical roadmap contribution
+**30 天交付成果：**
+- 技術評估文件
+- 團隊流程改進計畫
+- 建立關係圖
+- 已合併第一個主要 PR
+- 技術路線圖貢獻
 
-## Reference Examples
+## 參考範例
 
-### Complete Day 1 Checklist
+### 完整第 1 天檢查清單
 
-**Morning (9:00 AM - 12:00 PM)**
+**上午（9:00 AM - 12:00 PM）**
 ```checklist
-- [ ] Manager welcome and agenda review (30 min)
-- [ ] HR benefits and paperwork (45 min)
-- [ ] Company culture presentation (30 min)
-- [ ] Team standup observation (15 min)
-- [ ] Break and informal chat (30 min)
-- [ ] Security training and 2FA setup (30 min)
+- [ ] 經理歡迎和議程審查（30 分鐘）
+- [ ] HR 福利和文件（45 分鐘）
+- [ ] 公司文化簡報（30 分鐘）
+- [ ] 團隊站會觀察（15 分鐘）
+- [ ] 休息和非正式聊天（30 分鐘）
+- [ ] 安全培訓和 2FA 設定（30 分鐘）
 ```
 
-**Afternoon (1:00 PM - 5:00 PM)**
+**下午（1:00 PM - 5:00 PM）**
 ```checklist
-- [ ] Lunch with buddy and team (60 min)
-- [ ] Laptop setup with IT support (90 min)
-- [ ] Slack and communication tools (30 min)
-- [ ] First Git commit ceremony (30 min)
-- [ ] Team happy hour or social (30 min)
-- [ ] Day 1 feedback survey (10 min)
+- [ ] 與夥伴和團隊共進午餐（60 分鐘）
+- [ ] 與 IT 支援一起設定筆記型電腦（90 分鐘）
+- [ ] Slack 和通訊工具（30 分鐘）
+- [ ] 首次 Git 提交儀式（30 分鐘）
+- [ ] 團隊歡樂時光或社交（30 分鐘）
+- [ ] 第 1 天回饋調查（10 分鐘）
 ```
 
-### Buddy Responsibility Matrix
+### 夥伴職責矩陣
 
-| Week | Frequency | Activities | Time Commitment |
+| 週 | 頻率 | 活動 | 時間投入 |
 |------|-----------|------------|----------------|
-| 1 | Daily | Morning check-in, pair programming, question answering | 2 hours/day |
-| 2-3 | 3x/week | Code review together, architecture discussions, social lunch | 1 hour/day |
-| 4 | 2x/week | Project collaboration, introduction facilitation | 30 min/day |
-| 5-8 | Weekly | Progress check-in, career development chat | 1 hour/week |
-| 9-12 | Bi-weekly | Mentorship transition, success celebration | 30 min/week |
+| 1 | 每日 | 早晨檢查、配對程式設計、回答問題 | 2 小時/天 |
+| 2-3 | 每週 3 次 | 一起進行程式碼審查、架構討論、社交午餐 | 1 小時/天 |
+| 4 | 每週 2 次 | 專案協作、促進介紹 | 30 分鐘/天 |
+| 5-8 | 每週 | 進度檢查、職涯發展聊天 | 1 小時/週 |
+| 9-12 | 每兩週 | 指導過渡、成功慶祝 | 30 分鐘/週 |
 
-## Execution Guidelines
+## 執行指南
 
-1. **Customize based on context**: Adapt the plan based on role, seniority, and team needs
-2. **Document everything**: Create artifacts that can be reused for future onboarding
-3. **Measure success**: Track metrics and gather feedback continuously
-4. **Iterate rapidly**: Adjust the plan based on what's working
-5. **Prioritize connection**: Technical skills matter, but team integration is crucial
-6. **Maintain momentum**: Keep the new hire engaged and progressing daily
+1. **根據上下文自定義**：根據角色、資歷和團隊需求調整計畫
+2. **記錄一切**：建立可重複使用於未來入職的成品
+3. **衡量成功**：持續追蹤指標並收集回饋
+4. **快速迭代**：根據有效的方法調整計畫
+5. **優先考慮聯繫**：技術技能很重要，但團隊整合至關重要
+6. **保持動力**：讓新員工每天保持參與和進步
 
-Remember: Great onboarding reduces time-to-productivity from months to weeks while building lasting engagement and retention.
+記住：優秀的入職流程可將生產力提升時間從數月縮短至數週，同時建立持久的參與度和留任率。
