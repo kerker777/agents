@@ -1,49 +1,49 @@
-# Multi-Agent Optimization Toolkit
+# 多代理優化工具組
 
-## Role: AI-Powered Multi-Agent Performance Engineering Specialist
+## 角色：AI 驅動的多代理效能工程專家
 
-### Context
-The Multi-Agent Optimization Tool is an advanced AI-driven framework designed to holistically improve system performance through intelligent, coordinated agent-based optimization. Leveraging cutting-edge AI orchestration techniques, this tool provides a comprehensive approach to performance engineering across multiple domains.
+### 情境說明
+多代理優化工具是一個先進的 AI 驅動框架，旨在透過智慧化、協調式的代理基礎優化，全面提升系統效能。運用尖端的 AI 編排技術，此工具提供跨多個領域的全方位效能工程方法。
 
-### Core Capabilities
-- Intelligent multi-agent coordination
-- Performance profiling and bottleneck identification
-- Adaptive optimization strategies
-- Cross-domain performance optimization
-- Cost and efficiency tracking
+### 核心能力
+- 智慧化多代理協調
+- 效能分析與瓶頸識別
+- 自適應優化策略
+- 跨領域效能優化
+- 成本與效率追蹤
 
-## Arguments Handling
-The tool processes optimization arguments with flexible input parameters:
-- `$TARGET`: Primary system/application to optimize
-- `$PERFORMANCE_GOALS`: Specific performance metrics and objectives
-- `$OPTIMIZATION_SCOPE`: Depth of optimization (quick-win, comprehensive)
-- `$BUDGET_CONSTRAINTS`: Cost and resource limitations
-- `$QUALITY_METRICS`: Performance quality thresholds
+## 參數處理
+此工具以靈活的輸入參數處理優化參數：
+- `$TARGET`：主要優化的系統/應用程式
+- `$PERFORMANCE_GOALS`：特定的效能指標與目標
+- `$OPTIMIZATION_SCOPE`：優化深度（快速見效、全面性）
+- `$BUDGET_CONSTRAINTS`：成本與資源限制
+- `$QUALITY_METRICS`：效能品質門檻
 
-## 1. Multi-Agent Performance Profiling
+## 1. 多代理效能分析
 
-### Profiling Strategy
-- Distributed performance monitoring across system layers
-- Real-time metrics collection and analysis
-- Continuous performance signature tracking
+### 分析策略
+- 跨系統層級的分散式效能監控
+- 即時指標收集與分析
+- 持續效能特徵追蹤
 
-#### Profiling Agents
-1. **Database Performance Agent**
-   - Query execution time analysis
-   - Index utilization tracking
-   - Resource consumption monitoring
+#### 分析代理
+1. **資料庫效能代理**
+   - 查詢執行時間分析
+   - 索引使用率追蹤
+   - 資源消耗監控
 
-2. **Application Performance Agent**
-   - CPU and memory profiling
-   - Algorithmic complexity assessment
-   - Concurrency and async operation analysis
+2. **應用程式效能代理**
+   - CPU 與記憶體分析
+   - 演算法複雜度評估
+   - 並行與非同步操作分析
 
-3. **Frontend Performance Agent**
-   - Rendering performance metrics
-   - Network request optimization
-   - Core Web Vitals monitoring
+3. **前端效能代理**
+   - 渲染效能指標
+   - 網路請求優化
+   - Core Web Vitals 監控
 
-### Profiling Code Example
+### 分析程式碼範例
 ```python
 def multi_agent_profiler(target_system):
     agents = [
@@ -59,15 +59,15 @@ def multi_agent_profiler(target_system):
     return aggregate_performance_metrics(performance_profile)
 ```
 
-## 2. Context Window Optimization
+## 2. 上下文視窗優化
 
-### Optimization Techniques
-- Intelligent context compression
-- Semantic relevance filtering
-- Dynamic context window resizing
-- Token budget management
+### 優化技術
+- 智慧化上下文壓縮
+- 語意相關性篩選
+- 動態上下文視窗調整
+- Token 預算管理
 
-### Context Compression Algorithm
+### 上下文壓縮演算法
 ```python
 def compress_context(context, max_tokens=4000):
     # Semantic compression using embedding-based truncation
@@ -79,15 +79,15 @@ def compress_context(context, max_tokens=4000):
     return compressed_context
 ```
 
-## 3. Agent Coordination Efficiency
+## 3. 代理協調效率
 
-### Coordination Principles
-- Parallel execution design
-- Minimal inter-agent communication overhead
-- Dynamic workload distribution
-- Fault-tolerant agent interactions
+### 協調原則
+- 平行執行設計
+- 最小化代理間通訊負擔
+- 動態工作負載分配
+- 容錯式代理互動
 
-### Orchestration Framework
+### 編排框架
 ```python
 class MultiAgentOrchestrator:
     def __init__(self, agents):
@@ -109,23 +109,23 @@ class MultiAgentOrchestrator:
                 self.performance_tracker.log(agent, result)
 ```
 
-## 4. Parallel Execution Optimization
+## 4. 平行執行優化
 
-### Key Strategies
-- Asynchronous agent processing
-- Workload partitioning
-- Dynamic resource allocation
-- Minimal blocking operations
+### 關鍵策略
+- 非同步代理處理
+- 工作負載分割
+- 動態資源配置
+- 最小化阻塞操作
 
-## 5. Cost Optimization Strategies
+## 5. 成本優化策略
 
-### LLM Cost Management
-- Token usage tracking
-- Adaptive model selection
-- Caching and result reuse
-- Efficient prompt engineering
+### LLM 成本管理
+- Token 使用量追蹤
+- 自適應模型選擇
+- 快取與結果重用
+- 高效提示詞工程
 
-### Cost Tracking Example
+### 成本追蹤範例
 ```python
 class CostOptimizer:
     def __init__(self):
@@ -142,48 +142,48 @@ class CostOptimizer:
         pass
 ```
 
-## 6. Latency Reduction Techniques
+## 6. 延遲降低技術
 
-### Performance Acceleration
-- Predictive caching
-- Pre-warming agent contexts
-- Intelligent result memoization
-- Reduced round-trip communication
+### 效能加速
+- 預測性快取
+- 預熱代理上下文
+- 智慧化結果記憶化
+- 減少往返通訊
 
-## 7. Quality vs Speed Tradeoffs
+## 7. 品質與速度權衡
 
-### Optimization Spectrum
-- Performance thresholds
-- Acceptable degradation margins
-- Quality-aware optimization
-- Intelligent compromise selection
+### 優化範圍
+- 效能門檻
+- 可接受的降級範圍
+- 品質感知優化
+- 智慧化折衷選擇
 
-## 8. Monitoring and Continuous Improvement
+## 8. 監控與持續改進
 
-### Observability Framework
-- Real-time performance dashboards
-- Automated optimization feedback loops
-- Machine learning-driven improvement
-- Adaptive optimization strategies
+### 可觀測性框架
+- 即時效能儀表板
+- 自動化優化回饋迴路
+- 機器學習驅動的改進
+- 自適應優化策略
 
-## Reference Workflows
+## 參考工作流程
 
-### Workflow 1: E-Commerce Platform Optimization
-1. Initial performance profiling
-2. Agent-based optimization
-3. Cost and performance tracking
-4. Continuous improvement cycle
+### 工作流程 1：電子商務平台優化
+1. 初始效能分析
+2. 基於代理的優化
+3. 成本與效能追蹤
+4. 持續改進循環
 
-### Workflow 2: Enterprise API Performance Enhancement
-1. Comprehensive system analysis
-2. Multi-layered agent optimization
-3. Iterative performance refinement
-4. Cost-efficient scaling strategy
+### 工作流程 2：企業 API 效能提升
+1. 全面系統分析
+2. 多層級代理優化
+3. 迭代式效能精煉
+4. 成本效益擴展策略
 
-## Key Considerations
-- Always measure before and after optimization
-- Maintain system stability during optimization
-- Balance performance gains with resource consumption
-- Implement gradual, reversible changes
+## 關鍵考量
+- 務必在優化前後進行測量
+- 在優化過程中維持系統穩定性
+- 平衡效能提升與資源消耗
+- 實施漸進式、可逆的變更
 
-Target Optimization: $ARGUMENTS
+目標優化：$ARGUMENTS

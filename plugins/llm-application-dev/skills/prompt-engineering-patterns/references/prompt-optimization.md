@@ -1,8 +1,8 @@
-# Prompt Optimization Guide
+# 提示詞最佳化指南
 
-## Systematic Refinement Process
+## 系統化改進流程
 
-### 1. Baseline Establishment
+### 1. 建立基準
 ```python
 def establish_baseline(prompt, test_cases):
     results = {
@@ -25,9 +25,9 @@ def establish_baseline(prompt, test_cases):
     return {k: v/n for k, v in results.items()}
 ```
 
-### 2. Iterative Refinement Workflow
+### 2. 迭代改進工作流程
 ```
-Initial Prompt → Test → Analyze Failures → Refine → Test → Repeat
+初始提示詞 → 測試 → 分析失敗 → 改進 → 測試 → 重複
 ```
 
 ```python
@@ -63,7 +63,7 @@ class PromptOptimizer:
         return self.get_best_prompt()
 ```
 
-### 3. A/B Testing Framework
+### 3. A/B 測試框架
 ```python
 class PromptABTest:
     def __init__(self, variant_a, variant_b):
@@ -113,9 +113,9 @@ class PromptABTest:
         return analysis
 ```
 
-## Optimization Strategies
+## 最佳化策略
 
-### Token Reduction
+### 令牌減少
 ```python
 def optimize_for_tokens(prompt):
     optimizations = [
@@ -125,7 +125,7 @@ def optimize_for_tokens(prompt):
         ('at this point in time', 'now'),
 
         # Consolidate instructions
-        ('First, ...\\nThen, ...\\nFinally, ...', 'Steps: 1) ... 2) ... 3) ...'),
+        ('First, ...\nThen, ...\nFinally, ...', 'Steps: 1) ... 2) ... 3) ...'),
 
         # Use abbreviations (after first definition)
         ('Natural Language Processing (NLP)', 'NLP'),
@@ -143,7 +143,7 @@ def optimize_for_tokens(prompt):
     return optimized
 ```
 
-### Latency Reduction
+### 延遲降低
 ```python
 def optimize_for_latency(prompt):
     strategies = {
@@ -166,23 +166,23 @@ def optimize_for_latency(prompt):
     return best_strategy
 ```
 
-### Accuracy Improvement
+### 準確性改進
 ```python
 def improve_accuracy(prompt, failure_cases):
     improvements = []
 
     # Add constraints for common failures
     if has_format_errors(failure_cases):
-        improvements.append("Output must be valid JSON with no additional text.")
+        improvements.append("輸出必須是有效的 JSON，不得有額外文字。")
 
     # Add examples for edge cases
     edge_cases = identify_edge_cases(failure_cases)
     if edge_cases:
-        improvements.append(f"Examples of edge cases:\\n{format_examples(edge_cases)}")
+        improvements.append(f"邊緣案例範例：\n{format_examples(edge_cases)}")
 
     # Add verification step
     if has_logical_errors(failure_cases):
-        improvements.append("Before responding, verify your answer is logically consistent.")
+        improvements.append("回應前，請驗證您的答案在邏輯上是一致的。")
 
     # Strengthen instructions
     if has_ambiguity_errors(failure_cases):
@@ -191,9 +191,9 @@ def improve_accuracy(prompt, failure_cases):
     return integrate_improvements(prompt, improvements)
 ```
 
-## Performance Metrics
+## 效能指標
 
-### Core Metrics
+### 核心指標
 ```python
 class PromptMetrics:
     @staticmethod
@@ -229,7 +229,7 @@ class PromptMetrics:
         return np.percentile(latencies, 95)
 ```
 
-### Automated Evaluation
+### 自動化評估
 ```python
 def evaluate_prompt_comprehensively(prompt, test_suite):
     results = {
@@ -271,9 +271,9 @@ def evaluate_prompt_comprehensively(prompt, test_suite):
     }
 ```
 
-## Failure Analysis
+## 失敗分析
 
-### Categorizing Failures
+### 失敗分類
 ```python
 class FailureAnalyzer:
     def categorize_failures(self, test_results):
@@ -301,31 +301,31 @@ class FailureAnalyzer:
 
         if categorized_failures['format_errors']:
             fixes.append({
-                'issue': 'Format errors',
-                'fix': 'Add explicit format examples and constraints',
+                'issue': '格式錯誤',
+                'fix': '加入明確的格式範例和限制',
                 'priority': 'high'
             })
 
         if categorized_failures['hallucinations']:
             fixes.append({
-                'issue': 'Hallucinations',
-                'fix': 'Add grounding instruction: "Base your answer only on provided context"',
+                'issue': '幻覺',
+                'fix': '加入根據指令："僅根據提供的上下文回答"',
                 'priority': 'critical'
             })
 
         if categorized_failures['incomplete_responses']:
             fixes.append({
-                'issue': 'Incomplete responses',
-                'fix': 'Add: "Ensure your response fully addresses all parts of the question"',
+                'issue': '不完整的回應',
+                'fix': '加入："確保您的回應完整地解決問題的所有部分"',
                 'priority': 'medium'
             })
 
         return fixes
 ```
 
-## Versioning and Rollback
+## 版本管理與回復
 
-### Prompt Version Control
+### 提示詞版本控制
 ```python
 class PromptVersionControl:
     def __init__(self, storage_path):
@@ -359,7 +359,7 @@ class PromptVersionControl:
             'metrics_comparison': {
                 metric: {
                     'v1': v1['metrics'].get(metric),
-                    'v2': v2['metrics'].get(metric'),
+                    'v2': v2['metrics'].get(metric),
                     'change': v2['metrics'].get(metric, 0) - v1['metrics'].get(metric, 0)
                 }
                 for metric in set(v1['metrics'].keys()) | set(v2['metrics'].keys())
@@ -367,48 +367,48 @@ class PromptVersionControl:
         }
 ```
 
-## Best Practices
+## 最佳實務
 
-1. **Establish Baseline**: Always measure initial performance
-2. **Change One Thing**: Isolate variables for clear attribution
-3. **Test Thoroughly**: Use diverse, representative test cases
-4. **Track Metrics**: Log all experiments and results
-5. **Validate Significance**: Use statistical tests for A/B comparisons
-6. **Document Changes**: Keep detailed notes on what and why
-7. **Version Everything**: Enable rollback to previous versions
-8. **Monitor Production**: Continuously evaluate deployed prompts
+1. **建立基準**：始終衡量初始效能
+2. **一次改變一項**：隔離變數以明確歸因
+3. **充分測試**：使用多樣化、具代表性的測試案例
+4. **追蹤指標**：記錄所有實驗和結果
+5. **驗證顯著性**：對 A/B 比較使用統計測試
+6. **記錄變更**：詳細記錄改變了什麼以及為什麼
+7. **版本化一切**：能夠回復到先前版本
+8. **監控生產環境**：持續評估已部署的提示詞
 
-## Common Optimization Patterns
+## 常見最佳化模式
 
-### Pattern 1: Add Structure
+### 模式 1：加入結構
 ```
-Before: "Analyze this text"
-After: "Analyze this text for:\n1. Main topic\n2. Key arguments\n3. Conclusion"
-```
-
-### Pattern 2: Add Examples
-```
-Before: "Extract entities"
-After: "Extract entities\\n\\nExample:\\nText: Apple released iPhone\\nEntities: {company: Apple, product: iPhone}"
+之前："分析這段文字"
+之後："分析這段文字：\n1. 主要主題\n2. 關鍵論點\n3. 結論"
 ```
 
-### Pattern 3: Add Constraints
+### 模式 2：加入範例
 ```
-Before: "Summarize this"
-After: "Summarize in exactly 3 bullet points, 15 words each"
-```
-
-### Pattern 4: Add Verification
-```
-Before: "Calculate..."
-After: "Calculate... Then verify your calculation is correct before responding."
+之前："擷取實體"
+之後："擷取實體\n\n範例：\n文字：Apple 發布 iPhone\n實體：{company: Apple, product: iPhone}"
 ```
 
-## Tools and Utilities
+### 模式 3：加入限制
+```
+之前："摘要這個"
+之後："以恰好 3 個重點摘要，每個 15 個字"
+```
 
-- Prompt diff tools for version comparison
-- Automated test runners
-- Metric dashboards
-- A/B testing frameworks
-- Token counting utilities
-- Latency profilers
+### 模式 4：加入驗證
+```
+之前："計算..."
+之後："計算... 然後在回應前驗證您的計算是否正確。"
+```
+
+## 工具與公用程式
+
+- 用於版本比較的提示詞差異工具
+- 自動化測試執行器
+- 指標儀表板
+- A/B 測試框架
+- 令牌計數工具
+- 延遲分析器

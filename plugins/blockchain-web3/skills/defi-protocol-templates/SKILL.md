@@ -1,20 +1,20 @@
 ---
 name: defi-protocol-templates
-description: Implement DeFi protocols with production-ready templates for staking, AMMs, governance, and lending systems. Use when building decentralized finance applications or smart contract protocols.
+description: 實作 DeFi 協議的正式環境就緒模板，包含質押、AMM、治理與借貸系統。適用於建置去中心化金融應用程式或智能合約協議。
 ---
 
 # DeFi Protocol Templates
 
-Production-ready templates for common DeFi protocols including staking, AMMs, governance, lending, and flash loans.
+常見 DeFi 協議的正式環境就緒模板，包含質押、AMM、治理、借貸與閃電貸。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Building staking platforms with reward distribution
-- Implementing AMM (Automated Market Maker) protocols
-- Creating governance token systems
-- Developing lending/borrowing protocols
-- Integrating flash loan functionality
-- Launching yield farming platforms
+- 建置具備獎勵分配的質押平台
+- 實作 AMM（自動化做市商）協議
+- 建立治理代幣系統
+- 開發借貸協議
+- 整合閃電貸功能
+- 推出流動性挖礦平台
 
 ## Staking Contract
 
@@ -30,7 +30,7 @@ contract StakingRewards is ReentrancyGuard, Ownable {
     IERC20 public stakingToken;
     IERC20 public rewardsToken;
 
-    uint256 public rewardRate = 100; // Rewards per second
+    uint256 public rewardRate = 100; // 每秒獎勵
     uint256 public lastUpdateTime;
     uint256 public rewardPerTokenStored;
 
@@ -184,7 +184,7 @@ contract SimpleAMM {
 
         tokenIn_.transferFrom(msg.sender, address(this), amountIn);
 
-        // 0.3% fee
+        // 0.3% 手續費
         uint256 amountInWithFee = (amountIn * 997) / 1000;
         amountOut = (resOut * amountInWithFee) / (resIn + amountInWithFee);
 
@@ -281,7 +281,7 @@ contract Governor is Ownable {
     uint256 public proposalCount;
     mapping(uint256 => Proposal) public proposals;
 
-    uint256 public votingPeriod = 17280; // ~3 days in blocks
+    uint256 public votingPeriod = 17280; // 約 3 天的區塊數
     uint256 public proposalThreshold = 100000 * 10**18;
 
     event ProposalCreated(uint256 indexed proposalId, address proposer, string description);
@@ -338,7 +338,7 @@ contract Governor is Ownable {
 
         proposal.executed = true;
 
-        // Execute proposal logic here
+        // 在此執行提案邏輯
 
         emit ProposalExecuted(proposalId);
     }
@@ -364,7 +364,7 @@ interface IFlashLoanReceiver {
 
 contract FlashLoanProvider {
     IERC20 public token;
-    uint256 public feePercentage = 9; // 0.09% fee
+    uint256 public feePercentage = 9; // 0.09% 手續費
 
     event FlashLoan(address indexed borrower, uint256 amount, uint256 fee);
 
@@ -382,10 +382,10 @@ contract FlashLoanProvider {
 
         uint256 fee = (amount * feePercentage) / 10000;
 
-        // Send tokens to receiver
+        // 發送代幣給接收者
         token.transfer(receiver, amount);
 
-        // Execute callback
+        // 執行回調
         require(
             IFlashLoanReceiver(receiver).executeOperation(
                 address(token),
@@ -396,7 +396,7 @@ contract FlashLoanProvider {
             "Flash loan failed"
         );
 
-        // Verify repayment
+        // 驗證還款
         uint256 balanceAfter = token.balanceOf(address(this));
         require(balanceAfter >= balanceBefore + fee, "Flash loan not repaid");
 
@@ -404,7 +404,7 @@ contract FlashLoanProvider {
     }
 }
 
-// Example flash loan receiver
+// 閃電貸接收者範例
 contract FlashLoanReceiver is IFlashLoanReceiver {
     function executeOperation(
         address asset,
@@ -412,10 +412,10 @@ contract FlashLoanReceiver is IFlashLoanReceiver {
         uint256 fee,
         bytes calldata params
     ) external override returns (bool) {
-        // Decode params and execute arbitrage, liquidation, etc.
+        // 解碼參數並執行套利、清算等操作
         // ...
 
-        // Approve repayment
+        // 批准還款
         IERC20(asset).approve(msg.sender, amount + fee);
 
         return true;
@@ -425,30 +425,30 @@ contract FlashLoanReceiver is IFlashLoanReceiver {
 
 ## Resources
 
-- **references/staking.md**: Staking mechanics and reward distribution
-- **references/liquidity-pools.md**: AMM mathematics and pricing
-- **references/governance-tokens.md**: Governance and voting systems
-- **references/lending-protocols.md**: Lending/borrowing implementation
-- **references/flash-loans.md**: Flash loan security and use cases
-- **assets/staking-contract.sol**: Production staking template
-- **assets/amm-contract.sol**: Full AMM implementation
-- **assets/governance-token.sol**: Governance system
-- **assets/lending-protocol.sol**: Lending platform template
+- **references/staking.md**: 質押機制與獎勵分配
+- **references/liquidity-pools.md**: AMM 數學與定價
+- **references/governance-tokens.md**: 治理與投票系統
+- **references/lending-protocols.md**: 借貸實作
+- **references/flash-loans.md**: 閃電貸安全性與使用案例
+- **assets/staking-contract.sol**: 正式環境質押模板
+- **assets/amm-contract.sol**: 完整 AMM 實作
+- **assets/governance-token.sol**: 治理系統
+- **assets/lending-protocol.sol**: 借貸平台模板
 
 ## Best Practices
 
-1. **Use Established Libraries**: OpenZeppelin, Solmate
-2. **Test Thoroughly**: Unit tests, integration tests, fuzzing
-3. **Audit Before Launch**: Professional security audits
-4. **Start Simple**: MVP first, add features incrementally
-5. **Monitor**: Track contract health and user activity
-6. **Upgradability**: Consider proxy patterns for upgrades
-7. **Emergency Controls**: Pause mechanisms for critical issues
+1. **使用成熟的函式庫**: OpenZeppelin, Solmate
+2. **徹底測試**: 單元測試、整合測試、模糊測試
+3. **上線前進行稽核**: 專業安全稽核
+4. **從簡單開始**: 先建立 MVP，再逐步增加功能
+5. **監控**: 追蹤合約健康狀況與使用者活動
+6. **可升級性**: 考慮使用代理模式進行升級
+7. **緊急控制**: 針對重大問題的暫停機制
 
 ## Common DeFi Patterns
 
-- **Time-Weighted Average Price (TWAP)**: Price oracle resistance
-- **Liquidity Mining**: Incentivize liquidity provision
-- **Vesting**: Lock tokens with gradual release
-- **Multisig**: Require multiple signatures for critical operations
-- **Timelocks**: Delay execution of governance decisions
+- **時間加權平均價格（TWAP）**: 價格預言機抗性
+- **流動性挖礦**: 激勵流動性提供
+- **歸屬**: 鎖定代幣並逐步釋放
+- **多重簽名**: 重大操作需要多個簽名
+- **時間鎖**: 延遲治理決策的執行

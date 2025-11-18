@@ -1,125 +1,125 @@
-# Contributing to Agents
+# 貢獻指南
 
-Thank you for your interest in contributing to this collection of Claude Code subagents! This guide will help you contribute effectively while maintaining a positive community environment.
+感謝您有興趣為這個 Claude Code 子代理集合做出貢獻！本指南將協助您有效地貢獻，同時維護一個正面積極的社群環境。
 
-## Before You Contribute
+## 貢獻之前
 
-1. **Read our [Code of Conduct](.github/CODE_OF_CONDUCT.md)** - All interactions must follow our community standards
-2. **Search existing issues** - Check if your suggestion or bug report already exists
-3. **Use appropriate templates** - Follow the provided issue and PR templates
+1. **閱讀我們的[行為準則](.github/CODE_OF_CONDUCT.md)** - 所有互動都必須遵守我們的社群規範
+2. **搜尋現有的 issues** - 檢查您的建議或錯誤回報是否已存在
+3. **使用適當的模板** - 遵循提供的 issue 和 PR 模板
 
-## Types of Contributions
+## 貢獻類型
 
-### Subagent Improvements
-- Bug fixes in existing agent prompts
-- Performance optimizations
-- Enhanced capabilities or instructions
-- Documentation improvements
+### 子代理改進
+- 修復現有代理提示詞中的錯誤
+- 效能最佳化
+- 增強功能或指令
+- 文件改進
 
-### New Subagents
-- Well-defined specialized agents for specific domains
-- Clear use cases and examples
-- Comprehensive documentation
-- Integration with existing workflows
+### 新的子代理
+- 針對特定領域定義明確的專業代理
+- 清楚的使用案例和範例
+- 完整的文件
+- 與現有工作流程整合
 
-### Infrastructure
-- GitHub Actions improvements
-- Template enhancements
-- Community tooling
+### 基礎設施
+- GitHub Actions 改進
+- 模板增強
+- 社群工具
 
-## Contribution Process
+## 貢獻流程
 
-### 1. Issues First
-- **Always create an issue before starting work** on significant changes
-- Use the appropriate issue template
-- Provide clear, detailed descriptions
-- Include relevant examples or use cases
+### 1. 先建立 Issue
+- **在開始重大變更之前，請務必先建立 issue**
+- 使用適當的 issue 模板
+- 提供清楚、詳細的描述
+- 包含相關的範例或使用案例
 
 ### 2. Pull Requests
-- Fork the repository and create a feature branch
-- Follow existing code style and formatting
-- Include tests or examples where appropriate
-- Reference the related issue in your PR description
-- Use clear, descriptive commit messages
+- Fork 儲存庫並建立功能分支
+- 遵循現有的程式碼風格和格式
+- 在適當的地方包含測試或範例
+- 在您的 PR 描述中參照相關的 issue
+- 使用清楚、具描述性的提交訊息
 
-### 3. Review Process
-- All PRs require review from maintainers
-- Address feedback promptly and professionally
-- Be patient - reviews may take time
+### 3. 審查流程
+- 所有 PR 都需要維護者審查
+- 及時且專業地處理回饋
+- 保持耐心 - 審查可能需要時間
 
-## Content Guidelines
+## 內容指南
 
-### What We Accept
-- ✅ Constructive feedback and suggestions
-- ✅ Well-researched feature requests
-- ✅ Clear bug reports with reproduction steps
-- ✅ Professional, respectful communication
-- ✅ Documentation improvements
-- ✅ Specialized domain expertise
+### 我們接受的內容
+- ✅ 建設性的回饋和建議
+- ✅ 經過充分研究的功能請求
+- ✅ 包含重現步驟的清楚錯誤回報
+- ✅ 專業、尊重的溝通
+- ✅ 文件改進
+- ✅ 專業領域知識
 
-### What We Don't Accept
-- ❌ Hate speech, discrimination, or harassment
-- ❌ Spam, promotional content, or off-topic posts
-- ❌ Personal attacks or inflammatory language
-- ❌ Duplicate or low-effort submissions
-- ❌ Requests for malicious or harmful capabilities
-- ❌ Copyright infringement
+### 我們不接受的內容
+- ❌ 仇恨言論、歧視或騷擾
+- ❌ 垃圾訊息、宣傳內容或離題的貼文
+- ❌ 人身攻擊或煽動性語言
+- ❌ 重複或低品質的提交
+- ❌ 惡意或有害功能的請求
+- ❌ 侵犯版權
 
-## Quality Standards
+## 品質標準
 
-### For Subagents
-- Clear, specific domain expertise
-- Well-structured prompt engineering
-- Practical use cases and examples
-- Appropriate safety considerations
-- Integration with existing patterns
+### 針對子代理
+- 清楚、明確的領域專業知識
+- 結構良好的提示詞工程
+- 實用的使用案例和範例
+- 適當的安全考量
+- 與現有模式整合
 
-### For Documentation
-- Clear, concise writing
-- Accurate technical information
-- Consistent formatting and style
-- Practical examples
+### 針對文件
+- 清楚、簡潔的撰寫
+- 準確的技術資訊
+- 一致的格式和風格
+- 實用的範例
 
-## Community Guidelines
+## 社群準則
 
-### Communication
-- **Be respectful** - Treat all community members with dignity
-- **Be constructive** - Focus on improving the project
-- **Be patient** - Allow time for responses and reviews
-- **Be helpful** - Share knowledge and assist others
+### 溝通
+- **保持尊重** - 以尊嚴對待所有社群成員
+- **建設性** - 專注於改進專案
+- **保持耐心** - 給予回覆和審查時間
+- **樂於助人** - 分享知識並協助他人
 
-### Collaboration
-- **Give credit** - Acknowledge others' contributions
-- **Share knowledge** - Help others learn and grow
-- **Stay focused** - Keep discussions on topic
-- **Follow up** - Respond to feedback and requests
+### 協作
+- **給予肯定** - 認可他人的貢獻
+- **分享知識** - 幫助他人學習和成長
+- **保持專注** - 讓討論保持在主題上
+- **追蹤進度** - 回應回饋和請求
 
-## Getting Help
+## 取得協助
 
-- 📖 **Documentation**: Check existing README files and agent descriptions
-- 💬 **Discussions**: Use GitHub Discussions for questions and brainstorming
-- 🐛 **Issues**: Report bugs or request features through issue templates
-- 📧 **Direct Contact**: Reach out to maintainers for sensitive matters
+- 📖 **文件**：查看現有的 README 檔案和代理描述
+- 💬 **討論**：使用 GitHub Discussions 進行提問和腦力激盪
+- 🐛 **Issues**：透過 issue 模板回報錯誤或請求功能
+- 📧 **直接聯繫**：針對敏感事項聯繫維護者
 
-## Recognition
+## 表揚
 
-Contributors who consistently provide high-quality submissions and maintain professional conduct will be:
-- Acknowledged in release notes
-- Given priority review for future contributions
-- Potentially invited to become maintainers
+持續提供高品質提交並保持專業態度的貢獻者將會：
+- 在發行說明中獲得致謝
+- 未來的貢獻將獲得優先審查
+- 有可能受邀成為維護者
 
-## Enforcement
+## 執行
 
-Violations of these guidelines may result in:
-1. **Warning** - First offense or minor issues
-2. **Temporary restrictions** - Suspension of contribution privileges
-3. **Permanent ban** - Severe or repeated violations
+違反這些準則可能導致：
+1. **警告** - 初次違規或輕微問題
+2. **暫時限制** - 暫停貢獻權限
+3. **永久禁止** - 嚴重或重複違規
 
-Reports of violations should be made through:
-- GitHub's built-in reporting tools
-- Issues tagged with `moderation`
-- Direct contact with maintainers
+違規回報應透過以下方式提出：
+- GitHub 內建的回報工具
+- 標記為 `moderation` 的 issues
+- 直接聯繫維護者
 
 ---
 
-Thank you for helping make this project a welcoming, productive environment for everyone!
+感謝您協助讓這個專案成為一個對所有人都友善且富有成效的環境！

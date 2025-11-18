@@ -1,25 +1,25 @@
 ---
 name: terraform-module-library
-description: Build reusable Terraform modules for AWS, Azure, and GCP infrastructure following infrastructure-as-code best practices. Use when creating infrastructure modules, standardizing cloud provisioning, or implementing reusable IaC components.
+description: 遵循 infrastructure-as-code 最佳實務，為 AWS、Azure 和 GCP 基礎設施建立可重複使用的 Terraform 模組。適用於建立基礎設施模組、標準化雲端佈建，或實作可重複使用的 IaC 元件。
 ---
 
 # Terraform Module Library
 
-Production-ready Terraform module patterns for AWS, Azure, and GCP infrastructure.
+適用於 AWS、Azure 和 GCP 基礎設施的正式環境級 Terraform 模組模式。
 
-## Purpose
+## 目的
 
-Create reusable, well-tested Terraform modules for common cloud infrastructure patterns across multiple cloud providers.
+為跨多個雲端供應商的常見雲端基礎設施模式建立可重複使用、經過充分測試的 Terraform 模組。
 
-## When to Use
+## 使用時機
 
-- Build reusable infrastructure components
-- Standardize cloud resource provisioning
-- Implement infrastructure as code best practices
-- Create multi-cloud compatible modules
-- Establish organizational Terraform standards
+- 建立可重複使用的基礎設施元件
+- 標準化雲端資源佈建
+- 實作 infrastructure as code 最佳實務
+- 建立多雲相容模組
+- 建立組織的 Terraform 標準
 
-## Module Structure
+## 模組結構
 
 ```
 terraform-modules/
@@ -38,7 +38,7 @@ terraform-modules/
     └── cloud-sql/
 ```
 
-## Standard Module Pattern
+## 標準模組模式
 
 ```
 module-name/
@@ -55,7 +55,7 @@ module-name/
     └── module_test.go
 ```
 
-## AWS VPC Module Example
+## AWS VPC Module 範例
 
 **main.tf:**
 ```hcl
@@ -158,20 +158,20 @@ output "vpc_cidr_block" {
 }
 ```
 
-## Best Practices
+## 最佳實務
 
-1. **Use semantic versioning** for modules
-2. **Document all variables** with descriptions
-3. **Provide examples** in examples/ directory
-4. **Use validation blocks** for input validation
-5. **Output important attributes** for module composition
-6. **Pin provider versions** in versions.tf
-7. **Use locals** for computed values
-8. **Implement conditional resources** with count/for_each
-9. **Test modules** with Terratest
-10. **Tag all resources** consistently
+1. **對模組使用語意化版本控制**
+2. **為所有變數加上說明文件**
+3. **在 examples/ 目錄提供範例**
+4. **使用驗證區塊** 進行輸入驗證
+5. **輸出重要屬性** 以便模組組合
+6. **在 versions.tf 中固定供應商版本**
+7. **使用 locals** 處理計算值
+8. **使用 count/for_each 實作條件式資源**
+9. **使用 Terratest 測試模組**
+10. **一致性地標記所有資源**
 
-## Module Composition
+## 模組組合
 
 ```hcl
 module "vpc" {
@@ -210,15 +210,15 @@ module "rds" {
 }
 ```
 
-## Reference Files
+## 參考檔案
 
-- `assets/vpc-module/` - Complete VPC module example
-- `assets/rds-module/` - RDS module example
-- `references/aws-modules.md` - AWS module patterns
-- `references/azure-modules.md` - Azure module patterns
-- `references/gcp-modules.md` - GCP module patterns
+- `assets/vpc-module/` - 完整 VPC 模組範例
+- `assets/rds-module/` - RDS 模組範例
+- `references/aws-modules.md` - AWS 模組模式
+- `references/azure-modules.md` - Azure 模組模式
+- `references/gcp-modules.md` - GCP 模組模式
 
-## Testing
+## 測試
 
 ```go
 // tests/vpc_test.go
@@ -243,7 +243,7 @@ func TestVPCModule(t *testing.T) {
 }
 ```
 
-## Related Skills
+## 相關技能
 
-- `multi-cloud-architecture` - For architectural decisions
-- `cost-optimization` - For cost-effective designs
+- `multi-cloud-architecture` - 用於架構決策
+- `cost-optimization` - 用於符合成本效益的設計

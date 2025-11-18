@@ -1,10 +1,10 @@
-# Local Development Setup for Temporal Python Testing
+# Temporal Python 測試的本機開發環境設定
 
-Comprehensive guide for setting up local Temporal development environment with pytest integration and coverage tracking.
+提供完整的指南，協助您設定本機 Temporal 開發環境，包含 pytest 整合與測試涵蓋率追蹤。
 
-## Temporal Server Setup with Docker Compose
+## 使用 Docker Compose 設定 Temporal 伺服器
 
-### Basic Docker Compose Configuration
+### 基本 Docker Compose 設定檔
 
 ```yaml
 # docker-compose.yml
@@ -53,7 +53,7 @@ volumes:
   postgres_data:
 ```
 
-### Starting Local Server
+### 啟動本機伺服器
 
 ```bash
 # Start Temporal server
@@ -75,7 +75,7 @@ docker-compose down
 docker-compose down -v
 ```
 
-### Health Check Script
+### 健康檢查腳本
 
 ```python
 # scripts/health_check.py
@@ -119,9 +119,9 @@ if __name__ == "__main__":
     asyncio.run(check_temporal_health())
 ```
 
-## pytest Configuration
+## pytest 設定
 
-### Project Structure
+### 專案結構
 
 ```
 temporal-project/
@@ -152,7 +152,7 @@ temporal-project/
     └── export_histories.py
 ```
 
-### pytest Configuration
+### pytest 設定檔
 
 ```ini
 # pytest.ini
@@ -183,7 +183,7 @@ addopts =
 asyncio_default_fixture_loop_scope = function
 ```
 
-### Shared Test Fixtures
+### 共用測試 Fixtures
 
 ```python
 # tests/conftest.py
@@ -234,7 +234,7 @@ async def test_worker(temporal_client, workflow_env):
     )
 ```
 
-### Dependencies
+### 相依套件
 
 ```txt
 # requirements.txt
@@ -272,9 +272,9 @@ asyncio_mode = "auto"
 testpaths = ["tests"]
 ```
 
-## Coverage Configuration
+## 涵蓋率設定
 
-### Coverage Settings
+### 涵蓋率設定檔
 
 ```ini
 # .coveragerc
@@ -300,7 +300,7 @@ exclude_lines =
 directory = htmlcov
 ```
 
-### Running Tests with Coverage
+### 執行測試並產生涵蓋率報告
 
 ```bash
 # Run all tests with coverage
@@ -322,7 +322,7 @@ pytest -n auto  # Use all CPU cores
 pytest --cov=src --cov-fail-under=80
 ```
 
-### Coverage Report Example
+### 涵蓋率報告範例
 
 ```
 ---------- coverage: platform darwin, python 3.11.5 -----------
@@ -341,9 +341,9 @@ TOTAL                                 206      8    96%
 10 files skipped due to complete coverage.
 ```
 
-## Development Workflow
+## 開發流程
 
-### Daily Development Flow
+### 日常開發流程
 
 ```bash
 # 1. Start Temporal server
@@ -382,7 +382,7 @@ fi
 echo "All tests passed!"
 ```
 
-### Makefile for Common Tasks
+### 常用任務的 Makefile
 
 ```makefile
 # Makefile
@@ -423,7 +423,7 @@ ci:
 	docker-compose down
 ```
 
-### CI/CD Example
+### CI/CD 範例
 
 ```yaml
 # .github/workflows/test.yml
@@ -471,9 +471,9 @@ jobs:
         run: docker-compose down
 ```
 
-## Debugging Tips
+## 除錯技巧
 
-### Enable Temporal SDK Logging
+### 啟用 Temporal SDK 日誌記錄
 
 ```python
 import logging
@@ -484,7 +484,7 @@ temporal_logger = logging.getLogger("temporalio")
 temporal_logger.setLevel(logging.DEBUG)
 ```
 
-### Interactive Debugging
+### 互動式除錯
 
 ```python
 # Add breakpoint in test
@@ -506,19 +506,19 @@ async def test_workflow_with_breakpoint(workflow_env):
 # - Monitor workers
 ```
 
-## Best Practices
+## 最佳實務
 
-1. **Isolated Environment**: Use Docker Compose for reproducible local setup
-2. **Health Checks**: Always verify Temporal server before running tests
-3. **Fast Feedback**: Use pytest markers to run unit tests quickly
-4. **Coverage Targets**: Maintain ≥80% code coverage
-5. **Parallel Testing**: Use pytest-xdist for faster test runs
-6. **CI/CD Integration**: Automated testing on every commit
-7. **Cleanup**: Clear Docker volumes between test runs if needed
+1. **獨立環境**：使用 Docker Compose 建立可重現的本機環境設定
+2. **健康檢查**：執行測試前務必先驗證 Temporal 伺服器狀態
+3. **快速回饋**：使用 pytest 標記快速執行單元測試
+4. **涵蓋率目標**：維持 ≥80% 的程式碼涵蓋率
+5. **平行測試**：使用 pytest-xdist 加速測試執行
+6. **CI/CD 整合**：在每次提交時自動執行測試
+7. **清理作業**：必要時在測試執行間清除 Docker volumes
 
-## Troubleshooting
+## 疑難排解
 
-**Issue: Temporal server not starting**
+**問題：Temporal 伺服器無法啟動**
 ```bash
 # Check logs
 docker-compose logs temporal
@@ -528,13 +528,13 @@ docker-compose down -v
 docker-compose up -d
 ```
 
-**Issue: Tests timing out**
+**問題：測試逾時**
 ```python
 # Increase timeout in pytest.ini
 asyncio_default_timeout = 30
 ```
 
-**Issue: Port already in use**
+**問題：連接埠已被使用**
 ```bash
 # Find process using port 7233
 lsof -i :7233
@@ -542,7 +542,7 @@ lsof -i :7233
 # Kill process or change port in docker-compose.yml
 ```
 
-## Additional Resources
+## 其他資源
 
 - Temporal Local Development: docs.temporal.io/develop/python/local-dev
 - pytest Documentation: docs.pytest.org

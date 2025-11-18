@@ -1,23 +1,23 @@
 ---
 name: database-migration
-description: Execute database migrations across ORMs and platforms with zero-downtime strategies, data transformation, and rollback procedures. Use when migrating databases, changing schemas, performing data transformations, or implementing zero-downtime deployment strategies.
+description: 透過零停機策略、資料轉換和回滾程序，跨 ORM 和平台執行資料庫遷移。適用於遷移資料庫、變更綱要、執行資料轉換或實作零停機部署策略。
 ---
 
 # Database Migration
 
-Master database schema and data migrations across ORMs (Sequelize, TypeORM, Prisma), including rollback strategies and zero-downtime deployments.
+精通跨 ORM（Sequelize、TypeORM、Prisma）的資料庫綱要和資料遷移，包括回滾策略和零停機部署。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Migrating between different ORMs
-- Performing schema transformations
-- Moving data between databases
-- Implementing rollback procedures
-- Zero-downtime deployments
-- Database version upgrades
-- Data model refactoring
+- 在不同 ORM 之間遷移
+- 執行綱要轉換
+- 在資料庫之間移動資料
+- 實作回滾程序
+- 零停機部署
+- 資料庫版本升級
+- 資料模型重構
 
-## ORM Migrations
+## ORM 遷移
 
 ### Sequelize Migrations
 ```javascript
@@ -104,9 +104,9 @@ model User {
 // Apply: npx prisma migrate deploy
 ```
 
-## Schema Transformations
+## 綱要轉換
 
-### Adding Columns with Defaults
+### 新增具有預設值的欄位
 ```javascript
 // Safe migration: add column with default
 module.exports = {
@@ -124,7 +124,7 @@ module.exports = {
 };
 ```
 
-### Renaming Columns (Zero Downtime)
+### 重新命名欄位（零停機）
 ```javascript
 // Step 1: Add new column
 module.exports = {
@@ -160,7 +160,7 @@ module.exports = {
 };
 ```
 
-### Changing Column Types
+### 變更欄位類型
 ```javascript
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -193,9 +193,9 @@ module.exports = {
 };
 ```
 
-## Data Transformations
+## 資料轉換
 
-### Complex Data Migration
+### 複雜資料遷移
 ```javascript
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -247,9 +247,9 @@ module.exports = {
 };
 ```
 
-## Rollback Strategies
+## 回滾策略
 
-### Transaction-Based Migrations
+### 基於交易的遷移
 ```javascript
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -281,7 +281,7 @@ module.exports = {
 };
 ```
 
-### Checkpoint-Based Rollback
+### 基於檢查點的回滾
 ```javascript
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -320,9 +320,9 @@ module.exports = {
 };
 ```
 
-## Zero-Downtime Migrations
+## 零停機遷移
 
-### Blue-Green Deployment Strategy
+### 藍綠部署策略
 ```javascript
 // Phase 1: Make changes backward compatible
 module.exports = {
@@ -357,7 +357,7 @@ module.exports = {
 };
 ```
 
-## Cross-Database Migrations
+## 跨資料庫遷移
 
 ### PostgreSQL to MySQL
 ```javascript
@@ -393,32 +393,32 @@ module.exports = {
 };
 ```
 
-## Resources
+## 資源
 
-- **references/orm-switching.md**: ORM migration guides
-- **references/schema-migration.md**: Schema transformation patterns
-- **references/data-transformation.md**: Data migration scripts
-- **references/rollback-strategies.md**: Rollback procedures
-- **assets/schema-migration-template.sql**: SQL migration templates
-- **assets/data-migration-script.py**: Data migration utilities
-- **scripts/test-migration.sh**: Migration testing script
+- **references/orm-switching.md**：ORM 遷移指南
+- **references/schema-migration.md**：綱要轉換模式
+- **references/data-transformation.md**：資料遷移腳本
+- **references/rollback-strategies.md**：回滾程序
+- **assets/schema-migration-template.sql**：SQL 遷移範本
+- **assets/data-migration-script.py**：資料遷移工具程式
+- **scripts/test-migration.sh**：遷移測試腳本
 
-## Best Practices
+## 最佳實務
 
-1. **Always Provide Rollback**: Every up() needs a down()
-2. **Test Migrations**: Test on staging first
-3. **Use Transactions**: Atomic migrations when possible
-4. **Backup First**: Always backup before migration
-5. **Small Changes**: Break into small, incremental steps
-6. **Monitor**: Watch for errors during deployment
-7. **Document**: Explain why and how
-8. **Idempotent**: Migrations should be rerunnable
+1. **務必提供回滾**：每個 up() 都需要對應的 down()
+2. **測試遷移**：先在測試環境測試
+3. **使用交易**：盡可能使用原子性遷移
+4. **先備份**：遷移前務必備份
+5. **小幅變更**：拆分成小的漸進式步驟
+6. **監控**：部署期間注意錯誤
+7. **撰寫文件**：說明原因和方法
+8. **冪等性**：遷移應該可以重複執行
 
-## Common Pitfalls
+## 常見陷阱
 
-- Not testing rollback procedures
-- Making breaking changes without downtime strategy
-- Forgetting to handle NULL values
-- Not considering index performance
-- Ignoring foreign key constraints
-- Migrating too much data at once
+- 未測試回滾程序
+- 在沒有停機策略的情況下進行破壞性變更
+- 忘記處理 NULL 值
+- 未考慮索引效能
+- 忽略外鍵約束
+- 一次遷移過多資料

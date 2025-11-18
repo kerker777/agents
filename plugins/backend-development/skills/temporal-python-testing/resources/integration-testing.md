@@ -1,12 +1,12 @@
-# Integration Testing with Mocked Activities
+# 使用模擬 Activity 的整合測試
 
-Comprehensive patterns for testing workflows with mocked external dependencies, error injection, and complex scenarios.
+全面涵蓋使用模擬外部相依性、錯誤注入及複雜場景來測試工作流程的模式。
 
-## Activity Mocking Strategy
+## Activity 模擬策略
 
-**Purpose**: Test workflow orchestration logic without calling real external services
+**目的**：在不呼叫真實外部服務的情況下測試工作流程編排邏輯
 
-### Basic Mock Pattern
+### 基本模擬模式
 
 ```python
 import pytest
@@ -16,9 +16,9 @@ from unittest.mock import Mock
 
 @pytest.mark.asyncio
 async def test_workflow_with_mocked_activity(workflow_env):
-    """Mock activity to test workflow logic"""
+    """模擬 activity 以測試工作流程邏輯"""
 
-    # Create mock activity
+    # 建立模擬 activity
     mock_activity = Mock(return_value="mocked-result")
 
     @workflow.defn
@@ -36,7 +36,7 @@ async def test_workflow_with_mocked_activity(workflow_env):
         workflow_env.client,
         task_queue="test",
         workflows=[WorkflowWithActivity],
-        activities=[mock_activity],  # Use mock instead of real activity
+        activities=[mock_activity],  # 使用模擬而非真實 activity
     ):
         result = await workflow_env.client.execute_workflow(
             WorkflowWithActivity.run,
@@ -48,15 +48,15 @@ async def test_workflow_with_mocked_activity(workflow_env):
         mock_activity.assert_called_once()
 ```
 
-### Dynamic Mock Responses
+### 動態模擬回應
 
-**Scenario-Based Mocking**:
+**基於場景的模擬**：
 ```python
 @pytest.mark.asyncio
 async def test_workflow_multiple_mock_scenarios(workflow_env):
-    """Test different workflow paths with dynamic mocks"""
+    """使用動態模擬測試不同的工作流程路徑"""
 
-    # Mock returns different values based on input
+    # 模擬根據輸入回傳不同值
     def dynamic_activity(input: str) -> str:
         if input == "error-case":
             raise ApplicationError("Validation failed", non_retryable=True)
@@ -82,7 +82,7 @@ async def test_workflow_multiple_mock_scenarios(workflow_env):
         workflows=[DynamicWorkflow],
         activities=[dynamic_activity],
     ):
-        # Test success path
+        # 測試成功路徑
         result_success = await workflow_env.client.execute_workflow(
             DynamicWorkflow.run,
             "valid-input",
@@ -91,7 +91,7 @@ async def test_workflow_multiple_mock_scenarios(workflow_env):
         )
         assert result_success == "success: processed-valid-input"
 
-        # Test error path
+        # 測試錯誤路徑
         result_error = await workflow_env.client.execute_workflow(
             DynamicWorkflow.run,
             "error-case",
@@ -101,15 +101,15 @@ async def test_workflow_multiple_mock_scenarios(workflow_env):
         assert "Validation failed" in result_error
 ```
 
-## Error Injection Patterns
+## 錯誤注入模式
 
-### Testing Transient Failures
+### 測試暫時性失敗
 
-**Retry Behavior**:
+**重試行為**：
 ```python
 @pytest.mark.asyncio
 async def test_workflow_transient_errors(workflow_env):
-    """Test retry logic with controlled failures"""
+    """使用可控的失敗測試重試邏輯"""
 
     attempt_count = 0
 
@@ -151,20 +151,20 @@ async def test_workflow_transient_errors(workflow_env):
         assert attempt_count == 3
 ```
 
-### Testing Non-Retryable Errors
+### 測試不可重試錯誤
 
-**Business Validation Failures**:
+**業務驗證失敗**：
 ```python
 @pytest.mark.asyncio
 async def test_workflow_non_retryable_error(workflow_env):
-    """Test handling of permanent failures"""
+    """測試永久性失敗的處理"""
 
     @activity.defn
     async def validation_activity(input: dict) -> str:
         if not input.get("valid"):
             raise ApplicationError(
                 "Invalid input",
-                non_retryable=True,  # Don't retry validation errors
+                non_retryable=True,  # 不要重試驗證錯誤
             )
         return "validated"
 
@@ -196,14 +196,14 @@ async def test_workflow_non_retryable_error(workflow_env):
         assert "validation-failed" in result
 ```
 
-## Multi-Activity Workflow Testing
+## 多重 Activity 工作流程測試
 
-### Sequential Activity Pattern
+### 循序 Activity 模式
 
 ```python
 @pytest.mark.asyncio
 async def test_workflow_sequential_activities(workflow_env):
-    """Test workflow orchestrating multiple activities"""
+    """測試編排多個 activity 的工作流程"""
 
     activity_calls = []
 
@@ -259,12 +259,12 @@ async def test_workflow_sequential_activities(workflow_env):
         assert activity_calls == ["step_1", "step_2", "step_3"]
 ```
 
-### Parallel Activity Pattern
+### 平行 Activity 模式
 
 ```python
 @pytest.mark.asyncio
 async def test_workflow_parallel_activities(workflow_env):
-    """Test concurrent activity execution"""
+    """測試並行 activity 執行"""
 
     @activity.defn
     async def parallel_task(task_id: int) -> str:
@@ -274,7 +274,7 @@ async def test_workflow_parallel_activities(workflow_env):
     class ParallelWorkflow:
         @workflow.run
         async def run(self, task_count: int) -> list[str]:
-            # Execute activities in parallel
+            # 並行執行 activity
             tasks = [
                 workflow.execute_activity(
                     parallel_task,
@@ -300,14 +300,14 @@ async def test_workflow_parallel_activities(workflow_env):
         assert result == ["task-0", "task-1", "task-2"]
 ```
 
-## Signal and Query Testing
+## Signal 與 Query 測試
 
-### Signal Handlers
+### Signal 處理器
 
 ```python
 @pytest.mark.asyncio
 async def test_workflow_signals(workflow_env):
-    """Test workflow signal handling"""
+    """測試工作流程 signal 處理"""
 
     @workflow.defn
     class SignalWorkflow:
@@ -316,7 +316,7 @@ async def test_workflow_signals(workflow_env):
 
         @workflow.run
         async def run(self) -> str:
-            # Wait for completion signal
+            # 等待完成 signal
             await workflow.wait_condition(lambda: self._status == "completed")
             return self._status
 
@@ -333,84 +333,84 @@ async def test_workflow_signals(workflow_env):
         task_queue="test",
         workflows=[SignalWorkflow],
     ):
-        # Start workflow
+        # 啟動工作流程
         handle = await workflow_env.client.start_workflow(
             SignalWorkflow.run,
             id="signal-wf",
             task_queue="test",
         )
 
-        # Verify initial state via query
+        # 透過 query 驗證初始狀態
         initial_status = await handle.query(SignalWorkflow.get_status)
         assert initial_status == "initialized"
 
-        # Send signal
+        # 發送 signal
         await handle.signal(SignalWorkflow.update_status, "processing")
 
-        # Verify updated state
+        # 驗證更新後的狀態
         updated_status = await handle.query(SignalWorkflow.get_status)
         assert updated_status == "processing"
 
-        # Complete workflow
+        # 完成工作流程
         await handle.signal(SignalWorkflow.update_status, "completed")
         result = await handle.result()
         assert result == "completed"
 ```
 
-## Coverage Strategies
+## 覆蓋率策略
 
-### Workflow Logic Coverage
+### 工作流程邏輯覆蓋率
 
-**Target**: ≥80% coverage of workflow decision logic
+**目標**：≥80% 的工作流程決策邏輯覆蓋率
 
 ```python
-# Test all branches
+# 測試所有分支
 @pytest.mark.parametrize("condition,expected", [
     (True, "branch-a"),
     (False, "branch-b"),
 ])
 async def test_workflow_branches(workflow_env, condition, expected):
-    """Ensure all code paths are tested"""
-    # Test implementation
+    """確保所有程式碼路徑都被測試"""
+    # 測試實作
     pass
 ```
 
-### Activity Coverage
+### Activity 覆蓋率
 
-**Target**: ≥80% coverage of activity logic
+**目標**：≥80% 的 activity 邏輯覆蓋率
 
 ```python
-# Test activity edge cases
+# 測試 activity 邊界案例
 @pytest.mark.parametrize("input,expected", [
     ("valid", "success"),
     ("", "empty-input-error"),
     (None, "null-input-error"),
 ])
 async def test_activity_edge_cases(activity_env, input, expected):
-    """Test activity error handling"""
-    # Test implementation
+    """測試 activity 錯誤處理"""
+    # 測試實作
     pass
 ```
 
-## Integration Test Organization
+## 整合測試組織
 
-### Test Structure
+### 測試結構
 
 ```
 tests/
 ├── integration/
-│   ├── conftest.py              # Shared fixtures
-│   ├── test_order_workflow.py   # Order processing tests
-│   ├── test_payment_workflow.py # Payment tests
+│   ├── conftest.py              # 共用 fixture
+│   ├── test_order_workflow.py   # 訂單處理測試
+│   ├── test_payment_workflow.py # 付款測試
 │   └── test_fulfillment_workflow.py
 ├── unit/
 │   ├── test_order_activities.py
 │   └── test_payment_activities.py
 └── fixtures/
-    └── test_data.py             # Test data builders
+    └── test_data.py             # 測試資料建構器
 ```
 
-### Shared Fixtures
+### 共用 Fixture
 
 ```python
 # conftest.py
@@ -419,34 +419,34 @@ from temporalio.testing import WorkflowEnvironment
 
 @pytest.fixture(scope="session")
 async def workflow_env():
-    """Session-scoped environment for integration tests"""
+    """Session 範圍的整合測試環境"""
     env = await WorkflowEnvironment.start_time_skipping()
     yield env
     await env.shutdown()
 
 @pytest.fixture
 def mock_payment_service():
-    """Mock external payment service"""
+    """模擬外部付款服務"""
     return Mock()
 
 @pytest.fixture
 def mock_inventory_service():
-    """Mock external inventory service"""
+    """模擬外部庫存服務"""
     return Mock()
 ```
 
-## Best Practices
+## 最佳實踐
 
-1. **Mock External Dependencies**: Never call real APIs in tests
-2. **Test Error Scenarios**: Verify compensation and retry logic
-3. **Parallel Testing**: Use pytest-xdist for faster test runs
-4. **Isolated Tests**: Each test should be independent
-5. **Clear Assertions**: Verify both results and side effects
-6. **Coverage Target**: ≥80% for critical workflows
-7. **Fast Execution**: Use time-skipping, avoid real delays
+1. **模擬外部相依性**：測試時絕不呼叫真實 API
+2. **測試錯誤場景**：驗證補償與重試邏輯
+3. **平行測試**：使用 pytest-xdist 加快測試執行速度
+4. **獨立測試**：每個測試都應該獨立
+5. **清晰的斷言**：驗證結果與副作用
+6. **覆蓋率目標**：關鍵工作流程 ≥80%
+7. **快速執行**：使用時間跳過功能，避免真實延遲
 
-## Additional Resources
+## 額外資源
 
-- Mocking Strategies: docs.temporal.io/develop/python/testing-suite
-- pytest Best Practices: docs.pytest.org/en/stable/goodpractices.html
-- Python SDK Samples: github.com/temporalio/samples-python
+- 模擬策略：docs.temporal.io/develop/python/testing-suite
+- pytest 最佳實踐：docs.pytest.org/en/stable/goodpractices.html
+- Python SDK 範例：github.com/temporalio/samples-python

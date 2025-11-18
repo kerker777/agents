@@ -1,154 +1,154 @@
 ---
 name: debugging-strategies
-description: Master systematic debugging techniques, profiling tools, and root cause analysis to efficiently track down bugs across any codebase or technology stack. Use when investigating bugs, performance issues, or unexpected behavior.
+description: 精通系統化除錯技術、效能分析工具和根本原因分析，以高效追蹤任何程式碼庫或技術堆疊中的錯誤。適用於調查錯誤、效能問題或非預期行為。
 ---
 
-# Debugging Strategies
+# 除錯策略
 
-Transform debugging from frustrating guesswork into systematic problem-solving with proven strategies, powerful tools, and methodical approaches.
+透過經過驗證的策略、強大的工具和有條理的方法，將除錯從令人沮喪的猜測轉變為系統化的問題解決。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Tracking down elusive bugs
-- Investigating performance issues
-- Understanding unfamiliar codebases
-- Debugging production issues
-- Analyzing crash dumps and stack traces
-- Profiling application performance
-- Investigating memory leaks
-- Debugging distributed systems
+- 追蹤難以捉摸的錯誤
+- 調查效能問題
+- 理解不熟悉的程式碼庫
+- 除錯生產環境問題
+- 分析崩潰轉儲和堆疊追蹤
+- 分析應用程式效能
+- 調查記憶體洩漏
+- 除錯分散式系統
 
-## Core Principles
+## 核心原則
 
-### 1. The Scientific Method
+### 1. 科學方法
 
-**1. Observe**: What's the actual behavior?
-**2. Hypothesize**: What could be causing it?
-**3. Experiment**: Test your hypothesis
-**4. Analyze**: Did it prove/disprove your theory?
-**5. Repeat**: Until you find the root cause
+**1. 觀察**：實際行為是什麼？
+**2. 假設**：可能是什麼原因？
+**3. 實驗**：測試你的假設
+**4. 分析**：證實或推翻你的理論了嗎？
+**5. 重複**：直到找到根本原因
 
-### 2. Debugging Mindset
+### 2. 除錯心態
 
-**Don't Assume:**
-- "It can't be X" - Yes it can
-- "I didn't change Y" - Check anyway
-- "It works on my machine" - Find out why
+**不要假設：**
+- "不可能是 X" - 可以
+- "我沒改 Y" - 還是檢查一下
+- "在我的機器上可以運作" - 找出為什麼
 
-**Do:**
-- Reproduce consistently
-- Isolate the problem
-- Keep detailed notes
-- Question everything
-- Take breaks when stuck
+**要做：**
+- 一致地重現
+- 隔離問題
+- 保持詳細記錄
+- 質疑一切
+- 卡住時休息一下
 
-### 3. Rubber Duck Debugging
+### 3. 橡皮鴨除錯
 
-Explain your code and problem out loud (to a rubber duck, colleague, or yourself). Often reveals the issue.
+大聲解釋你的程式碼和問題（對橡皮鴨、同事或自己）。通常會揭示問題。
 
-## Systematic Debugging Process
+## 系統化除錯流程
 
-### Phase 1: Reproduce
-
-```markdown
-## Reproduction Checklist
-
-1. **Can you reproduce it?**
-   - Always? Sometimes? Randomly?
-   - Specific conditions needed?
-   - Can others reproduce it?
-
-2. **Create minimal reproduction**
-   - Simplify to smallest example
-   - Remove unrelated code
-   - Isolate the problem
-
-3. **Document steps**
-   - Write down exact steps
-   - Note environment details
-   - Capture error messages
-```
-
-### Phase 2: Gather Information
+### 階段 1：重現
 
 ```markdown
-## Information Collection
+## 重現檢查清單
 
-1. **Error Messages**
-   - Full stack trace
-   - Error codes
-   - Console/log output
+1. **你能重現嗎？**
+   - 總是？有時候？隨機？
+   - 需要特定條件嗎？
+   - 其他人能重現嗎？
 
-2. **Environment**
-   - OS version
-   - Language/runtime version
-   - Dependencies versions
-   - Environment variables
+2. **建立最小重現**
+   - 簡化成最小範例
+   - 移除無關程式碼
+   - 隔離問題
 
-3. **Recent Changes**
-   - Git history
-   - Deployment timeline
-   - Configuration changes
-
-4. **Scope**
-   - Affects all users or specific ones?
-   - All browsers or specific ones?
-   - Production only or also dev?
+3. **記錄步驟**
+   - 寫下確切步驟
+   - 記錄環境細節
+   - 捕捉錯誤訊息
 ```
 
-### Phase 3: Form Hypothesis
+### 階段 2：收集資訊
 
 ```markdown
-## Hypothesis Formation
+## 資訊收集
 
-Based on gathered info, ask:
+1. **錯誤訊息**
+   - 完整堆疊追蹤
+   - 錯誤代碼
+   - 主控台/日誌輸出
 
-1. **What changed?**
-   - Recent code changes
-   - Dependency updates
-   - Infrastructure changes
+2. **環境**
+   - 作業系統版本
+   - 語言/執行時版本
+   - 相依套件版本
+   - 環境變數
 
-2. **What's different?**
-   - Working vs broken environment
-   - Working vs broken user
-   - Before vs after
+3. **最近變更**
+   - Git 歷史記錄
+   - 部署時間軸
+   - 設定變更
 
-3. **Where could this fail?**
-   - Input validation
-   - Business logic
-   - Data layer
-   - External services
+4. **範圍**
+   - 影響所有使用者還是特定使用者？
+   - 所有瀏覽器還是特定瀏覽器？
+   - 僅生產環境還是開發環境也有？
 ```
 
-### Phase 4: Test & Verify
+### 階段 3：形成假設
 
 ```markdown
-## Testing Strategies
+## 假設形成
 
-1. **Binary Search**
-   - Comment out half the code
-   - Narrow down problematic section
-   - Repeat until found
+根據收集的資訊，問：
 
-2. **Add Logging**
-   - Strategic console.log/print
-   - Track variable values
-   - Trace execution flow
+1. **什麼改變了？**
+   - 最近的程式碼變更
+   - 相依套件更新
+   - 基礎設施變更
 
-3. **Isolate Components**
-   - Test each piece separately
-   - Mock dependencies
-   - Remove complexity
+2. **什麼不同？**
+   - 正常 vs 損壞的環境
+   - 正常 vs 損壞的使用者
+   - 之前 vs 之後
 
-4. **Compare Working vs Broken**
-   - Diff configurations
-   - Diff environments
-   - Diff data
+3. **哪裡可能失敗？**
+   - 輸入驗證
+   - 業務邏輯
+   - 資料層
+   - 外部服務
 ```
 
-## Debugging Tools
+### 階段 4：測試與驗證
 
-### JavaScript/TypeScript Debugging
+```markdown
+## 測試策略
+
+1. **二分搜尋**
+   - 註解掉一半程式碼
+   - 縮小有問題的部分
+   - 重複直到找到
+
+2. **加入日誌**
+   - 策略性的 console.log/print
+   - 追蹤變數值
+   - 追蹤執行流程
+
+3. **隔離元件**
+   - 分別測試每個部分
+   - Mock 相依項
+   - 移除複雜性
+
+4. **比較正常與損壞**
+   - 比對設定
+   - 比對環境
+   - 比對資料
+```
+
+## 除錯工具
+
+### JavaScript/TypeScript 除錯
 
 ```typescript
 // Chrome DevTools Debugger
@@ -181,7 +181,7 @@ performance.measure('operation', 'start-operation', 'end-operation');
 console.log(performance.getEntriesByType('measure'));
 ```
 
-**VS Code Debugger Configuration:**
+**VS Code 除錯器設定：**
 ```json
 // .vscode/launch.json
 {
@@ -208,7 +208,7 @@ console.log(performance.getEntriesByType('measure'));
 }
 ```
 
-### Python Debugging
+### Python 除錯
 
 ```python
 # Built-in debugger (pdb)
@@ -260,7 +260,7 @@ stats.sort_stats('cumulative')
 stats.print_stats(10)  # Top 10 slowest
 ```
 
-### Go Debugging
+### Go 除錯
 
 ```go
 // Delve debugger
@@ -306,9 +306,9 @@ defer pprof.StopCPUProfile()
 // ... code to profile
 ```
 
-## Advanced Debugging Techniques
+## 進階除錯技巧
 
-### Technique 1: Binary Search Debugging
+### 技巧 1：二分搜尋除錯
 
 ```bash
 # Git bisect for finding regression
@@ -325,26 +325,26 @@ git bisect bad    # if it's broken
 git bisect reset  # when done
 ```
 
-### Technique 2: Differential Debugging
+### 技巧 2：差異除錯
 
-Compare working vs broken:
+比較正常 vs 損壞：
 
 ```markdown
-## What's Different?
+## 什麼不同？
 
-| Aspect       | Working         | Broken          |
+| 面向         | 正常            | 損壞            |
 |--------------|-----------------|-----------------|
-| Environment  | Development     | Production      |
-| Node version | 18.16.0         | 18.15.0         |
-| Data         | Empty DB        | 1M records      |
-| User         | Admin           | Regular user    |
-| Browser      | Chrome          | Safari          |
-| Time         | During day      | After midnight  |
+| 環境         | 開發環境        | 生產環境        |
+| Node 版本    | 18.16.0         | 18.15.0         |
+| 資料         | 空資料庫        | 100 萬筆記錄    |
+| 使用者       | 管理員          | 一般使用者      |
+| 瀏覽器       | Chrome          | Safari          |
+| 時間         | 白天            | 午夜後          |
 
-Hypothesis: Time-based issue? Check timezone handling.
+假設：時間相關問題？檢查時區處理。
 ```
 
-### Technique 3: Trace Debugging
+### 技巧 3：追蹤除錯
 
 ```typescript
 // Function call tracing
@@ -369,7 +369,7 @@ class OrderService {
 }
 ```
 
-### Technique 4: Memory Leak Detection
+### 技巧 4：記憶體洩漏偵測
 
 ```typescript
 // Chrome DevTools Memory Profiler
@@ -403,125 +403,125 @@ afterEach(() => {
 });
 ```
 
-## Debugging Patterns by Issue Type
+## 依問題類型的除錯模式
 
-### Pattern 1: Intermittent Bugs
+### 模式 1：間歇性錯誤
 
 ```markdown
-## Strategies for Flaky Bugs
+## 不穩定錯誤的策略
 
-1. **Add extensive logging**
-   - Log timing information
-   - Log all state transitions
-   - Log external interactions
+1. **加入廣泛日誌**
+   - 記錄時間資訊
+   - 記錄所有狀態轉換
+   - 記錄外部互動
 
-2. **Look for race conditions**
-   - Concurrent access to shared state
-   - Async operations completing out of order
-   - Missing synchronization
+2. **尋找競態條件**
+   - 共用狀態的並行存取
+   - 非同步操作以不同順序完成
+   - 缺少同步
 
-3. **Check timing dependencies**
+3. **檢查時間相依性**
    - setTimeout/setInterval
-   - Promise resolution order
-   - Animation frame timing
+   - Promise 解析順序
+   - 動畫幀時間
 
-4. **Stress test**
-   - Run many times
-   - Vary timing
-   - Simulate load
+4. **壓力測試**
+   - 多次執行
+   - 變化時間
+   - 模擬負載
 ```
 
-### Pattern 2: Performance Issues
+### 模式 2：效能問題
 
 ```markdown
-## Performance Debugging
+## 效能除錯
 
-1. **Profile first**
-   - Don't optimize blindly
-   - Measure before and after
-   - Find bottlenecks
+1. **先分析**
+   - 不要盲目優化
+   - 前後測量
+   - 找出瓶頸
 
-2. **Common culprits**
-   - N+1 queries
-   - Unnecessary re-renders
-   - Large data processing
-   - Synchronous I/O
+2. **常見問題**
+   - N+1 查詢
+   - 不必要的重新渲染
+   - 大量資料處理
+   - 同步 I/O
 
-3. **Tools**
-   - Browser DevTools Performance tab
+3. **工具**
+   - 瀏覽器 DevTools Performance 分頁
    - Lighthouse
    - Python: cProfile, line_profiler
    - Node: clinic.js, 0x
 ```
 
-### Pattern 3: Production Bugs
+### 模式 3：生產環境錯誤
 
 ```markdown
-## Production Debugging
+## 生產環境除錯
 
-1. **Gather evidence**
-   - Error tracking (Sentry, Bugsnag)
-   - Application logs
-   - User reports
-   - Metrics/monitoring
+1. **收集證據**
+   - 錯誤追蹤（Sentry、Bugsnag）
+   - 應用程式日誌
+   - 使用者回報
+   - 指標/監控
 
-2. **Reproduce locally**
-   - Use production data (anonymized)
-   - Match environment
-   - Follow exact steps
+2. **在本地重現**
+   - 使用生產資料（匿名化）
+   - 匹配環境
+   - 遵循確切步驟
 
-3. **Safe investigation**
-   - Don't change production
-   - Use feature flags
-   - Add monitoring/logging
-   - Test fixes in staging
+3. **安全調查**
+   - 不要改變生產環境
+   - 使用功能旗標
+   - 加入監控/日誌
+   - 在預備環境測試修正
 ```
 
-## Best Practices
+## 最佳實務
 
-1. **Reproduce First**: Can't fix what you can't reproduce
-2. **Isolate the Problem**: Remove complexity until minimal case
-3. **Read Error Messages**: They're usually helpful
-4. **Check Recent Changes**: Most bugs are recent
-5. **Use Version Control**: Git bisect, blame, history
-6. **Take Breaks**: Fresh eyes see better
-7. **Document Findings**: Help future you
-8. **Fix Root Cause**: Not just symptoms
+1. **先重現**：無法重現就無法修正
+2. **隔離問題**：移除複雜性直到最小案例
+3. **閱讀錯誤訊息**：它們通常很有幫助
+4. **檢查最近變更**：大多數錯誤是最近的
+5. **使用版本控制**：Git bisect、blame、歷史記錄
+6. **休息一下**：新鮮的眼光看得更清楚
+7. **記錄發現**：幫助未來的你
+8. **修正根本原因**：不只是症狀
 
-## Common Debugging Mistakes
+## 常見除錯錯誤
 
-- **Making Multiple Changes**: Change one thing at a time
-- **Not Reading Error Messages**: Read the full stack trace
-- **Assuming It's Complex**: Often it's simple
-- **Debug Logging in Prod**: Remove before shipping
-- **Not Using Debugger**: console.log isn't always best
-- **Giving Up Too Soon**: Persistence pays off
-- **Not Testing the Fix**: Verify it actually works
+- **進行多項變更**：一次改變一件事
+- **不讀錯誤訊息**：閱讀完整的堆疊追蹤
+- **假設它很複雜**：通常很簡單
+- **在生產環境除錯日誌**：發佈前移除
+- **不使用除錯器**：console.log 不總是最好的
+- **太早放棄**：堅持會有回報
+- **不測試修正**：驗證它確實有效
 
-## Quick Debugging Checklist
+## 快速除錯檢查清單
 
 ```markdown
-## When Stuck, Check:
+## 卡住時，檢查：
 
-- [ ] Spelling errors (typos in variable names)
-- [ ] Case sensitivity (fileName vs filename)
-- [ ] Null/undefined values
-- [ ] Array index off-by-one
-- [ ] Async timing (race conditions)
-- [ ] Scope issues (closure, hoisting)
-- [ ] Type mismatches
-- [ ] Missing dependencies
-- [ ] Environment variables
-- [ ] File paths (absolute vs relative)
-- [ ] Cache issues (clear cache)
-- [ ] Stale data (refresh database)
+- [ ] 拼寫錯誤（變數名稱中的拼寫錯誤）
+- [ ] 大小寫敏感性（fileName vs filename）
+- [ ] Null/undefined 值
+- [ ] 陣列索引差一
+- [ ] 非同步時間（競態條件）
+- [ ] 作用域問題（閉包、提升）
+- [ ] 型別不匹配
+- [ ] 缺少相依套件
+- [ ] 環境變數
+- [ ] 檔案路徑（絕對 vs 相對）
+- [ ] 快取問題（清除快取）
+- [ ] 過時資料（刷新資料庫）
 ```
 
-## Resources
+## 資源
 
-- **references/debugging-tools-guide.md**: Comprehensive tool documentation
-- **references/performance-profiling.md**: Performance debugging guide
-- **references/production-debugging.md**: Debugging live systems
-- **assets/debugging-checklist.md**: Quick reference checklist
-- **assets/common-bugs.md**: Common bug patterns
-- **scripts/debug-helper.ts**: Debugging utility functions
+- **references/debugging-tools-guide.md**：全面的工具文件
+- **references/performance-profiling.md**：效能除錯指南
+- **references/production-debugging.md**：除錯即時系統
+- **assets/debugging-checklist.md**：快速參考檢查清單
+- **assets/common-bugs.md**：常見錯誤模式
+- **scripts/debug-helper.ts**：除錯工具函式

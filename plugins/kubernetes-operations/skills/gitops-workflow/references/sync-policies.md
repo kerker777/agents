@@ -1,8 +1,8 @@
-# GitOps Sync Policies
+# GitOps 同步策略
 
-## ArgoCD Sync Policies
+## ArgoCD 同步策略
 
-### Automated Sync
+### 自動同步
 ```yaml
 syncPolicy:
   automated:
@@ -11,7 +11,7 @@ syncPolicy:
     allowEmpty: false # Prevent empty sync
 ```
 
-### Manual Sync
+### 手動同步
 ```yaml
 syncPolicy:
   syncOptions:
@@ -19,7 +19,7 @@ syncPolicy:
   - CreateNamespace=true
 ```
 
-### Sync Windows
+### 同步視窗
 ```yaml
 syncWindows:
 - kind: allow
@@ -34,7 +34,7 @@ syncWindows:
   - '*'
 ```
 
-### Retry Policy
+### 重試策略
 ```yaml
 syncPolicy:
   retry:
@@ -45,9 +45,9 @@ syncPolicy:
       maxDuration: 3m
 ```
 
-## Flux Sync Policies
+## Flux 同步策略
 
-### Kustomization Sync
+### Kustomization 同步
 ```yaml
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -62,7 +62,7 @@ spec:
   force: false
 ```
 
-### Source Sync Interval
+### 來源同步間隔
 ```yaml
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
@@ -73,9 +73,9 @@ spec:
   timeout: 60s
 ```
 
-## Health Assessment
+## 健康狀況評估
 
-### Custom Health Checks
+### 自訂健康檢查
 ```yaml
 # ArgoCD
 apiVersion: v1
@@ -107,25 +107,25 @@ data:
     return hs
 ```
 
-## Sync Options
+## 同步選項
 
-### Common Sync Options
-- `PrunePropagationPolicy=foreground` - Wait for pruned resources to be deleted
-- `CreateNamespace=true` - Auto-create namespace
-- `Validate=false` - Skip kubectl validation
-- `PruneLast=true` - Prune resources after sync
-- `RespectIgnoreDifferences=true` - Honor ignore differences
-- `ApplyOutOfSyncOnly=true` - Only apply out-of-sync resources
+### 常見同步選項
+- `PrunePropagationPolicy=foreground` - 等待刪除的資源完成刪除
+- `CreateNamespace=true` - 自動建立命名空間
+- `Validate=false` - 跳過 kubectl 驗證
+- `PruneLast=true` - 同步後刪除資源
+- `RespectIgnoreDifferences=true` - 遵循忽略差異設定
+- `ApplyOutOfSyncOnly=true` - 僅套用不同步的資源
 
-## Best Practices
+## 最佳實踐
 
-1. Use automated sync for non-production
-2. Require manual approval for production
-3. Configure sync windows for maintenance
-4. Implement health checks for custom resources
-5. Use selective sync for large applications
-6. Configure appropriate retry policies
-7. Monitor sync failures with alerts
-8. Use prune with caution in production
-9. Test sync policies in staging
-10. Document sync behavior for teams
+1. 非正式環境使用自動同步
+2. 正式環境需要手動核准
+3. 配置同步視窗進行維護
+4. 為自訂資源實施健康檢查
+5. 大型應用程式使用選擇性同步
+6. 配置適當的重試策略
+7. 監控同步失敗並配置告警
+8. 正式環境謹慎使用 prune
+9. 在測試環境測試同步策略
+10. 為團隊記錄同步行為

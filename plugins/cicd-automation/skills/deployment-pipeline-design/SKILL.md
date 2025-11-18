@@ -1,27 +1,27 @@
 ---
 name: deployment-pipeline-design
-description: Design multi-stage CI/CD pipelines with approval gates, security checks, and deployment orchestration. Use when architecting deployment workflows, setting up continuous delivery, or implementing GitOps practices.
+description: 設計具有核准關卡、安全檢查和部署編排功能的多階段 CI/CD 流水線。適用於規劃部署工作流程、建立持續交付機制或實作 GitOps 實務時使用。
 ---
 
 # Deployment Pipeline Design
 
-Architecture patterns for multi-stage CI/CD pipelines with approval gates and deployment strategies.
+多階段 CI/CD 流水線的架構模式，包含核准關卡和部署策略。
 
-## Purpose
+## 目的
 
-Design robust, secure deployment pipelines that balance speed with safety through proper stage organization and approval workflows.
+設計穩健、安全的部署流水線，透過適當的階段組織和核准工作流程，在速度與安全性之間取得平衡。
 
-## When to Use
+## 使用時機
 
-- Design CI/CD architecture
-- Implement deployment gates
-- Configure multi-environment pipelines
-- Establish deployment best practices
-- Implement progressive delivery
+- 設計 CI/CD 架構
+- 實作部署關卡
+- 配置多環境流水線
+- 建立部署最佳實務
+- 實作漸進式交付
 
-## Pipeline Stages
+## 流水線階段
 
-### Standard Pipeline Flow
+### 標準流水線流程
 
 ```
 ┌─────────┐   ┌──────┐   ┌─────────┐   ┌────────┐   ┌──────────┐
@@ -29,21 +29,21 @@ Design robust, secure deployment pipelines that balance speed with safety throug
 └─────────┘   └──────┘   └─────────┘   └────────┘   └──────────┘
 ```
 
-### Detailed Stage Breakdown
+### 詳細階段分解
 
-1. **Source** - Code checkout
-2. **Build** - Compile, package, containerize
-3. **Test** - Unit, integration, security scans
-4. **Staging Deploy** - Deploy to staging environment
-5. **Integration Tests** - E2E, smoke tests
-6. **Approval Gate** - Manual approval required
-7. **Production Deploy** - Canary, blue-green, rolling
-8. **Verification** - Health checks, monitoring
-9. **Rollback** - Automated rollback on failure
+1. **Source** - 程式碼簽出
+2. **Build** - 編譯、打包、容器化
+3. **Test** - 單元測試、整合測試、安全掃描
+4. **Staging Deploy** - 部署至測試環境
+5. **Integration Tests** - E2E、冒煙測試
+6. **Approval Gate** - 需要手動核准
+7. **Production Deploy** - 金絲雀、藍綠、滾動部署
+8. **Verification** - 健康檢查、監控
+9. **Rollback** - 失敗時自動回滾
 
-## Approval Gate Patterns
+## 核准關卡模式
 
-### Pattern 1: Manual Approval
+### 模式 1：手動核准
 
 ```yaml
 # GitHub Actions
@@ -59,7 +59,7 @@ production-deploy:
         # Deployment commands
 ```
 
-### Pattern 2: Time-Based Approval
+### 模式 2：基於時間的核准
 
 ```yaml
 # GitLab CI
@@ -75,7 +75,7 @@ deploy:production:
     - main
 ```
 
-### Pattern 3: Multi-Approver
+### 模式 3：多人核准
 
 ```yaml
 # Azure Pipelines
@@ -97,11 +97,11 @@ stages:
               instructions: 'Review staging metrics before approving'
 ```
 
-**Reference:** See `assets/approval-gate-template.yml`
+**參考：** 請見 `assets/approval-gate-template.yml`
 
-## Deployment Strategies
+## 部署策略
 
-### 1. Rolling Deployment
+### 1. 滾動部署
 
 ```yaml
 apiVersion: apps/v1
@@ -117,13 +117,13 @@ spec:
       maxUnavailable: 1
 ```
 
-**Characteristics:**
-- Gradual rollout
-- Zero downtime
-- Easy rollback
-- Best for most applications
+**特性：**
+- 逐步推出
+- 零停機時間
+- 容易回滾
+- 最適合大多數應用程式
 
-### 2. Blue-Green Deployment
+### 2. 藍綠部署
 
 ```yaml
 # Blue (current)
@@ -139,13 +139,13 @@ kubectl label service my-app version=green
 kubectl label service my-app version=blue
 ```
 
-**Characteristics:**
-- Instant switchover
-- Easy rollback
-- Doubles infrastructure cost temporarily
-- Good for high-risk deployments
+**特性：**
+- 即時切換
+- 容易回滾
+- 暫時性地增加一倍基礎設施成本
+- 適合高風險部署
 
-### 3. Canary Deployment
+### 3. 金絲雀部署
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -166,13 +166,13 @@ spec:
       - setWeight: 100
 ```
 
-**Characteristics:**
-- Gradual traffic shift
-- Risk mitigation
-- Real user testing
-- Requires service mesh or similar
+**特性：**
+- 漸進式流量轉移
+- 風險降低
+- 真實使用者測試
+- 需要服務網格或類似技術
 
-### 4. Feature Flags
+### 4. 功能開關
 
 ```python
 from flagsmith import Flagsmith
@@ -187,15 +187,15 @@ else:
     process_checkout_v1()
 ```
 
-**Characteristics:**
-- Deploy without releasing
-- A/B testing
-- Instant rollback
-- Granular control
+**特性：**
+- 部署與發布分離
+- A/B 測試
+- 即時回滾
+- 精細控制
 
-## Pipeline Orchestration
+## 流水線編排
 
-### Multi-Stage Pipeline Example
+### 多階段流水線範例
 
 ```yaml
 name: Production Pipeline
@@ -264,22 +264,22 @@ jobs:
             -d '{"text":"Production deployment successful!"}'
 ```
 
-## Pipeline Best Practices
+## 流水線最佳實務
 
-1. **Fail fast** - Run quick tests first
-2. **Parallel execution** - Run independent jobs concurrently
-3. **Caching** - Cache dependencies between runs
-4. **Artifact management** - Store build artifacts
-5. **Environment parity** - Keep environments consistent
-6. **Secrets management** - Use secret stores (Vault, etc.)
-7. **Deployment windows** - Schedule deployments appropriately
-8. **Monitoring integration** - Track deployment metrics
-9. **Rollback automation** - Auto-rollback on failures
-10. **Documentation** - Document pipeline stages
+1. **快速失敗** - 優先執行快速測試
+2. **平行執行** - 同時執行獨立的任務
+3. **快取** - 在執行之間快取相依套件
+4. **產出物管理** - 儲存建置產出物
+5. **環境一致性** - 保持各環境的一致性
+6. **秘密管理** - 使用秘密存放區（Vault 等）
+7. **部署時段** - 適當地安排部署時間
+8. **監控整合** - 追蹤部署指標
+9. **自動回滾** - 失敗時自動回滾
+10. **文件化** - 記錄流水線各階段
 
-## Rollback Strategies
+## 回滾策略
 
-### Automated Rollback
+### 自動回滾
 
 ```yaml
 deploy-and-verify:
@@ -306,7 +306,7 @@ deploy-and-verify:
       run: kubectl rollout undo deployment/my-app
 ```
 
-### Manual Rollback
+### 手動回滾
 
 ```bash
 # List revision history
@@ -319,18 +319,18 @@ kubectl rollout undo deployment/my-app
 kubectl rollout undo deployment/my-app --to-revision=3
 ```
 
-## Monitoring and Metrics
+## 監控與指標
 
-### Key Pipeline Metrics
+### 關鍵流水線指標
 
-- **Deployment Frequency** - How often deployments occur
-- **Lead Time** - Time from commit to production
-- **Change Failure Rate** - Percentage of failed deployments
-- **Mean Time to Recovery (MTTR)** - Time to recover from failure
-- **Pipeline Success Rate** - Percentage of successful runs
-- **Average Pipeline Duration** - Time to complete pipeline
+- **Deployment Frequency** - 部署頻率
+- **Lead Time** - 從提交到正式環境的前置時間
+- **Change Failure Rate** - 部署失敗率
+- **Mean Time to Recovery (MTTR)** - 從故障中恢復的平均時間
+- **Pipeline Success Rate** - 流水線成功率
+- **Average Pipeline Duration** - 流水線平均執行時間
 
-### Integration with Monitoring
+### 與監控系統整合
 
 ```yaml
 - name: Post-deployment verification
@@ -347,13 +347,13 @@ kubectl rollout undo deployment/my-app --to-revision=3
     fi
 ```
 
-## Reference Files
+## 參考檔案
 
-- `references/pipeline-orchestration.md` - Complex pipeline patterns
-- `assets/approval-gate-template.yml` - Approval workflow templates
+- `references/pipeline-orchestration.md` - 複雜流水線模式
+- `assets/approval-gate-template.yml` - 核准工作流程範本
 
-## Related Skills
+## 相關技能
 
-- `github-actions-templates` - For GitHub Actions implementation
-- `gitlab-ci-patterns` - For GitLab CI implementation
-- `secrets-management` - For secrets handling
+- `github-actions-templates` - 用於 GitHub Actions 實作
+- `gitlab-ci-patterns` - 用於 GitLab CI 實作
+- `secrets-management` - 用於秘密處理

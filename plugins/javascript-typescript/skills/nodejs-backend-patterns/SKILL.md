@@ -3,26 +3,26 @@ name: nodejs-backend-patterns
 description: Build production-ready Node.js backend services with Express/Fastify, implementing middleware patterns, error handling, authentication, database integration, and API design best practices. Use when creating Node.js servers, REST APIs, GraphQL backends, or microservices architectures.
 ---
 
-# Node.js Backend Patterns
+# Node.js 後端模式
 
-Comprehensive guidance for building scalable, maintainable, and production-ready Node.js backend applications with modern frameworks, architectural patterns, and best practices.
+全面指南,介紹如何使用現代框架、架構模式和最佳實踐,建構可擴展、可維護且生產就緒的 Node.js 後端應用程式。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Building REST APIs or GraphQL servers
-- Creating microservices with Node.js
-- Implementing authentication and authorization
-- Designing scalable backend architectures
-- Setting up middleware and error handling
-- Integrating databases (SQL and NoSQL)
-- Building real-time applications with WebSockets
-- Implementing background job processing
+- 建構 REST API 或 GraphQL 伺服器
+- 建立 Node.js 微服務
+- 實作身份驗證和授權
+- 設計可擴展的後端架構
+- 設定中介軟體和錯誤處理
+- 整合資料庫 (SQL 和 NoSQL)
+- 使用 WebSockets 建構即時應用程式
+- 實作背景工作處理
 
-## Core Frameworks
+## 核心框架
 
-### Express.js - Minimalist Framework
+### Express.js - 極簡框架
 
-**Basic Setup:**
+**基本設定：**
 ```typescript
 import express, { Request, Response, NextFunction } from 'express';
 import helmet from 'helmet';
@@ -52,9 +52,9 @@ app.listen(PORT, () => {
 });
 ```
 
-### Fastify - High Performance Framework
+### Fastify - 高效能框架
 
-**Basic Setup:**
+**基本設定：**
 ```typescript
 import Fastify from 'fastify';
 import helmet from '@fastify/helmet';
@@ -99,11 +99,11 @@ fastify.post<{
 await fastify.listen({ port: 3000, host: '0.0.0.0' });
 ```
 
-## Architectural Patterns
+## 架構模式
 
-### Pattern 1: Layered Architecture
+### 模式 1：分層架構
 
-**Structure:**
+**結構：**
 ```
 src/
 ├── controllers/     # Handle HTTP requests/responses
@@ -117,7 +117,7 @@ src/
 └── types/           # TypeScript types
 ```
 
-**Controller Layer:**
+**控制器層：**
 ```typescript
 // controllers/user.controller.ts
 import { Request, Response, NextFunction } from 'express';
@@ -170,7 +170,7 @@ export class UserController {
 }
 ```
 
-**Service Layer:**
+**服務層：**
 ```typescript
 // services/user.service.ts
 import { UserRepository } from '../repositories/user.repository';
@@ -229,7 +229,7 @@ export class UserService {
 }
 ```
 
-**Repository Layer:**
+**資料存取層：**
 ```typescript
 // repositories/user.repository.ts
 import { Pool } from 'pg';
@@ -291,9 +291,9 @@ export class UserRepository {
 }
 ```
 
-### Pattern 2: Dependency Injection
+### 模式 2：依賴注入
 
-**DI Container:**
+**DI 容器：**
 ```typescript
 // di-container.ts
 import { Pool } from 'pg';
@@ -359,9 +359,9 @@ container.singleton('authService', () =>
 );
 ```
 
-## Middleware Patterns
+## 中介軟體模式
 
-### Authentication Middleware
+### 身份驗證中介軟體
 
 ```typescript
 // middleware/auth.middleware.ts
@@ -426,7 +426,7 @@ export const authorize = (...roles: string[]) => {
 };
 ```
 
-### Validation Middleware
+### 驗證中介軟體
 
 ```typescript
 // middleware/validation.middleware.ts
@@ -471,7 +471,7 @@ const createUserSchema = z.object({
 router.post('/users', validate(createUserSchema), userController.createUser);
 ```
 
-### Rate Limiting Middleware
+### 流量限制中介軟體
 
 ```typescript
 // middleware/rate-limit.middleware.ts
@@ -507,7 +507,7 @@ export const authLimiter = rateLimit({
 });
 ```
 
-### Request Logging Middleware
+### 請求記錄中介軟體
 
 ```typescript
 // middleware/logger.middleware.ts
@@ -548,9 +548,9 @@ export const requestLogger = (
 export { logger };
 ```
 
-## Error Handling
+## 錯誤處理
 
-### Custom Error Classes
+### 自訂錯誤類別
 
 ```typescript
 // utils/errors.ts
@@ -597,7 +597,7 @@ export class ConflictError extends AppError {
 }
 ```
 
-### Global Error Handler
+### 全域錯誤處理器
 
 ```typescript
 // middleware/error-handler.ts
@@ -648,9 +648,9 @@ export const asyncHandler = (
 };
 ```
 
-## Database Patterns
+## 資料庫模式
 
-### PostgreSQL with Connection Pool
+### PostgreSQL 與連線池
 
 ```typescript
 // config/database.ts
@@ -686,7 +686,7 @@ export const closeDatabase = async () => {
 };
 ```
 
-### MongoDB with Mongoose
+### MongoDB 與 Mongoose
 
 ```typescript
 // config/mongoose.ts
@@ -742,7 +742,7 @@ userSchema.index({ email: 1 });
 export const User = model<IUser>('User', userSchema);
 ```
 
-### Transaction Pattern
+### 交易模式
 
 ```typescript
 // services/order.service.ts
@@ -790,9 +790,9 @@ export class OrderService {
 }
 ```
 
-## Authentication & Authorization
+## 身份驗證與授權
 
-### JWT Authentication
+### JWT 身份驗證
 
 ```typescript
 // services/auth.service.ts
@@ -875,7 +875,7 @@ export class AuthService {
 }
 ```
 
-## Caching Strategies
+## 快取策略
 
 ```typescript
 // utils/cache.ts
@@ -946,7 +946,7 @@ export function Cacheable(ttl: number = 300) {
 }
 ```
 
-## API Response Format
+## API 回應格式
 
 ```typescript
 // utils/response.ts
@@ -990,29 +990,29 @@ export class ApiResponse {
 }
 ```
 
-## Best Practices
+## 最佳實踐
 
-1. **Use TypeScript**: Type safety prevents runtime errors
-2. **Implement proper error handling**: Use custom error classes
-3. **Validate input**: Use libraries like Zod or Joi
-4. **Use environment variables**: Never hardcode secrets
-5. **Implement logging**: Use structured logging (Pino, Winston)
-6. **Add rate limiting**: Prevent abuse
-7. **Use HTTPS**: Always in production
-8. **Implement CORS properly**: Don't use `*` in production
-9. **Use dependency injection**: Easier testing and maintenance
-10. **Write tests**: Unit, integration, and E2E tests
-11. **Handle graceful shutdown**: Clean up resources
-12. **Use connection pooling**: For databases
-13. **Implement health checks**: For monitoring
-14. **Use compression**: Reduce response size
-15. **Monitor performance**: Use APM tools
+1. **使用 TypeScript**：型別安全防止執行時錯誤
+2. **實作適當的錯誤處理**：使用自訂錯誤類別
+3. **驗證輸入**：使用 Zod 或 Joi 等函式庫
+4. **使用環境變數**：永遠不要硬編碼機密資訊
+5. **實作日誌記錄**：使用結構化日誌 (Pino、Winston)
+6. **新增流量限制**：防止濫用
+7. **使用 HTTPS**：在生產環境中始終使用
+8. **正確實作 CORS**：在生產環境中不要使用 `*`
+9. **使用依賴注入**：更容易測試和維護
+10. **撰寫測試**：單元測試、整合測試和端對端測試
+11. **處理優雅關閉**：清理資源
+12. **使用連線池**：用於資料庫
+13. **實作健康檢查**：用於監控
+14. **使用壓縮**：減少回應大小
+15. **監控效能**：使用 APM 工具
 
-## Testing Patterns
+## 測試模式
 
-See `javascript-testing-patterns` skill for comprehensive testing guidance.
+參見 `javascript-testing-patterns` 技能以獲得全面的測試指南。
 
-## Resources
+## 資源
 
 - **Node.js Best Practices**: https://github.com/goldbergyoni/nodebestpractices
 - **Express.js Guide**: https://expressjs.com/en/guide/

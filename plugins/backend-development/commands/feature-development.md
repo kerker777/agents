@@ -1,144 +1,144 @@
-Orchestrate end-to-end feature development from requirements to production deployment:
+協調從需求到正式環境部署的端到端功能開發：
 
-[Extended thinking: This workflow orchestrates specialized agents through comprehensive feature development phases - from discovery and planning through implementation, testing, and deployment. Each phase builds on previous outputs, ensuring coherent feature delivery. The workflow supports multiple development methodologies (traditional, TDD/BDD, DDD), feature complexity levels, and modern deployment strategies including feature flags, gradual rollouts, and observability-first development. Agents receive detailed context from previous phases to maintain consistency and quality throughout the development lifecycle.]
+[延伸思考：此工作流程透過完整的功能開發階段來協調專業代理，從探索和規劃到實作、測試和部署。每個階段都建立在先前的輸出之上，確保功能交付的一致性。此工作流程支援多種開發方法論（傳統式、TDD/BDD、DDD）、功能複雜度等級，以及現代化的部署策略，包括功能旗標、漸進式推出和觀測性優先的開發方式。代理會接收前一階段的詳細情境資訊，以在整個開發生命週期中保持一致性和品質。]
 
-## Configuration Options
+## 配置選項
 
-### Development Methodology
-- **traditional**: Sequential development with testing after implementation
-- **tdd**: Test-Driven Development with red-green-refactor cycles
-- **bdd**: Behavior-Driven Development with scenario-based testing
-- **ddd**: Domain-Driven Design with bounded contexts and aggregates
+### 開發方法論
+- **traditional**: 實作後進行測試的循序開發方式
+- **tdd**: 測試驅動開發，採用紅燈-綠燈-重構循環
+- **bdd**: 行為驅動開發，採用情境式測試
+- **ddd**: 領域驅動設計，採用限界上下文和聚合
 
-### Feature Complexity
-- **simple**: Single service, minimal integration (1-2 days)
-- **medium**: Multiple services, moderate integration (3-5 days)
-- **complex**: Cross-domain, extensive integration (1-2 weeks)
-- **epic**: Major architectural changes, multiple teams (2+ weeks)
+### 功能複雜度
+- **simple**: 單一服務，最少整合（1-2 天）
+- **medium**: 多個服務，中等整合（3-5 天）
+- **complex**: 跨領域，大量整合（1-2 週）
+- **epic**: 重大架構變更，多個團隊（2 週以上）
 
-### Deployment Strategy
-- **direct**: Immediate rollout to all users
-- **canary**: Gradual rollout starting with 5% of traffic
-- **feature-flag**: Controlled activation via feature toggles
-- **blue-green**: Zero-downtime deployment with instant rollback
-- **a-b-test**: Split traffic for experimentation and metrics
+### 部署策略
+- **direct**: 立即向所有使用者推出
+- **canary**: 從 5% 流量開始的漸進式推出
+- **feature-flag**: 透過功能開關進行控制式啟用
+- **blue-green**: 零停機部署，可立即回滾
+- **a-b-test**: 分流流量進行實驗和指標追蹤
 
-## Phase 1: Discovery & Requirements Planning
+## 階段 1：探索與需求規劃
 
-1. **Business Analysis & Requirements**
-   - Use Task tool with subagent_type="business-analytics::business-analyst"
-   - Prompt: "Analyze feature requirements for: $ARGUMENTS. Define user stories, acceptance criteria, success metrics, and business value. Identify stakeholders, dependencies, and risks. Create feature specification document with clear scope boundaries."
-   - Expected output: Requirements document with user stories, success metrics, risk assessment
-   - Context: Initial feature request and business context
+1. **業務分析與需求**
+   - 使用 Task 工具，設定 subagent_type="business-analytics::business-analyst"
+   - 提示：「分析功能需求：$ARGUMENTS。定義使用者故事、驗收標準、成功指標和業務價值。識別利害關係人、相依性和風險。建立具有明確範圍邊界的功能規格文件。」
+   - 預期輸出：包含使用者故事、成功指標、風險評估的需求文件
+   - 情境：初始功能請求和業務情境
 
-2. **Technical Architecture Design**
-   - Use Task tool with subagent_type="comprehensive-review::architect-review"
-   - Prompt: "Design technical architecture for feature: $ARGUMENTS. Using requirements: [include business analysis from step 1]. Define service boundaries, API contracts, data models, integration points, and technology stack. Consider scalability, performance, and security requirements."
-   - Expected output: Technical design document with architecture diagrams, API specifications, data models
-   - Context: Business requirements, existing system architecture
+2. **技術架構設計**
+   - 使用 Task 工具，設定 subagent_type="comprehensive-review::architect-review"
+   - 提示：「設計功能的技術架構：$ARGUMENTS。使用需求：[包含步驟 1 的業務分析]。定義服務邊界、API 合約、資料模型、整合點和技術堆疊。考慮可擴展性、效能和安全性需求。」
+   - 預期輸出：包含架構圖、API 規格、資料模型的技術設計文件
+   - 情境：業務需求、現有系統架構
 
-3. **Feasibility & Risk Assessment**
-   - Use Task tool with subagent_type="security-scanning::security-auditor"
-   - Prompt: "Assess security implications and risks for feature: $ARGUMENTS. Review architecture: [include technical design from step 2]. Identify security requirements, compliance needs, data privacy concerns, and potential vulnerabilities."
-   - Expected output: Security assessment with risk matrix, compliance checklist, mitigation strategies
-   - Context: Technical design, regulatory requirements
+3. **可行性與風險評估**
+   - 使用 Task 工具，設定 subagent_type="security-scanning::security-auditor"
+   - 提示：「評估功能的安全性影響和風險：$ARGUMENTS。檢視架構：[包含步驟 2 的技術設計]。識別安全性需求、合規需求、資料隱私疑慮和潛在漏洞。」
+   - 預期輸出：包含風險矩陣、合規檢查清單、緩解策略的安全性評估
+   - 情境：技術設計、法規要求
 
-## Phase 2: Implementation & Development
+## 階段 2：實作與開發
 
-4. **Backend Services Implementation**
-   - Use Task tool with subagent_type="backend-architect"
-   - Prompt: "Implement backend services for: $ARGUMENTS. Follow technical design: [include architecture from step 2]. Build RESTful/GraphQL APIs, implement business logic, integrate with data layer, add resilience patterns (circuit breakers, retries), implement caching strategies. Include feature flags for gradual rollout."
-   - Expected output: Backend services with APIs, business logic, database integration, feature flags
-   - Context: Technical design, API contracts, data models
+4. **後端服務實作**
+   - 使用 Task 工具，設定 subagent_type="backend-architect"
+   - 提示：「實作後端服務：$ARGUMENTS。遵循技術設計：[包含步驟 2 的架構]。建構 RESTful/GraphQL API，實作業務邏輯，整合資料層，加入韌性模式（斷路器、重試機制），實作快取策略。包含用於漸進式推出的功能旗標。」
+   - 預期輸出：包含 API、業務邏輯、資料庫整合、功能旗標的後端服務
+   - 情境：技術設計、API 合約、資料模型
 
-5. **Frontend Implementation**
-   - Use Task tool with subagent_type="frontend-mobile-development::frontend-developer"
-   - Prompt: "Build frontend components for: $ARGUMENTS. Integrate with backend APIs: [include API endpoints from step 4]. Implement responsive UI, state management, error handling, loading states, and analytics tracking. Add feature flag integration for A/B testing capabilities."
-   - Expected output: Frontend components with API integration, state management, analytics
-   - Context: Backend APIs, UI/UX designs, user stories
+5. **前端實作**
+   - 使用 Task 工具，設定 subagent_type="frontend-mobile-development::frontend-developer"
+   - 提示：「建構前端元件：$ARGUMENTS。整合後端 API：[包含步驟 4 的 API 端點]。實作響應式 UI、狀態管理、錯誤處理、載入狀態和分析追蹤。加入功能旗標整合以支援 A/B 測試能力。」
+   - 預期輸出：包含 API 整合、狀態管理、分析的前端元件
+   - 情境：後端 API、UI/UX 設計、使用者故事
 
-6. **Data Pipeline & Integration**
-   - Use Task tool with subagent_type="data-engineering::data-engineer"
-   - Prompt: "Build data pipelines for: $ARGUMENTS. Design ETL/ELT processes, implement data validation, create analytics events, set up data quality monitoring. Integrate with product analytics platforms for feature usage tracking."
-   - Expected output: Data pipelines, analytics events, data quality checks
-   - Context: Data requirements, analytics needs, existing data infrastructure
+6. **資料管線與整合**
+   - 使用 Task 工具，設定 subagent_type="data-engineering::data-engineer"
+   - 提示：「建構資料管線：$ARGUMENTS。設計 ETL/ELT 流程，實作資料驗證，建立分析事件，設定資料品質監控。整合產品分析平台以追蹤功能使用情況。」
+   - 預期輸出：資料管線、分析事件、資料品質檢查
+   - 情境：資料需求、分析需求、現有資料基礎設施
 
-## Phase 3: Testing & Quality Assurance
+## 階段 3：測試與品質保證
 
-7. **Automated Test Suite**
-   - Use Task tool with subagent_type="unit-testing::test-automator"
-   - Prompt: "Create comprehensive test suite for: $ARGUMENTS. Write unit tests for backend: [from step 4] and frontend: [from step 5]. Add integration tests for API endpoints, E2E tests for critical user journeys, performance tests for scalability validation. Ensure minimum 80% code coverage."
-   - Expected output: Test suites with unit, integration, E2E, and performance tests
-   - Context: Implementation code, acceptance criteria, test requirements
+7. **自動化測試套件**
+   - 使用 Task 工具，設定 subagent_type="unit-testing::test-automator"
+   - 提示：「建立完整的測試套件：$ARGUMENTS。為後端：[來自步驟 4] 和前端：[來自步驟 5] 撰寫單元測試。加入 API 端點的整合測試、關鍵使用者旅程的端到端測試、可擴展性驗證的效能測試。確保至少 80% 的程式碼覆蓋率。」
+   - 預期輸出：包含單元、整合、端到端和效能測試的測試套件
+   - 情境：實作程式碼、驗收標準、測試需求
 
-8. **Security Validation**
-   - Use Task tool with subagent_type="security-scanning::security-auditor"
-   - Prompt: "Perform security testing for: $ARGUMENTS. Review implementation: [include backend and frontend from steps 4-5]. Run OWASP checks, penetration testing, dependency scanning, and compliance validation. Verify data encryption, authentication, and authorization."
-   - Expected output: Security test results, vulnerability report, remediation actions
-   - Context: Implementation code, security requirements
+8. **安全性驗證**
+   - 使用 Task 工具，設定 subagent_type="security-scanning::security-auditor"
+   - 提示：「執行安全性測試：$ARGUMENTS。檢視實作：[包含步驟 4-5 的後端和前端]。執行 OWASP 檢查、滲透測試、相依性掃描和合規驗證。驗證資料加密、身分驗證和授權。」
+   - 預期輸出：安全性測試結果、漏洞報告、修復行動
+   - 情境：實作程式碼、安全性需求
 
-9. **Performance Optimization**
-   - Use Task tool with subagent_type="application-performance::performance-engineer"
-   - Prompt: "Optimize performance for: $ARGUMENTS. Analyze backend services: [from step 4] and frontend: [from step 5]. Profile code, optimize queries, implement caching, reduce bundle sizes, improve load times. Set up performance budgets and monitoring."
-   - Expected output: Performance improvements, optimization report, performance metrics
-   - Context: Implementation code, performance requirements
+9. **效能最佳化**
+   - 使用 Task 工具，設定 subagent_type="application-performance::performance-engineer"
+   - 提示：「最佳化效能：$ARGUMENTS。分析後端服務：[來自步驟 4] 和前端：[來自步驟 5]。分析程式碼、最佳化查詢、實作快取、減少打包大小、改善載入時間。設定效能預算和監控。」
+   - 預期輸出：效能改進、最佳化報告、效能指標
+   - 情境：實作程式碼、效能需求
 
-## Phase 4: Deployment & Monitoring
+## 階段 4：部署與監控
 
-10. **Deployment Strategy & Pipeline**
-    - Use Task tool with subagent_type="deployment-strategies::deployment-engineer"
-    - Prompt: "Prepare deployment for: $ARGUMENTS. Create CI/CD pipeline with automated tests: [from step 7]. Configure feature flags for gradual rollout, implement blue-green deployment, set up rollback procedures. Create deployment runbook and rollback plan."
-    - Expected output: CI/CD pipeline, deployment configuration, rollback procedures
-    - Context: Test suites, infrastructure requirements, deployment strategy
+10. **部署策略與管線**
+    - 使用 Task 工具，設定 subagent_type="deployment-strategies::deployment-engineer"
+    - 提示：「準備部署：$ARGUMENTS。建立包含自動化測試的 CI/CD 管線：[來自步驟 7]。配置用於漸進式推出的功能旗標，實作藍綠部署，設定回滾程序。建立部署操作手冊和回滾計畫。」
+    - 預期輸出：CI/CD 管線、部署配置、回滾程序
+    - 情境：測試套件、基礎設施需求、部署策略
 
-11. **Observability & Monitoring**
-    - Use Task tool with subagent_type="observability-monitoring::observability-engineer"
-    - Prompt: "Set up observability for: $ARGUMENTS. Implement distributed tracing, custom metrics, error tracking, and alerting. Create dashboards for feature usage, performance metrics, error rates, and business KPIs. Set up SLOs/SLIs with automated alerts."
-    - Expected output: Monitoring dashboards, alerts, SLO definitions, observability infrastructure
-    - Context: Feature implementation, success metrics, operational requirements
+11. **觀測性與監控**
+    - 使用 Task 工具，設定 subagent_type="observability-monitoring::observability-engineer"
+    - 提示：「設定觀測性：$ARGUMENTS。實作分散式追蹤、自訂指標、錯誤追蹤和告警。建立功能使用情況、效能指標、錯誤率和業務 KPI 的儀表板。設定帶有自動告警的 SLO/SLI。」
+    - 預期輸出：監控儀表板、告警、SLO 定義、觀測性基礎設施
+    - 情境：功能實作、成功指標、營運需求
 
-12. **Documentation & Knowledge Transfer**
-    - Use Task tool with subagent_type="documentation-generation::docs-architect"
-    - Prompt: "Generate comprehensive documentation for: $ARGUMENTS. Create API documentation, user guides, deployment guides, troubleshooting runbooks. Include architecture diagrams, data flow diagrams, and integration guides. Generate automated changelog from commits."
-    - Expected output: API docs, user guides, runbooks, architecture documentation
-    - Context: All previous phases' outputs
+12. **文件與知識轉移**
+    - 使用 Task 工具，設定 subagent_type="documentation-generation::docs-architect"
+    - 提示：「產生完整的文件：$ARGUMENTS。建立 API 文件、使用者指南、部署指南、問題排解操作手冊。包含架構圖、資料流程圖和整合指南。從提交記錄產生自動化變更日誌。」
+    - 預期輸出：API 文件、使用者指南、操作手冊、架構文件
+    - 情境：所有先前階段的輸出
 
-## Execution Parameters
+## 執行參數
 
-### Required Parameters
-- **--feature**: Feature name and description
-- **--methodology**: Development approach (traditional|tdd|bdd|ddd)
-- **--complexity**: Feature complexity level (simple|medium|complex|epic)
+### 必要參數
+- **--feature**: 功能名稱和描述
+- **--methodology**: 開發方法（traditional|tdd|bdd|ddd）
+- **--complexity**: 功能複雜度等級（simple|medium|complex|epic）
 
-### Optional Parameters
-- **--deployment-strategy**: Deployment approach (direct|canary|feature-flag|blue-green|a-b-test)
-- **--test-coverage-min**: Minimum test coverage threshold (default: 80%)
-- **--performance-budget**: Performance requirements (e.g., <200ms response time)
-- **--rollout-percentage**: Initial rollout percentage for gradual deployment (default: 5%)
-- **--feature-flag-service**: Feature flag provider (launchdarkly|split|unleash|custom)
-- **--analytics-platform**: Analytics integration (segment|amplitude|mixpanel|custom)
-- **--monitoring-stack**: Observability tools (datadog|newrelic|grafana|custom)
+### 選用參數
+- **--deployment-strategy**: 部署方法（direct|canary|feature-flag|blue-green|a-b-test）
+- **--test-coverage-min**: 最低測試覆蓋率門檻（預設：80%）
+- **--performance-budget**: 效能需求（例如：<200ms 回應時間）
+- **--rollout-percentage**: 漸進式部署的初始推出百分比（預設：5%）
+- **--feature-flag-service**: 功能旗標提供者（launchdarkly|split|unleash|custom）
+- **--analytics-platform**: 分析整合（segment|amplitude|mixpanel|custom）
+- **--monitoring-stack**: 觀測性工具（datadog|newrelic|grafana|custom）
 
-## Success Criteria
+## 成功標準
 
-- All acceptance criteria from business requirements are met
-- Test coverage exceeds minimum threshold (80% default)
-- Security scan shows no critical vulnerabilities
-- Performance meets defined budgets and SLOs
-- Feature flags configured for controlled rollout
-- Monitoring and alerting fully operational
-- Documentation complete and approved
-- Successful deployment to production with rollback capability
-- Product analytics tracking feature usage
-- A/B test metrics configured (if applicable)
+- 符合業務需求的所有驗收標準
+- 測試覆蓋率超過最低門檻（預設 80%）
+- 安全性掃描顯示無重大漏洞
+- 效能符合定義的預算和 SLO
+- 功能旗標已配置用於控制式推出
+- 監控和告警完全運作
+- 文件完整且已核准
+- 成功部署到正式環境並具備回滾能力
+- 產品分析追蹤功能使用情況
+- 已配置 A/B 測試指標（如適用）
 
-## Rollback Strategy
+## 回滾策略
 
-If issues arise during or after deployment:
-1. Immediate feature flag disable (< 1 minute)
-2. Blue-green traffic switch (< 5 minutes)
-3. Full deployment rollback via CI/CD (< 15 minutes)
-4. Database migration rollback if needed (coordinate with data team)
-5. Incident post-mortem and fixes before re-deployment
+如果在部署期間或之後發生問題：
+1. 立即停用功能旗標（< 1 分鐘）
+2. 藍綠流量切換（< 5 分鐘）
+3. 透過 CI/CD 完全回滾部署（< 15 分鐘）
+4. 如有需要進行資料庫遷移回滾（與資料團隊協調）
+5. 事後檢討並修復問題後再重新部署
 
-Feature description: $ARGUMENTS
+功能描述：$ARGUMENTS

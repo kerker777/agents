@@ -1,44 +1,44 @@
 ---
 name: react-modernization
-description: Upgrade React applications to latest versions, migrate from class components to hooks, and adopt concurrent features. Use when modernizing React codebases, migrating to React Hooks, or upgrading to latest React versions.
+description: 升級 React 應用程式至最新版本、從類別元件遷移至 hooks，以及採用並行功能。適用於現代化 React 程式碼庫、遷移至 React Hooks 或升級至最新 React 版本。
 ---
 
 # React Modernization
 
-Master React version upgrades, class to hooks migration, concurrent features adoption, and codemods for automated transformation.
+精通 React 版本升級、類別元件轉 hooks 遷移、並行功能採用，以及用於自動轉換的 codemods。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Upgrading React applications to latest versions
-- Migrating class components to functional components with hooks
-- Adopting concurrent React features (Suspense, transitions)
-- Applying codemods for automated refactoring
-- Modernizing state management patterns
-- Updating to TypeScript
-- Improving performance with React 18+ features
+- 升級 React 應用程式至最新版本
+- 將類別元件遷移至函式元件與 hooks
+- 採用並行 React 功能（Suspense、transitions）
+- 應用 codemods 進行自動重構
+- 現代化狀態管理模式
+- 更新至 TypeScript
+- 使用 React 18+ 功能改善效能
 
-## Version Upgrade Path
+## 版本升級路徑
 
 ### React 16 → 17 → 18
 
-**Breaking Changes by Version:**
+**各版本的破壞性變更：**
 
-**React 17:**
-- Event delegation changes
-- No event pooling
-- Effect cleanup timing
-- JSX transform (no React import needed)
+**React 17：**
+- 事件委派變更
+- 移除事件池
+- Effect 清理時機
+- JSX 轉換（不需要匯入 React）
 
-**React 18:**
-- Automatic batching
-- Concurrent rendering
-- Strict Mode changes (double invocation)
-- New root API
-- Suspense on server
+**React 18：**
+- 自動批次處理
+- 並行渲染
+- Strict Mode 變更（雙重調用）
+- 新的 root API
+- 伺服器端 Suspense
 
-## Class to Hooks Migration
+## 類別元件轉 Hooks 遷移
 
-### State Management
+### 狀態管理
 ```javascript
 // Before: Class component
 class Counter extends React.Component {
@@ -82,7 +82,7 @@ function Counter() {
 }
 ```
 
-### Lifecycle Methods to Hooks
+### 生命週期方法轉 Hooks
 ```javascript
 // Before: Lifecycle methods
 class DataFetcher extends React.Component {
@@ -154,7 +154,7 @@ function DataFetcher({ id }) {
 }
 ```
 
-### Context and HOCs to Hooks
+### Context 和 HOCs 轉 Hooks
 ```javascript
 // Before: Context consumer and HOC
 const ThemeContext = React.createContext();
@@ -215,9 +215,9 @@ function UserProfile() {
 }
 ```
 
-## React 18 Concurrent Features
+## React 18 並行功能
 
-### New Root API
+### 新的 Root API
 ```javascript
 // Before: React 17
 import ReactDOM from 'react-dom';
@@ -231,7 +231,7 @@ const root = createRoot(document.getElementById('root'));
 root.render(<App />);
 ```
 
-### Automatic Batching
+### 自動批次處理
 ```javascript
 // React 18: All updates are batched
 function handleClick() {
@@ -317,9 +317,9 @@ function ProfileTimeline() {
 }
 ```
 
-## Codemods for Automation
+## Codemods 自動化
 
-### Run React Codemods
+### 執行 React Codemods
 ```bash
 # Install jscodeshift
 npm install -g jscodeshift
@@ -341,7 +341,7 @@ npx react-codeshift --parser=tsx \
 npx codemod react/hooks/convert-class-to-function src/
 ```
 
-### Custom Codemod Example
+### 自訂 Codemod 範例
 ```javascript
 // custom-codemod.js
 module.exports = function(file, api) {
@@ -365,9 +365,9 @@ module.exports = function(file, api) {
 // Run: jscodeshift -t custom-codemod.js src/
 ```
 
-## Performance Optimization
+## 效能優化
 
-### useMemo and useCallback
+### useMemo 和 useCallback
 ```javascript
 function ExpensiveComponent({ items, filter }) {
   // Memoize expensive calculation
@@ -393,7 +393,7 @@ const List = React.memo(({ items, onClick }) => {
 });
 ```
 
-### Code Splitting
+### 程式碼分割
 ```javascript
 import { lazy, Suspense } from 'react';
 
@@ -413,7 +413,7 @@ function App() {
 }
 ```
 
-## TypeScript Migration
+## TypeScript 遷移
 
 ```typescript
 // Before: JavaScript
@@ -442,72 +442,72 @@ function List<T>({ items, renderItem }: ListProps<T>) {
 }
 ```
 
-## Migration Checklist
+## 遷移檢查清單
 
 ```markdown
-### Pre-Migration
-- [ ] Update dependencies incrementally (not all at once)
-- [ ] Review breaking changes in release notes
-- [ ] Set up testing suite
-- [ ] Create feature branch
+### 遷移前
+- [ ] 漸進式更新依賴項（不要一次全部更新）
+- [ ] 檢視發行說明中的破壞性變更
+- [ ] 設定測試套件
+- [ ] 建立功能分支
 
-### Class → Hooks Migration
-- [ ] Identify class components to migrate
-- [ ] Start with leaf components (no children)
-- [ ] Convert state to useState
-- [ ] Convert lifecycle to useEffect
-- [ ] Convert context to useContext
-- [ ] Extract custom hooks
-- [ ] Test thoroughly
+### 類別元件 → Hooks 遷移
+- [ ] 識別要遷移的類別元件
+- [ ] 從葉節點元件開始（無子元件）
+- [ ] 將 state 轉換為 useState
+- [ ] 將生命週期轉換為 useEffect
+- [ ] 將 context 轉換為 useContext
+- [ ] 提取自訂 hooks
+- [ ] 徹底測試
 
-### React 18 Upgrade
-- [ ] Update to React 17 first (if needed)
-- [ ] Update react and react-dom to 18
-- [ ] Update @types/react if using TypeScript
-- [ ] Change to createRoot API
-- [ ] Test with StrictMode (double invocation)
-- [ ] Address concurrent rendering issues
-- [ ] Adopt Suspense/Transitions where beneficial
+### React 18 升級
+- [ ] 先更新至 React 17（如需要）
+- [ ] 更新 react 和 react-dom 至 18
+- [ ] 更新 @types/react（如使用 TypeScript）
+- [ ] 變更為 createRoot API
+- [ ] 使用 StrictMode 測試（雙重調用）
+- [ ] 處理並行渲染問題
+- [ ] 在有益處的地方採用 Suspense/Transitions
 
-### Performance
-- [ ] Identify performance bottlenecks
-- [ ] Add React.memo where appropriate
-- [ ] Use useMemo/useCallback for expensive operations
-- [ ] Implement code splitting
-- [ ] Optimize re-renders
+### 效能
+- [ ] 識別效能瓶頸
+- [ ] 在適當的地方加入 React.memo
+- [ ] 對耗時運算使用 useMemo/useCallback
+- [ ] 實作程式碼分割
+- [ ] 優化重新渲染
 
-### Testing
-- [ ] Update test utilities (React Testing Library)
-- [ ] Test with React 18 features
-- [ ] Check for warnings in console
-- [ ] Performance testing
+### 測試
+- [ ] 更新測試工具（React Testing Library）
+- [ ] 使用 React 18 功能測試
+- [ ] 檢查控制台警告
+- [ ] 效能測試
 ```
 
-## Resources
+## 資源
 
-- **references/breaking-changes.md**: Version-specific breaking changes
-- **references/codemods.md**: Codemod usage guide
-- **references/hooks-migration.md**: Comprehensive hooks patterns
-- **references/concurrent-features.md**: React 18 concurrent features
-- **assets/codemod-config.json**: Codemod configurations
-- **assets/migration-checklist.md**: Step-by-step checklist
-- **scripts/apply-codemods.sh**: Automated codemod script
+- **references/breaking-changes.md**：版本特定的破壞性變更
+- **references/codemods.md**：Codemod 使用指南
+- **references/hooks-migration.md**：全面的 hooks 模式
+- **references/concurrent-features.md**：React 18 並行功能
+- **assets/codemod-config.json**：Codemod 設定
+- **assets/migration-checklist.md**：逐步檢查清單
+- **scripts/apply-codemods.sh**：自動化 codemod 腳本
 
-## Best Practices
+## 最佳實務
 
-1. **Incremental Migration**: Don't migrate everything at once
-2. **Test Thoroughly**: Comprehensive testing at each step
-3. **Use Codemods**: Automate repetitive transformations
-4. **Start Simple**: Begin with leaf components
-5. **Leverage StrictMode**: Catch issues early
-6. **Monitor Performance**: Measure before and after
-7. **Document Changes**: Keep migration log
+1. **漸進式遷移**：不要一次遷移所有內容
+2. **徹底測試**：每個步驟都要全面測試
+3. **使用 Codemods**：自動化重複性轉換
+4. **從簡單開始**：從葉節點元件開始
+5. **善用 StrictMode**：及早發現問題
+6. **監控效能**：測量前後效能
+7. **撰寫文件**：保留遷移日誌
 
-## Common Pitfalls
+## 常見陷阱
 
-- Forgetting useEffect dependencies
-- Over-using useMemo/useCallback
-- Not handling cleanup in useEffect
-- Mixing class and functional patterns
-- Ignoring StrictMode warnings
-- Breaking change assumptions
+- 忘記 useEffect 依賴項
+- 過度使用 useMemo/useCallback
+- 未在 useEffect 中處理清理
+- 混合類別和函式模式
+- 忽略 StrictMode 警告
+- 假設破壞性變更

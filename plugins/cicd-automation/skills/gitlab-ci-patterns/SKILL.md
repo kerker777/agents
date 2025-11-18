@@ -3,23 +3,23 @@ name: gitlab-ci-patterns
 description: Build GitLab CI/CD pipelines with multi-stage workflows, caching, and distributed runners for scalable automation. Use when implementing GitLab CI/CD, optimizing pipeline performance, or setting up automated testing and deployment.
 ---
 
-# GitLab CI Patterns
+# GitLab CI 模式
 
-Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, and deployment.
+針對自動化測試、建置與部署的全方位 GitLab CI/CD 流水線模式。
 
-## Purpose
+## 目的
 
-Create efficient GitLab CI pipelines with proper stage organization, caching, and deployment strategies.
+建立高效的 GitLab CI 流水線，並妥善組織階段、快取與部署策略。
 
-## When to Use
+## 使用時機
 
-- Automate GitLab-based CI/CD
-- Implement multi-stage pipelines
-- Configure GitLab Runners
-- Deploy to Kubernetes from GitLab
-- Implement GitOps workflows
+- 自動化 GitLab 為基礎的 CI/CD
+- 實作多階段流水線
+- 設定 GitLab Runners
+- 從 GitLab 部署至 Kubernetes
+- 實作 GitOps 工作流程
 
-## Basic Pipeline Structure
+## 基本流水線結構
 
 ```yaml
 stages:
@@ -73,7 +73,7 @@ deploy:
     url: https://app.example.com
 ```
 
-## Docker Build and Push
+## Docker 建置與推送
 
 ```yaml
 build-docker:
@@ -93,7 +93,7 @@ build-docker:
     - tags
 ```
 
-## Multi-Environment Deployment
+## 多環境部署
 
 ```yaml
 .deploy_template: &deploy_template
@@ -130,7 +130,7 @@ deploy:production:
     - main
 ```
 
-## Terraform Pipeline
+## Terraform 流水線
 
 ```yaml
 stages:
@@ -178,7 +178,7 @@ apply:
     - main
 ```
 
-## Security Scanning
+## 安全性掃描
 
 ```yaml
 include:
@@ -194,7 +194,7 @@ trivy-scan:
   allow_failure: true
 ```
 
-## Caching Strategies
+## 快取策略
 
 ```yaml
 # Cache node_modules
@@ -226,7 +226,7 @@ job2:
       - dist/
 ```
 
-## Dynamic Child Pipelines
+## 動態子流水線
 
 ```yaml
 generate-pipeline:
@@ -246,26 +246,26 @@ trigger-child:
     strategy: depend
 ```
 
-## Reference Files
+## 參考檔案
 
-- `assets/gitlab-ci.yml.template` - Complete pipeline template
-- `references/pipeline-stages.md` - Stage organization patterns
+- `assets/gitlab-ci.yml.template` - 完整流水線範本
+- `references/pipeline-stages.md` - 階段組織模式
 
-## Best Practices
+## 最佳實務
 
-1. **Use specific image tags** (node:20, not node:latest)
-2. **Cache dependencies** appropriately
-3. **Use artifacts** for build outputs
-4. **Implement manual gates** for production
-5. **Use environments** for deployment tracking
-6. **Enable merge request pipelines**
-7. **Use pipeline schedules** for recurring jobs
-8. **Implement security scanning**
-9. **Use CI/CD variables** for secrets
-10. **Monitor pipeline performance**
+1. **使用特定的映像標籤**（node:20，而非 node:latest）
+2. **適當快取相依套件**
+3. **使用 artifacts** 儲存建置產物
+4. **實作手動閘道**用於正式環境
+5. **使用環境**追蹤部署
+6. **啟用合併請求流水線**
+7. **使用流水線排程**執行定期任務
+8. **實作安全性掃描**
+9. **使用 CI/CD 變數**儲存機敏資料
+10. **監控流水線效能**
 
-## Related Skills
+## 相關技能
 
-- `github-actions-templates` - For GitHub Actions
-- `deployment-pipeline-design` - For architecture
-- `secrets-management` - For secrets handling
+- `github-actions-templates` - 適用於 GitHub Actions
+- `deployment-pipeline-design` - 適用於架構設計
+- `secrets-management` - 適用於機敏資料處理

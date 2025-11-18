@@ -1,33 +1,33 @@
 ---
 name: hybrid-cloud-networking
-description: Configure secure, high-performance connectivity between on-premises infrastructure and cloud platforms using VPN and dedicated connections. Use when building hybrid cloud architectures, connecting data centers to cloud, or implementing secure cross-premises networking.
+description: 使用 VPN 和專用連線設定地端基礎設施與雲端平台之間安全、高效能的連線。適用於建立混合雲架構、將資料中心連接到雲端，或實施安全的跨場域網路。
 ---
 
-# Hybrid Cloud Networking
+# 混合雲網路
 
-Configure secure, high-performance connectivity between on-premises and cloud environments using VPN, Direct Connect, and ExpressRoute.
+使用 VPN、Direct Connect 和 ExpressRoute 設定地端與雲端環境之間安全、高效能的連線。
 
-## Purpose
+## 目的
 
-Establish secure, reliable network connectivity between on-premises data centers and cloud providers (AWS, Azure, GCP).
+在地端資料中心與雲端供應商（AWS、Azure、GCP）之間建立安全、可靠的網路連線。
 
-## When to Use
+## 使用時機
 
-- Connect on-premises to cloud
-- Extend datacenter to cloud
-- Implement hybrid active-active setups
-- Meet compliance requirements
-- Migrate to cloud gradually
+- 將地端連接到雲端
+- 將資料中心擴展到雲端
+- 實施混合雙活設定
+- 滿足合規要求
+- 逐步遷移到雲端
 
-## Connection Options
+## 連線選項
 
-### AWS Connectivity
+### AWS 連線
 
 #### 1. Site-to-Site VPN
-- IPSec VPN over internet
-- Up to 1.25 Gbps per tunnel
-- Cost-effective for moderate bandwidth
-- Higher latency, internet-dependent
+- 透過網際網路的 IPSec VPN
+- 每個通道最高 1.25 Gbps
+- 適中頻寬的經濟實惠方案
+- 較高延遲，依賴網際網路
 
 ```hcl
 resource "aws_vpn_gateway" "main" {
@@ -52,14 +52,14 @@ resource "aws_vpn_connection" "main" {
 ```
 
 #### 2. AWS Direct Connect
-- Dedicated network connection
-- 1 Gbps to 100 Gbps
-- Lower latency, consistent bandwidth
-- More expensive, setup time required
+- 專用網路連線
+- 1 Gbps 至 100 Gbps
+- 較低延遲、穩定頻寬
+- 較昂貴，需要設定時間
 
-**Reference:** See `references/direct-connect.md`
+**參考：**參見 `references/direct-connect.md`
 
-### Azure Connectivity
+### Azure 連線
 
 #### 1. Site-to-Site VPN
 ```hcl
@@ -82,28 +82,28 @@ resource "azurerm_virtual_network_gateway" "vpn" {
 ```
 
 #### 2. Azure ExpressRoute
-- Private connection via connectivity provider
-- Up to 100 Gbps
-- Low latency, high reliability
-- Premium for global connectivity
+- 透過連線供應商的私有連線
+- 最高 100 Gbps
+- 低延遲、高可靠性
+- Premium 提供全球連線
 
-### GCP Connectivity
+### GCP 連線
 
 #### 1. Cloud VPN
-- IPSec VPN (Classic or HA VPN)
-- HA VPN: 99.99% SLA
-- Up to 3 Gbps per tunnel
+- IPSec VPN（Classic 或 HA VPN）
+- HA VPN：99.99% SLA
+- 每個通道最高 3 Gbps
 
 #### 2. Cloud Interconnect
-- Dedicated (10 Gbps, 100 Gbps)
-- Partner (50 Mbps to 50 Gbps)
-- Lower latency than VPN
+- 專用（10 Gbps、100 Gbps）
+- 合作夥伴（50 Mbps 至 50 Gbps）
+- 延遲低於 VPN
 
-## Hybrid Network Patterns
+## 混合網路模式
 
-### Pattern 1: Hub-and-Spoke
+### 模式 1：中心輻射式
 ```
-On-Premises Datacenter
+地端資料中心
          ↓
     VPN/Direct Connect
          ↓
@@ -114,58 +114,58 @@ On-Premises Datacenter
     └─ Development VPC/VNet
 ```
 
-### Pattern 2: Multi-Region Hybrid
+### 模式 2：多區域混合
 ```
-On-Premises
+地端
     ├─ Direct Connect → us-east-1
     └─ Direct Connect → us-west-2
             ↓
-        Cross-Region Peering
+        跨區域對等互連
 ```
 
-### Pattern 3: Multi-Cloud Hybrid
+### 模式 3：多雲混合
 ```
-On-Premises Datacenter
+地端資料中心
     ├─ Direct Connect → AWS
     ├─ ExpressRoute → Azure
     └─ Interconnect → GCP
 ```
 
-## Routing Configuration
+## 路由設定
 
-### BGP Configuration
+### BGP 設定
 ```
-On-Premises Router:
-- AS Number: 65000
-- Advertise: 10.0.0.0/8
+地端路由器：
+- AS 號碼：65000
+- 通告：10.0.0.0/8
 
-Cloud Router:
-- AS Number: 64512 (AWS), 65515 (Azure)
-- Advertise: Cloud VPC/VNet CIDRs
+雲端路由器：
+- AS 號碼：64512（AWS）、65515（Azure）
+- 通告：雲端 VPC/VNet CIDR
 ```
 
-### Route Propagation
-- Enable route propagation on route tables
-- Use BGP for dynamic routing
-- Implement route filtering
-- Monitor route advertisements
+### 路由傳播
+- 在路由表上啟用路由傳播
+- 使用 BGP 進行動態路由
+- 實施路由篩選
+- 監控路由通告
 
-## Security Best Practices
+## 安全最佳實踐
 
-1. **Use private connectivity** (Direct Connect/ExpressRoute)
-2. **Implement encryption** for VPN tunnels
-3. **Use VPC endpoints** to avoid internet routing
-4. **Configure network ACLs** and security groups
-5. **Enable VPC Flow Logs** for monitoring
-6. **Implement DDoS protection**
-7. **Use PrivateLink/Private Endpoints**
-8. **Monitor connections** with CloudWatch/Monitor
-9. **Implement redundancy** (dual tunnels)
-10. **Regular security audits**
+1. **使用私有連線**（Direct Connect/ExpressRoute）
+2. **為 VPN 通道實施加密**
+3. **使用 VPC 端點**避免網際網路路由
+4. **設定網路 ACL** 和安全群組
+5. **啟用 VPC Flow Logs** 進行監控
+6. **實施 DDoS 防護**
+7. **使用 PrivateLink/私有端點**
+8. **使用 CloudWatch/Monitor 監控連線**
+9. **實施備援**（雙通道）
+10. **定期安全稽核**
 
-## High Availability
+## 高可用性
 
-### Dual VPN Tunnels
+### 雙 VPN 通道
 ```hcl
 resource "aws_vpn_connection" "primary" {
   vpn_gateway_id      = aws_vpn_gateway.main.id
@@ -180,22 +180,22 @@ resource "aws_vpn_connection" "secondary" {
 }
 ```
 
-### Active-Active Configuration
-- Multiple connections from different locations
-- BGP for automatic failover
-- Equal-cost multi-path (ECMP) routing
-- Monitor health of all connections
+### 雙活設定
+- 從不同地點建立多個連線
+- 使用 BGP 進行自動容錯移轉
+- 等價多路徑（ECMP）路由
+- 監控所有連線的健康狀態
 
-## Monitoring and Troubleshooting
+## 監控與疑難排解
 
-### Key Metrics
-- Tunnel status (up/down)
-- Bytes in/out
-- Packet loss
-- Latency
-- BGP session status
+### 關鍵指標
+- 通道狀態（啟動/關閉）
+- 傳入/傳出位元組
+- 封包遺失
+- 延遲
+- BGP 工作階段狀態
 
-### Troubleshooting
+### 疑難排解
 ```bash
 # AWS VPN
 aws ec2 describe-vpn-connections
@@ -206,21 +206,21 @@ az network vpn-connection show
 az network vpn-connection show-device-config-script
 ```
 
-## Cost Optimization
+## 成本優化
 
-1. **Right-size connections** based on traffic
-2. **Use VPN for low-bandwidth** workloads
-3. **Consolidate traffic** through fewer connections
-4. **Minimize data transfer** costs
-5. **Use Direct Connect** for high bandwidth
-6. **Implement caching** to reduce traffic
+1. **根據流量適當調整連線規模**
+2. **對低頻寬工作負載使用 VPN**
+3. **透過較少的連線整合流量**
+4. **降低資料傳輸成本**
+5. **對高頻寬使用 Direct Connect**
+6. **實施快取以減少流量**
 
-## Reference Files
+## 參考檔案
 
-- `references/vpn-setup.md` - VPN configuration guide
-- `references/direct-connect.md` - Direct Connect setup
+- `references/vpn-setup.md` - VPN 設定指南
+- `references/direct-connect.md` - Direct Connect 設定
 
-## Related Skills
+## 相關技能
 
-- `multi-cloud-architecture` - For architecture decisions
-- `terraform-module-library` - For IaC implementation
+- `multi-cloud-architecture` - 用於架構決策
+- `terraform-module-library` - 用於 IaC 實施

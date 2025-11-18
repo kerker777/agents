@@ -1,27 +1,27 @@
-# ArgoCD Setup and Configuration
+# ArgoCD 設定與配置
 
-## Installation Methods
+## 安裝方法
 
-### 1. Standard Installation
+### 1. 標準安裝
 ```bash
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
-### 2. High Availability Installation
+### 2. 高可用性安裝
 ```bash
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/ha/install.yaml
 ```
 
-### 3. Helm Installation
+### 3. Helm 安裝
 ```bash
 helm repo add argo https://argoproj.github.io/argo-helm
 helm install argocd argo/argo-cd -n argocd --create-namespace
 ```
 
-## Initial Configuration
+## 初始配置
 
-### Access ArgoCD UI
+### 存取 ArgoCD UI
 ```bash
 # Port forward
 kubectl port-forward svc/argocd-server -n argocd 8080:443
@@ -30,7 +30,7 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 argocd admin initial-password -n argocd
 ```
 
-### Configure Ingress
+### 配置 Ingress
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -60,19 +60,19 @@ spec:
     secretName: argocd-secret
 ```
 
-## CLI Configuration
+## CLI 配置
 
-### Login
+### 登入
 ```bash
 argocd login argocd.example.com --username admin
 ```
 
-### Add Repository
+### 新增儲存庫
 ```bash
 argocd repo add https://github.com/org/repo --username user --password token
 ```
 
-### Create Application
+### 建立 Application
 ```bash
 argocd app create my-app \
   --repo https://github.com/org/repo \
@@ -81,7 +81,7 @@ argocd app create my-app \
   --dest-namespace production
 ```
 
-## SSO Configuration
+## SSO 配置
 
 ### GitHub OAuth
 ```yaml
@@ -104,7 +104,7 @@ data:
           - name: my-org
 ```
 
-## RBAC Configuration
+## RBAC 配置
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -120,15 +120,15 @@ data:
     g, my-org:ops, role:operators
 ```
 
-## Best Practices
+## 最佳實踐
 
-1. Enable SSO for production
-2. Implement RBAC policies
-3. Use separate projects for teams
-4. Enable audit logging
-5. Configure notifications
-6. Use ApplicationSets for multi-cluster
-7. Implement resource hooks
-8. Configure health checks
-9. Use sync windows for maintenance
-10. Monitor with Prometheus metrics
+1. 正式環境啟用 SSO
+2. 實施 RBAC 策略
+3. 為團隊使用不同的專案
+4. 啟用稽核日誌
+5. 配置通知
+6. 使用 ApplicationSets 管理多叢集
+7. 實施資源 hooks
+8. 配置健康檢查
+9. 使用同步視窗進行維護
+10. 使用 Prometheus 指標進行監控

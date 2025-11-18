@@ -1,16 +1,16 @@
-# Kubernetes Service Specification Reference
+# Kubernetes Service 規格參考
 
-Comprehensive reference for Kubernetes Service resources, covering service types, networking, load balancing, and service discovery patterns.
+Kubernetes Service 資源的完整參考指南,涵蓋服務類型、網路、負載平衡和服務探索模式。
 
-## Overview
+## 概述
 
-A Service provides stable network endpoints for accessing Pods. Services enable loose coupling between microservices by providing service discovery and load balancing.
+Service 為存取 Pod 提供穩定的網路端點。Service 透過提供服務探索和負載平衡功能,實現微服務之間的鬆散耦合。
 
-## Service Types
+## Service 類型
 
-### 1. ClusterIP (Default)
+### 1. ClusterIP (預設)
 
-Exposes the service on an internal cluster IP. Only reachable from within the cluster.
+在內部叢集 IP 上公開服務。只能從叢集內部存取。
 
 ```yaml
 apiVersion: v1
@@ -30,15 +30,15 @@ spec:
   sessionAffinity: None
 ```
 
-**Use cases:**
-- Internal microservice communication
-- Database services
-- Internal APIs
-- Message queues
+**使用案例:**
+- 內部微服務通訊
+- 資料庫服務
+- 內部 API
+- 訊息佇列
 
 ### 2. NodePort
 
-Exposes the service on each Node's IP at a static port (30000-32767 range).
+在每個節點的 IP 上以靜態埠 (30000-32767 範圍) 公開服務。
 
 ```yaml
 apiVersion: v1
@@ -53,23 +53,23 @@ spec:
   - name: http
     port: 80
     targetPort: 8080
-    nodePort: 30080  # Optional, auto-assigned if omitted
+    nodePort: 30080  # 可選,若省略則自動分配
     protocol: TCP
 ```
 
-**Use cases:**
-- Development/testing external access
-- Small deployments without load balancer
-- Direct node access requirements
+**使用案例:**
+- 開發/測試外部存取
+- 沒有負載平衡器的小型部署
+- 需要直接節點存取
 
-**Limitations:**
-- Limited port range (30000-32767)
-- Must handle node failures
-- No built-in load balancing across nodes
+**限制:**
+- 有限的埠範圍 (30000-32767)
+- 必須處理節點故障
+- 沒有跨節點的內建負載平衡
 
 ### 3. LoadBalancer
 
-Exposes the service using a cloud provider's load balancer.
+使用雲端供應商的負載平衡器公開服務。
 
 ```yaml
 apiVersion: v1
@@ -92,7 +92,7 @@ spec:
   - 203.0.113.0/24
 ```
 
-**Cloud-specific annotations:**
+**雲端特定註解:**
 
 **AWS:**
 ```yaml
@@ -120,7 +120,7 @@ annotations:
 
 ### 4. ExternalName
 
-Maps service to external DNS name (CNAME record).
+將服務對應到外部 DNS 名稱 (CNAME 記錄)。
 
 ```yaml
 apiVersion: v1
@@ -134,12 +134,12 @@ spec:
   - port: 5432
 ```
 
-**Use cases:**
-- Accessing external services
-- Service migration scenarios
-- Multi-cluster service references
+**使用案例:**
+- 存取外部服務
+- 服務遷移情境
+- 多叢集服務參照
 
-## Complete Service Specification
+## 完整 Service 規格
 
 ```yaml
 apiVersion: v1
@@ -154,62 +154,62 @@ metadata:
     description: "Main application service"
     prometheus.io/scrape: "true"
 spec:
-  # Service type
+  # 服務類型
   type: ClusterIP
 
-  # Pod selector
+  # Pod 選擇器
   selector:
     app: my-app
     version: v1
 
-  # Ports configuration
+  # 埠設定
   ports:
   - name: http
-    port: 80           # Service port
-    targetPort: 8080   # Container port (or named port)
+    port: 80           # 服務埠
+    targetPort: 8080   # 容器埠 (或命名埠)
     protocol: TCP      # TCP, UDP, or SCTP
 
-  # Session affinity
+  # 會話親和性
   sessionAffinity: ClientIP
   sessionAffinityConfig:
     clientIP:
       timeoutSeconds: 10800
 
-  # IP configuration
-  clusterIP: 10.0.0.10  # Optional: specific IP
+  # IP 設定
+  clusterIP: 10.0.0.10  # 可選:特定 IP
   clusterIPs:
   - 10.0.0.10
   ipFamilies:
   - IPv4
   ipFamilyPolicy: SingleStack
 
-  # External traffic policy
+  # 外部流量策略
   externalTrafficPolicy: Local
 
-  # Internal traffic policy
+  # 內部流量策略
   internalTrafficPolicy: Local
 
-  # Health check
+  # 健康檢查
   healthCheckNodePort: 30000
 
-  # Load balancer config (for type: LoadBalancer)
+  # 負載平衡器設定 (用於 type: LoadBalancer)
   loadBalancerIP: 203.0.113.100
   loadBalancerSourceRanges:
   - 203.0.113.0/24
 
-  # External IPs
+  # 外部 IP
   externalIPs:
   - 80.11.12.10
 
-  # Publishing strategy
+  # 發布策略
   publishNotReadyAddresses: false
 ```
 
-## Port Configuration
+## 埠設定
 
-### Named Ports
+### 命名埠
 
-Use named ports in Pods for flexibility:
+在 Pod 中使用命名埠以提高靈活性:
 
 **Deployment:**
 ```yaml
@@ -231,13 +231,13 @@ spec:
   ports:
   - name: http
     port: 80
-    targetPort: http  # References named port
+    targetPort: http  # 參照命名埠
   - name: metrics
     port: 9090
     targetPort: metrics
 ```
 
-### Multiple Ports
+### 多埠
 
 ```yaml
 spec:
@@ -256,11 +256,11 @@ spec:
     protocol: TCP
 ```
 
-## Session Affinity
+## 會話親和性
 
-### None (Default)
+### None (預設)
 
-Distributes requests randomly across pods.
+在 Pod 之間隨機分配請求。
 
 ```yaml
 spec:
@@ -269,56 +269,56 @@ spec:
 
 ### ClientIP
 
-Routes requests from same client IP to same pod.
+將來自相同客戶端 IP 的請求路由到相同的 Pod。
 
 ```yaml
 spec:
   sessionAffinity: ClientIP
   sessionAffinityConfig:
     clientIP:
-      timeoutSeconds: 10800  # 3 hours
+      timeoutSeconds: 10800  # 3 小時
 ```
 
-**Use cases:**
-- Stateful applications
-- Session-based applications
-- WebSocket connections
+**使用案例:**
+- 有狀態應用程式
+- 基於會話的應用程式
+- WebSocket 連線
 
-## Traffic Policies
+## 流量策略
 
-### External Traffic Policy
+### 外部流量策略
 
-**Cluster (Default):**
+**Cluster (預設):**
 ```yaml
 spec:
   externalTrafficPolicy: Cluster
 ```
-- Load balances across all nodes
-- May add extra network hop
-- Source IP is masked
+- 在所有節點之間進行負載平衡
+- 可能增加額外的網路跳躍
+- 來源 IP 被遮罩
 
 **Local:**
 ```yaml
 spec:
   externalTrafficPolicy: Local
 ```
-- Traffic goes only to pods on receiving node
-- Preserves client source IP
-- Better performance (no extra hop)
-- May cause imbalanced load
+- 流量僅導向接收節點上的 Pod
+- 保留客戶端來源 IP
+- 更佳的效能 (無額外跳躍)
+- 可能造成負載不均
 
-### Internal Traffic Policy
+### 內部流量策略
 
 ```yaml
 spec:
   internalTrafficPolicy: Local  # or Cluster
 ```
 
-Controls traffic routing for cluster-internal clients.
+控制叢集內部客戶端的流量路由。
 
-## Headless Services
+## Headless Service
 
-Service without cluster IP for direct pod access.
+沒有叢集 IP 的服務,用於直接 Pod 存取。
 
 ```yaml
 apiVersion: v1
@@ -334,17 +334,17 @@ spec:
     targetPort: 5432
 ```
 
-**Use cases:**
-- StatefulSet pod discovery
-- Direct pod-to-pod communication
-- Custom load balancing
-- Database clusters
+**使用案例:**
+- StatefulSet Pod 探索
+- 直接 Pod 對 Pod 通訊
+- 自訂負載平衡
+- 資料庫叢集
 
-**DNS returns:**
-- Individual pod IPs instead of service IP
-- Format: `<pod-name>.<service-name>.<namespace>.svc.cluster.local`
+**DNS 回傳:**
+- 個別 Pod IP 而非服務 IP
+- 格式: `<pod-name>.<service-name>.<namespace>.svc.cluster.local`
 
-## Service Discovery
+## 服務探索
 
 ### DNS
 
@@ -353,43 +353,43 @@ spec:
 <service-name>.<namespace>.svc.cluster.local
 ```
 
-Example:
+範例:
 ```bash
 curl http://backend-service.production.svc.cluster.local
 ```
 
-**Within same namespace:**
+**在相同命名空間內:**
 ```bash
 curl http://backend-service
 ```
 
-**Headless Service (returns pod IPs):**
+**Headless Service (回傳 Pod IP):**
 ```
 <pod-name>.<service-name>.<namespace>.svc.cluster.local
 ```
 
-### Environment Variables
+### 環境變數
 
-Kubernetes injects service info into pods:
+Kubernetes 將服務資訊注入 Pod:
 
 ```bash
-# Service host and port
+# 服務主機和埠
 BACKEND_SERVICE_SERVICE_HOST=10.0.0.100
 BACKEND_SERVICE_SERVICE_PORT=80
 
-# For named ports
+# 對於命名埠
 BACKEND_SERVICE_SERVICE_PORT_HTTP=80
 ```
 
-**Note:** Pods must be created after the service for env vars to be injected.
+**注意:** Pod 必須在服務之後建立才能注入環境變數。
 
-## Load Balancing
+## 負載平衡
 
-### Algorithms
+### 演算法
 
-Kubernetes uses random selection by default. For advanced load balancing:
+Kubernetes 預設使用隨機選擇。對於進階負載平衡:
 
-**Service Mesh (Istio example):**
+**Service Mesh (Istio 範例):**
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
@@ -405,9 +405,9 @@ spec:
         maxConnections: 100
 ```
 
-### Connection Limits
+### 連線限制
 
-Use pod disruption budgets and resource limits:
+使用 Pod 中斷預算和資源限制:
 
 ```yaml
 apiVersion: policy/v1
@@ -421,7 +421,7 @@ spec:
       app: my-app
 ```
 
-## Service Mesh Integration
+## Service Mesh 整合
 
 ### Istio Virtual Service
 
@@ -453,9 +453,9 @@ spec:
       weight: 10
 ```
 
-## Common Patterns
+## 常見模式
 
-### Pattern 1: Internal Microservice
+### 模式 1: 內部微服務
 
 ```yaml
 apiVersion: v1
@@ -481,7 +481,7 @@ spec:
     protocol: TCP
 ```
 
-### Pattern 2: Public API with Load Balancer
+### 模式 2: 使用負載平衡器的公開 API
 
 ```yaml
 apiVersion: v1
@@ -505,7 +505,7 @@ spec:
   - 0.0.0.0/0
 ```
 
-### Pattern 3: StatefulSet with Headless Service
+### 模式 3: StatefulSet 搭配 Headless Service
 
 ```yaml
 apiVersion: v1
@@ -540,7 +540,7 @@ spec:
         image: cassandra:4.0
 ```
 
-### Pattern 4: External Service Mapping
+### 模式 4: 外部服務對應
 
 ```yaml
 apiVersion: v1
@@ -551,7 +551,7 @@ spec:
   type: ExternalName
   externalName: prod-db.cxyz.us-west-2.rds.amazonaws.com
 ---
-# Or with Endpoints for IP-based external service
+# 或使用 Endpoints 進行基於 IP 的外部服務
 apiVersion: v1
 kind: Service
 metadata:
@@ -573,7 +573,7 @@ subsets:
   - port: 443
 ```
 
-### Pattern 5: Multi-Port Service with Metrics
+### 模式 5: 帶指標的多埠服務
 
 ```yaml
 apiVersion: v1
@@ -597,9 +597,9 @@ spec:
     targetPort: 9090
 ```
 
-## Network Policies
+## 網路策略
 
-Control traffic to services:
+控制到服務的流量:
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -622,35 +622,35 @@ spec:
       port: 8080
 ```
 
-## Best Practices
+## 最佳實踐
 
-### Service Configuration
+### Service 設定
 
-1. **Use named ports** for flexibility
-2. **Set appropriate service type** based on exposure needs
-3. **Use labels and selectors consistently** across Deployments and Services
-4. **Configure session affinity** for stateful apps
-5. **Set external traffic policy to Local** for IP preservation
-6. **Use headless services** for StatefulSets
-7. **Implement network policies** for security
-8. **Add monitoring annotations** for observability
+1. **使用命名埠** 以提高靈活性
+2. **根據公開需求設定適當的服務類型**
+3. **在 Deployment 和 Service 之間一致使用標籤和選擇器**
+4. **為有狀態應用程式設定會話親和性**
+5. **將外部流量策略設為 Local** 以保留 IP
+6. **為 StatefulSet 使用 headless service**
+7. **實施網路策略** 以提升安全性
+8. **新增監控註解** 以提高可觀測性
 
-### Production Checklist
+### 生產環境檢查清單
 
-- [ ] Service type appropriate for use case
-- [ ] Selector matches pod labels
-- [ ] Named ports used for clarity
-- [ ] Session affinity configured if needed
-- [ ] Traffic policy set appropriately
-- [ ] Load balancer annotations configured (if applicable)
-- [ ] Source IP ranges restricted (for public services)
-- [ ] Health check configuration validated
-- [ ] Monitoring annotations added
-- [ ] Network policies defined
+- [ ] 服務類型適合使用案例
+- [ ] 選擇器符合 Pod 標籤
+- [ ] 使用命名埠以提高清晰度
+- [ ] 如需要,已設定會話親和性
+- [ ] 已適當設定流量策略
+- [ ] 已設定負載平衡器註解 (若適用)
+- [ ] 已限制來源 IP 範圍 (對於公開服務)
+- [ ] 已驗證健康檢查設定
+- [ ] 已新增監控註解
+- [ ] 已定義網路策略
 
-### Performance Tuning
+### 效能調校
 
-**For high traffic:**
+**對於高流量:**
 ```yaml
 spec:
   externalTrafficPolicy: Local
@@ -660,64 +660,64 @@ spec:
       timeoutSeconds: 3600
 ```
 
-**For WebSocket/long connections:**
+**對於 WebSocket/長連線:**
 ```yaml
 spec:
   sessionAffinity: ClientIP
   sessionAffinityConfig:
     clientIP:
-      timeoutSeconds: 86400  # 24 hours
+      timeoutSeconds: 86400  # 24 小時
 ```
 
-## Troubleshooting
+## 疑難排解
 
-### Service not accessible
+### 服務無法存取
 
 ```bash
-# Check service exists
+# 檢查服務是否存在
 kubectl get service <service-name>
 
-# Check endpoints (should show pod IPs)
+# 檢查端點 (應顯示 Pod IP)
 kubectl get endpoints <service-name>
 
-# Describe service
+# 描述服務
 kubectl describe service <service-name>
 
-# Check if pods match selector
+# 檢查 Pod 是否符合選擇器
 kubectl get pods -l app=<app-name>
 ```
 
-**Common issues:**
-- Selector doesn't match pod labels
-- No pods running (endpoints empty)
-- Ports misconfigured
-- Network policy blocking traffic
+**常見問題:**
+- 選擇器不符合 Pod 標籤
+- 沒有執行中的 Pod (端點為空)
+- 埠設定錯誤
+- 網路策略阻擋流量
 
-### DNS resolution failing
+### DNS 解析失敗
 
 ```bash
-# Test DNS from pod
+# 從 Pod 測試 DNS
 kubectl run debug --rm -it --image=busybox -- nslookup <service-name>
 
-# Check CoreDNS
+# 檢查 CoreDNS
 kubectl get pods -n kube-system -l k8s-app=kube-dns
 kubectl logs -n kube-system -l k8s-app=kube-dns
 ```
 
-### Load balancer issues
+### 負載平衡器問題
 
 ```bash
-# Check load balancer status
+# 檢查負載平衡器狀態
 kubectl describe service <service-name>
 
-# Check events
+# 檢查事件
 kubectl get events --sort-by='.lastTimestamp'
 
-# Verify cloud provider configuration
+# 驗證雲端供應商設定
 kubectl describe node
 ```
 
-## Related Resources
+## 相關資源
 
 - [Kubernetes Service API Reference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#service-v1-core)
 - [Service Networking](https://kubernetes.io/docs/concepts/services-networking/service/)

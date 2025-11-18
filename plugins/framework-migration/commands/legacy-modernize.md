@@ -1,110 +1,110 @@
-# Legacy Code Modernization Workflow
+# 遺留程式碼現代化工作流程
 
-Orchestrate a comprehensive legacy system modernization using the strangler fig pattern, enabling gradual replacement of outdated components while maintaining continuous business operations through expert agent coordination.
+使用絞殺者無花果模式編排完整的遺留系統現代化，透過專家代理協調，在維持持續業務運作的同時逐步替換過時元件。
 
-[Extended thinking: The strangler fig pattern, named after the tropical fig tree that gradually envelops and replaces its host, represents the gold standard for risk-managed legacy modernization. This workflow implements a systematic approach where new functionality gradually replaces legacy components, allowing both systems to coexist during transition. By orchestrating specialized agents for assessment, testing, security, and implementation, we ensure each migration phase is validated before proceeding, minimizing disruption while maximizing modernization velocity.]
+[延伸思考：絞殺者無花果模式，以熱帶無花果樹逐漸包覆並替換其宿主命名，代表了風險管理遺留現代化的黃金標準。此工作流程實作系統化方法，讓新功能逐步替換遺留元件，允許兩個系統在轉換期間共存。透過編排評估、測試、安全性與實作的專業代理，我們確保每個遷移階段在繼續之前都經過驗證，在最大化現代化速度的同時最小化中斷。]
 
-## Phase 1: Legacy Assessment and Risk Analysis
+## 階段 1：遺留評估與風險分析
 
-### 1. Comprehensive Legacy System Analysis
-- Use Task tool with subagent_type="legacy-modernizer"
-- Prompt: "Analyze the legacy codebase at $ARGUMENTS. Document technical debt inventory including: outdated dependencies, deprecated APIs, security vulnerabilities, performance bottlenecks, and architectural anti-patterns. Generate a modernization readiness report with component complexity scores (1-10), dependency mapping, and database coupling analysis. Identify quick wins vs complex refactoring targets."
-- Expected output: Detailed assessment report with risk matrix and modernization priorities
+### 1. 完整遺留系統分析
+- 使用 Task 工具，subagent_type="legacy-modernizer"
+- 提示：「分析位於 $ARGUMENTS 的遺留程式碼庫。記錄技術債清單，包括：過時相依性、已棄用 API、安全性漏洞、效能瓶頸與架構反模式。產生現代化準備報告，包含元件複雜度分數（1-10）、相依性對應與資料庫耦合分析。識別快速勝利 vs 複雜重構目標。」
+- 預期輸出：包含風險矩陣與現代化優先順序的詳細評估報告
 
-### 2. Dependency and Integration Mapping
-- Use Task tool with subagent_type="architect-review"
-- Prompt: "Based on the legacy assessment report, create a comprehensive dependency graph showing: internal module dependencies, external service integrations, shared database schemas, and cross-system data flows. Identify integration points that will require facade patterns or adapter layers during migration. Highlight circular dependencies and tight coupling that need resolution."
-- Context from previous: Legacy assessment report, component complexity scores
-- Expected output: Visual dependency map and integration point catalog
+### 2. 相依性與整合對應
+- 使用 Task 工具，subagent_type="architect-review"
+- 提示：「根據遺留評估報告，建立完整的相依性圖，顯示：內部模組相依性、外部服務整合、共用資料庫架構與跨系統資料流。識別在遷移期間需要門面模式或適配器層的整合點。突顯需要解決的循環相依性與緊密耦合。」
+- 來自前一步的情境：遺留評估報告、元件複雜度分數
+- 預期輸出：視覺化相依性圖與整合點目錄
 
-### 3. Business Impact and Risk Assessment
-- Use Task tool with subagent_type="business-analytics::business-analyst"
-- Prompt: "Evaluate business impact of modernizing each component identified. Create risk assessment matrix considering: business criticality (revenue impact), user traffic patterns, data sensitivity, regulatory requirements, and fallback complexity. Prioritize components using a weighted scoring system: (Business Value × 0.4) + (Technical Risk × 0.3) + (Quick Win Potential × 0.3). Define rollback strategies for each component."
-- Context from previous: Component inventory, dependency mapping
-- Expected output: Prioritized migration roadmap with risk mitigation strategies
+### 3. 業務影響與風險評估
+- 使用 Task 工具，subagent_type="business-analytics::business-analyst"
+- 提示：「評估現代化每個已識別元件的業務影響。建立風險評估矩陣，考量：業務關鍵性（營收影響）、使用者流量模式、資料敏感性、法規要求與後備複雜度。使用加權評分系統排定元件優先順序：（業務價值 × 0.4）+（技術風險 × 0.3）+（快速勝利潛力 × 0.3）。為每個元件定義回復策略。」
+- 來自前一步的情境：元件清單、相依性對應
+- 預期輸出：包含風險緩解策略的優先遷移路線圖
 
-## Phase 2: Test Coverage Establishment
+## 階段 2：測試覆蓋建立
 
-### 1. Legacy Code Test Coverage Analysis
-- Use Task tool with subagent_type="unit-testing::test-automator"
-- Prompt: "Analyze existing test coverage for legacy components at $ARGUMENTS. Use coverage tools to identify untested code paths, missing integration tests, and absent end-to-end scenarios. For components with <40% coverage, generate characterization tests that capture current behavior without modifying functionality. Create test harness for safe refactoring."
-- Expected output: Test coverage report and characterization test suite
+### 1. 遺留程式碼測試覆蓋分析
+- 使用 Task 工具，subagent_type="unit-testing::test-automator"
+- 提示：「分析位於 $ARGUMENTS 的遺留元件現有測試覆蓋。使用覆蓋工具識別未測試的程式碼路徑、缺少的整合測試與不存在的端對端場景。對於覆蓋率 <40% 的元件，產生捕捉當前行為的特性測試，而不修改功能。建立安全重構的測試工具。」
+- 預期輸出：測試覆蓋報告與特性測試套件
 
-### 2. Contract Testing Implementation
-- Use Task tool with subagent_type="unit-testing::test-automator"
-- Prompt: "Implement contract tests for all integration points identified in dependency mapping. Create consumer-driven contracts for APIs, message queue interactions, and database schemas. Set up contract verification in CI/CD pipeline. Generate performance baselines for response times and throughput to validate modernized components maintain SLAs."
-- Context from previous: Integration point catalog, existing test coverage
-- Expected output: Contract test suite with performance baselines
+### 2. 契約測試實作
+- 使用 Task 工具，subagent_type="unit-testing::test-automator"
+- 提示：「為相依性對應中識別的所有整合點實作契約測試。為 API、訊息佇列互動與資料庫架構建立消費者驅動契約。在 CI/CD 管線中設定契約驗證。產生回應時間與吞吐量的效能基準線，以驗證現代化元件維持 SLA。」
+- 來自前一步的情境：整合點目錄、現有測試覆蓋
+- 預期輸出：包含效能基準線的契約測試套件
 
-### 3. Test Data Management Strategy
-- Use Task tool with subagent_type="data-engineering::data-engineer"
-- Prompt: "Design test data management strategy for parallel system operation. Create data generation scripts for edge cases, implement data masking for sensitive information, and establish test database refresh procedures. Set up monitoring for data consistency between legacy and modernized components during migration."
-- Context from previous: Database schemas, test requirements
-- Expected output: Test data pipeline and consistency monitoring
+### 3. 測試資料管理策略
+- 使用 Task 工具，subagent_type="data-engineering::data-engineer"
+- 提示：「為並行系統運作設計測試資料管理策略。為邊界情況建立資料產生腳本、實作敏感資訊的資料遮罩，並建立測試資料庫重新整理程序。設定遷移期間遺留與現代化元件之間資料一致性的監控。」
+- 來自前一步的情境：資料庫架構、測試需求
+- 預期輸出：測試資料管線與一致性監控
 
-## Phase 3: Incremental Migration Implementation
+## 階段 3：漸進式遷移實作
 
-### 1. Strangler Fig Infrastructure Setup
-- Use Task tool with subagent_type="backend-development::backend-architect"
-- Prompt: "Implement strangler fig infrastructure with API gateway for traffic routing. Configure feature flags for gradual rollout using environment variables or feature management service. Set up proxy layer with request routing rules based on: URL patterns, headers, or user segments. Implement circuit breakers and fallback mechanisms for resilience. Create observability dashboard for dual-system monitoring."
-- Expected output: API gateway configuration, feature flag system, monitoring dashboard
+### 1. 絞殺者無花果基礎設施設定
+- 使用 Task 工具，subagent_type="backend-development::backend-architect"
+- 提示：「實作包含 API 閘道用於流量路由的絞殺者無花果基礎設施。使用環境變數或功能管理服務設定功能旗標以進行漸進式推出。以以下為基礎設定帶有請求路由規則的代理層：URL 模式、標頭或使用者區段。實作韌性的斷路器與後備機制。建立雙系統監控的可觀測性儀表板。」
+- 預期輸出：API 閘道設定、功能旗標系統、監控儀表板
 
-### 2. Component Modernization - First Wave
-- Use Task tool with subagent_type="python-development::python-pro" or "golang-pro" (based on target stack)
-- Prompt: "Modernize first-wave components (quick wins identified in assessment). For each component: extract business logic from legacy code, implement using modern patterns (dependency injection, SOLID principles), ensure backward compatibility through adapter patterns, maintain data consistency with event sourcing or dual writes. Follow 12-factor app principles. Components to modernize: [list from prioritized roadmap]"
-- Context from previous: Characterization tests, contract tests, infrastructure setup
-- Expected output: Modernized components with adapters
+### 2. 元件現代化 - 第一波
+- 使用 Task 工具，subagent_type="python-development::python-pro" 或 "golang-pro"（基於目標堆疊）
+- 提示：「現代化第一波元件（評估中識別的快速勝利）。對於每個元件：從遺留程式碼提取業務邏輯、使用現代模式實作（依賴注入、SOLID 原則）、透過適配器模式確保向後相容性、使用事件溯源或雙重寫入維持資料一致性。遵循 12-factor app 原則。要現代化的元件：[來自優先路線圖的清單]」
+- 來自前一步的情境：特性測試、契約測試、基礎設施設定
+- 預期輸出：包含適配器的現代化元件
 
-### 3. Security Hardening
-- Use Task tool with subagent_type="security-scanning::security-auditor"
-- Prompt: "Audit modernized components for security vulnerabilities. Implement security improvements including: OAuth 2.0/JWT authentication, role-based access control, input validation and sanitization, SQL injection prevention, XSS protection, and secrets management. Verify OWASP top 10 compliance. Configure security headers and implement rate limiting."
-- Context from previous: Modernized component code
-- Expected output: Security audit report and hardened components
+### 3. 安全性強化
+- 使用 Task 工具，subagent_type="security-scanning::security-auditor"
+- 提示：「稽核現代化元件的安全性漏洞。實作安全性改進，包括：OAuth 2.0/JWT 驗證、基於角色的存取控制、輸入驗證與清理、SQL 注入預防、XSS 保護與機密管理。驗證 OWASP 前 10 名合規性。設定安全性標頭並實作速率限制。」
+- 來自前一步的情境：現代化元件程式碼
+- 預期輸出：安全性稽核報告與強化元件
 
-## Phase 4: Performance Validation and Optimization
+## 階段 4：效能驗證與最佳化
 
-### 1. Performance Testing and Optimization
-- Use Task tool with subagent_type="application-performance::performance-engineer"
-- Prompt: "Conduct performance testing comparing legacy vs modernized components. Run load tests simulating production traffic patterns, measure response times, throughput, and resource utilization. Identify performance regressions and optimize: database queries with indexing, caching strategies (Redis/Memcached), connection pooling, and async processing where applicable. Validate against SLA requirements."
-- Context from previous: Performance baselines, modernized components
-- Expected output: Performance test results and optimization recommendations
+### 1. 效能測試與最佳化
+- 使用 Task 工具，subagent_type="application-performance::performance-engineer"
+- 提示：「進行效能測試，比較遺留 vs 現代化元件。執行模擬正式環境流量模式的負載測試，測量回應時間、吞吐量與資源使用率。識別效能退化並最佳化：使用索引的資料庫查詢、快取策略（Redis/Memcached）、連線池，以及適用情況下的非同步處理。根據 SLA 要求驗證。」
+- 來自前一步的情境：效能基準線、現代化元件
+- 預期輸出：效能測試結果與最佳化建議
 
-### 2. Progressive Rollout and Monitoring
-- Use Task tool with subagent_type="deployment-strategies::deployment-engineer"
-- Prompt: "Implement progressive rollout strategy using feature flags. Start with 5% traffic to modernized components, monitor error rates, latency, and business metrics. Define automatic rollback triggers: error rate >1%, latency >2x baseline, or business metric degradation. Create runbook for traffic shifting: 5% → 25% → 50% → 100% with 24-hour observation periods."
-- Context from previous: Feature flag configuration, monitoring dashboard
-- Expected output: Rollout plan with automated safeguards
+### 2. 漸進式推出與監控
+- 使用 Task 工具，subagent_type="deployment-strategies::deployment-engineer"
+- 提示：「使用功能旗標實作漸進式推出策略。從 5% 流量開始到現代化元件，監控錯誤率、延遲與業務指標。定義自動回復觸發器：錯誤率 >1%、延遲 >2x 基準線，或業務指標退化。建立流量轉移操作手冊：5% → 25% → 50% → 100%，觀察期 24 小時。」
+- 來自前一步的情境：功能旗標設定、監控儀表板
+- 預期輸出：包含自動化防護的推出計畫
 
-## Phase 5: Migration Completion and Documentation
+## 階段 5：遷移完成與文件
 
-### 1. Legacy Component Decommissioning
-- Use Task tool with subagent_type="legacy-modernizer"
-- Prompt: "Plan safe decommissioning of replaced legacy components. Verify no remaining dependencies through traffic analysis (minimum 30 days at 0% traffic). Archive legacy code with documentation of original functionality. Update CI/CD pipelines to remove legacy builds. Clean up unused database tables and remove deprecated API endpoints. Document any retained legacy components with sunset timeline."
-- Context from previous: Traffic routing data, modernization status
-- Expected output: Decommissioning checklist and timeline
+### 1. 遺留元件除役
+- 使用 Task 工具，subagent_type="legacy-modernizer"
+- 提示：「規劃安全除役已替換的遺留元件。透過流量分析驗證無剩餘相依性（0% 流量至少 30 天）。封存遺留程式碼與原始功能文件。更新 CI/CD 管線以移除遺留建置。清理未使用的資料庫表格並移除已棄用 API 端點。記錄任何保留的遺留元件與日落時間表。」
+- 來自前一步的情境：流量路由資料、現代化狀態
+- 預期輸出：除役檢查清單與時間表
 
-### 2. Documentation and Knowledge Transfer
-- Use Task tool with subagent_type="documentation-generation::docs-architect"
-- Prompt: "Create comprehensive modernization documentation including: architectural diagrams (before/after), API documentation with migration guides, runbooks for dual-system operation, troubleshooting guides for common issues, and lessons learned report. Generate developer onboarding guide for modernized system. Document technical decisions and trade-offs made during migration."
-- Context from previous: All migration artifacts and decisions
-- Expected output: Complete modernization documentation package
+### 2. 文件與知識轉移
+- 使用 Task 工具，subagent_type="documentation-generation::docs-architect"
+- 提示：「建立完整的現代化文件，包括：架構圖（之前/之後）、包含遷移指南的 API 文件、雙系統運作的操作手冊、常見問題的疑難排解指南，以及經驗學習報告。產生現代化系統的開發者入職指南。記錄遷移期間做出的技術決策與權衡。」
+- 來自前一步的情境：所有遷移成品與決策
+- 預期輸出：完整的現代化文件套件
 
-## Configuration Options
+## 設定選項
 
-- **--parallel-systems**: Keep both systems running indefinitely (for gradual migration)
-- **--big-bang**: Full cutover after validation (higher risk, faster completion)
-- **--by-feature**: Migrate complete features rather than technical components
-- **--database-first**: Prioritize database modernization before application layer
-- **--api-first**: Modernize API layer while maintaining legacy backend
+- **--parallel-systems**：無限期保持兩個系統運作（用於漸進式遷移）
+- **--big-bang**：驗證後完全切換（風險較高、完成較快）
+- **--by-feature**：遷移完整功能而非技術元件
+- **--database-first**：在應用程式層之前優先進行資料庫現代化
+- **--api-first**：現代化 API 層同時維持遺留後端
 
-## Success Criteria
+## 成功標準
 
-- All high-priority components modernized with >80% test coverage
-- Zero unplanned downtime during migration
-- Performance metrics maintained or improved (P95 latency within 110% of baseline)
-- Security vulnerabilities reduced by >90%
-- Technical debt score improved by >60%
-- Successful operation for 30 days post-migration without rollbacks
-- Complete documentation enabling new developer onboarding in <1 week
+- 所有高優先順序元件已現代化，測試覆蓋率 >80%
+- 遷移期間零計劃外停機
+- 效能指標維持或改善（P95 延遲在基準線的 110% 內）
+- 安全性漏洞減少 >90%
+- 技術債分數改善 >60%
+- 遷移後成功運作 30 天，無回復
+- 完整文件，使新開發者能在 <1 週內入職
 
-Target: $ARGUMENTS
+目標：$ARGUMENTS

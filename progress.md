@@ -1,0 +1,317 @@
+# 翻譯進度追蹤
+
+總檔案數: 307
+已完成: 8
+進行中: 0
+待處理: 85
+
+## 檔案清單
+
+- [x] /home/user/agents/.github/CODE_OF_CONDUCT.md
+- [x] /home/user/agents/.github/CONTRIBUTING.md
+- [x] /home/user/agents/README.md
+- [x] /home/user/agents/docs/agent-skills.md
+- [x] /home/user/agents/docs/agents.md
+- [x] /home/user/agents/docs/architecture.md
+- [x] /home/user/agents/docs/plugins.md
+- [x] /home/user/agents/docs/usage.md
+- [x] /home/user/agents/plugins/accessibility-compliance/agents/ui-visual-validator.md
+- [x] /home/user/agents/plugins/accessibility-compliance/commands/accessibility-audit.md
+- [x] /home/user/agents/plugins/agent-orchestration/agents/context-manager.md
+- [x] /home/user/agents/plugins/agent-orchestration/commands/improve-agent.md
+- [x] /home/user/agents/plugins/agent-orchestration/commands/multi-agent-optimize.md
+- [x] /home/user/agents/plugins/api-scaffolding/agents/backend-architect.md
+- [x] /home/user/agents/plugins/api-scaffolding/agents/django-pro.md
+- [x] /home/user/agents/plugins/api-scaffolding/agents/fastapi-pro.md
+- [x] /home/user/agents/plugins/api-scaffolding/agents/graphql-architect.md
+- [x] /home/user/agents/plugins/api-scaffolding/skills/fastapi-templates/SKILL.md
+- [x] /home/user/agents/plugins/api-testing-observability/agents/api-documenter.md
+- [x] /home/user/agents/plugins/api-testing-observability/commands/api-mock.md
+- [x] /home/user/agents/plugins/application-performance/agents/frontend-developer.md
+- [x] /home/user/agents/plugins/application-performance/agents/observability-engineer.md
+- [x] /home/user/agents/plugins/application-performance/agents/performance-engineer.md
+- [x] /home/user/agents/plugins/application-performance/commands/performance-optimization.md
+- [x] /home/user/agents/plugins/arm-cortex-microcontrollers/agents/arm-cortex-expert.md
+- [x] /home/user/agents/plugins/backend-api-security/agents/backend-architect.md
+- [x] /home/user/agents/plugins/backend-api-security/agents/backend-security-coder.md
+- [x] /home/user/agents/plugins/backend-development/agents/backend-architect.md
+- [x] /home/user/agents/plugins/backend-development/agents/graphql-architect.md
+- [x] /home/user/agents/plugins/backend-development/agents/tdd-orchestrator.md
+- [x] /home/user/agents/plugins/backend-development/agents/temporal-python-pro.md
+- [x] /home/user/agents/plugins/backend-development/commands/feature-development.md
+- [x] /home/user/agents/plugins/backend-development/skills/api-design-principles/SKILL.md
+- [x] /home/user/agents/plugins/backend-development/skills/api-design-principles/assets/api-design-checklist.md
+- [x] /home/user/agents/plugins/backend-development/skills/api-design-principles/references/graphql-schema-design.md
+- [x] /home/user/agents/plugins/backend-development/skills/api-design-principles/references/rest-best-practices.md
+- [x] /home/user/agents/plugins/backend-development/skills/architecture-patterns/SKILL.md
+- [x] /home/user/agents/plugins/backend-development/skills/microservices-patterns/SKILL.md
+- [x] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/SKILL.md
+- [x] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/resources/integration-testing.md
+- [x] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/resources/local-setup.md
+- [x] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/resources/replay-testing.md
+- [x] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/resources/unit-testing.md
+- [x] /home/user/agents/plugins/backend-development/skills/workflow-orchestration-patterns/SKILL.md
+- [x] /home/user/agents/plugins/blockchain-web3/agents/blockchain-developer.md
+- [x] /home/user/agents/plugins/blockchain-web3/skills/defi-protocol-templates/SKILL.md
+- [x] /home/user/agents/plugins/blockchain-web3/skills/nft-standards/SKILL.md
+- [x] /home/user/agents/plugins/blockchain-web3/skills/solidity-security/SKILL.md
+- [x] /home/user/agents/plugins/blockchain-web3/skills/web3-testing/SKILL.md
+- [x] /home/user/agents/plugins/business-analytics/agents/business-analyst.md
+- [x] /home/user/agents/plugins/cicd-automation/agents/cloud-architect.md
+- [x] /home/user/agents/plugins/cicd-automation/agents/deployment-engineer.md
+- [x] /home/user/agents/plugins/cicd-automation/agents/devops-troubleshooter.md
+- [x] /home/user/agents/plugins/cicd-automation/agents/kubernetes-architect.md
+- [x] /home/user/agents/plugins/cicd-automation/agents/terraform-specialist.md
+- [x] /home/user/agents/plugins/cicd-automation/commands/workflow-automate.md
+- [x] /home/user/agents/plugins/cicd-automation/skills/deployment-pipeline-design/SKILL.md
+- [x] /home/user/agents/plugins/cicd-automation/skills/github-actions-templates/SKILL.md
+- [x] /home/user/agents/plugins/cicd-automation/skills/gitlab-ci-patterns/SKILL.md
+- [x] /home/user/agents/plugins/cicd-automation/skills/secrets-management/SKILL.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/agents/cloud-architect.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/agents/deployment-engineer.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/agents/hybrid-cloud-architect.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/agents/kubernetes-architect.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/agents/network-engineer.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/agents/terraform-specialist.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/skills/cost-optimization/SKILL.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/skills/hybrid-cloud-networking/SKILL.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/skills/multi-cloud-architecture/SKILL.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/skills/terraform-module-library/SKILL.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/skills/terraform-module-library/references/aws-modules.md
+- [x] /home/user/agents/plugins/code-documentation/agents/code-reviewer.md
+- [x] /home/user/agents/plugins/code-documentation/agents/docs-architect.md
+- [x] /home/user/agents/plugins/code-documentation/agents/tutorial-engineer.md
+- [x] /home/user/agents/plugins/code-documentation/commands/code-explain.md
+- [x] /home/user/agents/plugins/code-documentation/commands/doc-generate.md
+- [x] /home/user/agents/plugins/code-refactoring/agents/code-reviewer.md
+- [x] /home/user/agents/plugins/code-refactoring/agents/legacy-modernizer.md
+- [x] /home/user/agents/plugins/code-refactoring/commands/context-restore.md
+- [x] /home/user/agents/plugins/code-refactoring/commands/refactor-clean.md
+- [x] /home/user/agents/plugins/code-refactoring/commands/tech-debt.md
+- [x] /home/user/agents/plugins/code-review-ai/agents/architect-review.md
+- [x] /home/user/agents/plugins/code-review-ai/commands/ai-review.md
+- [x] /home/user/agents/plugins/codebase-cleanup/agents/code-reviewer.md
+- [x] /home/user/agents/plugins/codebase-cleanup/agents/test-automator.md
+- [x] /home/user/agents/plugins/codebase-cleanup/commands/deps-audit.md
+- [x] /home/user/agents/plugins/codebase-cleanup/commands/refactor-clean.md
+- [x] /home/user/agents/plugins/codebase-cleanup/commands/tech-debt.md
+- [x] /home/user/agents/plugins/comprehensive-review/agents/architect-review.md
+- [x] /home/user/agents/plugins/comprehensive-review/agents/code-reviewer.md
+- [x] /home/user/agents/plugins/comprehensive-review/agents/security-auditor.md
+- [x] /home/user/agents/plugins/comprehensive-review/commands/full-review.md
+- [x] /home/user/agents/plugins/comprehensive-review/commands/pr-enhance.md
+- [x] /home/user/agents/plugins/content-marketing/agents/content-marketer.md
+- [x] /home/user/agents/plugins/content-marketing/agents/search-specialist.md
+- [x] /home/user/agents/plugins/context-management/agents/context-manager.md
+- [x] /home/user/agents/plugins/context-management/commands/context-restore.md
+- [x] /home/user/agents/plugins/context-management/commands/context-save.md
+- [x] /home/user/agents/plugins/customer-sales-automation/agents/customer-support.md
+- [x] /home/user/agents/plugins/customer-sales-automation/agents/sales-automator.md
+- [x] /home/user/agents/plugins/data-engineering/agents/backend-architect.md
+- [x] /home/user/agents/plugins/data-engineering/agents/data-engineer.md
+- [x] /home/user/agents/plugins/data-engineering/commands/data-driven-feature.md
+- [x] /home/user/agents/plugins/data-engineering/commands/data-pipeline.md
+- [x] /home/user/agents/plugins/data-validation-suite/agents/backend-security-coder.md
+- [x] /home/user/agents/plugins/database-cloud-optimization/agents/backend-architect.md
+- [x] /home/user/agents/plugins/database-cloud-optimization/agents/cloud-architect.md
+- [x] /home/user/agents/plugins/database-cloud-optimization/agents/database-architect.md
+- [x] /home/user/agents/plugins/database-cloud-optimization/agents/database-optimizer.md
+- [x] /home/user/agents/plugins/database-cloud-optimization/commands/cost-optimize.md
+- [x] /home/user/agents/plugins/database-design/agents/database-architect.md
+- [x] /home/user/agents/plugins/database-design/agents/sql-pro.md
+- [x] /home/user/agents/plugins/database-design/skills/postgresql/SKILL.md
+- [x] /home/user/agents/plugins/database-migrations/agents/database-admin.md
+- [x] /home/user/agents/plugins/database-migrations/agents/database-optimizer.md
+- [x] /home/user/agents/plugins/database-migrations/commands/migration-observability.md
+- [x] /home/user/agents/plugins/database-migrations/commands/sql-migrations.md
+- [x] /home/user/agents/plugins/debugging-toolkit/agents/debugger.md
+- [x] /home/user/agents/plugins/debugging-toolkit/agents/dx-optimizer.md
+- [x] /home/user/agents/plugins/debugging-toolkit/commands/smart-debug.md
+- [x] /home/user/agents/plugins/dependency-management/agents/legacy-modernizer.md
+- [x] /home/user/agents/plugins/dependency-management/commands/deps-audit.md
+- [x] /home/user/agents/plugins/deployment-strategies/agents/deployment-engineer.md
+- [x] /home/user/agents/plugins/deployment-strategies/agents/terraform-specialist.md
+- [x] /home/user/agents/plugins/deployment-validation/agents/cloud-architect.md
+- [x] /home/user/agents/plugins/deployment-validation/commands/config-validate.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/auth-implementation-patterns/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/code-review-excellence/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/debugging-strategies/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/e2e-testing-patterns/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/error-handling-patterns/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/git-advanced-workflows/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/monorepo-management/SKILL.md
+- [x] /home/user/agents/plugins/developer-essentials/skills/sql-optimization-patterns/SKILL.md
+- [x] /home/user/agents/plugins/distributed-debugging/agents/devops-troubleshooter.md
+- [x] /home/user/agents/plugins/distributed-debugging/agents/error-detective.md
+- [x] /home/user/agents/plugins/distributed-debugging/commands/debug-trace.md
+- [x] /home/user/agents/plugins/documentation-generation/agents/api-documenter.md
+- [x] /home/user/agents/plugins/documentation-generation/agents/docs-architect.md
+- [x] /home/user/agents/plugins/documentation-generation/agents/mermaid-expert.md
+- [x] /home/user/agents/plugins/documentation-generation/agents/reference-builder.md
+- [x] /home/user/agents/plugins/documentation-generation/agents/tutorial-engineer.md
+- [x] /home/user/agents/plugins/documentation-generation/commands/doc-generate.md
+- [x] /home/user/agents/plugins/error-debugging/agents/debugger.md
+- [x] /home/user/agents/plugins/error-debugging/agents/error-detective.md
+- [x] /home/user/agents/plugins/error-debugging/commands/error-analysis.md
+- [x] /home/user/agents/plugins/error-debugging/commands/error-trace.md
+- [x] /home/user/agents/plugins/error-debugging/commands/multi-agent-review.md
+- [x] /home/user/agents/plugins/error-diagnostics/agents/debugger.md
+- [x] /home/user/agents/plugins/error-diagnostics/agents/error-detective.md
+- [x] /home/user/agents/plugins/error-diagnostics/commands/error-analysis.md
+- [x] /home/user/agents/plugins/error-diagnostics/commands/error-trace.md
+- [x] /home/user/agents/plugins/error-diagnostics/commands/smart-debug.md
+- [x] /home/user/agents/plugins/framework-migration/agents/architect-review.md
+- [x] /home/user/agents/plugins/framework-migration/agents/legacy-modernizer.md
+- [x] /home/user/agents/plugins/framework-migration/commands/code-migrate.md
+- [x] /home/user/agents/plugins/framework-migration/commands/deps-upgrade.md
+- [x] /home/user/agents/plugins/framework-migration/commands/legacy-modernize.md
+- [x] /home/user/agents/plugins/framework-migration/skills/angular-migration/SKILL.md
+- [x] /home/user/agents/plugins/framework-migration/skills/database-migration/SKILL.md
+- [x] /home/user/agents/plugins/framework-migration/skills/dependency-upgrade/SKILL.md
+- [x] /home/user/agents/plugins/framework-migration/skills/react-modernization/SKILL.md
+- [x] /home/user/agents/plugins/frontend-mobile-development/agents/frontend-developer.md
+- [x] /home/user/agents/plugins/frontend-mobile-development/agents/mobile-developer.md
+- [x] /home/user/agents/plugins/frontend-mobile-development/commands/component-scaffold.md
+- [x] /home/user/agents/plugins/frontend-mobile-security/agents/frontend-developer.md
+- [x] /home/user/agents/plugins/frontend-mobile-security/agents/frontend-security-coder.md
+- [x] /home/user/agents/plugins/frontend-mobile-security/agents/mobile-security-coder.md
+- [x] /home/user/agents/plugins/frontend-mobile-security/commands/xss-scan.md
+- [x] /home/user/agents/plugins/full-stack-orchestration/agents/deployment-engineer.md
+- [x] /home/user/agents/plugins/full-stack-orchestration/agents/performance-engineer.md
+- [x] /home/user/agents/plugins/full-stack-orchestration/agents/security-auditor.md
+- [x] /home/user/agents/plugins/full-stack-orchestration/agents/test-automator.md
+- [x] /home/user/agents/plugins/full-stack-orchestration/commands/full-stack-feature.md
+- [x] /home/user/agents/plugins/functional-programming/agents/elixir-pro.md
+- [x] /home/user/agents/plugins/game-development/agents/minecraft-bukkit-pro.md
+- [x] /home/user/agents/plugins/game-development/agents/unity-developer.md
+- [x] /home/user/agents/plugins/git-pr-workflows/agents/code-reviewer.md
+- [x] /home/user/agents/plugins/git-pr-workflows/commands/git-workflow.md
+- [x] /home/user/agents/plugins/git-pr-workflows/commands/onboard.md
+- [x] /home/user/agents/plugins/git-pr-workflows/commands/pr-enhance.md
+- [x] /home/user/agents/plugins/hr-legal-compliance/agents/hr-pro.md
+- [x] /home/user/agents/plugins/hr-legal-compliance/agents/legal-advisor.md
+- [x] /home/user/agents/plugins/incident-response/agents/devops-troubleshooter.md
+- [x] /home/user/agents/plugins/incident-response/agents/incident-responder.md
+- [x] /home/user/agents/plugins/incident-response/commands/incident-response.md
+- [x] /home/user/agents/plugins/incident-response/commands/smart-fix.md
+- [x] /home/user/agents/plugins/javascript-typescript/agents/javascript-pro.md
+- [x] /home/user/agents/plugins/javascript-typescript/agents/typescript-pro.md
+- [x] /home/user/agents/plugins/javascript-typescript/commands/typescript-scaffold.md
+- [x] /home/user/agents/plugins/javascript-typescript/skills/javascript-testing-patterns/SKILL.md
+- [x] /home/user/agents/plugins/javascript-typescript/skills/modern-javascript-patterns/SKILL.md
+- [x] /home/user/agents/plugins/javascript-typescript/skills/nodejs-backend-patterns/SKILL.md
+- [x] /home/user/agents/plugins/javascript-typescript/skills/typescript-advanced-types/SKILL.md
+- [x] /home/user/agents/plugins/julia-development/agents/julia-pro.md
+- [x] /home/user/agents/plugins/jvm-languages/agents/csharp-pro.md
+- [x] /home/user/agents/plugins/jvm-languages/agents/java-pro.md
+- [x] /home/user/agents/plugins/jvm-languages/agents/scala-pro.md
+- [x] /home/user/agents/plugins/kubernetes-operations/agents/kubernetes-architect.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/gitops-workflow/SKILL.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/gitops-workflow/references/argocd-setup.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/gitops-workflow/references/sync-policies.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/helm-chart-scaffolding/SKILL.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/helm-chart-scaffolding/references/chart-structure.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/k8s-manifest-generator/SKILL.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/k8s-manifest-generator/references/deployment-spec.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/k8s-manifest-generator/references/service-spec.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/k8s-security-policies/SKILL.md
+- [x] /home/user/agents/plugins/kubernetes-operations/skills/k8s-security-policies/references/rbac-patterns.md
+- [x] /home/user/agents/plugins/llm-application-dev/agents/ai-engineer.md
+- [x] /home/user/agents/plugins/llm-application-dev/agents/prompt-engineer.md
+- [x] /home/user/agents/plugins/llm-application-dev/commands/ai-assistant.md
+- [x] /home/user/agents/plugins/llm-application-dev/commands/langchain-agent.md
+- [x] /home/user/agents/plugins/llm-application-dev/commands/prompt-optimize.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/langchain-architecture/SKILL.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/llm-evaluation/SKILL.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/SKILL.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/assets/prompt-template-library.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/chain-of-thought.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/few-shot-learning.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/prompt-optimization.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/prompt-templates.md
+- [ ] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/system-prompts.md
+- [ ] /home/user/agents/plugins/llm-application-dev/skills/rag-implementation/SKILL.md
+- [ ] /home/user/agents/plugins/machine-learning-ops/agents/data-scientist.md
+- [ ] /home/user/agents/plugins/machine-learning-ops/agents/ml-engineer.md
+- [ ] /home/user/agents/plugins/machine-learning-ops/agents/mlops-engineer.md
+- [ ] /home/user/agents/plugins/machine-learning-ops/commands/ml-pipeline.md
+- [ ] /home/user/agents/plugins/machine-learning-ops/skills/ml-pipeline-workflow/SKILL.md
+- [ ] /home/user/agents/plugins/multi-platform-apps/agents/backend-architect.md
+- [ ] /home/user/agents/plugins/multi-platform-apps/agents/flutter-expert.md
+- [ ] /home/user/agents/plugins/multi-platform-apps/agents/frontend-developer.md
+- [ ] /home/user/agents/plugins/multi-platform-apps/agents/ios-developer.md
+- [ ] /home/user/agents/plugins/multi-platform-apps/agents/mobile-developer.md
+- [ ] /home/user/agents/plugins/multi-platform-apps/agents/ui-ux-designer.md
+- [ ] /home/user/agents/plugins/multi-platform-apps/commands/multi-platform.md
+- [ ] /home/user/agents/plugins/observability-monitoring/agents/database-optimizer.md
+- [ ] /home/user/agents/plugins/observability-monitoring/agents/network-engineer.md
+- [ ] /home/user/agents/plugins/observability-monitoring/agents/observability-engineer.md
+- [ ] /home/user/agents/plugins/observability-monitoring/agents/performance-engineer.md
+- [ ] /home/user/agents/plugins/observability-monitoring/commands/monitor-setup.md
+- [ ] /home/user/agents/plugins/observability-monitoring/commands/slo-implement.md
+- [ ] /home/user/agents/plugins/observability-monitoring/skills/distributed-tracing/SKILL.md
+- [ ] /home/user/agents/plugins/observability-monitoring/skills/grafana-dashboards/SKILL.md
+- [ ] /home/user/agents/plugins/observability-monitoring/skills/prometheus-configuration/SKILL.md
+- [ ] /home/user/agents/plugins/observability-monitoring/skills/slo-implementation/SKILL.md
+- [ ] /home/user/agents/plugins/payment-processing/agents/payment-integration.md
+- [ ] /home/user/agents/plugins/payment-processing/skills/billing-automation/SKILL.md
+- [ ] /home/user/agents/plugins/payment-processing/skills/paypal-integration/SKILL.md
+- [ ] /home/user/agents/plugins/payment-processing/skills/pci-compliance/SKILL.md
+- [ ] /home/user/agents/plugins/payment-processing/skills/stripe-integration/SKILL.md
+- [ ] /home/user/agents/plugins/performance-testing-review/agents/performance-engineer.md
+- [ ] /home/user/agents/plugins/performance-testing-review/agents/test-automator.md
+- [ ] /home/user/agents/plugins/performance-testing-review/commands/ai-review.md
+- [ ] /home/user/agents/plugins/performance-testing-review/commands/multi-agent-review.md
+- [ ] /home/user/agents/plugins/python-development/agents/django-pro.md
+- [ ] /home/user/agents/plugins/python-development/agents/fastapi-pro.md
+- [ ] /home/user/agents/plugins/python-development/agents/python-pro.md
+- [ ] /home/user/agents/plugins/python-development/commands/python-scaffold.md
+- [ ] /home/user/agents/plugins/python-development/skills/async-python-patterns/SKILL.md
+- [ ] /home/user/agents/plugins/python-development/skills/python-packaging/SKILL.md
+- [ ] /home/user/agents/plugins/python-development/skills/python-performance-optimization/SKILL.md
+- [ ] /home/user/agents/plugins/python-development/skills/python-testing-patterns/SKILL.md
+- [ ] /home/user/agents/plugins/python-development/skills/uv-package-manager/SKILL.md
+- [ ] /home/user/agents/plugins/quantitative-trading/agents/quant-analyst.md
+- [ ] /home/user/agents/plugins/quantitative-trading/agents/risk-manager.md
+- [ ] /home/user/agents/plugins/security-compliance/agents/security-auditor.md
+- [ ] /home/user/agents/plugins/security-compliance/commands/compliance-check.md
+- [ ] /home/user/agents/plugins/security-scanning/agents/security-auditor.md
+- [ ] /home/user/agents/plugins/security-scanning/commands/security-dependencies.md
+- [ ] /home/user/agents/plugins/security-scanning/commands/security-hardening.md
+- [ ] /home/user/agents/plugins/security-scanning/commands/security-sast.md
+- [ ] /home/user/agents/plugins/security-scanning/skills/sast-configuration/SKILL.md
+- [ ] /home/user/agents/plugins/seo-analysis-monitoring/agents/seo-authority-builder.md
+- [ ] /home/user/agents/plugins/seo-analysis-monitoring/agents/seo-cannibalization-detector.md
+- [ ] /home/user/agents/plugins/seo-analysis-monitoring/agents/seo-content-refresher.md
+- [ ] /home/user/agents/plugins/seo-content-creation/agents/seo-content-auditor.md
+- [ ] /home/user/agents/plugins/seo-content-creation/agents/seo-content-planner.md
+- [ ] /home/user/agents/plugins/seo-content-creation/agents/seo-content-writer.md
+- [ ] /home/user/agents/plugins/seo-technical-optimization/agents/seo-keyword-strategist.md
+- [ ] /home/user/agents/plugins/seo-technical-optimization/agents/seo-meta-optimizer.md
+- [ ] /home/user/agents/plugins/seo-technical-optimization/agents/seo-snippet-hunter.md
+- [ ] /home/user/agents/plugins/seo-technical-optimization/agents/seo-structure-architect.md
+- [ ] /home/user/agents/plugins/shell-scripting/agents/bash-pro.md
+- [ ] /home/user/agents/plugins/shell-scripting/agents/posix-shell-pro.md
+- [ ] /home/user/agents/plugins/shell-scripting/skills/bash-defensive-patterns/SKILL.md
+- [ ] /home/user/agents/plugins/shell-scripting/skills/bats-testing-patterns/SKILL.md
+- [ ] /home/user/agents/plugins/shell-scripting/skills/shellcheck-configuration/SKILL.md
+- [ ] /home/user/agents/plugins/systems-programming/agents/c-pro.md
+- [ ] /home/user/agents/plugins/systems-programming/agents/cpp-pro.md
+- [ ] /home/user/agents/plugins/systems-programming/agents/golang-pro.md
+- [ ] /home/user/agents/plugins/systems-programming/agents/rust-pro.md
+- [ ] /home/user/agents/plugins/systems-programming/commands/rust-project.md
+- [ ] /home/user/agents/plugins/tdd-workflows/agents/code-reviewer.md
+- [ ] /home/user/agents/plugins/tdd-workflows/agents/tdd-orchestrator.md
+- [ ] /home/user/agents/plugins/tdd-workflows/commands/tdd-cycle.md
+- [ ] /home/user/agents/plugins/tdd-workflows/commands/tdd-green.md
+- [ ] /home/user/agents/plugins/tdd-workflows/commands/tdd-red.md
+- [ ] /home/user/agents/plugins/tdd-workflows/commands/tdd-refactor.md
+- [ ] /home/user/agents/plugins/team-collaboration/agents/dx-optimizer.md
+- [ ] /home/user/agents/plugins/team-collaboration/commands/issue.md
+- [ ] /home/user/agents/plugins/team-collaboration/commands/standup-notes.md
+- [ ] /home/user/agents/plugins/unit-testing/agents/debugger.md
+- [ ] /home/user/agents/plugins/unit-testing/agents/test-automator.md
+- [ ] /home/user/agents/plugins/unit-testing/commands/test-generate.md
+- [ ] /home/user/agents/plugins/web-scripting/agents/php-pro.md
+- [ ] /home/user/agents/plugins/web-scripting/agents/ruby-pro.md
+- [ ] /home/user/agents/progress.md

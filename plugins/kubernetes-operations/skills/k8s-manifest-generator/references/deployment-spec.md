@@ -1,12 +1,12 @@
-# Kubernetes Deployment Specification Reference
+# Kubernetes Deployment 規格參考
 
-Comprehensive reference for Kubernetes Deployment resources, covering all key fields, best practices, and common patterns.
+Kubernetes Deployment 資源的全面參考，涵蓋所有關鍵欄位、最佳實踐和常見模式。
 
-## Overview
+## 概述
 
-A Deployment provides declarative updates for Pods and ReplicaSets. It manages the desired state of your application, handling rollouts, rollbacks, and scaling operations.
+Deployment 為 Pod 和 ReplicaSet 提供宣告式更新。它管理應用程式的所需狀態，處理推出、回滾和擴展操作。
 
-## Complete Deployment Specification
+## 完整 Deployment 規格
 
 ```yaml
 apiVersion: apps/v1
@@ -238,50 +238,50 @@ spec:
       - name: regcred
 ```
 
-## Field Reference
+## 欄位參考
 
-### Metadata Fields
+### 元資料欄位
 
-#### Required Fields
-- `apiVersion`: `apps/v1` (current stable version)
-- `kind`: `Deployment`
-- `metadata.name`: Unique name within namespace
+#### 必填欄位
+- `apiVersion`：`apps/v1`（目前穩定版本）
+- `kind`：`Deployment`
+- `metadata.name`：命名空間內的唯一名稱
 
-#### Recommended Metadata
-- `metadata.namespace`: Target namespace (defaults to `default`)
-- `metadata.labels`: Key-value pairs for organization
-- `metadata.annotations`: Non-identifying metadata
+#### 建議的元資料
+- `metadata.namespace`：目標命名空間（預設為 `default`）
+- `metadata.labels`：用於組織的鍵值對
+- `metadata.annotations`：非識別性元資料
 
-### Spec Fields
+### Spec 欄位
 
-#### Replica Management
+#### 副本管理
 
-**`replicas`** (integer, default: 1)
-- Number of desired pod instances
-- Best practice: Use 3+ for production high availability
-- Can be scaled manually or via HorizontalPodAutoscaler
+**`replicas`**（整數，預設：1）
+- 所需的 pod 執行個體數量
+- 最佳實踐：正式環境使用 3 個以上以實現高可用性
+- 可手動擴展或透過 HorizontalPodAutoscaler 擴展
 
-**`revisionHistoryLimit`** (integer, default: 10)
-- Number of old ReplicaSets to retain for rollback
-- Set to 0 to disable rollback capability
-- Reduces storage overhead for long-running deployments
+**`revisionHistoryLimit`**（整數，預設：10）
+- 保留用於回滾的舊 ReplicaSet 數量
+- 設為 0 以停用回滾功能
+- 減少長期執行部署的儲存開銷
 
-#### Update Strategy
+#### 更新策略
 
-**`strategy.type`** (string)
-- `RollingUpdate` (default): Gradual pod replacement
-- `Recreate`: Delete all pods before creating new ones
+**`strategy.type`**（字串）
+- `RollingUpdate`（預設）：漸進式 pod 替換
+- `Recreate`：在建立新 pod 前刪除所有 pod
 
-**`strategy.rollingUpdate.maxSurge`** (int or percent, default: 25%)
-- Maximum pods above desired replicas during update
-- Example: With 3 replicas and maxSurge=1, up to 4 pods during update
+**`strategy.rollingUpdate.maxSurge`**（整數或百分比，預設：25%）
+- 更新期間超過所需副本的最大 pod 數
+- 範例：3 個副本且 maxSurge=1，更新期間最多 4 個 pod
 
-**`strategy.rollingUpdate.maxUnavailable`** (int or percent, default: 25%)
-- Maximum pods below desired replicas during update
-- Set to 0 for zero-downtime deployments
-- Cannot be 0 if maxSurge is 0
+**`strategy.rollingUpdate.maxUnavailable`**（整數或百分比，預設：25%）
+- 更新期間低於所需副本的最大 pod 數
+- 零停機部署設為 0
+- 如果 maxSurge 為 0 則不能為 0
 
-**Best practices:**
+**最佳實踐：**
 ```yaml
 # Zero-downtime deployment
 strategy:
@@ -302,21 +302,21 @@ strategy:
   type: Recreate
 ```
 
-#### Pod Template
+#### Pod 範本
 
 **`template.metadata.labels`**
-- Must include labels matching `spec.selector.matchLabels`
-- Add version labels for blue/green deployments
-- Include standard Kubernetes labels
+- 必須包含與 `spec.selector.matchLabels` 匹配的標籤
+- 為藍綠部署新增版本標籤
+- 包含標準 Kubernetes 標籤
 
-**`template.spec.containers`** (required)
-- Array of container specifications
-- At least one container required
-- Each container needs unique name
+**`template.spec.containers`**（必填）
+- 容器規格陣列
+- 至少需要一個容器
+- 每個容器需要唯一名稱
 
-#### Container Configuration
+#### 容器配置
 
-**Image Management:**
+**映像檔管理：**
 ```yaml
 containers:
 - name: app
@@ -324,12 +324,12 @@ containers:
   imagePullPolicy: IfNotPresent  # or Always, Never
 ```
 
-Image pull policies:
-- `IfNotPresent`: Pull if not cached (default for tagged images)
-- `Always`: Always pull (default for :latest)
-- `Never`: Never pull, fail if not cached
+映像檔拉取策略：
+- `IfNotPresent`：如果未快取則拉取（標記映像檔的預設值）
+- `Always`：總是拉取（:latest 的預設值）
+- `Never`：永不拉取，如果未快取則失敗
 
-**Port Declarations:**
+**連接埠宣告：**
 ```yaml
 ports:
 - name: http      # Named for referencing in Service
@@ -338,9 +338,9 @@ ports:
   hostPort: 8080  # Optional: Bind to host port (rarely used)
 ```
 
-#### Resource Management
+#### 資源管理
 
-**Requests vs Limits:**
+**Requests vs Limits：**
 
 ```yaml
 resources:
@@ -352,31 +352,31 @@ resources:
     cpu: "500m"      # 0.5 CPU cores
 ```
 
-**QoS Classes (determined automatically):**
+**QoS 類別（自動決定）：**
 
-1. **Guaranteed**: requests = limits for all containers
-   - Highest priority
-   - Last to be evicted
+1. **Guaranteed**：所有容器的 requests = limits
+   - 最高優先級
+   - 最後被驅逐
 
-2. **Burstable**: requests < limits or only requests set
-   - Medium priority
-   - Evicted before Guaranteed
+2. **Burstable**：requests < limits 或僅設定 requests
+   - 中等優先級
+   - 在 Guaranteed 之前被驅逐
 
-3. **BestEffort**: No requests or limits set
-   - Lowest priority
-   - First to be evicted
+3. **BestEffort**：未設定 requests 或 limits
+   - 最低優先級
+   - 首先被驅逐
 
-**Best practices:**
-- Always set requests in production
-- Set limits to prevent resource monopolization
-- Memory limits should be 1.5-2x requests
-- CPU limits can be higher for bursty workloads
+**最佳實踐：**
+- 正式環境總是設定 requests
+- 設定 limits 以防止資源壟斷
+- 記憶體 limits 應為 requests 的 1.5-2 倍
+- CPU limits 對於突發工作負載可以更高
 
-#### Health Checks
+#### 健康檢查
 
-**Probe Types:**
+**探測類型：**
 
-1. **startupProbe** - For slow-starting applications
+1. **startupProbe** - 用於啟動緩慢的應用程式
    ```yaml
    startupProbe:
      httpGet:
@@ -387,7 +387,7 @@ resources:
      failureThreshold: 30  # 5 minutes to start (10s * 30)
    ```
 
-2. **livenessProbe** - Restarts unhealthy containers
+2. **livenessProbe** - 重啟不健康的容器
    ```yaml
    livenessProbe:
      httpGet:
@@ -399,7 +399,7 @@ resources:
      failureThreshold: 3  # Restart after 3 failures
    ```
 
-3. **readinessProbe** - Controls traffic routing
+3. **readinessProbe** - 控制流量路由
    ```yaml
    readinessProbe:
      httpGet:
@@ -410,7 +410,7 @@ resources:
      failureThreshold: 3  # Remove from service after 3 failures
    ```
 
-**Probe Mechanisms:**
+**探測機制：**
 
 ```yaml
 # HTTP GET
@@ -437,17 +437,17 @@ grpc:
   service: my.service.health.v1.Health
 ```
 
-**Probe Timing Parameters:**
+**探測時間參數：**
 
-- `initialDelaySeconds`: Wait before first probe
-- `periodSeconds`: How often to probe
-- `timeoutSeconds`: Probe timeout
-- `successThreshold`: Successes needed to mark healthy (1 for liveness/startup)
-- `failureThreshold`: Failures before taking action
+- `initialDelaySeconds`：第一次探測前等待時間
+- `periodSeconds`：探測頻率
+- `timeoutSeconds`：探測逾時
+- `successThreshold`：標記為健康所需的成功次數（liveness/startup 為 1）
+- `failureThreshold`：採取行動前的失敗次數
 
-#### Security Context
+#### 安全上下文
 
-**Pod-level security context:**
+**Pod 級安全上下文：**
 ```yaml
 spec:
   securityContext:
@@ -460,7 +460,7 @@ spec:
       type: RuntimeDefault
 ```
 
-**Container-level security context:**
+**容器級安全上下文：**
 ```yaml
 containers:
 - name: app
@@ -476,16 +476,16 @@ containers:
       - NET_BIND_SERVICE  # Only if needed
 ```
 
-**Security best practices:**
-- Always run as non-root (`runAsNonRoot: true`)
-- Drop all capabilities and add only needed ones
-- Use read-only root filesystem when possible
-- Enable seccomp profile
-- Disable privilege escalation
+**安全最佳實踐：**
+- 總是以非 root 執行（`runAsNonRoot: true`）
+- 放棄所有 capabilities 並僅新增需要的
+- 盡可能使用唯讀根檔案系統
+- 啟用 seccomp profile
+- 停用特權提升
 
-#### Volumes
+#### 卷
 
-**Volume Types:**
+**卷類型：**
 
 ```yaml
 volumes:
@@ -520,9 +520,9 @@ volumes:
     type: DirectoryOrCreate
 ```
 
-#### Scheduling
+#### 排程
 
-**Node Selection:**
+**節點選擇：**
 
 ```yaml
 # Simple node selector
@@ -543,7 +543,7 @@ affinity:
           - arm64
 ```
 
-**Pod Affinity/Anti-Affinity:**
+**Pod 親和性/反親和性：**
 
 ```yaml
 # Spread pods across nodes
@@ -567,7 +567,7 @@ affinity:
         topologyKey: kubernetes.io/hostname
 ```
 
-**Tolerations:**
+**容忍：**
 
 ```yaml
 tolerations:
@@ -581,9 +581,9 @@ tolerations:
   effect: "NoSchedule"
 ```
 
-## Common Patterns
+## 常見模式
 
-### High Availability Deployment
+### 高可用性 Deployment
 
 ```yaml
 spec:
@@ -611,7 +611,7 @@ spec:
             app: my-app
 ```
 
-### Sidecar Container Pattern
+### Sidecar 容器模式
 
 ```yaml
 spec:
@@ -634,7 +634,7 @@ spec:
         emptyDir: {}
 ```
 
-### Init Container for Dependencies
+### 用於相依性的 Init 容器
 
 ```yaml
 spec:
@@ -665,26 +665,26 @@ spec:
         image: myapp:1.0.0
 ```
 
-## Best Practices
+## 最佳實踐
 
-### Production Checklist
+### 正式環境檢查清單
 
-- [ ] Set resource requests and limits
-- [ ] Implement all three probe types (startup, liveness, readiness)
-- [ ] Use specific image tags (not :latest)
-- [ ] Configure security context (non-root, read-only filesystem)
-- [ ] Set replica count >= 3 for HA
-- [ ] Configure pod anti-affinity for spread
-- [ ] Set appropriate update strategy (maxUnavailable: 0 for zero-downtime)
-- [ ] Use ConfigMaps and Secrets for configuration
-- [ ] Add standard labels and annotations
-- [ ] Configure graceful shutdown (preStop hook, terminationGracePeriodSeconds)
-- [ ] Set revisionHistoryLimit for rollback capability
-- [ ] Use ServiceAccount with minimal RBAC permissions
+- [ ] 設定資源 requests 和 limits
+- [ ] 實施所有三種探測類型（startup、liveness、readiness）
+- [ ] 使用特定映像檔標籤（不用 :latest）
+- [ ] 配置安全上下文（非 root、唯讀檔案系統）
+- [ ] 設定副本數 >= 3 以實現高可用性
+- [ ] 配置 pod 反親和性以進行分散
+- [ ] 設定適當的更新策略（零停機為 maxUnavailable: 0）
+- [ ] 使用 ConfigMap 和 Secret 進行配置
+- [ ] 新增標準標籤和註解
+- [ ] 配置優雅關機（preStop hook、terminationGracePeriodSeconds）
+- [ ] 設定 revisionHistoryLimit 以實現回滾能力
+- [ ] 使用具有最小 RBAC 權限的 ServiceAccount
 
-### Performance Tuning
+### 效能調校
 
-**Fast startup:**
+**快速啟動：**
 ```yaml
 spec:
   minReadySeconds: 5
@@ -694,7 +694,7 @@ spec:
       maxUnavailable: 1
 ```
 
-**Zero-downtime updates:**
+**零停機更新：**
 ```yaml
 spec:
   minReadySeconds: 10
@@ -704,7 +704,7 @@ spec:
       maxUnavailable: 0
 ```
 
-**Graceful shutdown:**
+**優雅關機：**
 ```yaml
 spec:
   template:
@@ -718,11 +718,11 @@ spec:
               command: ["/bin/sh", "-c", "sleep 15 && kill -SIGTERM 1"]
 ```
 
-## Troubleshooting
+## 疑難排解
 
-### Common Issues
+### 常見問題
 
-**Pods not starting:**
+**Pod 無法啟動：**
 ```bash
 kubectl describe deployment <name>
 kubectl get pods -l app=<app-name>
@@ -730,23 +730,23 @@ kubectl describe pod <pod-name>
 kubectl logs <pod-name>
 ```
 
-**ImagePullBackOff:**
-- Check image name and tag
-- Verify imagePullSecrets
-- Check registry credentials
+**ImagePullBackOff：**
+- 檢查映像檔名稱和標籤
+- 驗證 imagePullSecrets
+- 檢查登錄表憑證
 
-**CrashLoopBackOff:**
-- Check container logs
-- Verify liveness probe is not too aggressive
-- Check resource limits
-- Verify application dependencies
+**CrashLoopBackOff：**
+- 檢查容器日誌
+- 驗證 liveness probe 不會太激進
+- 檢查資源限制
+- 驗證應用程式相依性
 
-**Deployment stuck in progress:**
-- Check progressDeadlineSeconds
-- Verify readiness probes
-- Check resource availability
+**Deployment 停滯不前：**
+- 檢查 progressDeadlineSeconds
+- 驗證 readiness probe
+- 檢查資源可用性
 
-## Related Resources
+## 相關資源
 
 - [Kubernetes Deployment API Reference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#deployment-v1-apps)
 - [Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/)

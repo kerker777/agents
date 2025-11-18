@@ -1,295 +1,295 @@
 ---
 name: code-review-excellence
-description: Master effective code review practices to provide constructive feedback, catch bugs early, and foster knowledge sharing while maintaining team morale. Use when reviewing pull requests, establishing review standards, or mentoring developers.
+description: 精通有效的程式碼審查實務，提供建設性回饋、及早發現錯誤，並在維持團隊士氣的同時促進知識分享。適用於審查拉取請求、建立審查標準或指導開發人員。
 ---
 
-# Code Review Excellence
+# 程式碼審查卓越
 
-Transform code reviews from gatekeeping to knowledge sharing through constructive feedback, systematic analysis, and collaborative improvement.
+透過建設性回饋、系統化分析和協作改進，將程式碼審查從把關轉變為知識分享。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Reviewing pull requests and code changes
-- Establishing code review standards for teams
-- Mentoring junior developers through reviews
-- Conducting architecture reviews
-- Creating review checklists and guidelines
-- Improving team collaboration
-- Reducing code review cycle time
-- Maintaining code quality standards
+- 審查拉取請求和程式碼變更
+- 為團隊建立程式碼審查標準
+- 透過審查指導初級開發人員
+- 進行架構審查
+- 建立審查檢查清單和指南
+- 改善團隊協作
+- 減少程式碼審查週期時間
+- 維護程式碼品質標準
 
-## Core Principles
+## 核心原則
 
-### 1. The Review Mindset
+### 1. 審查心態
 
-**Goals of Code Review:**
-- Catch bugs and edge cases
-- Ensure code maintainability
-- Share knowledge across team
-- Enforce coding standards
-- Improve design and architecture
-- Build team culture
+**程式碼審查的目標：**
+- 捕捉錯誤和邊緣案例
+- 確保程式碼可維護性
+- 在團隊間分享知識
+- 執行編碼標準
+- 改進設計和架構
+- 建立團隊文化
 
-**Not the Goals:**
-- Show off knowledge
-- Nitpick formatting (use linters)
-- Block progress unnecessarily
-- Rewrite to your preference
+**不是目標：**
+- 展示知識
+- 挑剔格式（使用 linter）
+- 不必要地阻擋進度
+- 改寫成你偏好的方式
 
-### 2. Effective Feedback
+### 2. 有效回饋
 
-**Good Feedback is:**
-- Specific and actionable
-- Educational, not judgmental
-- Focused on the code, not the person
-- Balanced (praise good work too)
-- Prioritized (critical vs nice-to-have)
+**好的回饋是：**
+- 具體且可行
+- 教育性的，而非批判性的
+- 針對程式碼，而非個人
+- 平衡的（也讚美好的工作）
+- 有優先順序的（關鍵 vs 最好有）
 
 ```markdown
-❌ Bad: "This is wrong."
-✅ Good: "This could cause a race condition when multiple users
-         access simultaneously. Consider using a mutex here."
+❌ 不好："這是錯的。"
+✅ 好："當多個使用者同時存取時，這可能導致競態條件。
+         考慮在這裡使用互斥鎖。"
 
-❌ Bad: "Why didn't you use X pattern?"
-✅ Good: "Have you considered the Repository pattern? It would
-         make this easier to test. Here's an example: [link]"
+❌ 不好："為什麼你不用 X 模式？"
+✅ 好："你有考慮過倉儲模式嗎？這會讓測試更容易。
+         這裡有個範例：[連結]"
 
-❌ Bad: "Rename this variable."
-✅ Good: "[nit] Consider `userCount` instead of `uc` for
-         clarity. Not blocking if you prefer to keep it."
+❌ 不好："重新命名這個變數。"
+✅ 好："[小建議] 考慮用 `userCount` 而非 `uc` 以提高
+         清晰度。如果你偏好保留也沒問題。"
 ```
 
-### 3. Review Scope
+### 3. 審查範圍
 
-**What to Review:**
-- Logic correctness and edge cases
-- Security vulnerabilities
-- Performance implications
-- Test coverage and quality
-- Error handling
-- Documentation and comments
-- API design and naming
-- Architectural fit
+**應該審查的：**
+- 邏輯正確性和邊緣案例
+- 安全漏洞
+- 效能影響
+- 測試覆蓋率和品質
+- 錯誤處理
+- 文件和註解
+- API 設計和命名
+- 架構適配性
 
-**What Not to Review Manually:**
-- Code formatting (use Prettier, Black, etc.)
-- Import organization
-- Linting violations
-- Simple typos
+**不應手動審查的：**
+- 程式碼格式（使用 Prettier、Black 等）
+- import 組織
+- Linting 違規
+- 簡單的拼寫錯誤
 
-## Review Process
+## 審查流程
 
-### Phase 1: Context Gathering (2-3 minutes)
+### 階段 1：收集背景資訊（2-3 分鐘）
 
 ```markdown
-Before diving into code, understand:
+在深入程式碼之前，先理解：
 
-1. Read PR description and linked issue
-2. Check PR size (>400 lines? Ask to split)
-3. Review CI/CD status (tests passing?)
-4. Understand the business requirement
-5. Note any relevant architectural decisions
+1. 閱讀 PR 描述和相關議題
+2. 檢查 PR 大小（超過 400 行？要求分割）
+3. 檢視 CI/CD 狀態（測試通過了嗎？）
+4. 理解業務需求
+5. 注意任何相關的架構決策
 ```
 
-### Phase 2: High-Level Review (5-10 minutes)
+### 階段 2：高層次審查（5-10 分鐘）
 
 ```markdown
-1. **Architecture & Design**
-   - Does the solution fit the problem?
-   - Are there simpler approaches?
-   - Is it consistent with existing patterns?
-   - Will it scale?
+1. **架構與設計**
+   - 解決方案符合問題嗎？
+   - 有更簡單的方法嗎？
+   - 與現有模式一致嗎？
+   - 能擴展嗎？
 
-2. **File Organization**
-   - Are new files in the right places?
-   - Is code grouped logically?
-   - Are there duplicate files?
+2. **檔案組織**
+   - 新檔案放在正確位置嗎？
+   - 程式碼邏輯分組了嗎？
+   - 有重複的檔案嗎？
 
-3. **Testing Strategy**
-   - Are there tests?
-   - Do tests cover edge cases?
-   - Are tests readable?
+3. **測試策略**
+   - 有測試嗎？
+   - 測試涵蓋邊緣案例嗎？
+   - 測試可讀嗎？
 ```
 
-### Phase 3: Line-by-Line Review (10-20 minutes)
+### 階段 3：逐行審查（10-20 分鐘）
 
 ```markdown
-For each file:
+對每個檔案：
 
-1. **Logic & Correctness**
-   - Edge cases handled?
-   - Off-by-one errors?
-   - Null/undefined checks?
-   - Race conditions?
+1. **邏輯與正確性**
+   - 處理邊緣案例了嗎？
+   - 有差一錯誤嗎？
+   - Null/undefined 檢查？
+   - 競態條件？
 
-2. **Security**
-   - Input validation?
-   - SQL injection risks?
-   - XSS vulnerabilities?
-   - Sensitive data exposure?
+2. **安全性**
+   - 輸入驗證？
+   - SQL 注入風險？
+   - XSS 漏洞？
+   - 敏感資料暴露？
 
-3. **Performance**
-   - N+1 queries?
-   - Unnecessary loops?
-   - Memory leaks?
-   - Blocking operations?
+3. **效能**
+   - N+1 查詢？
+   - 不必要的迴圈？
+   - 記憶體洩漏？
+   - 阻塞操作？
 
-4. **Maintainability**
-   - Clear variable names?
-   - Functions doing one thing?
-   - Complex code commented?
-   - Magic numbers extracted?
+4. **可維護性**
+   - 清楚的變數名稱？
+   - 函式只做一件事？
+   - 複雜程式碼有註解？
+   - 魔術數字已提取？
 ```
 
-### Phase 4: Summary & Decision (2-3 minutes)
+### 階段 4：總結與決策（2-3 分鐘）
 
 ```markdown
-1. Summarize key concerns
-2. Highlight what you liked
-3. Make clear decision:
-   - ✅ Approve
-   - 💬 Comment (minor suggestions)
-   - 🔄 Request Changes (must address)
-4. Offer to pair if complex
+1. 總結主要關注點
+2. 強調你喜歡的部分
+3. 做出明確決定：
+   - ✅ 核准
+   - 💬 評論（小建議）
+   - 🔄 請求變更（必須處理）
+4. 如果複雜則提議配對
 ```
 
-## Review Techniques
+## 審查技巧
 
-### Technique 1: The Checklist Method
+### 技巧 1：檢查清單方法
 
 ```markdown
-## Security Checklist
-- [ ] User input validated and sanitized
-- [ ] SQL queries use parameterization
-- [ ] Authentication/authorization checked
-- [ ] Secrets not hardcoded
-- [ ] Error messages don't leak info
+## 安全檢查清單
+- [ ] 使用者輸入已驗證和清理
+- [ ] SQL 查詢使用參數化
+- [ ] 已檢查身份驗證/授權
+- [ ] 沒有硬編碼的密鑰
+- [ ] 錯誤訊息不洩漏資訊
 
-## Performance Checklist
-- [ ] No N+1 queries
-- [ ] Database queries indexed
-- [ ] Large lists paginated
-- [ ] Expensive operations cached
-- [ ] No blocking I/O in hot paths
+## 效能檢查清單
+- [ ] 沒有 N+1 查詢
+- [ ] 資料庫查詢已建立索引
+- [ ] 大列表已分頁
+- [ ] 昂貴操作已快取
+- [ ] 熱路徑中沒有阻塞 I/O
 
-## Testing Checklist
-- [ ] Happy path tested
-- [ ] Edge cases covered
-- [ ] Error cases tested
-- [ ] Test names are descriptive
-- [ ] Tests are deterministic
+## 測試檢查清單
+- [ ] 已測試正常路徑
+- [ ] 涵蓋邊緣案例
+- [ ] 已測試錯誤情況
+- [ ] 測試名稱具描述性
+- [ ] 測試是確定性的
 ```
 
-### Technique 2: The Question Approach
+### 技巧 2：提問方法
 
-Instead of stating problems, ask questions to encourage thinking:
+與其陳述問題，不如提出問題以鼓勵思考：
 
 ```markdown
-❌ "This will fail if the list is empty."
-✅ "What happens if `items` is an empty array?"
+❌ "如果列表為空，這會失敗。"
+✅ "如果 `items` 是空陣列會發生什麼？"
 
-❌ "You need error handling here."
-✅ "How should this behave if the API call fails?"
+❌ "你需要在這裡處理錯誤。"
+✅ "如果 API 呼叫失敗，這應該如何運作？"
 
-❌ "This is inefficient."
-✅ "I see this loops through all users. Have we considered
-    the performance impact with 100k users?"
+❌ "這效率不高。"
+✅ "我看到這會遍歷所有使用者。我們有考慮過在有 10 萬
+    使用者時的效能影響嗎？"
 ```
 
-### Technique 3: Suggest, Don't Command
+### 技巧 3：建議，不要命令
 
 ```markdown
-## Use Collaborative Language
+## 使用協作語言
 
-❌ "You must change this to use async/await"
-✅ "Suggestion: async/await might make this more readable:
+❌ "你必須將這改為使用 async/await"
+✅ "建議：async/await 可能會讓這更易讀：
     ```typescript
     async function fetchUser(id: string) {
         const user = await db.query('SELECT * FROM users WHERE id = ?', id);
         return user;
     }
     ```
-    What do you think?"
+    你覺得如何？"
 
-❌ "Extract this into a function"
-✅ "This logic appears in 3 places. Would it make sense to
-    extract it into a shared utility function?"
+❌ "將這提取成函式"
+✅ "這個邏輯出現在 3 個地方。是否考慮將它提取成
+    共用的工具函式？"
 ```
 
-### Technique 4: Differentiate Severity
+### 技巧 4：區分嚴重程度
 
 ```markdown
-Use labels to indicate priority:
+使用標籤指示優先順序：
 
-🔴 [blocking] - Must fix before merge
-🟡 [important] - Should fix, discuss if disagree
-🟢 [nit] - Nice to have, not blocking
-💡 [suggestion] - Alternative approach to consider
-📚 [learning] - Educational comment, no action needed
-🎉 [praise] - Good work, keep it up!
+🔴 [blocking] - 合併前必須修正
+🟡 [important] - 應該修正，如不同意請討論
+🟢 [nit] - 最好有，不阻擋
+💡 [suggestion] - 可考慮的替代方法
+📚 [learning] - 教育性評論，無需行動
+🎉 [praise] - 做得好，繼續保持！
 
-Example:
-"🔴 [blocking] This SQL query is vulnerable to injection.
- Please use parameterized queries."
+範例：
+"🔴 [blocking] 這個 SQL 查詢容易受注入攻擊。
+ 請使用參數化查詢。"
 
-"🟢 [nit] Consider renaming `data` to `userData` for clarity."
+"🟢 [nit] 考慮將 `data` 重新命名為 `userData` 以提高清晰度。"
 
-"🎉 [praise] Excellent test coverage! This will catch edge cases."
+"🎉 [praise] 優秀的測試覆蓋率！這會捕捉邊緣案例。"
 ```
 
-## Language-Specific Patterns
+## 特定語言模式
 
-### Python Code Review
+### Python 程式碼審查
 
 ```python
-# Check for Python-specific issues
+# 檢查 Python 特定問題
 
-# ❌ Mutable default arguments
-def add_item(item, items=[]):  # Bug! Shared across calls
+# ❌ 可變預設參數
+def add_item(item, items=[]):  # 錯誤！跨呼叫共用
     items.append(item)
     return items
 
-# ✅ Use None as default
+# ✅ 使用 None 作為預設值
 def add_item(item, items=None):
     if items is None:
         items = []
     items.append(item)
     return items
 
-# ❌ Catching too broad
+# ❌ 捕捉過於廣泛
 try:
     result = risky_operation()
-except:  # Catches everything, even KeyboardInterrupt!
+except:  # 捕捉所有，甚至 KeyboardInterrupt！
     pass
 
-# ✅ Catch specific exceptions
+# ✅ 捕捉特定例外
 try:
     result = risky_operation()
 except ValueError as e:
     logger.error(f"Invalid value: {e}")
     raise
 
-# ❌ Using mutable class attributes
+# ❌ 使用可變類別屬性
 class User:
-    permissions = []  # Shared across all instances!
+    permissions = []  # 在所有實例間共用！
 
-# ✅ Initialize in __init__
+# ✅ 在 __init__ 中初始化
 class User:
     def __init__(self):
         self.permissions = []
 ```
 
-### TypeScript/JavaScript Code Review
+### TypeScript/JavaScript 程式碼審查
 
 ```typescript
-// Check for TypeScript-specific issues
+// 檢查 TypeScript 特定問題
 
-// ❌ Using any defeats type safety
-function processData(data: any) {  // Avoid any
+// ❌ 使用 any 會破壞型別安全
+function processData(data: any) {  // 避免 any
     return data.value;
 }
 
-// ✅ Use proper types
+// ✅ 使用適當的型別
 interface DataPayload {
     value: string;
 }
@@ -297,13 +297,13 @@ function processData(data: DataPayload) {
     return data.value;
 }
 
-// ❌ Not handling async errors
+// ❌ 未處理非同步錯誤
 async function fetchUser(id: string) {
     const response = await fetch(`/api/users/${id}`);
-    return response.json();  // What if network fails?
+    return response.json();  // 如果網路失敗怎麼辦？
 }
 
-// ✅ Handle errors properly
+// ✅ 正確處理錯誤
 async function fetchUser(id: string): Promise<User> {
     try {
         const response = await fetch(`/api/users/${id}`);
@@ -317,57 +317,57 @@ async function fetchUser(id: string): Promise<User> {
     }
 }
 
-// ❌ Mutation of props
+// ❌ 修改 props
 function UserProfile({ user }: Props) {
-    user.lastViewed = new Date();  // Mutating prop!
+    user.lastViewed = new Date();  // 修改 prop！
     return <div>{user.name}</div>;
 }
 
-// ✅ Don't mutate props
+// ✅ 不要修改 props
 function UserProfile({ user, onView }: Props) {
     useEffect(() => {
-        onView(user.id);  // Notify parent to update
+        onView(user.id);  // 通知父元件更新
     }, [user.id]);
     return <div>{user.name}</div>;
 }
 ```
 
-## Advanced Review Patterns
+## 進階審查模式
 
-### Pattern 1: Architectural Review
+### 模式 1：架構審查
 
 ```markdown
-When reviewing significant changes:
+審查重大變更時：
 
-1. **Design Document First**
-   - For large features, request design doc before code
-   - Review design with team before implementation
-   - Agree on approach to avoid rework
+1. **先設計文件**
+   - 對於大型功能，在程式碼之前要求設計文件
+   - 在實作前與團隊審查設計
+   - 就方法達成共識以避免重做
 
-2. **Review in Stages**
-   - First PR: Core abstractions and interfaces
-   - Second PR: Implementation
-   - Third PR: Integration and tests
-   - Easier to review, faster to iterate
+2. **分階段審查**
+   - 第一個 PR：核心抽象和介面
+   - 第二個 PR：實作
+   - 第三個 PR：整合和測試
+   - 更容易審查，更快迭代
 
-3. **Consider Alternatives**
-   - "Have we considered using [pattern/library]?"
-   - "What's the tradeoff vs. the simpler approach?"
-   - "How will this evolve as requirements change?"
+3. **考慮替代方案**
+   - "我們有考慮過使用 [模式/函式庫] 嗎？"
+   - "與更簡單的方法相比，取捨是什麼？"
+   - "隨著需求變化，這將如何演進？"
 ```
 
-### Pattern 2: Test Quality Review
+### 模式 2：測試品質審查
 
 ```typescript
-// ❌ Poor test: Implementation detail testing
+// ❌ 不好的測試：測試實作細節
 test('increments counter variable', () => {
     const component = render(<Counter />);
     const button = component.getByRole('button');
     fireEvent.click(button);
-    expect(component.state.counter).toBe(1);  // Testing internal state
+    expect(component.state.counter).toBe(1);  // 測試內部狀態
 });
 
-// ✅ Good test: Behavior testing
+// ✅ 好的測試：測試行為
 test('displays incremented count when clicked', () => {
     render(<Counter />);
     const button = screen.getByRole('button', { name: /increment/i });
@@ -375,146 +375,142 @@ test('displays incremented count when clicked', () => {
     expect(screen.getByText('Count: 1')).toBeInTheDocument();
 });
 
-// Review questions for tests:
-// - Do tests describe behavior, not implementation?
-// - Are test names clear and descriptive?
-// - Do tests cover edge cases?
-// - Are tests independent (no shared state)?
-// - Can tests run in any order?
+// 測試的審查問題：
+// - 測試描述的是行為，而非實作嗎？
+// - 測試名稱清楚且具描述性嗎？
+// - 測試涵蓋邊緣案例嗎？
+// - 測試是獨立的（沒有共用狀態）嗎？
+// - 測試可以以任何順序執行嗎？
 ```
 
-### Pattern 3: Security Review
+### 模式 3：安全審查
 
 ```markdown
-## Security Review Checklist
+## 安全審查檢查清單
 
-### Authentication & Authorization
-- [ ] Is authentication required where needed?
-- [ ] Are authorization checks before every action?
-- [ ] Is JWT validation proper (signature, expiry)?
-- [ ] Are API keys/secrets properly secured?
+### 身份驗證與授權
+- [ ] 需要的地方有身份驗證嗎？
+- [ ] 每個動作前都有授權檢查嗎？
+- [ ] JWT 驗證正確（簽章、過期）嗎？
+- [ ] API 金鑰/密鑰妥善保護了嗎？
 
-### Input Validation
-- [ ] All user inputs validated?
-- [ ] File uploads restricted (size, type)?
-- [ ] SQL queries parameterized?
-- [ ] XSS protection (escape output)?
+### 輸入驗證
+- [ ] 所有使用者輸入都已驗證？
+- [ ] 檔案上傳有限制（大小、類型）嗎？
+- [ ] SQL 查詢參數化了嗎？
+- [ ] XSS 保護（轉義輸出）？
 
-### Data Protection
-- [ ] Passwords hashed (bcrypt/argon2)?
-- [ ] Sensitive data encrypted at rest?
-- [ ] HTTPS enforced for sensitive data?
-- [ ] PII handled according to regulations?
+### 資料保護
+- [ ] 密碼已雜湊（bcrypt/argon2）？
+- [ ] 敏感資料在靜態時加密？
+- [ ] 敏感資料強制使用 HTTPS？
+- [ ] 根據法規處理 PII？
 
-### Common Vulnerabilities
-- [ ] No eval() or similar dynamic execution?
-- [ ] No hardcoded secrets?
-- [ ] CSRF protection for state-changing operations?
-- [ ] Rate limiting on public endpoints?
+### 常見漏洞
+- [ ] 沒有 eval() 或類似的動態執行？
+- [ ] 沒有硬編碼的密鑰？
+- [ ] 狀態變更操作有 CSRF 保護？
+- [ ] 公開端點有速率限制？
 ```
 
-## Giving Difficult Feedback
+## 給予困難回饋
 
-### Pattern: The Sandwich Method (Modified)
+### 模式：三明治方法（改良版）
 
 ```markdown
-Traditional: Praise + Criticism + Praise (feels fake)
+傳統：讚美 + 批評 + 讚美（感覺虛假）
 
-Better: Context + Specific Issue + Helpful Solution
+更好：背景 + 具體問題 + 有用的解決方案
 
-Example:
-"I noticed the payment processing logic is inline in the
-controller. This makes it harder to test and reuse.
+範例：
+"我注意到支付處理邏輯內嵌在控制器中。這使得測試
+和重用變得更困難。
 
-[Specific Issue]
-The calculateTotal() function mixes tax calculation,
-discount logic, and database queries, making it difficult
-to unit test and reason about.
+[具體問題]
+calculateTotal() 函式混合了稅金計算、折扣邏輯和
+資料庫查詢，使其難以單元測試和理解。
 
-[Helpful Solution]
-Could we extract this into a PaymentService class? That
-would make it testable and reusable. I can pair with you
-on this if helpful."
+[有用的解決方案]
+我們可以將這提取成 PaymentService 類別嗎？這會讓
+它可測試和可重用。如果需要，我可以和你配對處理。"
 ```
 
-### Handling Disagreements
+### 處理分歧
 
 ```markdown
-When author disagrees with your feedback:
+當作者不同意你的回饋時：
 
-1. **Seek to Understand**
-   "Help me understand your approach. What led you to
-    choose this pattern?"
+1. **尋求理解**
+   "幫我理解你的方法。是什麼讓你選擇這個模式？"
 
-2. **Acknowledge Valid Points**
-   "That's a good point about X. I hadn't considered that."
+2. **承認有效觀點**
+   "關於 X 的觀點很好。我沒考慮到那個。"
 
-3. **Provide Data**
-   "I'm concerned about performance. Can we add a benchmark
-    to validate the approach?"
+3. **提供數據**
+   "我擔心效能。我們可以加個基準測試來驗證方法嗎？"
 
-4. **Escalate if Needed**
-   "Let's get [architect/senior dev] to weigh in on this."
+4. **必要時升級**
+   "讓 [架構師/資深開發] 對此發表意見吧。"
 
-5. **Know When to Let Go**
-   If it's working and not a critical issue, approve it.
-   Perfection is the enemy of progress.
+5. **知道何時放手**
+   如果它能運作且不是關鍵問題，就核准它。
+   完美是進步的敵人。
 ```
 
-## Best Practices
+## 最佳實務
 
-1. **Review Promptly**: Within 24 hours, ideally same day
-2. **Limit PR Size**: 200-400 lines max for effective review
-3. **Review in Time Blocks**: 60 minutes max, take breaks
-4. **Use Review Tools**: GitHub, GitLab, or dedicated tools
-5. **Automate What You Can**: Linters, formatters, security scans
-6. **Build Rapport**: Emoji, praise, and empathy matter
-7. **Be Available**: Offer to pair on complex issues
-8. **Learn from Others**: Review others' review comments
+1. **及時審查**：24 小時內，最好當天
+2. **限制 PR 大小**：最多 200-400 行以進行有效審查
+3. **分時段審查**：最多 60 分鐘，休息一下
+4. **使用審查工具**：GitHub、GitLab 或專用工具
+5. **盡可能自動化**：Linter、格式化工具、安全掃描
+6. **建立關係**：表情符號、讚美和同理心很重要
+7. **保持可用**：在複雜問題上提議配對
+8. **向他人學習**：審查其他人的審查評論
 
-## Common Pitfalls
+## 常見陷阱
 
-- **Perfectionism**: Blocking PRs for minor style preferences
-- **Scope Creep**: "While you're at it, can you also..."
-- **Inconsistency**: Different standards for different people
-- **Delayed Reviews**: Letting PRs sit for days
-- **Ghosting**: Requesting changes then disappearing
-- **Rubber Stamping**: Approving without actually reviewing
-- **Bike Shedding**: Debating trivial details extensively
+- **完美主義**：因小的風格偏好而阻擋 PR
+- **範圍蔓延**："既然你在做，可以也...嗎"
+- **不一致**：對不同的人有不同標準
+- **延遲審查**：讓 PR 擱置數天
+- **消失**：請求變更後就消失
+- **橡皮圖章**：未實際審查就核准
+- **自行車棚**：廣泛討論瑣碎細節
 
-## Templates
+## 範本
 
-### PR Review Comment Template
+### PR 審查評論範本
 
 ```markdown
-## Summary
-[Brief overview of what was reviewed]
+## 摘要
+[簡要概述審查內容]
 
-## Strengths
-- [What was done well]
-- [Good patterns or approaches]
+## 優點
+- [做得好的地方]
+- [好的模式或方法]
 
-## Required Changes
-🔴 [Blocking issue 1]
-🔴 [Blocking issue 2]
+## 必要變更
+🔴 [阻擋問題 1]
+🔴 [阻擋問題 2]
 
-## Suggestions
-💡 [Improvement 1]
-💡 [Improvement 2]
+## 建議
+💡 [改進 1]
+💡 [改進 2]
 
-## Questions
-❓ [Clarification needed on X]
-❓ [Alternative approach consideration]
+## 問題
+❓ [需要對 X 的澄清]
+❓ [替代方法考量]
 
-## Verdict
-✅ Approve after addressing required changes
+## 結論
+✅ 處理必要變更後核准
 ```
 
-## Resources
+## 資源
 
-- **references/code-review-best-practices.md**: Comprehensive review guidelines
-- **references/common-bugs-checklist.md**: Language-specific bugs to watch for
-- **references/security-review-guide.md**: Security-focused review checklist
-- **assets/pr-review-template.md**: Standard review comment template
-- **assets/review-checklist.md**: Quick reference checklist
-- **scripts/pr-analyzer.py**: Analyze PR complexity and suggest reviewers
+- **references/code-review-best-practices.md**：全面的審查指南
+- **references/common-bugs-checklist.md**：特定語言的錯誤檢查
+- **references/security-review-guide.md**：專注於安全的審查檢查清單
+- **assets/pr-review-template.md**：標準審查評論範本
+- **assets/review-checklist.md**：快速參考檢查清單
+- **scripts/pr-analyzer.py**：分析 PR 複雜度並建議審查者

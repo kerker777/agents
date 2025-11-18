@@ -1,46 +1,46 @@
-# Prompt Template Library
+# 提示詞模板庫
 
-## Classification Templates
+## 分類模板
 
-### Sentiment Analysis
+### 情感分析
 ```
-Classify the sentiment of the following text as Positive, Negative, or Neutral.
+將以下文字的情感分類為正面、負面或中性。
 
-Text: {text}
+文字：{text}
 
-Sentiment:
-```
-
-### Intent Detection
-```
-Determine the user's intent from the following message.
-
-Possible intents: {intent_list}
-
-Message: {message}
-
-Intent:
+情感：
 ```
 
-### Topic Classification
+### 意圖偵測
 ```
-Classify the following article into one of these categories: {categories}
+從以下訊息中判斷使用者的意圖。
 
-Article:
+可能的意圖：{intent_list}
+
+訊息：{message}
+
+意圖：
+```
+
+### 主題分類
+```
+將以下文章分類到以下類別之一：{categories}
+
+文章：
 {article}
 
-Category:
+類別：
 ```
 
-## Extraction Templates
+## 擷取模板
 
-### Named Entity Recognition
+### 命名實體識別
 ```
-Extract all named entities from the text and categorize them.
+從文字中擷取所有命名實體並進行分類。
 
-Text: {text}
+文字：{text}
 
-Entities (JSON format):
+實體（JSON 格式）：
 {
   "persons": [],
   "organizations": [],
@@ -49,14 +49,14 @@ Entities (JSON format):
 }
 ```
 
-### Structured Data Extraction
+### 結構化資料擷取
 ```
-Extract structured information from the job posting.
+從職位公告中擷取結構化資訊。
 
-Job Posting:
+職位公告：
 {posting}
 
-Extracted Information (JSON):
+擷取的資訊（JSON）：
 {
   "title": "",
   "company": "",
@@ -67,180 +67,180 @@ Extracted Information (JSON):
 }
 ```
 
-## Generation Templates
+## 生成模板
 
-### Email Generation
+### 電子郵件生成
 ```
-Write a professional {email_type} email.
+撰寫一封專業的{email_type}電子郵件。
 
-To: {recipient}
-Context: {context}
-Key points to include:
+收件人：{recipient}
+情境：{context}
+要包含的重點：
 {key_points}
 
-Email:
-Subject:
-Body:
+電子郵件：
+主旨：
+內容：
 ```
 
-### Code Generation
+### 程式碼生成
 ```
-Generate {language} code for the following task:
+為以下任務生成{language}程式碼：
 
-Task: {task_description}
+任務：{task_description}
 
-Requirements:
+需求：
 {requirements}
 
-Include:
-- Error handling
-- Input validation
-- Inline comments
+包含：
+- 錯誤處理
+- 輸入驗證
+- 行內註解
 
-Code:
+程式碼：
 ```
 
-### Creative Writing
+### 創意寫作
 ```
-Write a {length}-word {style} story about {topic}.
+撰寫一個{length}字的{style}故事，主題是{topic}。
 
-Include these elements:
+包含以下元素：
 - {element_1}
 - {element_2}
 - {element_3}
 
-Story:
+故事：
 ```
 
-## Transformation Templates
+## 轉換模板
 
-### Summarization
+### 摘要
 ```
-Summarize the following text in {num_sentences} sentences.
+將以下文字摘要為{num_sentences}句話。
 
-Text:
+文字：
 {text}
 
-Summary:
+摘要：
 ```
 
-### Translation with Context
+### 含上下文的翻譯
 ```
-Translate the following {source_lang} text to {target_lang}.
+將以下{source_lang}文字翻譯為{target_lang}。
 
-Context: {context}
-Tone: {tone}
+情境：{context}
+語氣：{tone}
 
-Text: {text}
+文字：{text}
 
-Translation:
+翻譯：
 ```
 
-### Format Conversion
+### 格式轉換
 ```
-Convert the following {source_format} to {target_format}.
+將以下{source_format}轉換為{target_format}。
 
-Input:
+輸入：
 {input_data}
 
-Output ({target_format}):
+輸出（{target_format}）：
 ```
 
-## Analysis Templates
+## 分析模板
 
-### Code Review
+### 程式碼審查
 ```
-Review the following code for:
-1. Bugs and errors
-2. Performance issues
-3. Security vulnerabilities
-4. Best practice violations
+審查以下程式碼，檢查：
+1. 錯誤和問題
+2. 效能問題
+3. 安全漏洞
+4. 最佳實務違規
 
-Code:
+程式碼：
 {code}
 
-Review:
+審查：
 ```
 
-### SWOT Analysis
+### SWOT 分析
 ```
-Conduct a SWOT analysis for: {subject}
+針對以下主題進行 SWOT 分析：{subject}
 
-Context: {context}
+情境：{context}
 
-Analysis:
-Strengths:
+分析：
+優勢：
 -
 
-Weaknesses:
+劣勢：
 -
 
-Opportunities:
+機會：
 -
 
-Threats:
+威脅：
 -
 ```
 
-## Question Answering Templates
+## 問答模板
 
-### RAG Template
+### RAG 模板
 ```
-Answer the question based on the provided context. If the context doesn't contain enough information, say so.
+根據提供的上下文回答問題。如果上下文不包含足夠資訊，請明確說明。
 
-Context:
+上下文：
 {context}
 
-Question: {question}
+問題：{question}
 
-Answer:
+答案：
 ```
 
-### Multi-Turn Q&A
+### 多輪問答
 ```
-Previous conversation:
+先前的對話：
 {conversation_history}
 
-New question: {question}
+新問題：{question}
 
-Answer (continue naturally from conversation):
+答案（自然地從對話延續）：
 ```
 
-## Specialized Templates
+## 專門模板
 
-### SQL Query Generation
+### SQL 查詢生成
 ```
-Generate a SQL query for the following request.
+為以下請求生成 SQL 查詢。
 
-Database schema:
+資料庫架構：
 {schema}
 
-Request: {request}
+請求：{request}
 
-SQL Query:
+SQL 查詢：
 ```
 
-### Regex Pattern Creation
+### 正規表示式模式建立
 ```
-Create a regex pattern to match: {requirement}
+建立一個正規表示式模式來匹配：{requirement}
 
-Test cases that should match:
+應該匹配的測試案例：
 {positive_examples}
 
-Test cases that should NOT match:
+不應該匹配的測試案例：
 {negative_examples}
 
-Regex pattern:
+正規表示式模式：
 ```
 
-### API Documentation
+### API 文件
 ```
-Generate API documentation for this function:
+為此函式生成 API 文件：
 
-Code:
+程式碼：
 {function_code}
 
-Documentation (follow {doc_format} format):
+文件（遵循{doc_format}格式）：
 ```
 
-## Use these templates by filling in the {variables}
+## 透過填入 {變數} 來使用這些模板
