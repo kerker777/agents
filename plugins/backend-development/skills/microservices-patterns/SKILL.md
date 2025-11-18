@@ -1,82 +1,82 @@
 ---
 name: microservices-patterns
-description: Design microservices architectures with service boundaries, event-driven communication, and resilience patterns. Use when building distributed systems, decomposing monoliths, or implementing microservices.
+description: 設計具有服務邊界、事件驅動通訊和韌性模式的微服務架構。適用於建構分散式系統、拆解單體應用程式或實作微服務時使用。
 ---
 
 # Microservices Patterns
 
-Master microservices architecture patterns including service boundaries, inter-service communication, data management, and resilience patterns for building distributed systems.
+掌握微服務架構模式，包括服務邊界、服務間通訊、資料管理，以及用於建構分散式系統的韌性模式。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Decomposing monoliths into microservices
-- Designing service boundaries and contracts
-- Implementing inter-service communication
-- Managing distributed data and transactions
-- Building resilient distributed systems
-- Implementing service discovery and load balancing
-- Designing event-driven architectures
+- 將單體應用程式拆解為微服務
+- 設計服務邊界和契約
+- 實作服務間通訊
+- 管理分散式資料和交易
+- 建構具韌性的分散式系統
+- 實作服務發現和負載平衡
+- 設計事件驅動架構
 
-## Core Concepts
+## 核心概念
 
-### 1. Service Decomposition Strategies
+### 1. 服務拆解策略
 
-**By Business Capability**
-- Organize services around business functions
-- Each service owns its domain
-- Example: OrderService, PaymentService, InventoryService
+**依業務能力拆解**
+- 圍繞業務功能組織服務
+- 每個服務擁有自己的領域
+- 範例：OrderService、PaymentService、InventoryService
 
-**By Subdomain (DDD)**
-- Core domain, supporting subdomains
-- Bounded contexts map to services
-- Clear ownership and responsibility
+**依子領域拆解（DDD）**
+- 核心領域、支援子領域
+- 限界上下文對應到服務
+- 清楚的所有權和責任
 
-**Strangler Fig Pattern**
-- Gradually extract from monolith
-- New functionality as microservices
-- Proxy routes to old/new systems
+**Strangler Fig Pattern（絞殺者模式）**
+- 逐步從單體應用程式中抽取
+- 新功能以微服務形式實作
+- 代理路由到舊/新系統
 
-### 2. Communication Patterns
+### 2. 通訊模式
 
-**Synchronous (Request/Response)**
+**同步（請求/回應）**
 - REST APIs
 - gRPC
 - GraphQL
 
-**Asynchronous (Events/Messages)**
-- Event streaming (Kafka)
-- Message queues (RabbitMQ, SQS)
-- Pub/Sub patterns
+**非同步（事件/訊息）**
+- 事件串流（Kafka）
+- 訊息佇列（RabbitMQ、SQS）
+- Pub/Sub 模式
 
-### 3. Data Management
+### 3. 資料管理
 
-**Database Per Service**
-- Each service owns its data
-- No shared databases
-- Loose coupling
+**每個服務一個資料庫**
+- 每個服務擁有自己的資料
+- 不共用資料庫
+- 鬆散耦合
 
-**Saga Pattern**
-- Distributed transactions
-- Compensating actions
-- Eventual consistency
+**Saga Pattern（Saga 模式）**
+- 分散式交易
+- 補償動作
+- 最終一致性
 
-### 4. Resilience Patterns
+### 4. 韌性模式
 
-**Circuit Breaker**
-- Fail fast on repeated errors
-- Prevent cascade failures
+**Circuit Breaker（斷路器）**
+- 重複錯誤時快速失敗
+- 防止串聯失敗
 
-**Retry with Backoff**
-- Transient fault handling
-- Exponential backoff
+**Retry with Backoff（重試與退避）**
+- 暫時性錯誤處理
+- 指數退避
 
-**Bulkhead**
-- Isolate resources
-- Limit impact of failures
+**Bulkhead（隔艙）**
+- 隔離資源
+- 限制失敗的影響範圍
 
-## Service Decomposition Patterns
+## 服務拆解模式
 
-### Pattern 1: By Business Capability
+### 模式 1：依業務能力拆解
 
 ```python
 # E-commerce example
@@ -148,7 +148,7 @@ class InventoryService:
         return ReservationResult(success=True, reservation=reservation)
 ```
 
-### Pattern 2: API Gateway
+### 模式 2：API Gateway
 
 ```python
 from fastapi import FastAPI, HTTPException, Depends
@@ -214,9 +214,9 @@ async def create_order(
         raise HTTPException(status_code=503, detail="Order service unavailable")
 ```
 
-## Communication Patterns
+## 通訊模式
 
-### Pattern 1: Synchronous REST Communication
+### 模式 1：同步 REST 通訊
 
 ```python
 # Service A calls Service B
@@ -254,7 +254,7 @@ payment_client = ServiceClient("http://payment-service:8001")
 result = await payment_client.post("/payments", json=payment_data)
 ```
 
-### Pattern 2: Asynchronous Event-Driven
+### 模式 2：非同步事件驅動
 
 ```python
 # Event-driven communication with Kafka
@@ -339,7 +339,7 @@ async def handle_order_created(event_data: dict):
     await reserve_inventory(order_id, items)
 ```
 
-### Pattern 3: Saga Pattern (Distributed Transactions)
+### 模式 3：Saga Pattern（分散式交易）
 
 ```python
 # Saga orchestration for order fulfillment
@@ -464,9 +464,9 @@ class OrderFulfillmentSaga:
         await payment_service.refund(context["transaction_id"])
 ```
 
-## Resilience Patterns
+## 韌性模式
 
-### Circuit Breaker Pattern
+### Circuit Breaker Pattern（斷路器模式）
 
 ```python
 from enum import Enum
@@ -553,33 +553,33 @@ async def call_payment_service(payment_data: dict):
     )
 ```
 
-## Resources
+## 參考資源
 
-- **references/service-decomposition-guide.md**: Breaking down monoliths
-- **references/communication-patterns.md**: Sync vs async patterns
-- **references/saga-implementation.md**: Distributed transactions
-- **assets/circuit-breaker.py**: Production circuit breaker
-- **assets/event-bus-template.py**: Kafka event bus implementation
-- **assets/api-gateway-template.py**: Complete API gateway
+- **references/service-decomposition-guide.md**：拆解單體應用程式
+- **references/communication-patterns.md**：同步與非同步模式
+- **references/saga-implementation.md**：分散式交易
+- **assets/circuit-breaker.py**：生產環境斷路器
+- **assets/event-bus-template.py**：Kafka 事件匯流排實作
+- **assets/api-gateway-template.py**：完整的 API 閘道
 
-## Best Practices
+## 最佳實務
 
-1. **Service Boundaries**: Align with business capabilities
-2. **Database Per Service**: No shared databases
-3. **API Contracts**: Versioned, backward compatible
-4. **Async When Possible**: Events over direct calls
-5. **Circuit Breakers**: Fail fast on service failures
-6. **Distributed Tracing**: Track requests across services
-7. **Service Registry**: Dynamic service discovery
-8. **Health Checks**: Liveness and readiness probes
+1. **服務邊界**：與業務能力對齊
+2. **每個服務一個資料庫**：不共用資料庫
+3. **API 契約**：版本化、向後相容
+4. **盡可能使用非同步**：事件優於直接呼叫
+5. **斷路器**：在服務失敗時快速失敗
+6. **分散式追蹤**：跨服務追蹤請求
+7. **服務註冊中心**：動態服務發現
+8. **健康檢查**：存活性和就緒性探測
 
-## Common Pitfalls
+## 常見陷阱
 
-- **Distributed Monolith**: Tightly coupled services
-- **Chatty Services**: Too many inter-service calls
-- **Shared Databases**: Tight coupling through data
-- **No Circuit Breakers**: Cascade failures
-- **Synchronous Everything**: Tight coupling, poor resilience
-- **Premature Microservices**: Starting with microservices
-- **Ignoring Network Failures**: Assuming reliable network
-- **No Compensation Logic**: Can't undo failed transactions
+- **分散式單體**：緊密耦合的服務
+- **過度頻繁的服務呼叫**：太多服務間呼叫
+- **共用資料庫**：透過資料緊密耦合
+- **沒有斷路器**：串聯失敗
+- **全部使用同步**：緊密耦合、韌性差
+- **過早使用微服務**：一開始就使用微服務
+- **忽略網路失敗**：假設網路可靠
+- **沒有補償邏輯**：無法復原失敗的交易

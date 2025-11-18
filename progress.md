@@ -3,7 +3,7 @@
 總檔案數: 307
 已完成: 8
 進行中: 0
-待處理: 283
+待處理: 259
 
 ## 檔案清單
 
@@ -31,30 +31,30 @@
 - [x] /home/user/agents/plugins/application-performance/agents/observability-engineer.md
 - [x] /home/user/agents/plugins/application-performance/agents/performance-engineer.md
 - [x] /home/user/agents/plugins/application-performance/commands/performance-optimization.md
-- [ ] /home/user/agents/plugins/arm-cortex-microcontrollers/agents/arm-cortex-expert.md
-- [ ] /home/user/agents/plugins/backend-api-security/agents/backend-architect.md
-- [ ] /home/user/agents/plugins/backend-api-security/agents/backend-security-coder.md
-- [ ] /home/user/agents/plugins/backend-development/agents/backend-architect.md
-- [ ] /home/user/agents/plugins/backend-development/agents/graphql-architect.md
-- [ ] /home/user/agents/plugins/backend-development/agents/tdd-orchestrator.md
-- [ ] /home/user/agents/plugins/backend-development/agents/temporal-python-pro.md
-- [ ] /home/user/agents/plugins/backend-development/commands/feature-development.md
-- [ ] /home/user/agents/plugins/backend-development/skills/api-design-principles/SKILL.md
-- [ ] /home/user/agents/plugins/backend-development/skills/api-design-principles/assets/api-design-checklist.md
-- [ ] /home/user/agents/plugins/backend-development/skills/api-design-principles/references/graphql-schema-design.md
-- [ ] /home/user/agents/plugins/backend-development/skills/api-design-principles/references/rest-best-practices.md
-- [ ] /home/user/agents/plugins/backend-development/skills/architecture-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/backend-development/skills/microservices-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/SKILL.md
-- [ ] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/resources/integration-testing.md
-- [ ] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/resources/local-setup.md
-- [ ] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/resources/replay-testing.md
-- [ ] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/resources/unit-testing.md
-- [ ] /home/user/agents/plugins/backend-development/skills/workflow-orchestration-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/blockchain-web3/agents/blockchain-developer.md
-- [ ] /home/user/agents/plugins/blockchain-web3/skills/defi-protocol-templates/SKILL.md
-- [ ] /home/user/agents/plugins/blockchain-web3/skills/nft-standards/SKILL.md
-- [ ] /home/user/agents/plugins/blockchain-web3/skills/solidity-security/SKILL.md
+- [x] /home/user/agents/plugins/arm-cortex-microcontrollers/agents/arm-cortex-expert.md
+- [x] /home/user/agents/plugins/backend-api-security/agents/backend-architect.md
+- [x] /home/user/agents/plugins/backend-api-security/agents/backend-security-coder.md
+- [x] /home/user/agents/plugins/backend-development/agents/backend-architect.md
+- [x] /home/user/agents/plugins/backend-development/agents/graphql-architect.md
+- [x] /home/user/agents/plugins/backend-development/agents/tdd-orchestrator.md
+- [x] /home/user/agents/plugins/backend-development/agents/temporal-python-pro.md
+- [x] /home/user/agents/plugins/backend-development/commands/feature-development.md
+- [x] /home/user/agents/plugins/backend-development/skills/api-design-principles/SKILL.md
+- [x] /home/user/agents/plugins/backend-development/skills/api-design-principles/assets/api-design-checklist.md
+- [x] /home/user/agents/plugins/backend-development/skills/api-design-principles/references/graphql-schema-design.md
+- [x] /home/user/agents/plugins/backend-development/skills/api-design-principles/references/rest-best-practices.md
+- [x] /home/user/agents/plugins/backend-development/skills/architecture-patterns/SKILL.md
+- [x] /home/user/agents/plugins/backend-development/skills/microservices-patterns/SKILL.md
+- [x] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/SKILL.md
+- [x] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/resources/integration-testing.md
+- [x] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/resources/local-setup.md
+- [x] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/resources/replay-testing.md
+- [x] /home/user/agents/plugins/backend-development/skills/temporal-python-testing/resources/unit-testing.md
+- [x] /home/user/agents/plugins/backend-development/skills/workflow-orchestration-patterns/SKILL.md
+- [x] /home/user/agents/plugins/blockchain-web3/agents/blockchain-developer.md
+- [x] /home/user/agents/plugins/blockchain-web3/skills/defi-protocol-templates/SKILL.md
+- [x] /home/user/agents/plugins/blockchain-web3/skills/nft-standards/SKILL.md
+- [x] /home/user/agents/plugins/blockchain-web3/skills/solidity-security/SKILL.md
 - [ ] /home/user/agents/plugins/blockchain-web3/skills/web3-testing/SKILL.md
 - [ ] /home/user/agents/plugins/business-analytics/agents/business-analyst.md
 - [ ] /home/user/agents/plugins/cicd-automation/agents/cloud-architect.md

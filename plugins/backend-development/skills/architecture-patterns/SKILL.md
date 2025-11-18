@@ -1,67 +1,67 @@
 ---
 name: architecture-patterns
-description: Implement proven backend architecture patterns including Clean Architecture, Hexagonal Architecture, and Domain-Driven Design. Use when architecting complex backend systems or refactoring existing applications for better maintainability.
+description: 實作經過驗證的後端架構模式，包括 Clean Architecture、Hexagonal Architecture 和 Domain-Driven Design。適用於設計複雜的後端系統或重構既有應用程式以提升可維護性。
 ---
 
-# Architecture Patterns
+# 架構模式
 
-Master proven backend architecture patterns including Clean Architecture, Hexagonal Architecture, and Domain-Driven Design to build maintainable, testable, and scalable systems.
+掌握經過驗證的後端架構模式，包括 Clean Architecture、Hexagonal Architecture 和 Domain-Driven Design，以建立可維護、可測試且可擴展的系統。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Designing new backend systems from scratch
-- Refactoring monolithic applications for better maintainability
-- Establishing architecture standards for your team
-- Migrating from tightly coupled to loosely coupled architectures
-- Implementing domain-driven design principles
-- Creating testable and mockable codebases
-- Planning microservices decomposition
+- 從零開始設計新的後端系統
+- 重構單體應用程式以提升可維護性
+- 為團隊建立架構標準
+- 從緊耦合架構遷移至鬆耦合架構
+- 實作領域驅動設計原則
+- 建立可測試和可模擬的程式碼庫
+- 規劃微服務分解策略
 
-## Core Concepts
+## 核心概念
 
 ### 1. Clean Architecture (Uncle Bob)
 
-**Layers (dependency flows inward):**
-- **Entities**: Core business models
-- **Use Cases**: Application business rules
-- **Interface Adapters**: Controllers, presenters, gateways
-- **Frameworks & Drivers**: UI, database, external services
+**分層架構（依賴關係由外向內流動）：**
+- **Entities**：核心業務模型
+- **Use Cases**：應用程式業務規則
+- **Interface Adapters**：控制器、呈現器、閘道器
+- **Frameworks & Drivers**：使用者介面、資料庫、外部服務
 
-**Key Principles:**
-- Dependencies point inward
-- Inner layers know nothing about outer layers
-- Business logic independent of frameworks
-- Testable without UI, database, or external services
+**核心原則：**
+- 依賴關係指向內層
+- 內層不知道外層的存在
+- 業務邏輯獨立於框架
+- 無需使用者介面、資料庫或外部服務即可測試
 
 ### 2. Hexagonal Architecture (Ports and Adapters)
 
-**Components:**
-- **Domain Core**: Business logic
-- **Ports**: Interfaces defining interactions
-- **Adapters**: Implementations of ports (database, REST, message queue)
+**組成元件：**
+- **Domain Core**：業務邏輯
+- **Ports**：定義互動方式的介面
+- **Adapters**：Port 的實作（資料庫、REST、訊息佇列）
 
-**Benefits:**
-- Swap implementations easily (mock for testing)
-- Technology-agnostic core
-- Clear separation of concerns
+**優勢：**
+- 輕鬆替換實作（用於測試的模擬）
+- 技術中立的核心
+- 清楚的關注點分離
 
 ### 3. Domain-Driven Design (DDD)
 
-**Strategic Patterns:**
-- **Bounded Contexts**: Separate models for different domains
-- **Context Mapping**: How contexts relate
-- **Ubiquitous Language**: Shared terminology
+**策略模式：**
+- **Bounded Contexts**：為不同領域分離模型
+- **Context Mapping**：上下文之間的關聯方式
+- **Ubiquitous Language**：共通術語
 
-**Tactical Patterns:**
-- **Entities**: Objects with identity
-- **Value Objects**: Immutable objects defined by attributes
-- **Aggregates**: Consistency boundaries
-- **Repositories**: Data access abstraction
-- **Domain Events**: Things that happened
+**戰術模式：**
+- **Entities**：具有識別性的物件
+- **Value Objects**：由屬性定義的不可變物件
+- **Aggregates**：一致性邊界
+- **Repositories**：資料存取抽象層
+- **Domain Events**：已發生的事件
 
-## Clean Architecture Pattern
+## Clean Architecture 模式
 
-### Directory Structure
+### 目錄結構
 ```
 app/
 ├── domain/           # Entities & business rules
@@ -93,7 +93,7 @@ app/
     └── logging.py
 ```
 
-### Implementation Example
+### 實作範例
 
 ```python
 # domain/entities/user.py
@@ -275,7 +275,7 @@ async def create_user(
     return {"user": response.user}
 ```
 
-## Hexagonal Architecture Pattern
+## Hexagonal Architecture 模式
 
 ```python
 # Core domain (hexagon center)
@@ -359,7 +359,7 @@ class MockPaymentAdapter(PaymentGatewayPort):
         return PaymentResult(success=True, transaction_id="mock-123")
 ```
 
-## Domain-Driven Design Pattern
+## Domain-Driven Design 模式
 
 ```python
 # Value Objects (immutable)
@@ -458,30 +458,30 @@ class OrderRepository:
         order._events.clear()
 ```
 
-## Resources
+## 參考資源
 
-- **references/clean-architecture-guide.md**: Detailed layer breakdown
-- **references/hexagonal-architecture-guide.md**: Ports and adapters patterns
-- **references/ddd-tactical-patterns.md**: Entities, value objects, aggregates
-- **assets/clean-architecture-template/**: Complete project structure
-- **assets/ddd-examples/**: Domain modeling examples
+- **references/clean-architecture-guide.md**：詳細的分層說明
+- **references/hexagonal-architecture-guide.md**：Ports and Adapters 模式
+- **references/ddd-tactical-patterns.md**：Entities、Value Objects、Aggregates
+- **assets/clean-architecture-template/**：完整專案結構
+- **assets/ddd-examples/**：領域建模範例
 
-## Best Practices
+## 最佳實務
 
-1. **Dependency Rule**: Dependencies always point inward
-2. **Interface Segregation**: Small, focused interfaces
-3. **Business Logic in Domain**: Keep frameworks out of core
-4. **Test Independence**: Core testable without infrastructure
-5. **Bounded Contexts**: Clear domain boundaries
-6. **Ubiquitous Language**: Consistent terminology
-7. **Thin Controllers**: Delegate to use cases
-8. **Rich Domain Models**: Behavior with data
+1. **依賴規則**：依賴關係永遠指向內層
+2. **介面隔離**：小而專注的介面
+3. **業務邏輯於領域層**：核心層保持框架獨立
+4. **測試獨立性**：核心層無需基礎設施即可測試
+5. **限界上下文**：明確的領域邊界
+6. **共通語言**：一致的術語
+7. **精簡控制器**：委派給使用案例
+8. **豐富的領域模型**：行為與資料並存
 
-## Common Pitfalls
+## 常見陷阱
 
-- **Anemic Domain**: Entities with only data, no behavior
-- **Framework Coupling**: Business logic depends on frameworks
-- **Fat Controllers**: Business logic in controllers
-- **Repository Leakage**: Exposing ORM objects
-- **Missing Abstractions**: Concrete dependencies in core
-- **Over-Engineering**: Clean architecture for simple CRUD
+- **貧血領域模型**：實體只有資料，沒有行為
+- **框架耦合**：業務邏輯依賴於框架
+- **肥大控制器**：業務邏輯放在控制器中
+- **儲存庫洩漏**：暴露 ORM 物件
+- **缺少抽象層**：核心層使用具體依賴
+- **過度工程**：簡單的 CRUD 使用 Clean Architecture

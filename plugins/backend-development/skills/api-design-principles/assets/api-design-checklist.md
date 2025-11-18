@@ -1,136 +1,136 @@
-# API Design Checklist
+# API 設計檢查清單
 
-## Pre-Implementation Review
+## 實作前審查
 
-### Resource Design
-- [ ] Resources are nouns, not verbs
-- [ ] Plural names for collections
-- [ ] Consistent naming across all endpoints
-- [ ] Clear resource hierarchy (avoid deep nesting >2 levels)
-- [ ] All CRUD operations properly mapped to HTTP methods
+### 資源設計
+- [ ] 資源使用名詞而非動詞
+- [ ] 集合使用複數名稱
+- [ ] 所有端點使用一致的命名
+- [ ] 清楚的資源階層（避免深度巢狀超過 2 層）
+- [ ] 所有 CRUD 操作正確對應到 HTTP 方法
 
-### HTTP Methods
-- [ ] GET for retrieval (safe, idempotent)
-- [ ] POST for creation
-- [ ] PUT for full replacement (idempotent)
-- [ ] PATCH for partial updates
-- [ ] DELETE for removal (idempotent)
+### HTTP 方法
+- [ ] GET 用於取得（安全、冪等）
+- [ ] POST 用於建立
+- [ ] PUT 用於完整替換（冪等）
+- [ ] PATCH 用於部分更新
+- [ ] DELETE 用於刪除（冪等）
 
-### Status Codes
-- [ ] 200 OK for successful GET/PATCH/PUT
-- [ ] 201 Created for POST
-- [ ] 204 No Content for DELETE
-- [ ] 400 Bad Request for malformed requests
-- [ ] 401 Unauthorized for missing auth
-- [ ] 403 Forbidden for insufficient permissions
-- [ ] 404 Not Found for missing resources
-- [ ] 422 Unprocessable Entity for validation errors
-- [ ] 429 Too Many Requests for rate limiting
-- [ ] 500 Internal Server Error for server issues
+### 狀態碼
+- [ ] 200 OK 用於成功的 GET/PATCH/PUT
+- [ ] 201 Created 用於 POST
+- [ ] 204 No Content 用於 DELETE
+- [ ] 400 Bad Request 用於格式錯誤的請求
+- [ ] 401 Unauthorized 用於缺少驗證
+- [ ] 403 Forbidden 用於權限不足
+- [ ] 404 Not Found 用於找不到資源
+- [ ] 422 Unprocessable Entity 用於驗證錯誤
+- [ ] 429 Too Many Requests 用於速率限制
+- [ ] 500 Internal Server Error 用於伺服器問題
 
-### Pagination
-- [ ] All collection endpoints paginated
-- [ ] Default page size defined (e.g., 20)
-- [ ] Maximum page size enforced (e.g., 100)
-- [ ] Pagination metadata included (total, pages, etc.)
-- [ ] Cursor-based or offset-based pattern chosen
+### 分頁
+- [ ] 所有集合端點都有分頁
+- [ ] 定義預設頁面大小（例如 20）
+- [ ] 強制執行最大頁面大小（例如 100）
+- [ ] 包含分頁元資料（總數、頁數等）
+- [ ] 選擇基於游標或基於偏移的模式
 
-### Filtering & Sorting
-- [ ] Query parameters for filtering
-- [ ] Sort parameter supported
-- [ ] Search parameter for full-text search
-- [ ] Field selection supported (sparse fieldsets)
+### 篩選與排序
+- [ ] 使用查詢參數進行篩選
+- [ ] 支援排序參數
+- [ ] 支援全文搜尋參數
+- [ ] 支援欄位選擇（稀疏欄位集）
 
-### Versioning
-- [ ] Versioning strategy defined (URL/header/query)
-- [ ] Version included in all endpoints
-- [ ] Deprecation policy documented
+### 版本控制
+- [ ] 定義版本控制策略（URL/標頭/查詢）
+- [ ] 所有端點都包含版本
+- [ ] 記錄棄用政策
 
-### Error Handling
-- [ ] Consistent error response format
-- [ ] Detailed error messages
-- [ ] Field-level validation errors
-- [ ] Error codes for client handling
-- [ ] Timestamps in error responses
+### 錯誤處理
+- [ ] 一致的錯誤回應格式
+- [ ] 詳細的錯誤訊息
+- [ ] 欄位層級的驗證錯誤
+- [ ] 用於客戶端處理的錯誤代碼
+- [ ] 錯誤回應中包含時間戳記
 
-### Authentication & Authorization
-- [ ] Authentication method defined (Bearer token, API key)
-- [ ] Authorization checks on all endpoints
-- [ ] 401 vs 403 used correctly
-- [ ] Token expiration handled
+### 身份驗證與授權
+- [ ] 定義身份驗證方法（Bearer token、API key）
+- [ ] 所有端點都進行授權檢查
+- [ ] 正確使用 401 與 403
+- [ ] 處理權杖過期
 
-### Rate Limiting
-- [ ] Rate limits defined per endpoint/user
-- [ ] Rate limit headers included
-- [ ] 429 status code for exceeded limits
-- [ ] Retry-After header provided
+### 速率限制
+- [ ] 針對每個端點/使用者定義速率限制
+- [ ] 包含速率限制標頭
+- [ ] 超過限制時使用 429 狀態碼
+- [ ] 提供 Retry-After 標頭
 
-### Documentation
-- [ ] OpenAPI/Swagger spec generated
-- [ ] All endpoints documented
-- [ ] Request/response examples provided
-- [ ] Error responses documented
-- [ ] Authentication flow documented
+### 文件
+- [ ] 產生 OpenAPI/Swagger 規格
+- [ ] 記錄所有端點
+- [ ] 提供請求/回應範例
+- [ ] 記錄錯誤回應
+- [ ] 記錄身份驗證流程
 
-### Testing
-- [ ] Unit tests for business logic
-- [ ] Integration tests for endpoints
-- [ ] Error scenarios tested
-- [ ] Edge cases covered
-- [ ] Performance tests for heavy endpoints
+### 測試
+- [ ] 商業邏輯的單元測試
+- [ ] 端點的整合測試
+- [ ] 測試錯誤情境
+- [ ] 涵蓋邊界情況
+- [ ] 高負載端點的效能測試
 
-### Security
-- [ ] Input validation on all fields
-- [ ] SQL injection prevention
-- [ ] XSS prevention
-- [ ] CORS configured correctly
-- [ ] HTTPS enforced
-- [ ] Sensitive data not in URLs
-- [ ] No secrets in responses
+### 安全性
+- [ ] 所有欄位進行輸入驗證
+- [ ] 防止 SQL 注入
+- [ ] 防止 XSS
+- [ ] 正確設定 CORS
+- [ ] 強制使用 HTTPS
+- [ ] 敏感資料不放在 URL 中
+- [ ] 回應中不包含機密資訊
 
-### Performance
-- [ ] Database queries optimized
-- [ ] N+1 queries prevented
-- [ ] Caching strategy defined
-- [ ] Cache headers set appropriately
-- [ ] Large responses paginated
+### 效能
+- [ ] 最佳化資料庫查詢
+- [ ] 防止 N+1 查詢
+- [ ] 定義快取策略
+- [ ] 適當設定快取標頭
+- [ ] 大型回應進行分頁
 
-### Monitoring
-- [ ] Logging implemented
-- [ ] Error tracking configured
-- [ ] Performance metrics collected
-- [ ] Health check endpoint available
-- [ ] Alerts configured for errors
+### 監控
+- [ ] 實作日誌記錄
+- [ ] 設定錯誤追蹤
+- [ ] 收集效能指標
+- [ ] 提供健康檢查端點
+- [ ] 設定錯誤警報
 
-## GraphQL-Specific Checks
+## GraphQL 專屬檢查
 
-### Schema Design
-- [ ] Schema-first approach used
-- [ ] Types properly defined
-- [ ] Non-null vs nullable decided
-- [ ] Interfaces/unions used appropriately
-- [ ] Custom scalars defined
+### Schema 設計
+- [ ] 使用 Schema 優先方法
+- [ ] 正確定義型別
+- [ ] 決定非空值與可空值
+- [ ] 適當使用介面/聯集
+- [ ] 定義自訂純量
 
-### Queries
-- [ ] Query depth limiting
-- [ ] Query complexity analysis
-- [ ] DataLoaders prevent N+1
-- [ ] Pagination pattern chosen (Relay/offset)
+### 查詢
+- [ ] 限制查詢深度
+- [ ] 查詢複雜度分析
+- [ ] DataLoaders 防止 N+1
+- [ ] 選擇分頁模式（Relay/offset）
 
 ### Mutations
-- [ ] Input types defined
-- [ ] Payload types with errors
-- [ ] Optimistic response support
-- [ ] Idempotency considered
+- [ ] 定義輸入型別
+- [ ] 包含錯誤的回應型別
+- [ ] 支援樂觀回應
+- [ ] 考慮冪等性
 
-### Performance
-- [ ] DataLoader for all relationships
-- [ ] Query batching enabled
-- [ ] Persisted queries considered
-- [ ] Response caching implemented
+### 效能
+- [ ] 所有關聯都使用 DataLoader
+- [ ] 啟用查詢批次處理
+- [ ] 考慮持久化查詢
+- [ ] 實作回應快取
 
-### Documentation
-- [ ] All fields documented
-- [ ] Deprecations marked
-- [ ] Examples provided
-- [ ] Schema introspection enabled
+### 文件
+- [ ] 記錄所有欄位
+- [ ] 標記棄用項目
+- [ ] 提供範例
+- [ ] 啟用 Schema 內省

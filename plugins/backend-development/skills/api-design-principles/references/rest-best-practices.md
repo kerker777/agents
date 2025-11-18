@@ -1,42 +1,42 @@
-# REST API Best Practices
+# REST API 最佳實踐
 
-## URL Structure
+## URL 結構
 
-### Resource Naming
+### 資源命名
 ```
-# Good - Plural nouns
+# 良好做法 - 使用複數名詞
 GET /api/users
 GET /api/orders
 GET /api/products
 
-# Bad - Verbs or mixed conventions
+# 不良做法 - 使用動詞或混合慣例
 GET /api/getUser
-GET /api/user  (inconsistent singular)
+GET /api/user  (不一致的單數形式)
 POST /api/createOrder
 ```
 
-### Nested Resources
+### 巢狀資源
 ```
-# Shallow nesting (preferred)
+# 淺層巢狀（建議使用）
 GET /api/users/{id}/orders
 GET /api/orders/{id}
 
-# Deep nesting (avoid)
+# 深層巢狀（應避免）
 GET /api/users/{id}/orders/{orderId}/items/{itemId}/reviews
-# Better:
+# 更好的做法：
 GET /api/order-items/{id}/reviews
 ```
 
-## HTTP Methods and Status Codes
+## HTTP 方法與狀態碼
 
-### GET - Retrieve Resources
+### GET - 取得資源
 ```
-GET /api/users              → 200 OK (with list)
-GET /api/users/{id}         → 200 OK or 404 Not Found
-GET /api/users?page=2       → 200 OK (paginated)
+GET /api/users              → 200 OK (包含清單)
+GET /api/users/{id}         → 200 OK 或 404 Not Found
+GET /api/users?page=2       → 200 OK (分頁)
 ```
 
-### POST - Create Resources
+### POST - 建立資源
 ```
 POST /api/users
   Body: {"name": "John", "email": "john@example.com"}
@@ -44,61 +44,61 @@ POST /api/users
   Location: /api/users/123
   Body: {"id": "123", "name": "John", ...}
 
-POST /api/users (validation error)
+POST /api/users (驗證錯誤)
   → 422 Unprocessable Entity
   Body: {"errors": [...]}
 ```
 
-### PUT - Replace Resources
+### PUT - 替換資源
 ```
 PUT /api/users/{id}
-  Body: {complete user object}
-  → 200 OK (updated)
-  → 404 Not Found (doesn't exist)
+  Body: {完整的使用者物件}
+  → 200 OK (已更新)
+  → 404 Not Found (不存在)
 
-# Must include ALL fields
+# 必須包含所有欄位
 ```
 
-### PATCH - Partial Update
+### PATCH - 部分更新
 ```
 PATCH /api/users/{id}
-  Body: {"name": "Jane"}  (only changed fields)
+  Body: {"name": "Jane"}  (僅變更的欄位)
   → 200 OK
   → 404 Not Found
 ```
 
-### DELETE - Remove Resources
+### DELETE - 移除資源
 ```
 DELETE /api/users/{id}
-  → 204 No Content (deleted)
+  → 204 No Content (已刪除)
   → 404 Not Found
-  → 409 Conflict (can't delete due to references)
+  → 409 Conflict (因參考關係無法刪除)
 ```
 
-## Filtering, Sorting, and Searching
+## 篩選、排序與搜尋
 
-### Query Parameters
+### 查詢參數
 ```
-# Filtering
+# 篩選
 GET /api/users?status=active
 GET /api/users?role=admin&status=active
 
-# Sorting
+# 排序
 GET /api/users?sort=created_at
-GET /api/users?sort=-created_at  (descending)
+GET /api/users?sort=-created_at  (降冪)
 GET /api/users?sort=name,created_at
 
-# Searching
+# 搜尋
 GET /api/users?search=john
 GET /api/users?q=john
 
-# Field selection (sparse fieldsets)
+# 欄位選擇（稀疏欄位集）
 GET /api/users?fields=id,name,email
 ```
 
-## Pagination Patterns
+## 分頁模式
 
-### Offset-Based Pagination
+### 基於偏移量的分頁
 ```python
 GET /api/users?page=2&page_size=20
 
@@ -112,7 +112,7 @@ Response:
 }
 ```
 
-### Cursor-Based Pagination (for large datasets)
+### 基於遊標的分頁（適用於大型資料集）
 ```python
 GET /api/users?limit=20&cursor=eyJpZCI6MTIzfQ
 
@@ -124,7 +124,7 @@ Response:
 }
 ```
 
-### Link Header Pagination (RESTful)
+### Link Header 分頁（RESTful）
 ```
 GET /api/users?page=2
 
@@ -135,35 +135,35 @@ Link: <https://api.example.com/users?page=3>; rel="next",
       <https://api.example.com/users?page=8>; rel="last"
 ```
 
-## Versioning Strategies
+## 版本控制策略
 
-### URL Versioning (Recommended)
+### URL 版本控制（建議使用）
 ```
 /api/v1/users
 /api/v2/users
 
-Pros: Clear, easy to route
-Cons: Multiple URLs for same resource
+優點：清楚明確，易於路由
+缺點：相同資源有多個 URL
 ```
 
-### Header Versioning
+### Header 版本控制
 ```
 GET /api/users
 Accept: application/vnd.api+json; version=2
 
-Pros: Clean URLs
-Cons: Less visible, harder to test
+優點：URL 簡潔
+缺點：較不明顯，測試較困難
 ```
 
-### Query Parameter
+### 查詢參數
 ```
 GET /api/users?version=2
 
-Pros: Easy to test
-Cons: Optional parameter can be forgotten
+優點：易於測試
+缺點：可選參數容易被遺忘
 ```
 
-## Rate Limiting
+## 速率限制
 
 ### Headers
 ```
@@ -171,12 +171,12 @@ X-RateLimit-Limit: 1000
 X-RateLimit-Remaining: 742
 X-RateLimit-Reset: 1640000000
 
-Response when limited:
+被限制時的回應：
 429 Too Many Requests
 Retry-After: 3600
 ```
 
-### Implementation Pattern
+### 實作模式
 ```python
 from fastapi import HTTPException, Request
 from datetime import datetime, timedelta
@@ -216,14 +216,14 @@ async def get_users(request: Request):
     return {"users": [...]}
 ```
 
-## Authentication and Authorization
+## 認證與授權
 
 ### Bearer Token
 ```
 Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
 
-401 Unauthorized - Missing/invalid token
-403 Forbidden - Valid token, insufficient permissions
+401 Unauthorized - 缺少或無效的 token
+403 Forbidden - Token 有效，但權限不足
 ```
 
 ### API Keys
@@ -231,9 +231,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
 X-API-Key: your-api-key-here
 ```
 
-## Error Response Format
+## 錯誤回應格式
 
-### Consistent Structure
+### 一致的結構
 ```json
 {
   "error": {
@@ -252,39 +252,39 @@ X-API-Key: your-api-key-here
 }
 ```
 
-### Status Code Guidelines
-- `200 OK`: Successful GET, PATCH, PUT
-- `201 Created`: Successful POST
-- `204 No Content`: Successful DELETE
-- `400 Bad Request`: Malformed request
-- `401 Unauthorized`: Authentication required
-- `403 Forbidden`: Authenticated but not authorized
-- `404 Not Found`: Resource doesn't exist
-- `409 Conflict`: State conflict (duplicate email, etc.)
-- `422 Unprocessable Entity`: Validation errors
-- `429 Too Many Requests`: Rate limited
-- `500 Internal Server Error`: Server error
-- `503 Service Unavailable`: Temporary downtime
+### 狀態碼指南
+- `200 OK`：成功的 GET、PATCH、PUT
+- `201 Created`：成功的 POST
+- `204 No Content`：成功的 DELETE
+- `400 Bad Request`：格式錯誤的請求
+- `401 Unauthorized`：需要驗證
+- `403 Forbidden`：已驗證但未授權
+- `404 Not Found`：資源不存在
+- `409 Conflict`：狀態衝突（重複的電子郵件等）
+- `422 Unprocessable Entity`：驗證錯誤
+- `429 Too Many Requests`：速率限制
+- `500 Internal Server Error`：伺服器錯誤
+- `503 Service Unavailable`：暫時停機
 
-## Caching
+## 快取
 
 ### Cache Headers
 ```
-# Client caching
+# 用戶端快取
 Cache-Control: public, max-age=3600
 
-# No caching
+# 不快取
 Cache-Control: no-cache, no-store, must-revalidate
 
-# Conditional requests
+# 條件式請求
 ETag: "33a64df551425fcc55e4d42a148795d9f25f89d4"
 If-None-Match: "33a64df551425fcc55e4d42a148795d9f25f89d4"
 → 304 Not Modified
 ```
 
-## Bulk Operations
+## 批量操作
 
-### Batch Endpoints
+### 批次端點
 ```python
 POST /api/users/batch
 {
@@ -303,18 +303,18 @@ Response:
 }
 ```
 
-## Idempotency
+## 冪等性
 
-### Idempotency Keys
+### 冪等性金鑰
 ```
 POST /api/orders
 Idempotency-Key: unique-key-123
 
-If duplicate request:
-→ 200 OK (return cached response)
+如果是重複請求：
+→ 200 OK (回傳快取的回應)
 ```
 
-## CORS Configuration
+## CORS 設定
 
 ```python
 from fastapi.middleware.cors import CORSMiddleware
@@ -328,7 +328,7 @@ app.add_middleware(
 )
 ```
 
-## Documentation with OpenAPI
+## 使用 OpenAPI 撰寫文件
 
 ```python
 from fastapi import FastAPI
@@ -361,7 +361,7 @@ async def get_user(
     pass
 ```
 
-## Health and Monitoring Endpoints
+## 健康檢查與監控端點
 
 ```python
 @app.get("/health")

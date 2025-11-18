@@ -1,95 +1,95 @@
 ---
 name: api-design-principles
-description: Master REST and GraphQL API design principles to build intuitive, scalable, and maintainable APIs that delight developers. Use when designing new APIs, reviewing API specifications, or establishing API design standards.
+description: 精通 REST 和 GraphQL API 設計原則，打造直覺、可擴展且易於維護的 API，讓開發者愛不釋手。適用於設計新 API、審查 API 規格或建立 API 設計標準時使用。
 ---
 
-# API Design Principles
+# API 設計原則
 
-Master REST and GraphQL API design principles to build intuitive, scalable, and maintainable APIs that delight developers and stand the test of time.
+精通 REST 和 GraphQL API 設計原則，打造直覺、可擴展且易於維護的 API，讓開發者愛不釋手，並經得起時間的考驗。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Designing new REST or GraphQL APIs
-- Refactoring existing APIs for better usability
-- Establishing API design standards for your team
-- Reviewing API specifications before implementation
-- Migrating between API paradigms (REST to GraphQL, etc.)
-- Creating developer-friendly API documentation
-- Optimizing APIs for specific use cases (mobile, third-party integrations)
+- 設計新的 REST 或 GraphQL API
+- 重構現有 API 以提升可用性
+- 為團隊建立 API 設計標準
+- 在實作前審查 API 規格
+- 在不同 API 範式間遷移（REST 到 GraphQL 等）
+- 建立對開發者友善的 API 文件
+- 針對特定使用場景優化 API（行動裝置、第三方整合）
 
-## Core Concepts
+## 核心概念
 
-### 1. RESTful Design Principles
+### 1. RESTful 設計原則
 
-**Resource-Oriented Architecture**
-- Resources are nouns (users, orders, products), not verbs
-- Use HTTP methods for actions (GET, POST, PUT, PATCH, DELETE)
-- URLs represent resource hierarchies
-- Consistent naming conventions
+**資源導向架構**
+- 資源應為名詞（users、orders、products），而非動詞
+- 使用 HTTP 方法來表示動作（GET、POST、PUT、PATCH、DELETE）
+- URL 代表資源階層
+- 一致的命名慣例
 
-**HTTP Methods Semantics:**
-- `GET`: Retrieve resources (idempotent, safe)
-- `POST`: Create new resources
-- `PUT`: Replace entire resource (idempotent)
-- `PATCH`: Partial resource updates
-- `DELETE`: Remove resources (idempotent)
+**HTTP 方法語意：**
+- `GET`：取得資源（冪等、安全）
+- `POST`：建立新資源
+- `PUT`：取代整個資源（冪等）
+- `PATCH`：部分更新資源
+- `DELETE`：移除資源（冪等）
 
-### 2. GraphQL Design Principles
+### 2. GraphQL 設計原則
 
-**Schema-First Development**
-- Types define your domain model
-- Queries for reading data
-- Mutations for modifying data
-- Subscriptions for real-time updates
+**Schema 優先開發**
+- 型別定義你的領域模型
+- 使用 Query 讀取資料
+- 使用 Mutation 修改資料
+- 使用 Subscription 進行即時更新
 
-**Query Structure:**
-- Clients request exactly what they need
-- Single endpoint, multiple operations
-- Strongly typed schema
-- Introspection built-in
+**Query 結構：**
+- 客戶端只請求所需的資料
+- 單一端點，多重操作
+- 強型別 schema
+- 內建自省功能
 
-### 3. API Versioning Strategies
+### 3. API 版本控制策略
 
-**URL Versioning:**
+**URL 版本控制：**
 ```
 /api/v1/users
 /api/v2/users
 ```
 
-**Header Versioning:**
+**Header 版本控制：**
 ```
 Accept: application/vnd.api+json; version=1
 ```
 
-**Query Parameter Versioning:**
+**Query 參數版本控制：**
 ```
 /api/users?version=1
 ```
 
-## REST API Design Patterns
+## REST API 設計模式
 
-### Pattern 1: Resource Collection Design
+### 模式 1：資源集合設計
 
 ```python
-# Good: Resource-oriented endpoints
-GET    /api/users              # List users (with pagination)
-POST   /api/users              # Create user
-GET    /api/users/{id}         # Get specific user
-PUT    /api/users/{id}         # Replace user
-PATCH  /api/users/{id}         # Update user fields
-DELETE /api/users/{id}         # Delete user
+# 良好：資源導向端點
+GET    /api/users              # 列出使用者（含分頁）
+POST   /api/users              # 建立使用者
+GET    /api/users/{id}         # 取得特定使用者
+PUT    /api/users/{id}         # 取代使用者
+PATCH  /api/users/{id}         # 更新使用者欄位
+DELETE /api/users/{id}         # 刪除使用者
 
-# Nested resources
-GET    /api/users/{id}/orders  # Get user's orders
-POST   /api/users/{id}/orders  # Create order for user
+# 巢狀資源
+GET    /api/users/{id}/orders  # 取得使用者的訂單
+POST   /api/users/{id}/orders  # 為使用者建立訂單
 
-# Bad: Action-oriented endpoints (avoid)
+# 不良：動作導向端點（應避免）
 POST   /api/createUser
 POST   /api/getUserById
 POST   /api/deleteUser
 ```
 
-### Pattern 2: Pagination and Filtering
+### 模式 2：分頁與篩選
 
 ```python
 from typing import List, Optional
@@ -150,7 +150,7 @@ async def list_users(
     )
 ```
 
-### Pattern 3: Error Handling and Status Codes
+### 模式 3：錯誤處理與狀態碼
 
 ```python
 from fastapi import HTTPException, status
@@ -211,7 +211,7 @@ async def get_user(user_id: str):
     return user
 ```
 
-### Pattern 4: HATEOAS (Hypermedia as the Engine of Application State)
+### 模式 4：HATEOAS（Hypermedia as the Engine of Application State）
 
 ```python
 class UserResponse(BaseModel):
@@ -241,9 +241,9 @@ class UserResponse(BaseModel):
         )
 ```
 
-## GraphQL Design Patterns
+## GraphQL 設計模式
 
-### Pattern 1: Schema Design
+### 模式 1：Schema 設計
 
 ```graphql
 # schema.graphql
@@ -348,7 +348,7 @@ type Error {
 }
 ```
 
-### Pattern 2: Resolver Design
+### 模式 2：Resolver 設計
 
 ```python
 from typing import Optional, List
@@ -441,7 +441,7 @@ async def resolve_create_user(obj, info, input: dict) -> dict:
         }
 ```
 
-### Pattern 3: DataLoader (N+1 Problem Prevention)
+### 模式 3：DataLoader（預防 N+1 問題）
 
 ```python
 from aiodataloader import DataLoader
@@ -486,42 +486,42 @@ def create_context():
     }
 ```
 
-## Best Practices
+## 最佳實務
 
 ### REST APIs
-1. **Consistent Naming**: Use plural nouns for collections (`/users`, not `/user`)
-2. **Stateless**: Each request contains all necessary information
-3. **Use HTTP Status Codes Correctly**: 2xx success, 4xx client errors, 5xx server errors
-4. **Version Your API**: Plan for breaking changes from day one
-5. **Pagination**: Always paginate large collections
-6. **Rate Limiting**: Protect your API with rate limits
-7. **Documentation**: Use OpenAPI/Swagger for interactive docs
+1. **一致的命名**：集合使用複數名詞（`/users`，而非 `/user`）
+2. **無狀態**：每個請求都包含所有必要資訊
+3. **正確使用 HTTP 狀態碼**：2xx 成功、4xx 客戶端錯誤、5xx 伺服器錯誤
+4. **為 API 加上版本**：從第一天就規劃好重大變更
+5. **分頁**：大型集合務必使用分頁
+6. **速率限制**：使用速率限制保護你的 API
+7. **文件**：使用 OpenAPI/Swagger 建立互動式文件
 
 ### GraphQL APIs
-1. **Schema First**: Design schema before writing resolvers
-2. **Avoid N+1**: Use DataLoaders for efficient data fetching
-3. **Input Validation**: Validate at schema and resolver levels
-4. **Error Handling**: Return structured errors in mutation payloads
-5. **Pagination**: Use cursor-based pagination (Relay spec)
-6. **Deprecation**: Use `@deprecated` directive for gradual migration
-7. **Monitoring**: Track query complexity and execution time
+1. **Schema 優先**：在撰寫 resolver 前先設計 schema
+2. **避免 N+1**：使用 DataLoader 進行高效的資料擷取
+3. **輸入驗證**：在 schema 和 resolver 層級進行驗證
+4. **錯誤處理**：在 mutation payload 中回傳結構化錯誤
+5. **分頁**：使用游標式分頁（Relay 規範）
+6. **棄用**：使用 `@deprecated` 指令進行漸進式遷移
+7. **監控**：追蹤查詢複雜度和執行時間
 
-## Common Pitfalls
+## 常見陷阱
 
-- **Over-fetching/Under-fetching (REST)**: Fixed in GraphQL but requires DataLoaders
-- **Breaking Changes**: Version APIs or use deprecation strategies
-- **Inconsistent Error Formats**: Standardize error responses
-- **Missing Rate Limits**: APIs without limits are vulnerable to abuse
-- **Poor Documentation**: Undocumented APIs frustrate developers
-- **Ignoring HTTP Semantics**: POST for idempotent operations breaks expectations
-- **Tight Coupling**: API structure shouldn't mirror database schema
+- **過度擷取/擷取不足（REST）**：GraphQL 可解決此問題，但需要 DataLoader
+- **重大變更**：為 API 加上版本或使用棄用策略
+- **不一致的錯誤格式**：標準化錯誤回應
+- **缺少速率限制**：沒有限制的 API 容易遭到濫用
+- **文件不足**：缺乏文件的 API 會讓開發者感到挫折
+- **忽略 HTTP 語意**：對冪等操作使用 POST 會違反預期
+- **緊密耦合**：API 結構不應直接對應資料庫 schema
 
-## Resources
+## 資源
 
-- **references/rest-best-practices.md**: Comprehensive REST API design guide
-- **references/graphql-schema-design.md**: GraphQL schema patterns and anti-patterns
-- **references/api-versioning-strategies.md**: Versioning approaches and migration paths
-- **assets/rest-api-template.py**: FastAPI REST API template
-- **assets/graphql-schema-template.graphql**: Complete GraphQL schema example
-- **assets/api-design-checklist.md**: Pre-implementation review checklist
-- **scripts/openapi-generator.py**: Generate OpenAPI specs from code
+- **references/rest-best-practices.md**：完整的 REST API 設計指南
+- **references/graphql-schema-design.md**：GraphQL schema 模式與反模式
+- **references/api-versioning-strategies.md**：版本控制方法與遷移路徑
+- **assets/rest-api-template.py**：FastAPI REST API 範本
+- **assets/graphql-schema-template.graphql**：完整的 GraphQL schema 範例
+- **assets/api-design-checklist.md**：實作前審查檢查清單
+- **scripts/openapi-generator.py**：從程式碼產生 OpenAPI 規格

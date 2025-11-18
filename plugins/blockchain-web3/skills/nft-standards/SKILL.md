@@ -1,22 +1,22 @@
 ---
 name: nft-standards
-description: Implement NFT standards (ERC-721, ERC-1155) with proper metadata handling, minting strategies, and marketplace integration. Use when creating NFT contracts, building NFT marketplaces, or implementing digital asset systems.
+description: 實作 NFT 標準（ERC-721、ERC-1155），包含適當的元資料處理、鑄造策略及市場整合。適用於建立 NFT 合約、開發 NFT 市場或實作數位資產系統。
 ---
 
-# NFT Standards
+# NFT 標準
 
-Master ERC-721 and ERC-1155 NFT standards, metadata best practices, and advanced NFT features.
+精通 ERC-721 和 ERC-1155 NFT 標準、元資料最佳實務及進階 NFT 功能。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Creating NFT collections (art, gaming, collectibles)
-- Implementing marketplace functionality
-- Building on-chain or off-chain metadata
-- Creating soulbound tokens (non-transferable)
-- Implementing royalties and revenue sharing
-- Developing dynamic/evolving NFTs
+- 建立 NFT 收藏品（藝術、遊戲、收藏品）
+- 實作市場功能
+- 建立鏈上或鏈下元資料
+- 建立靈魂綁定代幣（不可轉移）
+- 實作版稅及收益分享
+- 開發動態/演化 NFT
 
-## ERC-721 (Non-Fungible Token Standard)
+## ERC-721（非同質化代幣標準）
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -51,11 +51,11 @@ contract MyNFT is ERC721URIStorage, ERC721Enumerable, Ownable {
     }
 
     function generateTokenURI(uint256 tokenId) internal pure returns (string memory) {
-        // Return IPFS URI or on-chain metadata
+        // 回傳 IPFS URI 或鏈上元資料
         return string(abi.encodePacked("ipfs://QmHash/", Strings.toString(tokenId), ".json"));
     }
 
-    // Required overrides
+    // 必要的覆寫
     function _beforeTokenTransfer(
         address from,
         address to,
@@ -88,7 +88,7 @@ contract MyNFT is ERC721URIStorage, ERC721Enumerable, Ownable {
 }
 ```
 
-## ERC-1155 (Multi-Token Standard)
+## ERC-1155（多代幣標準）
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -147,13 +147,13 @@ contract GameItems is ERC1155, Ownable {
 }
 ```
 
-## Metadata Standards
+## 元資料標準
 
-### Off-Chain Metadata (IPFS)
+### 鏈下元資料（IPFS）
 ```json
 {
   "name": "NFT #1",
-  "description": "Description of the NFT",
+  "description": "NFT 的描述",
   "image": "ipfs://QmImageHash",
   "attributes": [
     {
@@ -174,7 +174,7 @@ contract GameItems is ERC1155, Ownable {
 }
 ```
 
-### On-Chain Metadata
+### 鏈上元資料
 ```solidity
 contract OnChainNFT is ERC721 {
     struct Traits {
@@ -209,13 +209,13 @@ contract OnChainNFT is ERC721 {
     }
 
     function generateSVG(Traits memory traits) internal pure returns (string memory) {
-        // Generate SVG based on traits
+        // 根據特徵生成 SVG
         return "...";
     }
 }
 ```
 
-## Royalties (EIP-2981)
+## 版稅（EIP-2981）
 
 ```solidity
 import "@openzeppelin/contracts/interfaces/IERC2981.sol";
@@ -238,7 +238,7 @@ contract NFTWithRoyalties is ERC721, IERC2981 {
     }
 
     function setRoyalty(address recipient, uint96 fee) external onlyOwner {
-        require(fee <= 1000, "Royalty fee too high"); // Max 10%
+        require(fee <= 1000, "Royalty fee too high"); // 最高 10%
         royaltyRecipient = recipient;
         royaltyFee = fee;
     }
@@ -255,7 +255,7 @@ contract NFTWithRoyalties is ERC721, IERC2981 {
 }
 ```
 
-## Soulbound Tokens (Non-Transferable)
+## 靈魂綁定代幣（不可轉移）
 
 ```solidity
 contract SoulboundToken is ERC721 {
@@ -276,7 +276,7 @@ contract SoulboundToken is ERC721 {
         _safeMint(to, tokenId);
     }
 
-    // Burn is allowed (user can destroy their SBT)
+    // 允許銷毀（使用者可以銷毀自己的 SBT）
     function burn(uint256 tokenId) external {
         require(ownerOf(tokenId) == msg.sender, "Not token owner");
         _burn(tokenId);
@@ -284,7 +284,7 @@ contract SoulboundToken is ERC721 {
 }
 ```
 
-## Dynamic NFTs
+## 動態 NFT
 
 ```solidity
 contract DynamicNFT is ERC721 {
@@ -302,7 +302,7 @@ contract DynamicNFT is ERC721 {
         TokenState storage state = tokenStates[tokenId];
         state.experience += exp;
 
-        // Level up logic
+        // 升級邏輯
         if (state.experience >= state.level * 100) {
             state.level++;
         }
@@ -313,7 +313,7 @@ contract DynamicNFT is ERC721 {
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         TokenState memory state = tokenStates[tokenId];
 
-        // Generate metadata based on current state
+        // 根據當前狀態生成元資料
         return generateMetadata(tokenId, state);
     }
 
@@ -322,13 +322,13 @@ contract DynamicNFT is ERC721 {
         pure
         returns (string memory)
     {
-        // Dynamic metadata generation
+        // 動態元資料生成
         return "";
     }
 }
 ```
 
-## Gas-Optimized Minting (ERC721A)
+## Gas 最佳化鑄造（ERC721A）
 
 ```solidity
 import "erc721a/contracts/ERC721A.sol";
@@ -352,30 +352,30 @@ contract OptimizedNFT is ERC721A {
 }
 ```
 
-## Resources
+## 資源
 
-- **references/erc721.md**: ERC-721 specification details
-- **references/erc1155.md**: ERC-1155 multi-token standard
-- **references/metadata-standards.md**: Metadata best practices
-- **references/enumeration.md**: Token enumeration patterns
-- **assets/erc721-contract.sol**: Production ERC-721 template
-- **assets/erc1155-contract.sol**: Production ERC-1155 template
-- **assets/metadata-schema.json**: Standard metadata format
-- **assets/metadata-uploader.py**: IPFS upload utility
+- **references/erc721.md**: ERC-721 規格細節
+- **references/erc1155.md**: ERC-1155 多代幣標準
+- **references/metadata-standards.md**: 元資料最佳實務
+- **references/enumeration.md**: 代幣列舉模式
+- **assets/erc721-contract.sol**: 生產環境 ERC-721 模板
+- **assets/erc1155-contract.sol**: 生產環境 ERC-1155 模板
+- **assets/metadata-schema.json**: 標準元資料格式
+- **assets/metadata-uploader.py**: IPFS 上傳工具
 
-## Best Practices
+## 最佳實務
 
-1. **Use OpenZeppelin**: Battle-tested implementations
-2. **Pin Metadata**: Use IPFS with pinning service
-3. **Implement Royalties**: EIP-2981 for marketplace compatibility
-4. **Gas Optimization**: Use ERC721A for batch minting
-5. **Reveal Mechanism**: Placeholder → reveal pattern
-6. **Enumeration**: Support walletOfOwner for marketplaces
-7. **Whitelist**: Merkle trees for efficient whitelisting
+1. **使用 OpenZeppelin**：經過實戰測試的實作
+2. **釘選元資料**：使用 IPFS 搭配釘選服務
+3. **實作版稅**：EIP-2981 以相容市場
+4. **Gas 最佳化**：批次鑄造使用 ERC721A
+5. **揭露機制**：預留位置 → 揭露模式
+6. **列舉功能**：支援 walletOfOwner 以供市場使用
+7. **白名單**：使用 Merkle 樹進行高效白名單管理
 
-## Marketplace Integration
+## 市場整合
 
-- OpenSea: ERC-721/1155, metadata standards
-- LooksRare: Royalty enforcement
-- Rarible: Protocol fees, lazy minting
-- Blur: Gas-optimized trading
+- OpenSea: ERC-721/1155、元資料標準
+- LooksRare: 版稅強制執行
+- Rarible: 協議費用、延遲鑄造
+- Blur: Gas 最佳化交易

@@ -1,52 +1,52 @@
-# Replay Testing for Determinism and Compatibility
+# 重播測試用於確定性和相容性
 
-Comprehensive guide for validating workflow determinism and ensuring safe code changes using replay testing.
+使用重播測試驗證工作流程確定性並確保程式碼變更安全的完整指南。
 
-## What is Replay Testing?
+## 什麼是重播測試？
 
-**Purpose**: Verify that workflow code changes are backward-compatible with existing workflow executions
+**目的**：驗證工作流程程式碼變更與現有工作流程執行的向後相容性
 
-**How it works**:
-1. Temporal records every workflow decision as Event History
-2. Replay testing re-executes workflow code against recorded history
-3. If new code makes same decisions → deterministic (safe to deploy)
-4. If decisions differ → non-deterministic (breaking change)
+**運作方式**：
+1. Temporal 將每個工作流程決策記錄為事件歷史
+2. 重播測試針對記錄的歷史重新執行工作流程程式碼
+3. 如果新程式碼做出相同決策 → 具確定性（可安全部署）
+4. 如果決策不同 → 不具確定性（重大變更）
 
-**Critical Use Cases**:
-- Deploying workflow code changes to production
-- Validating refactoring doesn't break running workflows
-- CI/CD automated compatibility checks
-- Version migration validation
+**關鍵使用情境**：
+- 部署工作流程程式碼變更到生產環境
+- 驗證重構不會中斷執行中的工作流程
+- CI/CD 自動化相容性檢查
+- 版本遷移驗證
 
-## Basic Replay Testing
+## 基本重播測試
 
-### Replayer Setup
+### 重播器設定
 
 ```python
 from temporalio.worker import Replayer
 from temporalio.client import Client
 
 async def test_workflow_replay():
-    """Test workflow against production history"""
+    """針對生產環境歷史測試工作流程"""
 
-    # Connect to Temporal server
+    # 連接到 Temporal 伺服器
     client = await Client.connect("localhost:7233")
 
-    # Create replayer with current workflow code
+    # 使用當前工作流程程式碼建立重播器
     replayer = Replayer(
         workflows=[OrderWorkflow, PaymentWorkflow]
     )
 
-    # Fetch workflow history from production
+    # 從生產環境取得工作流程歷史
     handle = client.get_workflow_handle("order-123")
     history = await handle.fetch_history()
 
-    # Replay history with current code
+    # 使用當前程式碼重播歷史
     await replayer.replay_workflow(history)
-    # Success = deterministic, Exception = breaking change
+    # 成功 = 具確定性，例外 = 重大變更
 ```
 
-### Testing Against Multiple Histories
+### 針對多個歷史進行測試
 
 ```python
 import pytest
@@ -54,11 +54,11 @@ from temporalio.worker import Replayer
 
 @pytest.mark.asyncio
 async def test_replay_multiple_workflows():
-    """Replay against multiple production histories"""
+    """針對多個生產環境歷史進行重播"""
 
     replayer = Replayer(workflows=[OrderWorkflow])
 
-    # Test against different workflow executions
+    # 針對不同的工作流程執行進行測試
     workflow_ids = [
         "order-success-123",
         "order-cancelled-456",
@@ -69,91 +69,91 @@ async def test_replay_multiple_workflows():
         handle = client.get_workflow_handle(workflow_id)
         history = await handle.fetch_history()
 
-        # Replay should succeed for all variants
+        # 重播對所有變體都應成功
         await replayer.replay_workflow(history)
 ```
 
-## Determinism Validation
+## 確定性驗證
 
-### Common Non-Deterministic Patterns
+### 常見的非確定性模式
 
-**Problem: Random Number Generation**
+**問題：隨機數生成**
 ```python
-# ❌ Non-deterministic (breaks replay)
+# ❌ 非確定性（中斷重播）
 @workflow.defn
 class BadWorkflow:
     @workflow.run
     async def run(self) -> int:
-        return random.randint(1, 100)  # Different on replay!
+        return random.randint(1, 100)  # 重播時會不同！
 
-# ✅ Deterministic (safe for replay)
+# ✅ 確定性（重播安全）
 @workflow.defn
 class GoodWorkflow:
     @workflow.run
     async def run(self) -> int:
-        return workflow.random().randint(1, 100)  # Deterministic random
+        return workflow.random().randint(1, 100)  # 確定性隨機
 ```
 
-**Problem: Current Time**
+**問題：當前時間**
 ```python
-# ❌ Non-deterministic
+# ❌ 非確定性
 @workflow.defn
 class BadWorkflow:
     @workflow.run
     async def run(self) -> str:
-        now = datetime.now()  # Different on replay!
+        now = datetime.now()  # 重播時會不同！
         return now.isoformat()
 
-# ✅ Deterministic
+# ✅ 確定性
 @workflow.defn
 class GoodWorkflow:
     @workflow.run
     async def run(self) -> str:
-        now = workflow.now()  # Deterministic time
+        now = workflow.now()  # 確定性時間
         return now.isoformat()
 ```
 
-**Problem: Direct External Calls**
+**問題：直接外部呼叫**
 ```python
-# ❌ Non-deterministic
+# ❌ 非確定性
 @workflow.defn
 class BadWorkflow:
     @workflow.run
     async def run(self) -> dict:
-        response = requests.get("https://api.example.com/data")  # External call!
+        response = requests.get("https://api.example.com/data")  # 外部呼叫！
         return response.json()
 
-# ✅ Deterministic
+# ✅ 確定性
 @workflow.defn
 class GoodWorkflow:
     @workflow.run
     async def run(self) -> dict:
-        # Use activity for external calls
+        # 使用活動進行外部呼叫
         return await workflow.execute_activity(
             fetch_external_data,
             start_to_close_timeout=timedelta(seconds=30),
         )
 ```
 
-### Testing Determinism
+### 測試確定性
 
 ```python
 @pytest.mark.asyncio
 async def test_workflow_determinism():
-    """Verify workflow produces same output on multiple runs"""
+    """驗證工作流程在多次執行時產生相同輸出"""
 
     @workflow.defn
     class DeterministicWorkflow:
         @workflow.run
         async def run(self, seed: int) -> list[int]:
-            # Use workflow.random() for determinism
+            # 使用 workflow.random() 確保確定性
             rng = workflow.random()
             rng.seed(seed)
             return [rng.randint(1, 100) for _ in range(10)]
 
     env = await WorkflowEnvironment.start_time_skipping()
 
-    # Run workflow twice with same input
+    # 使用相同輸入執行工作流程兩次
     results = []
     for i in range(2):
         async with Worker(
@@ -163,7 +163,7 @@ async def test_workflow_determinism():
         ):
             result = await env.client.execute_workflow(
                 DeterministicWorkflow.run,
-                42,  # Same seed
+                42,  # 相同的種子
                 id=f"determinism-test-{i}",
                 task_queue="test",
             )
@@ -171,55 +171,55 @@ async def test_workflow_determinism():
 
     await env.shutdown()
 
-    # Verify identical outputs
+    # 驗證輸出相同
     assert results[0] == results[1]
 ```
 
-## Production History Replay
+## 生產環境歷史重播
 
-### Exporting Workflow History
+### 匯出工作流程歷史
 
 ```python
 from temporalio.client import Client
 
 async def export_workflow_history(workflow_id: str, output_file: str):
-    """Export workflow history for replay testing"""
+    """匯出工作流程歷史用於重播測試"""
 
     client = await Client.connect("production.temporal.io:7233")
 
-    # Fetch workflow history
+    # 取得工作流程歷史
     handle = client.get_workflow_handle(workflow_id)
     history = await handle.fetch_history()
 
-    # Save to file for replay testing
+    # 儲存到檔案用於重播測試
     with open(output_file, "wb") as f:
         f.write(history.SerializeToString())
 
     print(f"Exported history to {output_file}")
 ```
 
-### Replaying from File
+### 從檔案重播
 
 ```python
 from temporalio.worker import Replayer
 from temporalio.api.history.v1 import History
 
 async def test_replay_from_file():
-    """Replay workflow from exported history file"""
+    """從匯出的歷史檔案重播工作流程"""
 
-    # Load history from file
+    # 從檔案載入歷史
     with open("workflow_histories/order-123.pb", "rb") as f:
         history = History.FromString(f.read())
 
-    # Replay with current workflow code
+    # 使用當前工作流程程式碼重播
     replayer = Replayer(workflows=[OrderWorkflow])
     await replayer.replay_workflow(history)
-    # Success = safe to deploy
+    # 成功 = 可安全部署
 ```
 
-## CI/CD Integration Patterns
+## CI/CD 整合模式
 
-### GitHub Actions Example
+### GitHub Actions 範例
 
 ```yaml
 # .github/workflows/replay-tests.yml
@@ -263,7 +263,7 @@ jobs:
           path: replay-failures/
 ```
 
-### Automated History Export
+### 自動化歷史匯出
 
 ```python
 # scripts/export_histories.py
@@ -272,27 +272,27 @@ from temporalio.client import Client
 from datetime import datetime, timedelta
 
 async def export_recent_histories():
-    """Export recent production workflow histories"""
+    """匯出最近的生產環境工作流程歷史"""
 
     client = await Client.connect("production.temporal.io:7233")
 
-    # Query recent completed workflows
+    # 查詢最近完成的工作流程
     workflows = client.list_workflows(
         query="WorkflowType='OrderWorkflow' AND CloseTime > '7 days ago'"
     )
 
     count = 0
     async for workflow in workflows:
-        # Export history
+        # 匯出歷史
         history = await workflow.fetch_history()
 
-        # Save to file
+        # 儲存到檔案
         filename = f"workflow_histories/{workflow.id}.pb"
         with open(filename, "wb") as f:
             f.write(history.SerializeToString())
 
         count += 1
-        if count >= 100:  # Limit to 100 most recent
+        if count >= 100:  # 限制為最近 100 個
             break
 
     print(f"Exported {count} workflow histories")
@@ -301,7 +301,7 @@ if __name__ == "__main__":
     asyncio.run(export_recent_histories())
 ```
 
-### Replay Test Suite
+### 重播測試套件
 
 ```python
 # tests/replay/test_workflow_replay.py
@@ -313,13 +313,13 @@ from workflows import OrderWorkflow, PaymentWorkflow
 
 @pytest.mark.asyncio
 async def test_replay_all_histories():
-    """Replay all production histories"""
+    """重播所有生產環境歷史"""
 
     replayer = Replayer(
         workflows=[OrderWorkflow, PaymentWorkflow]
     )
 
-    # Load all history files
+    # 載入所有歷史檔案
     history_files = glob.glob("workflow_histories/*.pb")
 
     failures = []
@@ -335,7 +335,7 @@ async def test_replay_all_histories():
             failures.append((history_file, str(e)))
             print(f"✗ {history_file}: {e}")
 
-    # Report failures
+    # 回報失敗
     if failures:
         pytest.fail(
             f"Replay failed for {len(failures)} workflows:\n"
@@ -343,32 +343,32 @@ async def test_replay_all_histories():
         )
 ```
 
-## Version Compatibility Testing
+## 版本相容性測試
 
-### Testing Code Evolution
+### 測試程式碼演進
 
 ```python
 @pytest.mark.asyncio
 async def test_workflow_version_compatibility():
-    """Test workflow with version changes"""
+    """測試帶有版本變更的工作流程"""
 
     @workflow.defn
     class EvolvingWorkflow:
         @workflow.run
         async def run(self) -> str:
-            # Use versioning for safe code evolution
+            # 使用版本控制進行安全的程式碼演進
             version = workflow.get_version("feature-flag", 1, 2)
 
             if version == 1:
-                # Old behavior
+                # 舊行為
                 return "version-1"
             else:
-                # New behavior
+                # 新行為
                 return "version-2"
 
     env = await WorkflowEnvironment.start_time_skipping()
 
-    # Test version 1 behavior
+    # 測試版本 1 行為
     async with Worker(
         env.client,
         task_queue="test",
@@ -381,22 +381,22 @@ async def test_workflow_version_compatibility():
         )
         assert result_v1 == "version-1"
 
-        # Simulate workflow executing again with version 2
+        # 模擬工作流程使用版本 2 再次執行
         result_v2 = await env.client.execute_workflow(
             EvolvingWorkflow.run,
             id="evolving-v2",
             task_queue="test",
         )
-        # New workflows use version 2
+        # 新工作流程使用版本 2
         assert result_v2 == "version-2"
 
     await env.shutdown()
 ```
 
-### Migration Strategy
+### 遷移策略
 
 ```python
-# Phase 1: Add version check
+# 階段 1：新增版本檢查
 @workflow.defn
 class MigratingWorkflow:
     @workflow.run
@@ -404,50 +404,50 @@ class MigratingWorkflow:
         version = workflow.get_version("new-logic", 1, 2)
 
         if version == 1:
-            # Old logic (existing workflows)
+            # 舊邏輯（現有工作流程）
             return await self._old_implementation()
         else:
-            # New logic (new workflows)
+            # 新邏輯（新工作流程）
             return await self._new_implementation()
 
-# Phase 2: After all old workflows complete, remove old code
+# 階段 2：所有舊工作流程完成後，移除舊程式碼
 @workflow.defn
 class MigratedWorkflow:
     @workflow.run
     async def run(self) -> dict:
-        # Only new logic remains
+        # 僅保留新邏輯
         return await self._new_implementation()
 ```
 
-## Best Practices
+## 最佳實務
 
-1. **Replay Before Deploy**: Always run replay tests before deploying workflow changes
-2. **Export Regularly**: Continuously export production histories for testing
-3. **CI/CD Integration**: Automated replay testing in pull request checks
-4. **Version Tracking**: Use workflow.get_version() for safe code evolution
-5. **History Retention**: Keep representative workflow histories for regression testing
-6. **Determinism**: Never use random(), datetime.now(), or direct external calls
-7. **Comprehensive Testing**: Test against various workflow execution paths
+1. **部署前重播**：在部署工作流程變更之前，務必執行重播測試
+2. **定期匯出**：持續匯出生產環境歷史用於測試
+3. **CI/CD 整合**：在拉取請求檢查中進行自動化重播測試
+4. **版本追蹤**：使用 workflow.get_version() 進行安全的程式碼演進
+5. **歷史保留**：保留具代表性的工作流程歷史用於回歸測試
+6. **確定性**：絕不使用 random()、datetime.now() 或直接外部呼叫
+7. **全面測試**：針對各種工作流程執行路徑進行測試
 
-## Common Replay Errors
+## 常見重播錯誤
 
-**Non-Deterministic Error**:
+**非確定性錯誤**：
 ```
 WorkflowNonDeterministicError: Workflow command mismatch at position 5
 Expected: ScheduleActivityTask(activity_id='activity-1')
 Got: ScheduleActivityTask(activity_id='activity-2')
 ```
 
-**Solution**: Code change altered workflow decision sequence
+**解決方案**：程式碼變更改變了工作流程決策序列
 
-**Version Mismatch Error**:
+**版本不符錯誤**：
 ```
 WorkflowVersionError: Workflow version changed from 1 to 2 without using get_version()
 ```
 
-**Solution**: Use workflow.get_version() for backward-compatible changes
+**解決方案**：使用 workflow.get_version() 進行向後相容的變更
 
-## Additional Resources
+## 其他資源
 
 - Replay Testing: docs.temporal.io/develop/python/testing-suite#replay-testing
 - Workflow Versioning: docs.temporal.io/workflows#versioning
