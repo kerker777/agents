@@ -1,78 +1,78 @@
-# Architecture & Design Principles
+# 架構與設計原則
 
-This marketplace follows industry best practices with a focus on granularity, composability, and minimal token usage.
+此市集遵循業界最佳實踐，專注於粒度化、可組合性和最小化 token 使用量。
 
-## Core Philosophy
+## 核心理念
 
-### Single Responsibility Principle
+### 單一職責原則
 
-- Each plugin does **one thing well** (Unix philosophy)
-- Clear, focused purposes (describable in 5-10 words)
-- Average plugin size: **3.4 components** (follows Anthropic's 2-8 pattern)
-- **Zero bloated plugins** - all plugins focused and purposeful
+- 每個插件**專注做好一件事**（Unix 哲學）
+- 明確且專注的目標（可用 5-10 個字描述）
+- 插件平均大小：**3.4 個元件**（遵循 Anthropic 的 2-8 模式）
+- **零臃腫插件** - 所有插件都專注且目標明確
 
-### Composability Over Bundling
+### 可組合性優於綁定
 
-- Mix and match plugins based on needs
-- Workflow orchestrators compose focused plugins
-- No forced feature bundling
-- Clear boundaries between plugins
+- 根據需求混合搭配插件
+- 工作流程編排器組合專注的插件
+- 無強制功能綁定
+- 插件之間界線清晰
 
-### Context Efficiency
+### 上下文效率
 
-- Smaller tools = faster processing
-- Better fit in LLM context windows
-- More accurate, focused responses
-- Install only what you need
+- 更小的工具 = 更快的處理速度
+- 更適合 LLM 上下文視窗
+- 更精確、更專注的回應
+- 只安裝所需的內容
 
-### Maintainability
+### 可維護性
 
-- Single-purpose = easier updates
-- Clear boundaries = isolated changes
-- Less duplication = simpler maintenance
-- Isolated dependencies
+- 單一目標 = 更容易更新
+- 清晰界線 = 隔離變更
+- 更少重複 = 更簡單的維護
+- 獨立的依賴關係
 
-## Granular Plugin Architecture
+## 粒度化插件架構
 
-### Plugin Distribution
+### 插件分布
 
-- **63 focused plugins** optimized for specific use cases
-- **23 clear categories** with 1-6 plugins each for easy discovery
-- Organized by domain:
-  - **Development**: 4 plugins (debugging, backend, frontend, multi-platform)
-  - **Security**: 4 plugins (scanning, compliance, backend-api, frontend-mobile)
-  - **Operations**: 4 plugins (incident, diagnostics, distributed, observability)
-  - **Languages**: 7 plugins (Python, JS/TS, systems, JVM, scripting, functional, embedded)
-  - **Infrastructure**: 5 plugins (deployment, validation, K8s, cloud, CI/CD)
-  - And 18 more specialized categories
+- **63 個專注插件**針對特定使用案例最佳化
+- **23 個清晰類別**，每個類別包含 1-6 個插件，便於探索
+- 按領域組織：
+  - **Development**：4 個插件（除錯、後端、前端、多平台）
+  - **Security**：4 個插件（掃描、合規、後端 API、前端行動）
+  - **Operations**：4 個插件（事件、診斷、分散式、可觀測性）
+  - **Languages**：7 個插件（Python、JS/TS、系統、JVM、腳本、函數式、嵌入式）
+  - **Infrastructure**：5 個插件（部署、驗證、K8s、雲端、CI/CD）
+  - 以及 18 個專門類別
 
-### Component Breakdown
+### 元件細分
 
-**85 Specialized Agents**
-- Domain experts with deep knowledge
-- Organized across architecture, languages, infrastructure, quality, data/AI, documentation, business, and SEO
-- Model-optimized (47 Haiku, 97 Sonnet) for performance and cost
+**85 個專業 Agent**
+- 具備深度知識的領域專家
+- 組織涵蓋架構、語言、基礎設施、品質、資料/AI、文件、商業和 SEO
+- 模型最佳化（47 個 Haiku、97 個 Sonnet）以提升效能和成本效益
 
-**15 Workflow Orchestrators**
-- Multi-agent coordination systems
-- Complex operations like full-stack development, security hardening, ML pipelines, incident response
-- Pre-configured agent workflows
+**15 個工作流程編排器**
+- 多 agent 協調系統
+- 複雜操作，如全端開發、安全加固、ML 管線、事件回應
+- 預先配置的 agent 工作流程
 
-**44 Development Tools**
-- Optimized utilities including:
-  - Project scaffolding (Python, TypeScript, Rust)
-  - Security scanning (SAST, dependency audit, XSS)
-  - Test generation (pytest, Jest)
-  - Component scaffolding (React, React Native)
-  - Infrastructure setup (Terraform, Kubernetes)
+**44 個開發工具**
+- 最佳化工具包括：
+  - 專案腳手架（Python、TypeScript、Rust）
+  - 安全掃描（SAST、依賴審計、XSS）
+  - 測試生成（pytest、Jest）
+  - 元件腳手架（React、React Native）
+  - 基礎設施設定（Terraform、Kubernetes）
 
-**47 Agent Skills**
-- Modular knowledge packages
-- Progressive disclosure architecture
-- Domain-specific expertise across 14 plugins
-- Spec-compliant (Anthropic Agent Skills Specification)
+**47 個 Agent 技能**
+- 模組化知識套件
+- 漸進式揭露架構
+- 跨 14 個插件的領域專業知識
+- 規格相容（Anthropic Agent Skills Specification）
 
-## Repository Structure
+## 儲存庫結構
 
 ```
 claude-agents/
@@ -122,22 +122,22 @@ claude-agents/
 └── README.md                      # Quick start
 ```
 
-## Plugin Structure
+## 插件結構
 
-Each plugin contains:
+每個插件包含：
 
-- **agents/** - Specialized agents for that domain (optional)
-- **commands/** - Tools and workflows specific to that plugin (optional)
-- **skills/** - Modular knowledge packages with progressive disclosure (optional)
+- **agents/** - 該領域的專業 agent（選用）
+- **commands/** - 該插件特定的工具和工作流程（選用）
+- **skills/** - 具有漸進式揭露的模組化知識套件（選用）
 
-### Minimum Requirements
+### 最低需求
 
-- At least one agent OR one command
-- Clear, focused purpose
-- Proper frontmatter in all files
-- Entry in marketplace.json
+- 至少一個 agent 或一個 command
+- 明確且專注的目標
+- 所有檔案都有正確的 frontmatter
+- 在 marketplace.json 中有項目
 
-### Example Plugin
+### 插件範例
 
 ```
 plugins/kubernetes-operations/
@@ -152,19 +152,19 @@ plugins/kubernetes-operations/
     └── k8s-security-policies/    # Security policy skill
 ```
 
-## Agent Skills Architecture
+## Agent 技能架構
 
-### Progressive Disclosure
+### 漸進式揭露
 
-Skills use a three-tier architecture for token efficiency:
+技能使用三層架構以提升 token 效率：
 
-1. **Metadata** (Frontmatter): Name and activation criteria (always loaded)
-2. **Instructions**: Core guidance and patterns (loaded when activated)
-3. **Resources**: Examples and templates (loaded on demand)
+1. **中繼資料**（Frontmatter）：名稱和啟動條件（總是載入）
+2. **指令**：核心指導和模式（啟動時載入）
+3. **資源**：範例和範本（按需載入）
 
-### Specification Compliance
+### 規格相容性
 
-All skills follow the [Agent Skills Specification](https://github.com/anthropics/skills/blob/main/agent_skills_spec.md):
+所有技能遵循 [Agent Skills Specification](https://github.com/anthropics/skills/blob/main/agent_skills_spec.md)：
 
 ```yaml
 ---
@@ -175,93 +175,93 @@ description: What the skill does. Use when [trigger]. # Required: < 1024 chars
 # Skill content with progressive disclosure
 ```
 
-### Benefits
+### 優勢
 
-- **Token Efficiency**: Load only relevant knowledge when needed
-- **Specialized Expertise**: Deep domain knowledge without bloat
-- **Clear Activation**: Explicit triggers prevent unwanted invocation
-- **Composability**: Mix and match skills across workflows
-- **Maintainability**: Isolated updates don't affect other skills
+- **Token 效率**：僅在需要時載入相關知識
+- **專業知識**：深度領域知識而無臃腫
+- **清晰啟動**：明確的觸發器防止不必要的調用
+- **可組合性**：跨工作流程混合搭配技能
+- **可維護性**：獨立更新不影響其他技能
 
-See [Agent Skills](./agent-skills.md) for complete details on the 47 skills.
+詳見 [Agent Skills](./agent-skills.md) 了解 47 個技能的完整細節。
 
-## Model Configuration Strategy
+## 模型配置策略
 
-### Two-Tier Architecture
+### 雙層架構
 
-The system uses Claude Opus and Sonnet models strategically:
+系統策略性地使用 Claude Opus 和 Sonnet 模型：
 
-| Model | Count | Use Case |
+| 模型 | 數量 | 使用案例 |
 |-------|-------|----------|
-| Haiku | 47 agents | Fast execution, deterministic tasks |
-| Sonnet | 97 agents | Complex reasoning, architecture decisions |
+| Haiku | 47 個 agent | 快速執行、確定性任務 |
+| Sonnet | 97 個 agent | 複雜推理、架構決策 |
 
-### Selection Criteria
+### 選擇標準
 
-**Haiku - Fast Execution & Deterministic Tasks**
-- Generating code from well-defined specifications
-- Creating tests following established patterns
-- Writing documentation with clear templates
-- Executing infrastructure operations
-- Performing database query optimization
-- Handling customer support responses
-- Processing SEO optimization tasks
-- Managing deployment pipelines
+**Haiku - 快速執行與確定性任務**
+- 從明確定義的規格生成程式碼
+- 遵循既定模式創建測試
+- 使用清晰範本編寫文件
+- 執行基礎設施操作
+- 執行資料庫查詢最佳化
+- 處理客戶支援回應
+- 處理 SEO 最佳化任務
+- 管理部署管線
 
-**Sonnet - Complex Reasoning & Architecture**
-- Designing system architecture
-- Making technology selection decisions
-- Performing security audits
-- Reviewing code for architectural patterns
-- Creating complex AI/ML pipelines
-- Providing language-specific expertise
-- Orchestrating multi-agent workflows
-- Handling business-critical legal/HR matters
+**Sonnet - 複雜推理與架構**
+- 設計系統架構
+- 做出技術選型決策
+- 執行安全稽核
+- 檢視架構模式的程式碼
+- 創建複雜的 AI/ML 管線
+- 提供特定語言的專業知識
+- 編排多 agent 工作流程
+- 處理業務關鍵的法務/人資事務
 
-### Hybrid Orchestration
+### 混合編排
 
-Combine models for optimal performance and cost:
+組合模型以獲得最佳效能和成本：
 
 ```
-Planning Phase (Sonnet) → Execution Phase (Haiku) → Review Phase (Sonnet)
+規劃階段 (Sonnet) → 執行階段 (Haiku) → 審查階段 (Sonnet)
 
-Example:
-backend-architect (Sonnet) designs API
+範例：
+backend-architect (Sonnet) 設計 API
   ↓
-Generate endpoints (Haiku) implements spec
+Generate endpoints (Haiku) 實作規格
   ↓
-test-automator (Haiku) creates tests
+test-automator (Haiku) 創建測試
   ↓
-code-reviewer (Sonnet) validates architecture
+code-reviewer (Sonnet) 驗證架構
 ```
 
-## Performance & Quality
+## 效能與品質
 
-### Optimized Token Usage
+### 最佳化 Token 使用量
 
-- **Isolated plugins** load only what you need
-- **Granular architecture** reduces unnecessary context
-- **Progressive disclosure** (skills) loads knowledge on demand
-- **Clear boundaries** prevent context pollution
+- **隔離插件**僅載入所需內容
+- **粒度化架構**減少不必要的上下文
+- **漸進式揭露**（技能）按需載入知識
+- **清晰界線**防止上下文污染
 
-### Component Coverage
+### 元件涵蓋範圍
 
-- **100% agent coverage** - all plugins include at least one agent
-- **100% component availability** - all 85 agents accessible across plugins
-- **Efficient distribution** - 3.4 components per plugin average
+- **100% agent 涵蓋率** - 所有插件至少包含一個 agent
+- **100% 元件可用性** - 所有 85 個 agent 可跨插件存取
+- **高效分布** - 平均每個插件 3.4 個元件
 
-### Discoverability
+### 可探索性
 
-- **Clear plugin names** convey purpose immediately
-- **Logical categorization** with 23 well-defined categories
-- **Searchable documentation** with cross-references
-- **Easy to find** the right tool for the job
+- **清晰的插件名稱**立即傳達目標
+- **邏輯分類**具有 23 個明確定義的類別
+- **可搜尋文件**帶有交叉參照
+- **易於找到**適合工作的工具
 
-## Design Patterns
+## 設計模式
 
-### Pattern 1: Single-Purpose Plugin
+### 模式 1：單一目標插件
 
-Each plugin focuses on one domain:
+每個插件專注於一個領域：
 
 ```
 python-development/
@@ -270,15 +270,15 @@ python-development/
 └── skills/           # Python-specific knowledge
 ```
 
-**Benefits:**
-- Clear responsibility
-- Easy to maintain
-- Minimal token usage
-- Composable with other plugins
+**優勢：**
+- 明確的職責
+- 易於維護
+- 最小化 token 使用量
+- 可與其他插件組合
 
-### Pattern 2: Workflow Orchestration
+### 模式 2：工作流程編排
 
-Orchestrator plugins coordinate multiple agents:
+編排器插件協調多個 agent：
 
 ```
 full-stack-orchestration/
@@ -286,35 +286,35 @@ full-stack-orchestration/
     └── full-stack-feature.md    # Coordinates 7+ agents
 ```
 
-**Orchestration:**
-1. backend-architect (design API)
-2. database-architect (design schema)
-3. frontend-developer (build UI)
-4. test-automator (create tests)
-5. security-auditor (security review)
-6. deployment-engineer (CI/CD)
-7. observability-engineer (monitoring)
+**編排：**
+1. backend-architect（設計 API）
+2. database-architect（設計 schema）
+3. frontend-developer（建構 UI）
+4. test-automator（創建測試）
+5. security-auditor（安全審查）
+6. deployment-engineer（CI/CD）
+7. observability-engineer（監控）
 
-### Pattern 3: Agent + Skill Integration
+### 模式 3：Agent + 技能整合
 
-Agents provide reasoning, skills provide knowledge:
-
-```
-User: "Build FastAPI project with async patterns"
-  ↓
-fastapi-pro agent (orchestrates)
-  ↓
-fastapi-templates skill (provides patterns)
-  ↓
-python-scaffold command (generates project)
-```
-
-### Pattern 4: Multi-Plugin Composition
-
-Complex workflows use multiple plugins:
+Agent 提供推理，技能提供知識：
 
 ```
-Feature Development Workflow:
+使用者：「使用非同步模式建構 FastAPI 專案」
+  ↓
+fastapi-pro agent（編排）
+  ↓
+fastapi-templates skill（提供模式）
+  ↓
+python-scaffold command（生成專案）
+```
+
+### 模式 4：多插件組合
+
+複雜工作流程使用多個插件：
+
+```
+功能開發工作流程：
 1. backend-development:feature-development
 2. security-scanning:security-hardening
 3. unit-testing:test-generate
@@ -323,57 +323,57 @@ Feature Development Workflow:
 6. observability-monitoring:monitor-setup
 ```
 
-## Versioning & Updates
+## 版本控制與更新
 
-### Marketplace Updates
+### Marketplace 更新
 
-- Marketplace catalog in `.claude-plugin/marketplace.json`
-- Semantic versioning for plugins
-- Backward compatibility maintained
-- Clear migration guides for breaking changes
+- Marketplace 目錄位於 `.claude-plugin/marketplace.json`
+- 插件採用語意化版本控制
+- 維持向後相容性
+- 重大變更提供清晰的遷移指南
 
-### Plugin Updates
+### 插件更新
 
-- Individual plugin updates don't affect others
-- Skills can be updated independently
-- Agents can be added/removed without breaking workflows
-- Commands maintain stable interfaces
+- 個別插件更新不影響其他插件
+- 技能可獨立更新
+- Agent 可新增/移除而不破壞工作流程
+- Command 維持穩定的介面
 
-## Contributing Guidelines
+## 貢獻指南
 
-### Adding a Plugin
+### 新增插件
 
-1. Create plugin directory: `plugins/{plugin-name}/`
-2. Add agents and/or commands
-3. Optionally add skills
-4. Update marketplace.json
-5. Document in appropriate category
+1. 創建插件目錄：`plugins/{plugin-name}/`
+2. 新增 agent 和/或 command
+3. 選擇性地新增技能
+4. 更新 marketplace.json
+5. 在適當的類別中記錄
 
-### Adding an Agent
+### 新增 Agent
 
-1. Create `plugins/{plugin-name}/agents/{agent-name}.md`
-2. Add frontmatter (name, description, model)
-3. Write comprehensive system prompt
-4. Update plugin definition
+1. 創建 `plugins/{plugin-name}/agents/{agent-name}.md`
+2. 新增 frontmatter（name、description、model）
+3. 撰寫完整的系統提示
+4. 更新插件定義
 
-### Adding a Skill
+### 新增技能
 
-1. Create `plugins/{plugin-name}/skills/{skill-name}/SKILL.md`
-2. Add YAML frontmatter (name, description with "Use when")
-3. Write skill content with progressive disclosure
-4. Add to plugin's skills array in marketplace.json
+1. 創建 `plugins/{plugin-name}/skills/{skill-name}/SKILL.md`
+2. 新增 YAML frontmatter（name、description 帶有「Use when」）
+3. 撰寫具有漸進式揭露的技能內容
+4. 新增至 marketplace.json 中插件的 skills 陣列
 
-### Quality Standards
+### 品質標準
 
-- **Clear naming** - Hyphen-case, descriptive
-- **Focused scope** - Single responsibility
-- **Complete documentation** - What, when, how
-- **Tested functionality** - Verify before committing
-- **Spec compliance** - Follow Anthropic guidelines
+- **清晰命名** - 使用連字號格式，具描述性
+- **專注範圍** - 單一職責
+- **完整文件** - 說明是什麼、何時使用、如何使用
+- **經過測試的功能** - 提交前驗證
+- **規格相容** - 遵循 Anthropic 指南
 
-## See Also
+## 另見
 
-- [Agent Skills](./agent-skills.md) - Modular knowledge packages
-- [Agent Reference](./agents.md) - Complete agent catalog
-- [Plugin Reference](./plugins.md) - All 63 plugins
-- [Usage Guide](./usage.md) - Commands and workflows
+- [Agent Skills](./agent-skills.md) - 模組化知識套件
+- [Agent Reference](./agents.md) - 完整 agent 目錄
+- [Plugin Reference](./plugins.md) - 所有 63 個插件
+- [Usage Guide](./usage.md) - 指令與工作流程

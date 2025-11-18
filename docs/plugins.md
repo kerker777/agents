@@ -1,309 +1,309 @@
-# Complete Plugin Reference
+# 完整外掛參考指南
 
-Browse all **63 focused, single-purpose plugins** organized by category.
+瀏覽所有 **63 個專注、單一用途的外掛**，依類別組織。
 
-## Quick Start - Essential Plugins
+## 快速開始 - 必備外掛
 
-> 💡 **Getting Started?** Install these popular plugins for immediate productivity gains.
+> 💡 **剛開始使用？** 安裝這些熱門外掛，立即提升生產力。
 
-### Development Essentials
+### 開發必備
 
-**code-documentation** - Documentation and technical writing
+**code-documentation** - 文件撰寫與技術寫作
 
 ```bash
 /plugin install code-documentation
 ```
 
-Automated doc generation, code explanation, and tutorial creation for comprehensive technical documentation.
+自動化文件生成、程式碼說明，以及建立全面性技術文件的教學內容。
 
-**debugging-toolkit** - Smart debugging and developer experience
+**debugging-toolkit** - 智慧除錯與開發者體驗
 
 ```bash
 /plugin install debugging-toolkit
 ```
 
-Interactive debugging, error analysis, and DX optimization for faster problem resolution.
+互動式除錯、錯誤分析，以及開發者體驗優化，加速問題解決。
 
-**git-pr-workflows** - Git automation and PR enhancement
+**git-pr-workflows** - Git 自動化與 PR 增強
 
 ```bash
 /plugin install git-pr-workflows
 ```
 
-Git workflow automation, pull request enhancement, and team onboarding processes.
+Git 工作流程自動化、拉取請求增強，以及團隊引導流程。
 
-### Full-Stack Development
+### 全端開發
 
-**backend-development** - Backend API design and architecture
+**backend-development** - 後端 API 設計與架構
 
 ```bash
 /plugin install backend-development
 ```
 
-RESTful and GraphQL API design with test-driven development and modern backend architecture patterns.
+RESTful 與 GraphQL API 設計，搭配測試驅動開發與現代後端架構模式。
 
-**frontend-mobile-development** - UI and mobile development
+**frontend-mobile-development** - UI 與行動應用開發
 
 ```bash
 /plugin install frontend-mobile-development
 ```
 
-React/React Native component development with automated scaffolding and cross-platform implementation.
+React/React Native 元件開發，搭配自動化鷹架與跨平台實作。
 
-**full-stack-orchestration** - End-to-end feature development
+**full-stack-orchestration** - 端到端功能開發
 
 ```bash
 /plugin install full-stack-orchestration
 ```
 
-Multi-agent coordination from backend → frontend → testing → security → deployment.
+多代理協調，從後端 → 前端 → 測試 → 安全 → 部署。
 
-### Testing & Quality
+### 測試與品質
 
-**unit-testing** - Automated test generation
+**unit-testing** - 自動化測試生成
 
 ```bash
 /plugin install unit-testing
 ```
 
-Generate pytest (Python) and Jest (JavaScript) unit tests automatically with comprehensive edge case coverage.
+自動生成 pytest (Python) 與 Jest (JavaScript) 單元測試，涵蓋全面的邊界案例。
 
-**code-review-ai** - AI-powered code review
+**code-review-ai** - AI 驅動的程式碼審查
 
 ```bash
 /plugin install code-review-ai
 ```
 
-Architectural analysis, security assessment, and code quality review with actionable feedback.
+架構分析、安全評估，以及程式碼品質審查，提供可行的回饋建議。
 
-### Infrastructure & Operations
+### 基礎設施與維運
 
-**cloud-infrastructure** - Cloud architecture design
+**cloud-infrastructure** - 雲端架構設計
 
 ```bash
 /plugin install cloud-infrastructure
 ```
 
-AWS/Azure/GCP architecture, Kubernetes setup, Terraform IaC, and multi-cloud cost optimization.
+AWS/Azure/GCP 架構、Kubernetes 設定、Terraform IaC，以及多雲成本優化。
 
-**incident-response** - Production incident management
+**incident-response** - 正式環境事件管理
 
 ```bash
 /plugin install incident-response
 ```
 
-Rapid incident triage, root cause analysis, and automated resolution workflows for production systems.
+快速事件分流、根因分析，以及正式環境系統的自動化解決工作流程。
 
-### Language Support
+### 程式語言支援
 
-**python-development** - Python project scaffolding
+**python-development** - Python 專案鷹架
 
 ```bash
 /plugin install python-development
 ```
 
-FastAPI/Django project initialization with modern tooling (uv, ruff) and production-ready architecture.
+FastAPI/Django 專案初始化，搭配現代化工具 (uv, ruff) 與正式環境就緒的架構。
 
-**javascript-typescript** - JavaScript/TypeScript scaffolding
+**javascript-typescript** - JavaScript/TypeScript 鷹架
 
 ```bash
 /plugin install javascript-typescript
 ```
 
-Next.js, React + Vite, and Node.js project setup with pnpm and TypeScript best practices.
+Next.js、React + Vite 與 Node.js 專案設定，搭配 pnpm 與 TypeScript 最佳實踐。
 
 ---
 
-## Complete Plugin Catalog
+## 完整外掛目錄
 
-### 🎨 Development (4 plugins)
+### 🎨 開發 (4 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **debugging-toolkit** | Interactive debugging and DX optimization | `/plugin install debugging-toolkit` |
-| **backend-development** | Backend API design with GraphQL and TDD | `/plugin install backend-development` |
-| **frontend-mobile-development** | Frontend UI and mobile development | `/plugin install frontend-mobile-development` |
-| **multi-platform-apps** | Cross-platform app coordination (web/iOS/Android) | `/plugin install multi-platform-apps` |
+| **debugging-toolkit** | 互動式除錯與開發者體驗優化 | `/plugin install debugging-toolkit` |
+| **backend-development** | 後端 API 設計，搭配 GraphQL 與測試驅動開發 | `/plugin install backend-development` |
+| **frontend-mobile-development** | 前端 UI 與行動應用開發 | `/plugin install frontend-mobile-development` |
+| **multi-platform-apps** | 跨平台應用協調 (web/iOS/Android) | `/plugin install multi-platform-apps` |
 
-### 📚 Documentation (2 plugins)
+### 📚 文件 (2 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **code-documentation** | Documentation generation and code explanation | `/plugin install code-documentation` |
-| **documentation-generation** | OpenAPI specs, Mermaid diagrams, tutorials | `/plugin install documentation-generation` |
+| **code-documentation** | 文件生成與程式碼說明 | `/plugin install code-documentation` |
+| **documentation-generation** | OpenAPI 規格、Mermaid 圖表、教學 | `/plugin install documentation-generation` |
 
-### 🔄 Workflows (3 plugins)
+### 🔄 工作流程 (3 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **git-pr-workflows** | Git automation and PR enhancement | `/plugin install git-pr-workflows` |
-| **full-stack-orchestration** | End-to-end feature orchestration | `/plugin install full-stack-orchestration` |
-| **tdd-workflows** | Test-driven development methodology | `/plugin install tdd-workflows` |
+| **git-pr-workflows** | Git 自動化與 PR 增強 | `/plugin install git-pr-workflows` |
+| **full-stack-orchestration** | 端到端功能協調 | `/plugin install full-stack-orchestration` |
+| **tdd-workflows** | 測試驅動開發方法論 | `/plugin install tdd-workflows` |
 
-### ✅ Testing (2 plugins)
+### ✅ 測試 (2 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **unit-testing** | Automated unit test generation (Python/JavaScript) | `/plugin install unit-testing` |
-| **tdd-workflows** | Test-driven development methodology | `/plugin install tdd-workflows` |
+| **unit-testing** | 自動化單元測試生成 (Python/JavaScript) | `/plugin install unit-testing` |
+| **tdd-workflows** | 測試驅動開發方法論 | `/plugin install tdd-workflows` |
 
-### 🔍 Quality (3 plugins)
+### 🔍 品質 (3 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **code-review-ai** | AI-powered architectural review | `/plugin install code-review-ai` |
-| **comprehensive-review** | Multi-perspective code analysis | `/plugin install comprehensive-review` |
-| **performance-testing-review** | Performance analysis and test coverage review | `/plugin install performance-testing-review` |
+| **code-review-ai** | AI 驅動的架構審查 | `/plugin install code-review-ai` |
+| **comprehensive-review** | 多角度程式碼分析 | `/plugin install comprehensive-review` |
+| **performance-testing-review** | 效能分析與測試覆蓋率審查 | `/plugin install performance-testing-review` |
 
-### 🛠️ Utilities (4 plugins)
+### 🛠️ 工具 (4 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **code-refactoring** | Code cleanup and technical debt management | `/plugin install code-refactoring` |
-| **dependency-management** | Dependency auditing and version management | `/plugin install dependency-management` |
-| **error-debugging** | Error analysis and trace debugging | `/plugin install error-debugging` |
-| **team-collaboration** | Team workflows and standup automation | `/plugin install team-collaboration` |
+| **code-refactoring** | 程式碼清理與技術債管理 | `/plugin install code-refactoring` |
+| **dependency-management** | 相依性稽核與版本管理 | `/plugin install dependency-management` |
+| **error-debugging** | 錯誤分析與追蹤除錯 | `/plugin install error-debugging` |
+| **team-collaboration** | 團隊工作流程與站立會議自動化 | `/plugin install team-collaboration` |
 
-### 🤖 AI & ML (4 plugins)
+### 🤖 AI 與機器學習 (4 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **llm-application-dev** | LLM apps and prompt engineering | `/plugin install llm-application-dev` |
-| **agent-orchestration** | Multi-agent system optimization | `/plugin install agent-orchestration` |
-| **context-management** | Context persistence and restoration | `/plugin install context-management` |
-| **machine-learning-ops** | ML training pipelines and MLOps | `/plugin install machine-learning-ops` |
+| **llm-application-dev** | 大型語言模型應用與提示工程 | `/plugin install llm-application-dev` |
+| **agent-orchestration** | 多代理系統優化 | `/plugin install agent-orchestration` |
+| **context-management** | 上下文持久化與還原 | `/plugin install context-management` |
+| **machine-learning-ops** | 機器學習訓練管線與 MLOps | `/plugin install machine-learning-ops` |
 
-### 📊 Data (2 plugins)
+### 📊 資料 (2 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **data-engineering** | ETL pipelines and data warehouses | `/plugin install data-engineering` |
-| **data-validation-suite** | Schema validation and data quality | `/plugin install data-validation-suite` |
+| **data-engineering** | ETL 管線與資料倉儲 | `/plugin install data-engineering` |
+| **data-validation-suite** | 綱要驗證與資料品質 | `/plugin install data-validation-suite` |
 
-### 🗄️ Database (2 plugins)
+### 🗄️ 資料庫 (2 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **database-design** | Database architecture and schema design | `/plugin install database-design` |
-| **database-migrations** | Database migration automation | `/plugin install database-migrations` |
+| **database-design** | 資料庫架構與綱要設計 | `/plugin install database-design` |
+| **database-migrations** | 資料庫遷移自動化 | `/plugin install database-migrations` |
 
-### 🚨 Operations (4 plugins)
+### 🚨 維運 (4 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **incident-response** | Production incident management | `/plugin install incident-response` |
-| **error-diagnostics** | Error tracing and root cause analysis | `/plugin install error-diagnostics` |
-| **distributed-debugging** | Distributed system tracing | `/plugin install distributed-debugging` |
-| **observability-monitoring** | Metrics, logging, tracing, and SLO | `/plugin install observability-monitoring` |
+| **incident-response** | 正式環境事件管理 | `/plugin install incident-response` |
+| **error-diagnostics** | 錯誤追蹤與根因分析 | `/plugin install error-diagnostics` |
+| **distributed-debugging** | 分散式系統追蹤 | `/plugin install distributed-debugging` |
+| **observability-monitoring** | 指標、日誌、追蹤與 SLO | `/plugin install observability-monitoring` |
 
-### ⚡ Performance (2 plugins)
+### ⚡ 效能 (2 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **application-performance** | Application profiling and optimization | `/plugin install application-performance` |
-| **database-cloud-optimization** | Database query and cloud cost optimization | `/plugin install database-cloud-optimization` |
+| **application-performance** | 應用程式效能分析與優化 | `/plugin install application-performance` |
+| **database-cloud-optimization** | 資料庫查詢與雲端成本優化 | `/plugin install database-cloud-optimization` |
 
-### ☁️ Infrastructure (5 plugins)
+### ☁️ 基礎設施 (5 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **deployment-strategies** | Deployment patterns and rollback automation | `/plugin install deployment-strategies` |
-| **deployment-validation** | Pre-deployment checks and validation | `/plugin install deployment-validation` |
-| **kubernetes-operations** | K8s manifests and GitOps workflows | `/plugin install kubernetes-operations` |
-| **cloud-infrastructure** | AWS/Azure/GCP cloud architecture | `/plugin install cloud-infrastructure` |
-| **cicd-automation** | CI/CD pipeline configuration | `/plugin install cicd-automation` |
+| **deployment-strategies** | 部署模式與回滾自動化 | `/plugin install deployment-strategies` |
+| **deployment-validation** | 部署前檢查與驗證 | `/plugin install deployment-validation` |
+| **kubernetes-operations** | K8s 清單與 GitOps 工作流程 | `/plugin install kubernetes-operations` |
+| **cloud-infrastructure** | AWS/Azure/GCP 雲端架構 | `/plugin install cloud-infrastructure` |
+| **cicd-automation** | CI/CD 管線設定 | `/plugin install cicd-automation` |
 
-### 🔒 Security (4 plugins)
+### 🔒 安全 (4 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **security-scanning** | SAST analysis and vulnerability scanning | `/plugin install security-scanning` |
-| **security-compliance** | SOC2/HIPAA/GDPR compliance | `/plugin install security-compliance` |
-| **backend-api-security** | API security and authentication | `/plugin install backend-api-security` |
-| **frontend-mobile-security** | XSS/CSRF prevention and mobile security | `/plugin install frontend-mobile-security` |
+| **security-scanning** | SAST 分析與漏洞掃描 | `/plugin install security-scanning` |
+| **security-compliance** | SOC2/HIPAA/GDPR 合規 | `/plugin install security-compliance` |
+| **backend-api-security** | API 安全與身份驗證 | `/plugin install backend-api-security` |
+| **frontend-mobile-security** | XSS/CSRF 防護與行動應用安全 | `/plugin install frontend-mobile-security` |
 
-### 🔄 Modernization (2 plugins)
+### 🔄 現代化 (2 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **framework-migration** | Framework upgrades and migration planning | `/plugin install framework-migration` |
-| **codebase-cleanup** | Technical debt reduction and cleanup | `/plugin install codebase-cleanup` |
+| **framework-migration** | 框架升級與遷移規劃 | `/plugin install framework-migration` |
+| **codebase-cleanup** | 技術債減少與清理 | `/plugin install codebase-cleanup` |
 
-### 🌐 API (2 plugins)
+### 🌐 API (2 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **api-scaffolding** | REST/GraphQL API generation | `/plugin install api-scaffolding` |
-| **api-testing-observability** | API testing and monitoring | `/plugin install api-testing-observability` |
+| **api-scaffolding** | REST/GraphQL API 生成 | `/plugin install api-scaffolding` |
+| **api-testing-observability** | API 測試與監控 | `/plugin install api-testing-observability` |
 
-### 📢 Marketing (4 plugins)
+### 📢 行銷 (4 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **seo-content-creation** | SEO content writing and planning | `/plugin install seo-content-creation` |
-| **seo-technical-optimization** | Meta tags, keywords, and schema markup | `/plugin install seo-technical-optimization` |
-| **seo-analysis-monitoring** | Content analysis and authority building | `/plugin install seo-analysis-monitoring` |
-| **content-marketing** | Content strategy and web research | `/plugin install content-marketing` |
+| **seo-content-creation** | SEO 內容撰寫與規劃 | `/plugin install seo-content-creation` |
+| **seo-technical-optimization** | Meta 標籤、關鍵字與結構化標記 | `/plugin install seo-technical-optimization` |
+| **seo-analysis-monitoring** | 內容分析與權威建立 | `/plugin install seo-analysis-monitoring` |
+| **content-marketing** | 內容策略與網路研究 | `/plugin install content-marketing` |
 
-### 💼 Business (3 plugins)
+### 💼 商業 (3 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **business-analytics** | KPI tracking and financial reporting | `/plugin install business-analytics` |
-| **hr-legal-compliance** | HR policies and legal templates | `/plugin install hr-legal-compliance` |
-| **customer-sales-automation** | Support and sales automation | `/plugin install customer-sales-automation` |
+| **business-analytics** | KPI 追蹤與財務報告 | `/plugin install business-analytics` |
+| **hr-legal-compliance** | 人資政策與法律範本 | `/plugin install hr-legal-compliance` |
+| **customer-sales-automation** | 客戶支援與銷售自動化 | `/plugin install customer-sales-automation` |
 
-### 💻 Languages (7 plugins)
+### 💻 程式語言 (7 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **python-development** | Python 3.12+ with Django/FastAPI | `/plugin install python-development` |
-| **javascript-typescript** | JavaScript/TypeScript with Node.js | `/plugin install javascript-typescript` |
-| **systems-programming** | Rust, Go, C, C++ for systems development | `/plugin install systems-programming` |
-| **jvm-languages** | Java, Scala, C# with enterprise patterns | `/plugin install jvm-languages` |
-| **web-scripting** | PHP and Ruby for web applications | `/plugin install web-scripting` |
-| **functional-programming** | Elixir with OTP and Phoenix | `/plugin install functional-programming` |
-| **arm-cortex-microcontrollers** | ARM Cortex-M firmware and drivers | `/plugin install arm-cortex-microcontrollers` |
+| **python-development** | Python 3.12+ 搭配 Django/FastAPI | `/plugin install python-development` |
+| **javascript-typescript** | JavaScript/TypeScript 搭配 Node.js | `/plugin install javascript-typescript` |
+| **systems-programming** | Rust、Go、C、C++ 系統開發 | `/plugin install systems-programming` |
+| **jvm-languages** | Java、Scala、C# 企業模式 | `/plugin install jvm-languages` |
+| **web-scripting** | PHP 與 Ruby 網頁應用 | `/plugin install web-scripting` |
+| **functional-programming** | Elixir 搭配 OTP 與 Phoenix | `/plugin install functional-programming` |
+| **arm-cortex-microcontrollers** | ARM Cortex-M 韌體與驅動程式 | `/plugin install arm-cortex-microcontrollers` |
 
-### 🔗 Blockchain (1 plugin)
+### 🔗 區塊鏈 (1 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **blockchain-web3** | Smart contracts and DeFi protocols | `/plugin install blockchain-web3` |
+| **blockchain-web3** | 智能合約與 DeFi 協議 | `/plugin install blockchain-web3` |
 
-### 💰 Finance (1 plugin)
+### 💰 金融 (1 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **quantitative-trading** | Algorithmic trading and risk management | `/plugin install quantitative-trading` |
+| **quantitative-trading** | 演算法交易與風險管理 | `/plugin install quantitative-trading` |
 
-### 💳 Payments (1 plugin)
+### 💳 支付 (1 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **payment-processing** | Stripe/PayPal integration and billing | `/plugin install payment-processing` |
+| **payment-processing** | Stripe/PayPal 整合與帳務 | `/plugin install payment-processing` |
 
-### 🎮 Gaming (1 plugin)
+### 🎮 遊戲 (1 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **game-development** | Unity and Minecraft plugin development | `/plugin install game-development` |
+| **game-development** | Unity 與 Minecraft 外掛開發 | `/plugin install game-development` |
 
-### ♿ Accessibility (1 plugin)
+### ♿ 無障礙 (1 個外掛)
 
-| Plugin | Description | Install |
+| 外掛 | 說明 | 安裝指令 |
 |--------|-------------|---------|
-| **accessibility-compliance** | WCAG auditing and inclusive design | `/plugin install accessibility-compliance` |
+| **accessibility-compliance** | WCAG 稽核與包容性設計 | `/plugin install accessibility-compliance` |
 
-## Plugin Structure
+## 外掛結構
 
-Each plugin contains:
+每個外掛包含：
 
-- **agents/** - Specialized agents for that domain
-- **commands/** - Tools and workflows specific to that plugin
-- **skills/** - Optional modular knowledge packages (progressive disclosure)
+- **agents/** - 該領域的專門代理
+- **commands/** - 該外掛專屬的工具與工作流程
+- **skills/** - 可選的模組化知識包（漸進式揭露）
 
-Example:
+範例：
 ```
 plugins/python-development/
 ├── agents/
@@ -320,55 +320,58 @@ plugins/python-development/
     └── uv-package-manager/
 ```
 
-## Installation
+## 安裝
 
-### Step 1: Add the Marketplace
+### 步驟 1：新增市集
 
 ```bash
 /plugin marketplace add wshobson/agents
 ```
 
-This makes all 63 plugins available for installation, but **does not load any agents or tools** into your context.
+這會讓所有 63 個外掛可供安裝，但**不會載入任何代理或工具**到您的上下文中。
 
-### Step 2: Install Specific Plugins
+### 步驟 2：安裝特定外掛
 
-Browse available plugins:
+瀏覽可用外掛：
 
 ```bash
 /plugin
 ```
 
-Install only the plugins you need:
+只安裝您需要的外掛：
 
 ```bash
 /plugin install python-development
 /plugin install backend-development
 ```
 
-Each installed plugin loads **only its specific agents and commands** into Claude's context.
+每個已安裝的外掛會將**僅限該外掛的代理與指令**載入到 Claude 的上下文中。
 
-## Plugin Design Principles
+## 外掛設計原則
 
-### Single Responsibility
-- Each plugin does **one thing well** (Unix philosophy)
-- Clear, focused purposes (describable in 5-10 words)
-- Average plugin size: **3.4 components** (follows Anthropic's 2-8 pattern)
+### 單一職責
 
-### Minimal Token Usage
-- Install only what you need
-- Each plugin loads only its specific agents and tools
-- No unnecessary resources loaded into context
-- Better context efficiency with granular plugins
+- 每個外掛**專注做好一件事**（Unix 哲學）
+- 清晰、專注的目的（可在 5-10 個字內描述）
+- 平均外掛大小：**3.4 個元件**（遵循 Anthropic 的 2-8 模式）
 
-### Composability
-- Mix and match plugins for complex workflows
-- Workflow orchestrators compose focused plugins
-- Clear boundaries between plugins
-- No forced feature bundling
+### 最小化 Token 使用
 
-## See Also
+- 只安裝您需要的
+- 每個外掛僅載入其特定的代理與工具
+- 不會載入不必要的資源到上下文中
+- 透過精細化的外掛提升上下文效率
 
-- [Agent Skills](./agent-skills.md) - 47 specialized skills across plugins
-- [Agent Reference](./agents.md) - Complete agent catalog
-- [Usage Guide](./usage.md) - Commands and workflows
-- [Architecture](./architecture.md) - Design principles
+### 可組合性
+
+- 混合搭配外掛以進行複雜的工作流程
+- 工作流程協調器組合專注的外掛
+- 外掛之間有清晰的界線
+- 不強制功能綁定
+
+## 另請參閱
+
+- [代理技能](./agent-skills.md) - 跨外掛的 47 個專門技能
+- [代理參考](./agents.md) - 完整代理目錄
+- [使用指南](./usage.md) - 指令與工作流程
+- [架構](./architecture.md) - 設計原則

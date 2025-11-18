@@ -1,70 +1,70 @@
-# Code of Conduct
+# 行為準則
 
-## Our Pledge
+## 我們的承諾
 
-We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, caste, color, religion, or sexual identity and orientation.
+身為社群成員、貢獻者和領導者，我們承諾讓每個人都能在沒有騷擾的環境中參與我們的社群，無論其年齡、體型、可見或不可見的身心障礙、種族、性別特徵、性別認同與表達、經驗程度、教育程度、社經地位、國籍、個人外貌、種姓、膚色、宗教信仰、性取向或性別認同。
 
-We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
+我們承諾以促進開放、友善、多元、包容和健康社群的方式行動與互動。
 
-## Our Standards
+## 我們的標準
 
-### Acceptable Behavior
+### 可接受的行為
 
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints and experiences
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
-- Showing empathy towards other community members
-- Contributing constructively to discussions about AI agents and development
+- 使用友善且包容的語言
+- 尊重不同的觀點與經驗
+- 優雅地接受建設性批評
+- 專注於對社群最有利的事物
+- 對其他社群成員展現同理心
+- 對 AI 代理程式和開發相關討論提供建設性貢獻
 
-### Unacceptable Behavior
+### 不可接受的行為
 
-The following behaviors are considered harassment and are unacceptable:
+以下行為被視為騷擾且不可接受：
 
-- **Hate speech**: The use of abusive or threatening speech that expresses prejudice against a particular group, especially on the basis of race, religion, gender, sexual orientation, or other characteristics
-- **Discriminatory language**: Slurs, offensive comments, or language targeting protected characteristics
-- **Personal attacks**: Insulting, demeaning, or hostile comments directed at individuals
-- **Harassment**: Deliberate intimidation, stalking, following, or threatening
-- **Doxxing**: Publishing private information without consent
-- **Spam**: Excessive off-topic content, promotional material, or repetitive posts
-- **Trolling**: Deliberately inflammatory or disruptive behavior
-- **Sexual harassment**: Unwelcome sexual attention or advances
+- **仇恨言論**：使用辱罵或威脅性的言論，表達對特定群體的偏見，特別是基於種族、宗教、性別、性取向或其他特徵
+- **歧視性語言**：針對受保護特徵的侮辱性言論、冒犯性評論或語言
+- **人身攻擊**：針對個人的侮辱、貶低或敵意評論
+- **騷擾**：蓄意恐嚇、跟蹤、跟隨或威脅
+- **公開個人資訊**：未經同意發布他人私人資訊
+- **垃圾訊息**：過度偏離主題的內容、促銷資料或重複發文
+- **惡意挑釁**：蓄意煽動或破壞的行為
+- **性騷擾**：不受歡迎的性關注或性示好
 
-## Enforcement
+## 執行規範
 
-### Reporting
+### 檢舉
 
-If you experience or witness unacceptable behavior, please report it by:
-- Creating an issue with the `moderation` label
-- Contacting the repository maintainers directly
-- Using GitHub's built-in reporting mechanisms
+如果您遭遇或目睹不可接受的行為，請透過以下方式檢舉：
+- 建立帶有 `moderation` 標籤的議題
+- 直接聯繫專案維護者
+- 使用 GitHub 內建的檢舉機制
 
-### Consequences
+### 處置措施
 
-Community leaders will follow these guidelines in determining consequences:
+社群領導者將依循以下準則決定處置措施：
 
-1. **Warning**: First offense or minor violation
-2. **Temporary restriction**: Temporary loss of interaction privileges
-3. **Permanent ban**: Severe or repeated violations
+1. **警告**：首次違規或輕微違規
+2. **暫時限制**：暫時喪失互動權限
+3. **永久封鎖**：嚴重或重複違規
 
-### Enforcement Actions
+### 執行措施
 
-- **Immediate removal**: Hate speech, threats, or doxxing will result in immediate content removal and user blocking
-- **Issue/PR closure**: Inappropriate content will be closed and locked
-- **Account blocking**: Repeat offenders will be blocked from the repository
+- **立即移除**：仇恨言論、威脅或公開個人資訊將立即移除內容並封鎖使用者
+- **關閉議題/PR**：不當內容將被關閉並鎖定
+- **封鎖帳號**：屢次違規者將被封鎖，無法存取此專案
 
-## Scope
+## 適用範圍
 
-This Code of Conduct applies within all community spaces, including:
-- Issues and pull requests
-- Discussions and comments
-- Wiki and documentation
-- External representations of the project
+本行為準則適用於所有社群空間，包括：
+- 議題與拉取請求
+- 討論與評論
+- Wiki 與文件
+- 專案的對外代表
 
-## Attribution
+## 出處
 
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.1.
+本行為準則改編自 [Contributor Covenant](https://www.contributor-covenant.org/) 2.1 版。
 
-## Contact
+## 聯繫方式
 
-Questions about the Code of Conduct can be directed to the repository maintainers through GitHub issues or discussions.
+關於本行為準則的問題，可透過 GitHub 議題或討論區聯繫專案維護者。

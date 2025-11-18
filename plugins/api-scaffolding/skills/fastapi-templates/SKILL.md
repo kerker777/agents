@@ -1,25 +1,25 @@
 ---
 name: fastapi-templates
-description: Create production-ready FastAPI projects with async patterns, dependency injection, and comprehensive error handling. Use when building new FastAPI applications or setting up backend API projects.
+description: 建立生產就緒的 FastAPI 專案，包含非同步模式、相依性注入及完善的錯誤處理。適用於建置新的 FastAPI 應用程式或設置後端 API 專案。
 ---
 
-# FastAPI Project Templates
+# FastAPI 專案範本
 
-Production-ready FastAPI project structures with async patterns, dependency injection, middleware, and best practices for building high-performance APIs.
+生產就緒的 FastAPI 專案結構，包含非同步模式、相依性注入、中介軟體，以及建置高效能 API 的最佳實踐。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Starting new FastAPI projects from scratch
-- Implementing async REST APIs with Python
-- Building high-performance web services and microservices
-- Creating async applications with PostgreSQL, MongoDB
-- Setting up API projects with proper structure and testing
+- 從頭開始建立新的 FastAPI 專案
+- 使用 Python 實作非同步 REST API
+- 建置高效能的網路服務和微服務
+- 建立與 PostgreSQL、MongoDB 整合的非同步應用程式
+- 設置具有適當結構和測試的 API 專案
 
-## Core Concepts
+## 核心概念
 
-### 1. Project Structure
+### 1. 專案結構
 
-**Recommended Layout:**
+**建議的架構：**
 ```
 app/
 ├── api/                    # API routes
@@ -49,25 +49,25 @@ app/
 └── main.py                 # Application entry
 ```
 
-### 2. Dependency Injection
+### 2. 相依性注入
 
-FastAPI's built-in DI system using `Depends`:
-- Database session management
-- Authentication/authorization
-- Shared business logic
-- Configuration injection
+FastAPI 內建的 DI 系統使用 `Depends`：
+- 資料庫 session 管理
+- 身份驗證/授權
+- 共享的商業邏輯
+- 組態設定注入
 
-### 3. Async Patterns
+### 3. 非同步模式
 
-Proper async/await usage:
-- Async route handlers
-- Async database operations
-- Async background tasks
-- Async middleware
+正確的 async/await 用法：
+- 非同步路由處理器
+- 非同步資料庫操作
+- 非同步背景任務
+- 非同步中介軟體
 
-## Implementation Patterns
+## 實作模式
 
-### Pattern 1: Complete FastAPI Application
+### 模式 1：完整的 FastAPI 應用程式
 
 ```python
 # main.py
@@ -156,7 +156,7 @@ async def get_db() -> AsyncSession:
             await session.close()
 ```
 
-### Pattern 2: CRUD Repository Pattern
+### 模式 2：CRUD Repository 模式
 
 ```python
 # repositories/base_repository.py
@@ -251,7 +251,7 @@ class UserRepository(BaseRepository[User, UserCreate, UserUpdate]):
 user_repository = UserRepository(User)
 ```
 
-### Pattern 3: Service Layer
+### 模式 3：服務層
 
 ```python
 # services/user_service.py
@@ -323,7 +323,7 @@ class UserService:
 user_service = UserService()
 ```
 
-### Pattern 4: API Endpoints with Dependencies
+### 模式 4：具有相依性的 API 端點
 
 ```python
 # api/v1/endpoints/users.py
@@ -400,7 +400,7 @@ async def delete_user(
         raise HTTPException(status_code=404, detail="User not found")
 ```
 
-### Pattern 5: Authentication & Authorization
+### 模式 5：身份驗證與授權
 
 ```python
 # core/security.py
@@ -473,7 +473,7 @@ async def get_current_user(
     return user
 ```
 
-## Testing
+## 測試
 
 ```python
 # tests/conftest.py
@@ -536,29 +536,29 @@ async def test_create_user(client):
     assert "id" in data
 ```
 
-## Resources
+## 資源
 
-- **references/fastapi-architecture.md**: Detailed architecture guide
-- **references/async-best-practices.md**: Async/await patterns
-- **references/testing-strategies.md**: Comprehensive testing guide
-- **assets/project-template/**: Complete FastAPI project
-- **assets/docker-compose.yml**: Development environment setup
+- **references/fastapi-architecture.md**：詳細的架構指南
+- **references/async-best-practices.md**：Async/await 模式
+- **references/testing-strategies.md**：完整的測試指南
+- **assets/project-template/**：完整的 FastAPI 專案範本
+- **assets/docker-compose.yml**：開發環境設置
 
-## Best Practices
+## 最佳實踐
 
-1. **Async All The Way**: Use async for database, external APIs
-2. **Dependency Injection**: Leverage FastAPI's DI system
-3. **Repository Pattern**: Separate data access from business logic
-4. **Service Layer**: Keep business logic out of routes
-5. **Pydantic Schemas**: Strong typing for request/response
-6. **Error Handling**: Consistent error responses
-7. **Testing**: Test all layers independently
+1. **全面非同步化**：資料庫和外部 API 都應使用非同步
+2. **相依性注入**：充分利用 FastAPI 的 DI 系統
+3. **Repository 模式**：將資料存取與商業邏輯分離
+4. **服務層**：將商業邏輯從路由中抽離
+5. **Pydantic Schemas**：為請求/回應提供強型別
+6. **錯誤處理**：保持一致的錯誤回應格式
+7. **測試**：獨立測試所有層級
 
-## Common Pitfalls
+## 常見陷阱
 
-- **Blocking Code in Async**: Using synchronous database drivers
-- **No Service Layer**: Business logic in route handlers
-- **Missing Type Hints**: Loses FastAPI's benefits
-- **Ignoring Sessions**: Not properly managing database sessions
-- **No Testing**: Skipping integration tests
-- **Tight Coupling**: Direct database access in routes
+- **在非同步中使用阻塞程式碼**：使用同步的資料庫驅動程式
+- **缺少服務層**：在路由處理器中撰寫商業邏輯
+- **缺少型別提示**：失去 FastAPI 的優勢
+- **忽略 Sessions**：未正確管理資料庫 sessions
+- **沒有測試**：跳過整合測試
+- **緊密耦合**：在路由中直接存取資料庫

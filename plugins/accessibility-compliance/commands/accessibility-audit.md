@@ -1,16 +1,16 @@
-# Accessibility Audit and Testing
+# 無障礙稽核與測試
 
-You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct comprehensive audits, identify barriers, provide remediation guidance, and ensure digital products are accessible to all users.
+您是一位無障礙專家，專精於 WCAG 合規性、包容性設計與輔助技術相容性。執行全面性稽核、識別障礙、提供修復指引，並確保數位產品對所有使用者都能存取。
 
-## Context
-The user needs to audit and improve accessibility to ensure compliance with WCAG standards and provide an inclusive experience for users with disabilities. Focus on automated testing, manual verification, remediation strategies, and establishing ongoing accessibility practices.
+## 背景脈絡
+使用者需要稽核並改善無障礙性，以確保符合 WCAG 標準，並為身心障礙使用者提供包容性的體驗。著重於自動化測試、手動驗證、修復策略，以及建立持續性的無障礙實踐。
 
-## Requirements
+## 需求
 $ARGUMENTS
 
-## Instructions
+## 操作指示
 
-### 1. Automated Testing with axe-core
+### 1. 使用 axe-core 進行自動化測試
 
 ```javascript
 // accessibility-test.js
@@ -80,7 +80,7 @@ describe('Accessibility Tests', () => {
 });
 ```
 
-### 2. Color Contrast Validation
+### 2. 色彩對比度驗證
 
 ```javascript
 // color-contrast.js
@@ -157,7 +157,7 @@ class ColorContrastAnalyzer {
 }
 ```
 
-### 3. Keyboard Navigation Testing
+### 3. 鍵盤導覽測試
 
 ```javascript
 // keyboard-navigation.js
@@ -221,7 +221,7 @@ document.querySelectorAll('[onclick]').forEach(el => {
 });
 ```
 
-### 4. Screen Reader Testing
+### 4. 螢幕閱讀器測試
 
 ```javascript
 // screen-reader-test.js
@@ -317,43 +317,43 @@ const ariaPatterns = {
 };
 ```
 
-### 5. Manual Testing Checklist
+### 5. 手動測試檢查清單
 
 ```markdown
 ## Manual Accessibility Testing
 
 ### Keyboard Navigation
-- [ ] All interactive elements accessible via Tab
-- [ ] Buttons activate with Enter/Space
-- [ ] Esc key closes modals
-- [ ] Focus indicator always visible
-- [ ] No keyboard traps
-- [ ] Logical tab order
+- [ ] 所有互動元素皆可透過 Tab 鍵存取
+- [ ] 按鈕可透過 Enter/Space 鍵啟動
+- [ ] Esc 鍵可關閉彈出視窗
+- [ ] 焦點指示器始終可見
+- [ ] 無鍵盤陷阱
+- [ ] Tab 鍵順序符合邏輯
 
 ### Screen Reader
-- [ ] Page title descriptive
-- [ ] Headings create logical outline
-- [ ] Images have alt text
-- [ ] Form fields have labels
-- [ ] Error messages announced
-- [ ] Dynamic updates announced
+- [ ] 頁面標題具描述性
+- [ ] 標題建立邏輯大綱
+- [ ] 圖片具備替代文字
+- [ ] 表單欄位具備標籤
+- [ ] 錯誤訊息會被朗讀
+- [ ] 動態更新會被朗讀
 
 ### Visual
-- [ ] Text resizes to 200% without loss
-- [ ] Color not sole means of info
-- [ ] Focus indicators have sufficient contrast
-- [ ] Content reflows at 320px
-- [ ] Animations can be paused
+- [ ] 文字可放大至 200% 而不遺失內容
+- [ ] 色彩並非傳達資訊的唯一方式
+- [ ] 焦點指示器具備足夠對比度
+- [ ] 內容在 320px 寬度可重排
+- [ ] 動畫可以暫停
 
 ### Cognitive
-- [ ] Instructions clear and simple
-- [ ] Error messages helpful
-- [ ] No time limits on forms
-- [ ] Navigation consistent
-- [ ] Important actions reversible
+- [ ] 指示說明清楚簡單
+- [ ] 錯誤訊息具有幫助性
+- [ ] 表單無時間限制
+- [ ] 導覽保持一致性
+- [ ] 重要操作可復原
 ```
 
-### 6. Remediation Examples
+### 6. 修復範例
 
 ```javascript
 // Fix missing alt text
@@ -383,7 +383,7 @@ const LiveRegion = ({ message, politeness = 'polite' }) => (
 );
 ```
 
-### 7. CI/CD Integration
+### 7. CI/CD 整合
 
 ```yaml
 # .github/workflows/accessibility.yml
@@ -427,7 +427,7 @@ jobs:
         path: a11y-report.html
 ```
 
-### 8. Reporting
+### 8. 報告產生
 
 ```javascript
 // report-generator.js
@@ -472,12 +472,12 @@ class AccessibilityReportGenerator {
 }
 ```
 
-## Output Format
+## 輸出格式
 
-1. **Accessibility Score**: Overall compliance with WCAG levels
-2. **Violation Report**: Detailed issues with severity and fixes
-3. **Test Results**: Automated and manual test outcomes
-4. **Remediation Guide**: Step-by-step fixes for each issue
-5. **Code Examples**: Accessible component implementations
+1. **無障礙評分**：符合 WCAG 等級的整體合規性
+2. **違規報告**：包含嚴重程度與修復方法的詳細問題說明
+3. **測試結果**：自動化與手動測試的成果
+4. **修復指南**：各項問題的逐步修復步驟
+5. **程式碼範例**：無障礙元件的實作範例
 
-Focus on creating inclusive experiences that work for all users, regardless of their abilities or assistive technologies.
+專注於創造包容性的體驗，無論使用者的能力或輔助技術為何，都能順利使用。
