@@ -1,9 +1,9 @@
 # 翻譯進度追蹤
 
 總檔案數: 307
-已完成: 261
+已完成: 271
 進行中: 0
-待處理: 46
+待處理: 36
 
 ## 檔案清單
 
@@ -259,16 +259,16 @@
 - [x] /home/user/agents/plugins/payment-processing/skills/pci-compliance/SKILL.md
 - [x] /home/user/agents/plugins/payment-processing/skills/stripe-integration/SKILL.md
 - [x] /home/user/agents/plugins/performance-testing-review/agents/performance-engineer.md
-- [ ] /home/user/agents/plugins/performance-testing-review/agents/test-automator.md
-- [ ] /home/user/agents/plugins/performance-testing-review/commands/ai-review.md
-- [ ] /home/user/agents/plugins/performance-testing-review/commands/multi-agent-review.md
-- [ ] /home/user/agents/plugins/python-development/agents/django-pro.md
-- [ ] /home/user/agents/plugins/python-development/agents/fastapi-pro.md
-- [ ] /home/user/agents/plugins/python-development/agents/python-pro.md
-- [ ] /home/user/agents/plugins/python-development/commands/python-scaffold.md
-- [ ] /home/user/agents/plugins/python-development/skills/async-python-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/python-development/skills/python-packaging/SKILL.md
-- [ ] /home/user/agents/plugins/python-development/skills/python-performance-optimization/SKILL.md
+- [x] /home/user/agents/plugins/performance-testing-review/agents/test-automator.md
+- [x] /home/user/agents/plugins/performance-testing-review/commands/ai-review.md
+- [x] /home/user/agents/plugins/performance-testing-review/commands/multi-agent-review.md
+- [x] /home/user/agents/plugins/python-development/agents/django-pro.md
+- [x] /home/user/agents/plugins/python-development/agents/fastapi-pro.md
+- [x] /home/user/agents/plugins/python-development/agents/python-pro.md
+- [x] /home/user/agents/plugins/python-development/commands/python-scaffold.md
+- [x] /home/user/agents/plugins/python-development/skills/async-python-patterns/SKILL.md
+- [x] /home/user/agents/plugins/python-development/skills/python-packaging/SKILL.md
+- [x] /home/user/agents/plugins/python-development/skills/python-performance-optimization/SKILL.md
 - [ ] /home/user/agents/plugins/python-development/skills/python-testing-patterns/SKILL.md
 - [ ] /home/user/agents/plugins/python-development/skills/uv-package-manager/SKILL.md
 - [ ] /home/user/agents/plugins/quantitative-trading/agents/quant-analyst.md

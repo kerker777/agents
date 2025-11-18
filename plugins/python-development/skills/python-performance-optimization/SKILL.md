@@ -1,48 +1,48 @@
 ---
 name: python-performance-optimization
-description: Profile and optimize Python code using cProfile, memory profilers, and performance best practices. Use when debugging slow Python code, optimizing bottlenecks, or improving application performance.
+description: 使用 cProfile、記憶體分析器和效能最佳實務來分析和最佳化 Python 程式碼。適用於除錯緩慢的 Python 程式碼、最佳化瓶頸或改善應用程式效能。
 ---
 
-# Python Performance Optimization
+# Python 效能最佳化
 
-Comprehensive guide to profiling, analyzing, and optimizing Python code for better performance, including CPU profiling, memory optimization, and implementation best practices.
+全面性的指南，涵蓋分析、分析和最佳化 Python 程式碼以提升效能，包括 CPU 分析、記憶體最佳化和實作最佳實務。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Identifying performance bottlenecks in Python applications
-- Reducing application latency and response times
-- Optimizing CPU-intensive operations
-- Reducing memory consumption and memory leaks
-- Improving database query performance
-- Optimizing I/O operations
-- Speeding up data processing pipelines
-- Implementing high-performance algorithms
-- Profiling production applications
+- 識別 Python 應用程式中的效能瓶頸
+- 降低應用程式延遲和回應時間
+- 最佳化 CPU 密集型操作
+- 減少記憶體消耗和記憶體洩漏
+- 改善資料庫查詢效能
+- 最佳化 I/O 操作
+- 加速資料處理管道
+- 實作高效能演算法
+- 分析正式環境應用程式
 
-## Core Concepts
+## 核心概念
 
-### 1. Profiling Types
-- **CPU Profiling**: Identify time-consuming functions
-- **Memory Profiling**: Track memory allocation and leaks
-- **Line Profiling**: Profile at line-by-line granularity
-- **Call Graph**: Visualize function call relationships
+### 1. 分析類型
+- **CPU 分析（CPU Profiling）**：識別耗時的函式
+- **記憶體分析（Memory Profiling）**：追蹤記憶體配置和洩漏
+- **逐行分析（Line Profiling）**：以逐行粒度進行分析
+- **呼叫圖（Call Graph）**：視覺化函式呼叫關係
 
-### 2. Performance Metrics
-- **Execution Time**: How long operations take
-- **Memory Usage**: Peak and average memory consumption
-- **CPU Utilization**: Processor usage patterns
-- **I/O Wait**: Time spent on I/O operations
+### 2. 效能指標
+- **執行時間（Execution Time）**：操作執行所需時間
+- **記憶體使用量（Memory Usage）**：峰值和平均記憶體消耗
+- **CPU 使用率（CPU Utilization）**：處理器使用模式
+- **I/O 等待（I/O Wait）**：花費在 I/O 操作上的時間
 
-### 3. Optimization Strategies
-- **Algorithmic**: Better algorithms and data structures
-- **Implementation**: More efficient code patterns
-- **Parallelization**: Multi-threading/processing
-- **Caching**: Avoid redundant computation
-- **Native Extensions**: C/Rust for critical paths
+### 3. 最佳化策略
+- **演算法優化（Algorithmic）**：使用更好的演算法和資料結構
+- **實作優化（Implementation）**：採用更高效的程式碼模式
+- **平行化（Parallelization）**：多執行緒/多處理程序
+- **快取（Caching）**：避免重複計算
+- **原生擴充（Native Extensions）**：針對關鍵路徑使用 C/Rust
 
-## Quick Start
+## 快速開始
 
-### Basic Timing
+### 基本計時
 
 ```python
 import time
@@ -68,9 +68,9 @@ execution_time = timeit.timeit(
 print(f"Average time: {execution_time/100:.6f} seconds")
 ```
 
-## Profiling Tools
+## 分析工具
 
-### Pattern 1: cProfile - CPU Profiling
+### 模式 1：cProfile - CPU 分析
 
 ```python
 import cProfile
@@ -112,7 +112,7 @@ if __name__ == "__main__":
     stats.dump_stats("profile_output.prof")
 ```
 
-**Command-line profiling:**
+**命令列分析：**
 ```bash
 # Profile a script
 python -m cProfile -o output.prof script.py
@@ -124,7 +124,7 @@ python -m pstats output.prof
 # stats 10
 ```
 
-### Pattern 2: line_profiler - Line-by-Line Profiling
+### 模式 2：line_profiler - 逐行分析
 
 ```python
 # Install: pip install line-profiler
@@ -143,7 +143,7 @@ def process_data(data):
 # kernprof -l -v script.py
 ```
 
-**Manual line profiling:**
+**手動逐行分析：**
 ```python
 from line_profiler import LineProfiler
 
@@ -167,7 +167,7 @@ if __name__ == "__main__":
     lp.print_stats()
 ```
 
-### Pattern 3: memory_profiler - Memory Usage
+### 模式 3：memory_profiler - 記憶體使用量分析
 
 ```python
 # Install: pip install memory-profiler
@@ -195,7 +195,7 @@ if __name__ == "__main__":
 # python -m memory_profiler script.py
 ```
 
-### Pattern 4: py-spy - Production Profiling
+### 模式 4：py-spy - 正式環境分析
 
 ```bash
 # Install: pip install py-spy
@@ -213,9 +213,9 @@ py-spy record -o profile.svg -- python script.py
 py-spy dump --pid 12345
 ```
 
-## Optimization Patterns
+## 最佳化模式
 
-### Pattern 5: List Comprehensions vs Loops
+### 模式 5：串列推導式 vs 迴圈
 
 ```python
 import timeit
@@ -249,7 +249,7 @@ def faster_squares(n):
     return list(map(lambda x: x**2, range(n)))
 ```
 
-### Pattern 6: Generator Expressions for Memory
+### 模式 6：生成器表達式節省記憶體
 
 ```python
 import sys
@@ -274,7 +274,7 @@ print(f"Generator size: {sys.getsizeof(gen_data)} bytes")
 # Generators use constant memory regardless of size
 ```
 
-### Pattern 7: String Concatenation
+### 模式 7：字串串接
 
 ```python
 import timeit
@@ -307,7 +307,7 @@ print(f"Join (generator): {fast:.4f}s")
 print(f"Join (list): {faster:.4f}s")
 ```
 
-### Pattern 8: Dictionary Lookups vs List Searches
+### 模式 8：字典查找 vs 串列搜尋
 
 ```python
 import timeit
@@ -342,7 +342,7 @@ print(f"Dict search: {dict_time:.6f}s")
 print(f"Speedup: {list_time/dict_time:.0f}x")
 ```
 
-### Pattern 9: Local Variable Access
+### 模式 9：區域變數存取
 
 ```python
 import timeit
@@ -374,7 +374,7 @@ print(f"Local access: {local_time:.4f}s")
 print(f"Speedup: {global_time/local_time:.2f}x")
 ```
 
-### Pattern 10: Function Call Overhead
+### 模式 10：函式呼叫開銷
 
 ```python
 import timeit
@@ -405,9 +405,9 @@ print(f"Inline: {inline_time:.4f}s")
 print(f"Function calls: {function_time:.4f}s")
 ```
 
-## Advanced Optimization
+## 進階最佳化
 
-### Pattern 11: NumPy for Numerical Operations
+### 模式 11：使用 NumPy 進行數值運算
 
 ```python
 import timeit
@@ -451,7 +451,7 @@ print(f"NumPy multiply: {np_time:.4f}s")
 print(f"Speedup: {py_time/np_time:.2f}x")
 ```
 
-### Pattern 12: Caching with functools.lru_cache
+### 模式 12：使用 functools.lru_cache 快取
 
 ```python
 from functools import lru_cache
@@ -483,7 +483,7 @@ print(f"With cache (1000 runs): {fast_time:.4f}s")
 print(f"Cache info: {fibonacci_fast.cache_info()}")
 ```
 
-### Pattern 13: Using __slots__ for Memory
+### 模式 13：使用 __slots__ 節省記憶體
 
 ```python
 import sys
@@ -519,7 +519,7 @@ print(f"\nMemory for 10000 regular objects: ~{sys.getsizeof(regular) * 10000} by
 print(f"Memory for 10000 slotted objects: ~{sys.getsizeof(slotted) * 10000} bytes")
 ```
 
-### Pattern 14: Multiprocessing for CPU-Bound Tasks
+### 模式 14：多處理程序處理 CPU 密集型任務
 
 ```python
 import multiprocessing as mp
@@ -553,7 +553,7 @@ if __name__ == "__main__":
     print(f"Speedup: {seq_time/par_time:.2f}x")
 ```
 
-### Pattern 15: Async I/O for I/O-Bound Tasks
+### 模式 15：非同步 I/O 處理 I/O 密集型任務
 
 ```python
 import asyncio
@@ -601,9 +601,9 @@ print(f"Asynchronous: {async_time:.2f}s")
 print(f"Speedup: {sync_time/async_time:.2f}x")
 ```
 
-## Database Optimization
+## 資料庫最佳化
 
-### Pattern 16: Batch Database Operations
+### 模式 16：批次資料庫操作
 
 ```python
 import sqlite3
@@ -647,7 +647,7 @@ print(f"Batch insert: {fast_time:.4f}s")
 print(f"Speedup: {slow_time/fast_time:.2f}x")
 ```
 
-### Pattern 17: Query Optimization
+### 模式 17：查詢最佳化
 
 ```python
 # Use indexes for frequently queried columns
@@ -675,9 +675,9 @@ print(cursor.fetchall())
 # Fast: SELECT id, name
 ```
 
-## Memory Optimization
+## 記憶體最佳化
 
-### Pattern 18: Detecting Memory Leaks
+### 模式 18：偵測記憶體洩漏
 
 ```python
 import tracemalloc
@@ -722,7 +722,7 @@ track_memory_usage()
 gc.collect()
 ```
 
-### Pattern 19: Iterators vs Lists
+### 模式 19：迭代器 vs 串列
 
 ```python
 import sys
@@ -742,7 +742,7 @@ def process_file_iterator(filename):
 # List loads entire file into memory
 ```
 
-### Pattern 20: Weakref for Caches
+### 模式 20：使用 Weakref 建立快取
 
 ```python
 import weakref
@@ -775,9 +775,9 @@ def get_resource_weak(key):
 # When no strong references exist, objects can be GC'd
 ```
 
-## Benchmarking Tools
+## 基準測試工具
 
-### Custom Benchmark Decorator
+### 自訂基準測試裝飾器
 
 ```python
 import time
@@ -803,7 +803,7 @@ def slow_function():
 result = slow_function()
 ```
 
-### Performance Testing with pytest-benchmark
+### 使用 pytest-benchmark 進行效能測試
 
 ```python
 # Install: pip install pytest-benchmark
@@ -821,49 +821,49 @@ def test_map_function(benchmark):
 # Run with: pytest test_performance.py --benchmark-compare
 ```
 
-## Best Practices
+## 最佳實務
 
-1. **Profile before optimizing** - Measure to find real bottlenecks
-2. **Focus on hot paths** - Optimize code that runs most frequently
-3. **Use appropriate data structures** - Dict for lookups, set for membership
-4. **Avoid premature optimization** - Clarity first, then optimize
-5. **Use built-in functions** - They're implemented in C
-6. **Cache expensive computations** - Use lru_cache
-7. **Batch I/O operations** - Reduce system calls
-8. **Use generators** for large datasets
-9. **Consider NumPy** for numerical operations
-10. **Profile production code** - Use py-spy for live systems
+1. **先分析再最佳化** - 透過測量找出真正的瓶頸
+2. **專注於熱路徑** - 最佳化最常執行的程式碼
+3. **使用適當的資料結構** - 字典用於查找，集合用於成員檢查
+4. **避免過早最佳化** - 先求清晰，再求最佳化
+5. **使用內建函式** - 它們是用 C 實作的
+6. **快取昂貴的計算** - 使用 lru_cache
+7. **批次處理 I/O 操作** - 減少系統呼叫
+8. **對大型資料集使用生成器**
+9. **考慮使用 NumPy** 進行數值運算
+10. **分析正式環境程式碼** - 使用 py-spy 監控線上系統
 
-## Common Pitfalls
+## 常見陷阱
 
-- Optimizing without profiling
-- Using global variables unnecessarily
-- Not using appropriate data structures
-- Creating unnecessary copies of data
-- Not using connection pooling for databases
-- Ignoring algorithmic complexity
-- Over-optimizing rare code paths
-- Not considering memory usage
+- 未經分析就進行最佳化
+- 不必要地使用全域變數
+- 未使用適當的資料結構
+- 建立不必要的資料副本
+- 資料庫未使用連線池
+- 忽略演算法複雜度
+- 過度最佳化罕見的程式碼路徑
+- 未考慮記憶體使用量
 
-## Resources
+## 資源
 
-- **cProfile**: Built-in CPU profiler
-- **memory_profiler**: Memory usage profiling
-- **line_profiler**: Line-by-line profiling
-- **py-spy**: Sampling profiler for production
-- **NumPy**: High-performance numerical computing
-- **Cython**: Compile Python to C
-- **PyPy**: Alternative Python interpreter with JIT
+- **cProfile**：內建的 CPU 分析器
+- **memory_profiler**：記憶體使用分析
+- **line_profiler**：逐行分析
+- **py-spy**：正式環境的採樣分析器
+- **NumPy**：高效能數值運算
+- **Cython**：將 Python 編譯為 C
+- **PyPy**：具有 JIT 的替代 Python 直譯器
 
-## Performance Checklist
+## 效能檢查清單
 
-- [ ] Profiled code to identify bottlenecks
-- [ ] Used appropriate data structures
-- [ ] Implemented caching where beneficial
-- [ ] Optimized database queries
-- [ ] Used generators for large datasets
-- [ ] Considered multiprocessing for CPU-bound tasks
-- [ ] Used async I/O for I/O-bound tasks
-- [ ] Minimized function call overhead in hot loops
-- [ ] Checked for memory leaks
-- [ ] Benchmarked before and after optimization
+- [ ] 已分析程式碼以識別瓶頸
+- [ ] 已使用適當的資料結構
+- [ ] 已在有益處的地方實作快取
+- [ ] 已最佳化資料庫查詢
+- [ ] 已對大型資料集使用生成器
+- [ ] 已考慮對 CPU 密集型任務使用多處理程序
+- [ ] 已對 I/O 密集型任務使用非同步 I/O
+- [ ] 已最小化熱迴圈中的函式呼叫開銷
+- [ ] 已檢查記憶體洩漏
+- [ ] 已在最佳化前後進行基準測試
