@@ -3,7 +3,7 @@
 總檔案數: 307
 已完成: 8
 進行中: 0
-待處理: 197
+待處理: 181
 
 ## 檔案清單
 
@@ -117,22 +117,22 @@
 - [x] /home/user/agents/plugins/database-cloud-optimization/agents/database-architect.md
 - [x] /home/user/agents/plugins/database-cloud-optimization/agents/database-optimizer.md
 - [x] /home/user/agents/plugins/database-cloud-optimization/commands/cost-optimize.md
-- [ ] /home/user/agents/plugins/database-design/agents/database-architect.md
-- [ ] /home/user/agents/plugins/database-design/agents/sql-pro.md
-- [ ] /home/user/agents/plugins/database-design/skills/postgresql/SKILL.md
-- [ ] /home/user/agents/plugins/database-migrations/agents/database-admin.md
-- [ ] /home/user/agents/plugins/database-migrations/agents/database-optimizer.md
-- [ ] /home/user/agents/plugins/database-migrations/commands/migration-observability.md
-- [ ] /home/user/agents/plugins/database-migrations/commands/sql-migrations.md
-- [ ] /home/user/agents/plugins/debugging-toolkit/agents/debugger.md
-- [ ] /home/user/agents/plugins/debugging-toolkit/agents/dx-optimizer.md
-- [ ] /home/user/agents/plugins/debugging-toolkit/commands/smart-debug.md
-- [ ] /home/user/agents/plugins/dependency-management/agents/legacy-modernizer.md
-- [ ] /home/user/agents/plugins/dependency-management/commands/deps-audit.md
-- [ ] /home/user/agents/plugins/deployment-strategies/agents/deployment-engineer.md
-- [ ] /home/user/agents/plugins/deployment-strategies/agents/terraform-specialist.md
-- [ ] /home/user/agents/plugins/deployment-validation/agents/cloud-architect.md
-- [ ] /home/user/agents/plugins/deployment-validation/commands/config-validate.md
+- [x] /home/user/agents/plugins/database-design/agents/database-architect.md
+- [x] /home/user/agents/plugins/database-design/agents/sql-pro.md
+- [x] /home/user/agents/plugins/database-design/skills/postgresql/SKILL.md
+- [x] /home/user/agents/plugins/database-migrations/agents/database-admin.md
+- [x] /home/user/agents/plugins/database-migrations/agents/database-optimizer.md
+- [x] /home/user/agents/plugins/database-migrations/commands/migration-observability.md
+- [x] /home/user/agents/plugins/database-migrations/commands/sql-migrations.md
+- [x] /home/user/agents/plugins/debugging-toolkit/agents/debugger.md
+- [x] /home/user/agents/plugins/debugging-toolkit/agents/dx-optimizer.md
+- [x] /home/user/agents/plugins/debugging-toolkit/commands/smart-debug.md
+- [x] /home/user/agents/plugins/dependency-management/agents/legacy-modernizer.md
+- [x] /home/user/agents/plugins/dependency-management/commands/deps-audit.md
+- [x] /home/user/agents/plugins/deployment-strategies/agents/deployment-engineer.md
+- [x] /home/user/agents/plugins/deployment-strategies/agents/terraform-specialist.md
+- [x] /home/user/agents/plugins/deployment-validation/agents/cloud-architect.md
+- [x] /home/user/agents/plugins/deployment-validation/commands/config-validate.md
 - [ ] /home/user/agents/plugins/developer-essentials/skills/auth-implementation-patterns/SKILL.md
 - [ ] /home/user/agents/plugins/developer-essentials/skills/code-review-excellence/SKILL.md
 - [ ] /home/user/agents/plugins/developer-essentials/skills/debugging-strategies/SKILL.md
