@@ -3,7 +3,7 @@
 總檔案數: 307
 已完成: 8
 進行中: 0
-待處理: 149
+待處理: 133
 
 ## 檔案清單
 
@@ -165,22 +165,22 @@
 - [x] /home/user/agents/plugins/framework-migration/commands/code-migrate.md
 - [x] /home/user/agents/plugins/framework-migration/commands/deps-upgrade.md
 - [x] /home/user/agents/plugins/framework-migration/commands/legacy-modernize.md
-- [ ] /home/user/agents/plugins/framework-migration/skills/angular-migration/SKILL.md
-- [ ] /home/user/agents/plugins/framework-migration/skills/database-migration/SKILL.md
-- [ ] /home/user/agents/plugins/framework-migration/skills/dependency-upgrade/SKILL.md
-- [ ] /home/user/agents/plugins/framework-migration/skills/react-modernization/SKILL.md
-- [ ] /home/user/agents/plugins/frontend-mobile-development/agents/frontend-developer.md
-- [ ] /home/user/agents/plugins/frontend-mobile-development/agents/mobile-developer.md
-- [ ] /home/user/agents/plugins/frontend-mobile-development/commands/component-scaffold.md
-- [ ] /home/user/agents/plugins/frontend-mobile-security/agents/frontend-developer.md
-- [ ] /home/user/agents/plugins/frontend-mobile-security/agents/frontend-security-coder.md
-- [ ] /home/user/agents/plugins/frontend-mobile-security/agents/mobile-security-coder.md
-- [ ] /home/user/agents/plugins/frontend-mobile-security/commands/xss-scan.md
-- [ ] /home/user/agents/plugins/full-stack-orchestration/agents/deployment-engineer.md
-- [ ] /home/user/agents/plugins/full-stack-orchestration/agents/performance-engineer.md
-- [ ] /home/user/agents/plugins/full-stack-orchestration/agents/security-auditor.md
-- [ ] /home/user/agents/plugins/full-stack-orchestration/agents/test-automator.md
-- [ ] /home/user/agents/plugins/full-stack-orchestration/commands/full-stack-feature.md
+- [x] /home/user/agents/plugins/framework-migration/skills/angular-migration/SKILL.md
+- [x] /home/user/agents/plugins/framework-migration/skills/database-migration/SKILL.md
+- [x] /home/user/agents/plugins/framework-migration/skills/dependency-upgrade/SKILL.md
+- [x] /home/user/agents/plugins/framework-migration/skills/react-modernization/SKILL.md
+- [x] /home/user/agents/plugins/frontend-mobile-development/agents/frontend-developer.md
+- [x] /home/user/agents/plugins/frontend-mobile-development/agents/mobile-developer.md
+- [x] /home/user/agents/plugins/frontend-mobile-development/commands/component-scaffold.md
+- [x] /home/user/agents/plugins/frontend-mobile-security/agents/frontend-developer.md
+- [x] /home/user/agents/plugins/frontend-mobile-security/agents/frontend-security-coder.md
+- [x] /home/user/agents/plugins/frontend-mobile-security/agents/mobile-security-coder.md
+- [x] /home/user/agents/plugins/frontend-mobile-security/commands/xss-scan.md
+- [x] /home/user/agents/plugins/full-stack-orchestration/agents/deployment-engineer.md
+- [x] /home/user/agents/plugins/full-stack-orchestration/agents/performance-engineer.md
+- [x] /home/user/agents/plugins/full-stack-orchestration/agents/security-auditor.md
+- [x] /home/user/agents/plugins/full-stack-orchestration/agents/test-automator.md
+- [x] /home/user/agents/plugins/full-stack-orchestration/commands/full-stack-feature.md
 - [ ] /home/user/agents/plugins/functional-programming/agents/elixir-pro.md
 - [ ] /home/user/agents/plugins/game-development/agents/minecraft-bukkit-pro.md
 - [ ] /home/user/agents/plugins/game-development/agents/unity-developer.md

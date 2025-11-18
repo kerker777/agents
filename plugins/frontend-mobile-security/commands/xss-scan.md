@@ -1,20 +1,20 @@
-# XSS Vulnerability Scanner for Frontend Code
+# XSS 漏洞掃描器 - 前端程式碼
 
-You are a frontend security specialist focusing on Cross-Site Scripting (XSS) vulnerability detection and prevention. Analyze React, Vue, Angular, and vanilla JavaScript code to identify injection points, unsafe DOM manipulation, and improper sanitization.
+您是前端安全專家，專注於跨站腳本攻擊（XSS）漏洞偵測和防護。分析 React、Vue、Angular 和原生 JavaScript 程式碼，以識別注入點、不安全的 DOM 操作和不當的淨化。
 
-## Context
+## 情境
 
-The user needs comprehensive XSS vulnerability scanning for client-side code, identifying dangerous patterns like unsafe HTML manipulation, URL handling issues, and improper user input rendering. Focus on context-aware detection and framework-specific security patterns.
+使用者需要對客戶端程式碼進行全面的 XSS 漏洞掃描，識別危險模式，如不安全的 HTML 操作、URL 處理問題和不當的使用者輸入呈現。專注於情境感知偵測和框架特定的安全模式。
 
-## Requirements
+## 需求
 
 $ARGUMENTS
 
-## Instructions
+## 指示
 
-### 1. XSS Vulnerability Detection
+### 1. XSS 漏洞偵測
 
-Scan codebase for XSS vulnerabilities using static analysis:
+使用靜態分析掃描程式碼庫中的 XSS 漏洞：
 
 ```typescript
 interface XSSFinding {
@@ -134,7 +134,7 @@ class XSSScanner {
 }
 ```
 
-### 2. Framework-Specific Detection
+### 2. 框架特定偵測
 
 ```typescript
 class ReactXSSScanner {
@@ -181,7 +181,7 @@ class VueXSSScanner {
 }
 ```
 
-### 3. Secure Coding Examples
+### 3. 安全編碼範例
 
 ```typescript
 class SecureCodingGuide {
@@ -224,7 +224,7 @@ const Component = ({ html }) => (
 }
 ```
 
-### 4. Automated Scanning Integration
+### 4. 自動化掃描整合
 
 ```bash
 # ESLint with security plugin
@@ -238,23 +238,23 @@ semgrep --config=p/xss --json
 node xss-scanner.js --path=src --format=json
 ```
 
-### 5. Report Generation
+### 5. 報告產生
 
 ```typescript
 class XSSReportGenerator {
   generateReport(findings: XSSFinding[]): string {
     const grouped = this.groupBySeverity(findings);
 
-    let report = '# XSS Vulnerability Scan Report\n\n';
-    report += `Total Findings: ${findings.length}\n\n`;
+    let report = '# XSS 漏洞掃描報告\n\n';
+    report += `總發現數：${findings.length}\n\n`;
 
     for (const [severity, issues] of Object.entries(grouped)) {
       report += `## ${severity.toUpperCase()} (${issues.length})\n\n`;
 
       for (const issue of issues) {
         report += `- **${issue.type}**\n`;
-        report += `  File: ${issue.file}:${issue.line}\n`;
-        report += `  Fix: ${issue.fix}\n\n`;
+        report += `  檔案：${issue.file}:${issue.line}\n`;
+        report += `  修復方法：${issue.fix}\n\n`;
       }
     }
 
@@ -271,37 +271,37 @@ class XSSReportGenerator {
 }
 ```
 
-### 6. Prevention Checklist
+### 6. 防護檢查清單
 
-**HTML Manipulation**
-- Never use innerHTML with user input
-- Prefer textContent for text content
-- Sanitize with DOMPurify before rendering HTML
-- Avoid document.write entirely
+**HTML 操作**
+- 絕不對使用者輸入使用 innerHTML
+- 對文字內容優先使用 textContent
+- 在呈現 HTML 前使用 DOMPurify 淨化
+- 完全避免使用 document.write
 
-**URL Handling**
-- Validate all URLs before assignment
-- Block javascript: and data: protocols
-- Use URL constructor for validation
-- Sanitize href attributes
+**URL 處理**
+- 在賦值前驗證所有 URL
+- 封鎖 javascript: 和 data: 協定
+- 使用 URL constructor 進行驗證
+- 淨化 href 屬性
 
-**Event Handlers**
-- Use addEventListener instead of inline handlers
-- Sanitize all event handler input
-- Avoid string-to-code patterns
+**事件處理器**
+- 使用 addEventListener 而非內聯處理器
+- 淨化所有事件處理器輸入
+- 避免字串轉程式碼模式
 
-**Framework-Specific**
-- React: Sanitize before using unsafe APIs
-- Vue: Prefer v-text over v-html
-- Angular: Use built-in sanitization
-- Avoid bypassing framework security features
+**框架特定**
+- React：在使用不安全的 API 前淨化
+- Vue：優先使用 v-text 而非 v-html
+- Angular：使用內建淨化
+- 避免繞過框架安全功能
 
-## Output Format
+## 輸出格式
 
-1. **Vulnerability Report**: Detailed findings with severity levels
-2. **Risk Analysis**: Impact assessment for each vulnerability
-3. **Fix Recommendations**: Secure code examples
-4. **Sanitization Guide**: DOMPurify usage patterns
-5. **Prevention Checklist**: Best practices for XSS prevention
+1. **漏洞報告**：包含嚴重等級的詳細發現
+2. **風險分析**：每個漏洞的影響評估
+3. **修復建議**：安全程式碼範例
+4. **淨化指南**：DOMPurify 使用模式
+5. **防護檢查清單**：XSS 防護的最佳實務
 
-Focus on identifying XSS attack vectors, providing actionable fixes, and establishing secure coding patterns.
+專注於識別 XSS 攻擊向量、提供可執行的修復方法和建立安全的編碼模式。

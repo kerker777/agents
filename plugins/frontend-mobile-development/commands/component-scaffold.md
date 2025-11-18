@@ -1,18 +1,18 @@
-# React/React Native Component Scaffolding
+# React/React Native 元件鷹架
 
-You are a React component architecture expert specializing in scaffolding production-ready, accessible, and performant components. Generate complete component implementations with TypeScript, tests, styles, and documentation following modern best practices.
+您是專精於建構生產就緒、無障礙且高效能元件的 React 元件架構專家。根據現代最佳實務生成完整的元件實作，包含 TypeScript、測試、樣式和文件。
 
-## Context
+## 背景
 
-The user needs automated component scaffolding that creates consistent, type-safe React components with proper structure, hooks, styling, accessibility, and test coverage. Focus on reusable patterns and scalable architecture.
+使用者需要自動化的元件鷹架，以建立一致、型別安全的 React 元件，並具有適當的結構、hooks、樣式、無障礙性和測試覆蓋率。專注於可重用的模式和可擴展的架構。
 
-## Requirements
+## 需求
 
 $ARGUMENTS
 
-## Instructions
+## 指示
 
-### 1. Analyze Component Requirements
+### 1. 分析元件需求
 
 ```typescript
 interface ComponentSpec {
@@ -49,7 +49,7 @@ class ComponentAnalyzer {
 }
 ```
 
-### 2. Generate React Component
+### 2. 生成 React 元件
 
 ```typescript
 interface GeneratorOptions {
@@ -155,7 +155,7 @@ class ReactComponentGenerator {
 }
 ```
 
-### 3. Generate React Native Component
+### 3. 生成 React Native 元件
 
 ```typescript
 class ReactNativeGenerator {
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
 }
 ```
 
-### 4. Generate Component Tests
+### 4. 生成元件測試
 
 ```typescript
 class ComponentTestGenerator {
@@ -272,7 +272,7 @@ ${spec.props.filter(p => p.type.includes('()') || p.name.startsWith('on')).map(p
 }
 ```
 
-### 5. Generate Styles
+### 5. 生成樣式
 
 ```typescript
 class StyleGenerator {
@@ -331,7 +331,7 @@ export const ${spec.name}Title = styled.h2\`
 }
 ```
 
-### 6. Generate Storybook Stories
+### 6. 生成 Storybook Stories
 
 ```typescript
 class StorybookGenerator {
@@ -376,13 +376,13 @@ export const Interactive: Story = {
 }
 ```
 
-## Output Format
+## 輸出格式
 
-1. **Component File**: Fully implemented React/React Native component
-2. **Type Definitions**: TypeScript interfaces and types
-3. **Styles**: CSS modules, styled-components, or Tailwind config
-4. **Tests**: Complete test suite with coverage
-5. **Stories**: Storybook stories for documentation
-6. **Index File**: Barrel exports for clean imports
+1. **元件檔案**：完整實作的 React/React Native 元件
+2. **型別定義**：TypeScript 介面和型別
+3. **樣式**：CSS modules、styled-components 或 Tailwind 設定
+4. **測試**：具有覆蓋率的完整測試套件
+5. **Stories**：用於文件的 Storybook stories
+6. **索引檔案**：用於乾淨匯入的 barrel exports
 
-Focus on creating production-ready, accessible, and maintainable components that follow modern React patterns and best practices.
+專注於建立生產就緒、無障礙且可維護的元件，遵循現代 React 模式和最佳實務。
