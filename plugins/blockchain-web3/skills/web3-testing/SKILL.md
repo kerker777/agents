@@ -1,23 +1,23 @@
 ---
 name: web3-testing
-description: Test smart contracts comprehensively using Hardhat and Foundry with unit tests, integration tests, and mainnet forking. Use when testing Solidity contracts, setting up blockchain test suites, or validating DeFi protocols.
+description: 使用 Hardhat 和 Foundry 進行智能合約的全面測試，包括單元測試、整合測試和主網分叉。適用於測試 Solidity 合約、建立區塊鏈測試套件或驗證 DeFi 協議。
 ---
 
-# Web3 Smart Contract Testing
+# Web3 智能合約測試
 
-Master comprehensive testing strategies for smart contracts using Hardhat, Foundry, and advanced testing patterns.
+掌握使用 Hardhat、Foundry 和進階測試模式進行智能合約的全面測試策略。
 
-## When to Use This Skill
+## 使用此技能的時機
 
-- Writing unit tests for smart contracts
-- Setting up integration test suites
-- Performing gas optimization testing
-- Fuzzing for edge cases
-- Forking mainnet for realistic testing
-- Automating test coverage reporting
-- Verifying contracts on Etherscan
+- 為智能合約撰寫單元測試
+- 建立整合測試套件
+- 執行 gas 優化測試
+- 模糊測試以找出邊界案例
+- 分叉主網進行真實測試
+- 自動化測試覆蓋率報告
+- 在 Etherscan 上驗證合約
 
-## Hardhat Testing Setup
+## Hardhat 測試設定
 
 ```javascript
 // hardhat.config.js
@@ -59,7 +59,7 @@ module.exports = {
 };
 ```
 
-## Unit Testing Patterns
+## 單元測試模式
 
 ```javascript
 const { expect } = require("chai");
@@ -67,7 +67,7 @@ const { ethers } = require("hardhat");
 const { loadFixture, time } = require("@nomicfoundation/hardhat-network-helpers");
 
 describe("Token Contract", function () {
-  // Fixture for test setup
+  // 測試設定的 Fixture
   async function deployTokenFixture() {
     const [owner, addr1, addr2] = await ethers.getSigners();
 
@@ -120,10 +120,10 @@ describe("Token Contract", function () {
     it("Should handle time-locked operations", async function () {
       const { token } = await loadFixture(deployTokenFixture);
 
-      // Increase time by 1 day
+      // 將時間增加 1 天
       await time.increase(86400);
 
-      // Test time-dependent functionality
+      // 測試時間相依的功能
     });
   });
 
@@ -140,7 +140,7 @@ describe("Token Contract", function () {
 });
 ```
 
-## Foundry Testing (Forge)
+## Foundry 測試 (Forge)
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -183,7 +183,7 @@ contract TokenTest is Test {
         token.transfer(address(0), 100);
     }
 
-    // Fuzzing test
+    // 模糊測試
     function testFuzzTransfer(uint256 amount) public {
         vm.assume(amount > 0 && amount <= token.totalSupply());
 
@@ -193,32 +193,32 @@ contract TokenTest is Test {
         assertEq(token.balanceOf(user1), amount);
     }
 
-    // Test with cheatcodes
+    // 使用 cheatcodes 進行測試
     function testDealAndPrank() public {
-        // Give ETH to address
+        // 給予地址 ETH
         vm.deal(user1, 10 ether);
 
-        // Impersonate address
+        // 模擬地址
         vm.prank(user1);
 
-        // Test functionality
+        // 測試功能
         assertEq(user1.balance, 10 ether);
     }
 
-    // Mainnet fork test
+    // 主網分叉測試
     function testForkMainnet() public {
         vm.createSelectFork("https://eth-mainnet.alchemyapi.io/v2/...");
 
-        // Interact with mainnet contracts
+        // 與主網合約互動
         address dai = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
         assertEq(IERC20(dai).symbol(), "DAI");
     }
 }
 ```
 
-## Advanced Testing Patterns
+## 進階測試模式
 
-### Snapshot and Revert
+### 快照與還原
 ```javascript
 describe("Complex State Changes", function () {
   let snapshotId;
@@ -232,16 +232,16 @@ describe("Complex State Changes", function () {
   });
 
   it("Test 1", async function () {
-    // Make state changes
+    // 進行狀態變更
   });
 
   it("Test 2", async function () {
-    // State reverted, clean slate
+    // 狀態已還原，全新開始
   });
 });
 ```
 
-### Mainnet Forking
+### 主網分叉
 ```javascript
 describe("Mainnet Fork Tests", function () {
   let uniswapRouter, dai, usdc;
@@ -257,7 +257,7 @@ describe("Mainnet Fork Tests", function () {
       }]
     });
 
-    // Connect to existing mainnet contracts
+    // 連接到現有的主網合約
     uniswapRouter = await ethers.getContractAt(
       "IUniswapV2Router",
       "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D"
@@ -270,12 +270,12 @@ describe("Mainnet Fork Tests", function () {
   });
 
   it("Should swap on Uniswap", async function () {
-    // Test with real Uniswap contracts
+    // 使用真實的 Uniswap 合約進行測試
   });
 });
 ```
 
-### Impersonating Accounts
+### 模擬帳戶
 ```javascript
 it("Should impersonate whale account", async function () {
   const whaleAddress = "0x...";
@@ -287,12 +287,12 @@ it("Should impersonate whale account", async function () {
 
   const whale = await ethers.getSigner(whaleAddress);
 
-  // Use whale's tokens
+  // 使用巨鯨的代幣
   await dai.connect(whale).transfer(addr1.address, ethers.utils.parseEther("1000"));
 });
 ```
 
-## Gas Optimization Testing
+## Gas 優化測試
 
 ```javascript
 const { expect } = require("chai");
@@ -319,22 +319,22 @@ describe("Gas Optimization", function () {
 });
 ```
 
-## Coverage Reporting
+## 覆蓋率報告
 
 ```bash
-# Generate coverage report
+# 產生覆蓋率報告
 npx hardhat coverage
 
-# Output shows:
+# 輸出顯示：
 # File                | % Stmts | % Branch | % Funcs | % Lines |
 # -------------------|---------|----------|---------|---------|
 # contracts/Token.sol |   100   |   90     |   100   |   95    |
 ```
 
-## Contract Verification
+## 合約驗證
 
 ```javascript
-// Verify on Etherscan
+// 在 Etherscan 上驗證
 await hre.run("verify:verify", {
   address: contractAddress,
   constructorArguments: [arg1, arg2]
@@ -342,11 +342,11 @@ await hre.run("verify:verify", {
 ```
 
 ```bash
-# Or via CLI
+# 或透過 CLI
 npx hardhat verify --network mainnet CONTRACT_ADDRESS "Constructor arg1" "arg2"
 ```
 
-## CI/CD Integration
+## CI/CD 整合
 
 ```yaml
 # .github/workflows/test.yml
@@ -373,27 +373,27 @@ jobs:
         uses: codecov/codecov-action@v2
 ```
 
-## Resources
+## 資源
 
-- **references/hardhat-setup.md**: Hardhat configuration guide
-- **references/foundry-setup.md**: Foundry testing framework
-- **references/test-patterns.md**: Testing best practices
-- **references/mainnet-forking.md**: Fork testing strategies
-- **references/contract-verification.md**: Etherscan verification
-- **assets/hardhat-config.js**: Complete Hardhat configuration
-- **assets/test-suite.js**: Comprehensive test examples
-- **assets/foundry.toml**: Foundry configuration
-- **scripts/test-contract.sh**: Automated testing script
+- **references/hardhat-setup.md**: Hardhat 配置指南
+- **references/foundry-setup.md**: Foundry 測試框架
+- **references/test-patterns.md**: 測試最佳實踐
+- **references/mainnet-forking.md**: 分叉測試策略
+- **references/contract-verification.md**: Etherscan 驗證
+- **assets/hardhat-config.js**: 完整的 Hardhat 配置
+- **assets/test-suite.js**: 綜合測試範例
+- **assets/foundry.toml**: Foundry 配置
+- **scripts/test-contract.sh**: 自動化測試腳本
 
-## Best Practices
+## 最佳實踐
 
-1. **Test Coverage**: Aim for >90% coverage
-2. **Edge Cases**: Test boundary conditions
-3. **Gas Limits**: Verify functions don't hit block gas limit
-4. **Reentrancy**: Test for reentrancy vulnerabilities
-5. **Access Control**: Test unauthorized access attempts
-6. **Events**: Verify event emissions
-7. **Fixtures**: Use fixtures to avoid code duplication
-8. **Mainnet Fork**: Test with real contracts
-9. **Fuzzing**: Use property-based testing
-10. **CI/CD**: Automate testing on every commit
+1. **測試覆蓋率**：目標達成 >90% 覆蓋率
+2. **邊界案例**：測試邊界條件
+3. **Gas 限制**：驗證函式不會達到區塊 gas 上限
+4. **重入攻擊**：測試重入攻擊漏洞
+5. **存取控制**：測試未經授權的存取嘗試
+6. **事件**：驗證事件的觸發
+7. **Fixtures**：使用 fixtures 避免程式碼重複
+8. **主網分叉**：使用真實合約進行測試
+9. **模糊測試**：使用基於屬性的測試
+10. **CI/CD**：在每次提交時自動化測試

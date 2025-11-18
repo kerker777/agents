@@ -3,7 +3,7 @@
 總檔案數: 307
 已完成: 8
 進行中: 0
-待處理: 259
+待處理: 245
 
 ## 檔案清單
 
@@ -55,20 +55,20 @@
 - [x] /home/user/agents/plugins/blockchain-web3/skills/defi-protocol-templates/SKILL.md
 - [x] /home/user/agents/plugins/blockchain-web3/skills/nft-standards/SKILL.md
 - [x] /home/user/agents/plugins/blockchain-web3/skills/solidity-security/SKILL.md
-- [ ] /home/user/agents/plugins/blockchain-web3/skills/web3-testing/SKILL.md
-- [ ] /home/user/agents/plugins/business-analytics/agents/business-analyst.md
-- [ ] /home/user/agents/plugins/cicd-automation/agents/cloud-architect.md
-- [ ] /home/user/agents/plugins/cicd-automation/agents/deployment-engineer.md
-- [ ] /home/user/agents/plugins/cicd-automation/agents/devops-troubleshooter.md
-- [ ] /home/user/agents/plugins/cicd-automation/agents/kubernetes-architect.md
-- [ ] /home/user/agents/plugins/cicd-automation/agents/terraform-specialist.md
-- [ ] /home/user/agents/plugins/cicd-automation/commands/workflow-automate.md
-- [ ] /home/user/agents/plugins/cicd-automation/skills/deployment-pipeline-design/SKILL.md
-- [ ] /home/user/agents/plugins/cicd-automation/skills/github-actions-templates/SKILL.md
-- [ ] /home/user/agents/plugins/cicd-automation/skills/gitlab-ci-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/cicd-automation/skills/secrets-management/SKILL.md
-- [ ] /home/user/agents/plugins/cloud-infrastructure/agents/cloud-architect.md
-- [ ] /home/user/agents/plugins/cloud-infrastructure/agents/deployment-engineer.md
+- [x] /home/user/agents/plugins/blockchain-web3/skills/web3-testing/SKILL.md
+- [x] /home/user/agents/plugins/business-analytics/agents/business-analyst.md
+- [x] /home/user/agents/plugins/cicd-automation/agents/cloud-architect.md
+- [x] /home/user/agents/plugins/cicd-automation/agents/deployment-engineer.md
+- [x] /home/user/agents/plugins/cicd-automation/agents/devops-troubleshooter.md
+- [x] /home/user/agents/plugins/cicd-automation/agents/kubernetes-architect.md
+- [x] /home/user/agents/plugins/cicd-automation/agents/terraform-specialist.md
+- [x] /home/user/agents/plugins/cicd-automation/commands/workflow-automate.md
+- [x] /home/user/agents/plugins/cicd-automation/skills/deployment-pipeline-design/SKILL.md
+- [x] /home/user/agents/plugins/cicd-automation/skills/github-actions-templates/SKILL.md
+- [x] /home/user/agents/plugins/cicd-automation/skills/gitlab-ci-patterns/SKILL.md
+- [x] /home/user/agents/plugins/cicd-automation/skills/secrets-management/SKILL.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/agents/cloud-architect.md
+- [x] /home/user/agents/plugins/cloud-infrastructure/agents/deployment-engineer.md
 - [ ] /home/user/agents/plugins/cloud-infrastructure/agents/hybrid-cloud-architect.md
 - [ ] /home/user/agents/plugins/cloud-infrastructure/agents/kubernetes-architect.md
 - [ ] /home/user/agents/plugins/cloud-infrastructure/agents/network-engineer.md

@@ -3,51 +3,51 @@ name: secrets-management
 description: Implement secure secrets management for CI/CD pipelines using Vault, AWS Secrets Manager, or native platform solutions. Use when handling sensitive credentials, rotating secrets, or securing CI/CD environments.
 ---
 
-# Secrets Management
+# 機敏資料管理
 
-Secure secrets management practices for CI/CD pipelines using Vault, AWS Secrets Manager, and other tools.
+使用 Vault、AWS Secrets Manager 及其他工具進行 CI/CD 流水線的安全機敏資料管理實務。
 
-## Purpose
+## 目的
 
-Implement secure secrets management in CI/CD pipelines without hardcoding sensitive information.
+在 CI/CD 流水線中實作安全的機敏資料管理，避免硬編碼敏感資訊。
 
-## When to Use
+## 使用時機
 
-- Store API keys and credentials
-- Manage database passwords
-- Handle TLS certificates
-- Rotate secrets automatically
-- Implement least-privilege access
+- 儲存 API 金鑰與憑證
+- 管理資料庫密碼
+- 處理 TLS 憑證
+- 自動輪替機敏資料
+- 實作最小權限存取
 
-## Secrets Management Tools
+## 機敏資料管理工具
 
 ### HashiCorp Vault
-- Centralized secrets management
-- Dynamic secrets generation
-- Secret rotation
-- Audit logging
-- Fine-grained access control
+- 集中式機敏資料管理
+- 動態機敏資料產生
+- 機敏資料輪替
+- 稽核日誌記錄
+- 細緻的存取控制
 
 ### AWS Secrets Manager
-- AWS-native solution
-- Automatic rotation
-- Integration with RDS
-- CloudFormation support
+- AWS 原生解決方案
+- 自動輪替
+- 與 RDS 整合
+- CloudFormation 支援
 
 ### Azure Key Vault
-- Azure-native solution
-- HSM-backed keys
-- Certificate management
-- RBAC integration
+- Azure 原生解決方案
+- HSM 支援的金鑰
+- 憑證管理
+- RBAC 整合
 
 ### Google Secret Manager
-- GCP-native solution
-- Versioning
-- IAM integration
+- GCP 原生解決方案
+- 版本控制
+- IAM 整合
 
-## HashiCorp Vault Integration
+## HashiCorp Vault 整合
 
-### Setup Vault
+### 設定 Vault
 
 ```bash
 # Start Vault dev server
@@ -64,7 +64,7 @@ vault secrets enable -path=secret kv-v2
 vault kv put secret/database/config username=admin password=secret
 ```
 
-### GitHub Actions with Vault
+### GitHub Actions 與 Vault
 
 ```yaml
 name: Deploy with Vault Secrets
@@ -93,7 +93,7 @@ jobs:
         # Use $DB_PASSWORD, $API_KEY
 ```
 
-### GitLab CI with Vault
+### GitLab CI 與 Vault
 
 ```yaml
 deploy:
@@ -110,11 +110,11 @@ deploy:
       # Use $DB_PASSWORD, $API_KEY
 ```
 
-**Reference:** See `references/vault-setup.md`
+**參考資料：**參閱 `references/vault-setup.md`
 
 ## AWS Secrets Manager
 
-### Store Secret
+### 儲存機敏資料
 
 ```bash
 aws secretsmanager create-secret \
@@ -122,7 +122,7 @@ aws secretsmanager create-secret \
   --secret-string "super-secret-password"
 ```
 
-### Retrieve in GitHub Actions
+### 在 GitHub Actions 中擷取
 
 ```yaml
 - name: Configure AWS credentials
@@ -147,7 +147,7 @@ aws secretsmanager create-secret \
     ./deploy.sh
 ```
 
-### Terraform with AWS Secrets Manager
+### Terraform 與 AWS Secrets Manager
 
 ```hcl
 data "aws_secretsmanager_secret_version" "db_password" {
@@ -165,7 +165,7 @@ resource "aws_db_instance" "main" {
 
 ## GitHub Secrets
 
-### Organization/Repository Secrets
+### 組織/儲存庫機敏資料
 
 ```yaml
 - name: Use GitHub secret
@@ -174,7 +174,7 @@ resource "aws_db_instance" "main" {
     echo "Database URL: ${{ secrets.DATABASE_URL }}"
 ```
 
-### Environment Secrets
+### 環境機敏資料
 
 ```yaml
 deploy:
@@ -186,11 +186,11 @@ deploy:
       echo "Deploying with ${{ secrets.PROD_API_KEY }}"
 ```
 
-**Reference:** See `references/github-secrets.md`
+**參考資料：**參閱 `references/github-secrets.md`
 
-## GitLab CI/CD Variables
+## GitLab CI/CD 變數
 
-### Project Variables
+### 專案變數
 
 ```yaml
 deploy:
@@ -199,27 +199,27 @@ deploy:
     - echo "Database: $DATABASE_URL"
 ```
 
-### Protected and Masked Variables
-- Protected: Only available in protected branches
-- Masked: Hidden in job logs
-- File type: Stored as file
+### 受保護與遮罩變數
+- 受保護：僅在受保護分支中可用
+- 遮罩：在工作日誌中隱藏
+- 檔案類型：以檔案形式儲存
 
-## Best Practices
+## 最佳實務
 
-1. **Never commit secrets** to Git
-2. **Use different secrets** per environment
-3. **Rotate secrets regularly**
-4. **Implement least-privilege access**
-5. **Enable audit logging**
-6. **Use secret scanning** (GitGuardian, TruffleHog)
-7. **Mask secrets in logs**
-8. **Encrypt secrets at rest**
-9. **Use short-lived tokens** when possible
-10. **Document secret requirements**
+1. **絕不將機敏資料提交**至 Git
+2. **針對不同環境使用不同機敏資料**
+3. **定期輪替機敏資料**
+4. **實作最小權限存取**
+5. **啟用稽核日誌記錄**
+6. **使用機敏資料掃描**（GitGuardian、TruffleHog）
+7. **在日誌中遮罩機敏資料**
+8. **靜態加密機敏資料**
+9. **盡可能使用短期權杖**
+10. **記錄機敏資料需求**
 
-## Secret Rotation
+## 機敏資料輪替
 
-### Automated Rotation with AWS
+### AWS 自動輪替
 
 ```python
 import boto3
@@ -250,17 +250,17 @@ def lambda_handler(event, context):
     return {'statusCode': 200}
 ```
 
-### Manual Rotation Process
+### 手動輪替流程
 
-1. Generate new secret
-2. Update secret in secret store
-3. Update applications to use new secret
-4. Verify functionality
-5. Revoke old secret
+1. 產生新的機敏資料
+2. 在機敏資料儲存庫中更新機敏資料
+3. 更新應用程式以使用新的機敏資料
+4. 驗證功能正常
+5. 撤銷舊的機敏資料
 
 ## External Secrets Operator
 
-### Kubernetes Integration
+### Kubernetes 整合
 
 ```yaml
 apiVersion: external-secrets.io/v1beta1
@@ -304,7 +304,7 @@ spec:
       property: password
 ```
 
-## Secret Scanning
+## 機敏資料掃描
 
 ### Pre-commit Hook
 
@@ -323,7 +323,7 @@ if [ $? -ne 0 ]; then
 fi
 ```
 
-### CI/CD Secret Scanning
+### CI/CD 機敏資料掃描
 
 ```yaml
 secret-scan:
@@ -334,13 +334,13 @@ secret-scan:
   allow_failure: false
 ```
 
-## Reference Files
+## 參考檔案
 
-- `references/vault-setup.md` - HashiCorp Vault configuration
-- `references/github-secrets.md` - GitHub Secrets best practices
+- `references/vault-setup.md` - HashiCorp Vault 設定
+- `references/github-secrets.md` - GitHub Secrets 最佳實務
 
-## Related Skills
+## 相關技能
 
-- `github-actions-templates` - For GitHub Actions integration
-- `gitlab-ci-patterns` - For GitLab CI integration
-- `deployment-pipeline-design` - For pipeline architecture
+- `github-actions-templates` - 適用於 GitHub Actions 整合
+- `gitlab-ci-patterns` - 適用於 GitLab CI 整合
+- `deployment-pipeline-design` - 適用於流水線架構
