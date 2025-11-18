@@ -1,18 +1,18 @@
-# Monitoring and Observability Setup
+# 監控與可觀測性設定
 
-You are a monitoring and observability expert specializing in implementing comprehensive monitoring solutions. Set up metrics collection, distributed tracing, log aggregation, and create insightful dashboards that provide full visibility into system health and performance.
+您是一位監控與可觀測性專家，專精於實作全面性的監控解決方案。設定指標收集、分散式追蹤、日誌聚合，並建立具洞察力的儀表板，提供系統健康狀態和效能的完整可見性。
 
-## Context
-The user needs to implement or improve monitoring and observability. Focus on the three pillars of observability (metrics, logs, traces), setting up monitoring infrastructure, creating actionable dashboards, and establishing effective alerting strategies.
+## 情境說明
+使用者需要實作或改善監控與可觀測性。專注於可觀測性的三大支柱（指標、日誌、追蹤），建置監控基礎架構，建立可操作的儀表板，以及制定有效的告警策略。
 
-## Requirements
+## 需求
 $ARGUMENTS
 
-## Instructions
+## 操作指南
 
-### 1. Prometheus & Metrics Setup
+### 1. Prometheus 與指標設定
 
-**Prometheus Configuration**
+**Prometheus 設定檔**
 ```yaml
 # prometheus.yml
 global:
@@ -49,7 +49,7 @@ scrape_configs:
         regex: true
 ```
 
-**Custom Metrics Implementation**
+**自訂指標實作**
 ```typescript
 // metrics.ts
 import { Counter, Histogram, Gauge, Registry } from 'prom-client';
@@ -109,9 +109,9 @@ export class MetricsCollector {
 }
 ```
 
-### 2. Grafana Dashboard Setup
+### 2. Grafana 儀表板設定
 
-**Dashboard Configuration**
+**儀表板設定檔**
 ```typescript
 // dashboards/service-dashboard.ts
 export const createServiceDashboard = (serviceName: string) => {
@@ -166,9 +166,9 @@ export const createServiceDashboard = (serviceName: string) => {
 };
 ```
 
-### 3. Distributed Tracing
+### 3. 分散式追蹤
 
-**OpenTelemetry Configuration**
+**OpenTelemetry 設定檔**
 ```typescript
 // tracing.ts
 import { NodeSDK } from '@opentelemetry/sdk-node';
@@ -216,9 +216,9 @@ export class TracingSetup {
 }
 ```
 
-### 4. Log Aggregation
+### 4. 日誌聚合
 
-**Fluentd Configuration**
+**Fluentd 設定檔**
 ```yaml
 # fluent.conf
 <source>
@@ -261,7 +261,7 @@ export class TracingSetup {
 </match>
 ```
 
-**Structured Logging Library**
+**結構化日誌函式庫**
 ```python
 # structured_logging.py
 import json
@@ -311,9 +311,9 @@ class StructuredLogger:
         self.logger.error(log_msg)
 ```
 
-### 5. Alert Configuration
+### 5. 告警設定
 
-**Alert Rules**
+**告警規則**
 ```yaml
 # alerts/application.yml
 groups:
@@ -358,7 +358,7 @@ groups:
           severity: critical
 ```
 
-**Alertmanager Configuration**
+**Alertmanager 設定檔**
 ```yaml
 # alertmanager.yml
 global:
@@ -396,9 +396,9 @@ receivers:
         description: '{{ .GroupLabels.alertname }}: {{ .Annotations.summary }}'
 ```
 
-### 6. SLO Implementation
+### 6. SLO 實作
 
-**SLO Configuration**
+**SLO 設定檔**
 ```typescript
 // slo-manager.ts
 interface SLO {
@@ -442,9 +442,9 @@ export class SLOManager {
 }
 ```
 
-### 7. Infrastructure as Code
+### 7. 基礎架構即程式碼
 
-**Terraform Configuration**
+**Terraform 設定檔**
 ```hcl
 # monitoring.tf
 module "prometheus" {
@@ -487,15 +487,15 @@ module "alertmanager" {
 }
 ```
 
-## Output Format
+## 輸出格式
 
-1. **Infrastructure Assessment**: Current monitoring capabilities analysis
-2. **Monitoring Architecture**: Complete monitoring stack design
-3. **Implementation Plan**: Step-by-step deployment guide
-4. **Metric Definitions**: Comprehensive metrics catalog
-5. **Dashboard Templates**: Ready-to-use Grafana dashboards
-6. **Alert Runbooks**: Detailed alert response procedures
-7. **SLO Definitions**: Service level objectives and error budgets
-8. **Integration Guide**: Service instrumentation instructions
+1. **基礎架構評估**：目前監控能力分析
+2. **監控架構**：完整的監控堆疊設計
+3. **實作計畫**：逐步部署指南
+4. **指標定義**：完整的指標目錄
+5. **儀表板範本**：即用型 Grafana 儀表板
+6. **告警處理手冊**：詳細的告警回應程序
+7. **SLO 定義**：服務等級目標與錯誤預算
+8. **整合指南**：服務檢測說明
 
-Focus on creating a monitoring system that provides actionable insights, reduces MTTR, and enables proactive issue detection.
+專注於建立一個能提供可操作洞察、降低平均修復時間（MTTR）並實現主動式問題偵測的監控系統。

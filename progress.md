@@ -1,9 +1,9 @@
 # 翻譯進度追蹤
 
 總檔案數: 307
-已完成: 241
+已完成: 251
 進行中: 0
-待處理: 66
+待處理: 56
 
 ## 檔案清單
 
@@ -239,16 +239,16 @@
 - [x] /home/user/agents/plugins/multi-platform-apps/agents/backend-architect.md
 - [x] /home/user/agents/plugins/multi-platform-apps/agents/flutter-expert.md
 - [x] /home/user/agents/plugins/multi-platform-apps/agents/frontend-developer.md
-- [ ] /home/user/agents/plugins/multi-platform-apps/agents/ios-developer.md
-- [ ] /home/user/agents/plugins/multi-platform-apps/agents/mobile-developer.md
-- [ ] /home/user/agents/plugins/multi-platform-apps/agents/ui-ux-designer.md
-- [ ] /home/user/agents/plugins/multi-platform-apps/commands/multi-platform.md
-- [ ] /home/user/agents/plugins/observability-monitoring/agents/database-optimizer.md
-- [ ] /home/user/agents/plugins/observability-monitoring/agents/network-engineer.md
-- [ ] /home/user/agents/plugins/observability-monitoring/agents/observability-engineer.md
-- [ ] /home/user/agents/plugins/observability-monitoring/agents/performance-engineer.md
-- [ ] /home/user/agents/plugins/observability-monitoring/commands/monitor-setup.md
-- [ ] /home/user/agents/plugins/observability-monitoring/commands/slo-implement.md
+- [x] /home/user/agents/plugins/multi-platform-apps/agents/ios-developer.md
+- [x] /home/user/agents/plugins/multi-platform-apps/agents/mobile-developer.md
+- [x] /home/user/agents/plugins/multi-platform-apps/agents/ui-ux-designer.md
+- [x] /home/user/agents/plugins/multi-platform-apps/commands/multi-platform.md
+- [x] /home/user/agents/plugins/observability-monitoring/agents/database-optimizer.md
+- [x] /home/user/agents/plugins/observability-monitoring/agents/network-engineer.md
+- [x] /home/user/agents/plugins/observability-monitoring/agents/observability-engineer.md
+- [x] /home/user/agents/plugins/observability-monitoring/agents/performance-engineer.md
+- [x] /home/user/agents/plugins/observability-monitoring/commands/monitor-setup.md
+- [x] /home/user/agents/plugins/observability-monitoring/commands/slo-implement.md
 - [ ] /home/user/agents/plugins/observability-monitoring/skills/distributed-tracing/SKILL.md
 - [ ] /home/user/agents/plugins/observability-monitoring/skills/grafana-dashboards/SKILL.md
 - [ ] /home/user/agents/plugins/observability-monitoring/skills/prometheus-configuration/SKILL.md
