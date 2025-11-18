@@ -1,35 +1,35 @@
 ---
 name: bats-testing-patterns
-description: Master Bash Automated Testing System (Bats) for comprehensive shell script testing. Use when writing tests for shell scripts, CI/CD pipelines, or requiring test-driven development of shell utilities.
+description: 精通 Bash Automated Testing System (Bats) 進行全面的 Shell 腳本測試。用於為 Shell 腳本撰寫測試、CI/CD 管線，或需要對 Shell 工具進行測試驅動開發時使用。
 ---
 
-# Bats Testing Patterns
+# Bats 測試模式
 
-Comprehensive guidance for writing comprehensive unit tests for shell scripts using Bats (Bash Automated Testing System), including test patterns, fixtures, and best practices for production-grade shell testing.
+使用 Bats（Bash Automated Testing System）為 Shell 腳本撰寫全面單元測試的完整指南，包含測試模式、測試夾具（fixtures）和生產級 Shell 測試的最佳實踐。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Writing unit tests for shell scripts
-- Implementing test-driven development (TDD) for scripts
-- Setting up automated testing in CI/CD pipelines
-- Testing edge cases and error conditions
-- Validating behavior across different shell environments
-- Building maintainable test suites for scripts
-- Creating fixtures for complex test scenarios
-- Testing multiple shell dialects (bash, sh, dash)
+- 為 Shell 腳本撰寫單元測試
+- 為腳本實作測試驅動開發（TDD）
+- 在 CI/CD 管線中設定自動化測試
+- 測試邊界情況和錯誤條件
+- 驗證不同 Shell 環境中的行為
+- 為腳本建立可維護的測試套件
+- 為複雜測試場景建立測試夾具
+- 測試多種 Shell 方言（bash、sh、dash）
 
-## Bats Fundamentals
+## Bats 基礎知識
 
-### What is Bats?
+### 什麼是 Bats？
 
-Bats (Bash Automated Testing System) is a TAP (Test Anything Protocol) compliant testing framework for shell scripts that provides:
-- Simple, natural test syntax
-- TAP output format compatible with CI systems
-- Fixtures and setup/teardown support
-- Assertion helpers
-- Parallel test execution
+Bats（Bash Automated Testing System）是一個符合 TAP（Test Anything Protocol）標準的 Shell 腳本測試框架，提供：
+- 簡單、自然的測試語法
+- 與 CI 系統相容的 TAP 輸出格式
+- 測試夾具和 setup/teardown 支援
+- 斷言輔助工具
+- 平行測試執行
 
-### Installation
+### 安裝
 
 ```bash
 # macOS with Homebrew
@@ -47,7 +47,7 @@ npm install --global bats
 bats --version
 ```
 
-### File Structure
+### 檔案結構
 
 ```
 project/
@@ -65,9 +65,9 @@ project/
 └── README.md
 ```
 
-## Basic Test Structure
+## 基本測試結構
 
-### Simple Test File
+### 簡單測試檔案
 
 ```bash
 #!/usr/bin/env bats
@@ -104,9 +104,9 @@ teardown() {
 }
 ```
 
-## Assertion Patterns
+## 斷言模式
 
-### Exit Code Assertions
+### 退出代碼斷言
 
 ```bash
 #!/usr/bin/env bats
@@ -133,7 +133,7 @@ teardown() {
 }
 ```
 
-### Output Assertions
+### 輸出斷言
 
 ```bash
 #!/usr/bin/env bats
@@ -168,7 +168,7 @@ line3" ]
 }
 ```
 
-### File Assertions
+### 檔案斷言
 
 ```bash
 #!/usr/bin/env bats
@@ -201,9 +201,9 @@ line3" ]
 }
 ```
 
-## Setup and Teardown Patterns
+## Setup 和 Teardown 模式
 
-### Basic Setup and Teardown
+### 基本 Setup 和 Teardown
 
 ```bash
 #!/usr/bin/env bats
@@ -228,7 +228,7 @@ teardown() {
 }
 ```
 
-### Setup with Resources
+### 使用資源的 Setup
 
 ```bash
 #!/usr/bin/env bats
@@ -259,7 +259,7 @@ teardown() {
 }
 ```
 
-### Global Setup/Teardown
+### 全域 Setup/Teardown
 
 ```bash
 #!/usr/bin/env bats
@@ -287,9 +287,9 @@ teardown_file() {
 }
 ```
 
-## Mocking and Stubbing Patterns
+## Mock 和 Stub 模式
 
-### Function Mocking
+### 函式 Mock
 
 ```bash
 #!/usr/bin/env bats
@@ -307,7 +307,7 @@ my_external_tool() {
 }
 ```
 
-### Command Stubbing
+### 命令 Stub
 
 ```bash
 #!/usr/bin/env bats
@@ -341,7 +341,7 @@ EOF
 }
 ```
 
-### Variable Stubbing
+### 變數 Stub
 
 ```bash
 #!/usr/bin/env bats
@@ -361,9 +361,9 @@ EOF
 }
 ```
 
-## Fixture Management
+## 測試夾具管理
 
-### Using Fixture Files
+### 使用測試夾具檔案
 
 ```bash
 #!/usr/bin/env bats
@@ -392,7 +392,7 @@ teardown() {
 }
 ```
 
-### Dynamic Fixture Generation
+### 動態測試夾具生成
 
 ```bash
 #!/usr/bin/env bats
@@ -414,9 +414,9 @@ generate_fixture() {
 }
 ```
 
-## Advanced Patterns
+## 進階模式
 
-### Testing Error Conditions
+### 測試錯誤條件
 
 ```bash
 #!/usr/bin/env bats
@@ -447,7 +447,7 @@ generate_fixture() {
 }
 ```
 
-### Testing with Dependencies
+### 測試依賴項
 
 ```bash
 #!/usr/bin/env bats
@@ -468,7 +468,7 @@ setup() {
 }
 ```
 
-### Testing Shell Compatibility
+### 測試 Shell 相容性
 
 ```bash
 #!/usr/bin/env bats
@@ -490,7 +490,7 @@ setup() {
 }
 ```
 
-### Parallel Execution
+### 平行執行
 
 ```bash
 #!/usr/bin/env bats
@@ -513,7 +513,7 @@ setup() {
 }
 ```
 
-## Test Helper Pattern
+## 測試輔助模式
 
 ### test_helper.sh
 
@@ -559,9 +559,9 @@ cleanup_test_dir() {
 }
 ```
 
-## Integration with CI/CD
+## 與 CI/CD 整合
 
-### GitHub Actions Workflow
+### GitHub Actions 工作流程
 
 ```yaml
 name: Tests
@@ -588,7 +588,7 @@ jobs:
           bats tests/*.bats --tap | tee test_output.tap
 ```
 
-### Makefile Integration
+### Makefile 整合
 
 ```makefile
 .PHONY: test test-verbose test-tap
@@ -609,22 +609,22 @@ coverage: test
 	# Optional: Generate coverage reports
 ```
 
-## Best Practices
+## 最佳實踐
 
-1. **Test one thing per test** - Single responsibility principle
-2. **Use descriptive test names** - Clearly states what is being tested
-3. **Clean up after tests** - Always remove temporary files in teardown
-4. **Test both success and failure paths** - Don't just test happy path
-5. **Mock external dependencies** - Isolate unit under test
-6. **Use fixtures for complex data** - Makes tests more readable
-7. **Run tests in CI/CD** - Catch regressions early
-8. **Test across shell dialects** - Ensure portability
-9. **Keep tests fast** - Run in parallel when possible
-10. **Document complex test setup** - Explain unusual patterns
+1. **每個測試只測試一件事** - 單一職責原則
+2. **使用描述性的測試名稱** - 清楚說明正在測試什麼
+3. **測試後進行清理** - 始終在 teardown 中刪除臨時檔案
+4. **測試成功和失敗路徑** - 不要只測試正常路徑
+5. **Mock 外部依賴項** - 隔離待測單元
+6. **對複雜資料使用測試夾具** - 使測試更易讀
+7. **在 CI/CD 中執行測試** - 儘早發現回歸問題
+8. **跨 Shell 方言測試** - 確保可移植性
+9. **保持測試快速** - 盡可能平行執行
+10. **記錄複雜的測試設定** - 解釋不尋常的模式
 
-## Resources
+## 資源
 
 - **Bats GitHub**: https://github.com/bats-core/bats-core
-- **Bats Documentation**: https://bats-core.readthedocs.io/
-- **TAP Protocol**: https://testanything.org/
-- **Test-Driven Development**: https://en.wikipedia.org/wiki/Test-driven_development
+- **Bats 文件**: https://bats-core.readthedocs.io/
+- **TAP 協定**: https://testanything.org/
+- **測試驅動開發**: https://en.wikipedia.org/wiki/Test-driven_development

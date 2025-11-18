@@ -1,9 +1,9 @@
 # 翻譯進度追蹤
 
 總檔案數: 307
-已完成: 291
+已完成: 297
 進行中: 0
-待處理: 16
+待處理: 10
 
 ## 檔案清單
 
@@ -289,22 +289,22 @@
 - [x] /home/user/agents/plugins/seo-technical-optimization/agents/seo-keyword-strategist.md
 - [x] /home/user/agents/plugins/seo-technical-optimization/agents/seo-meta-optimizer.md
 - [x] /home/user/agents/plugins/seo-technical-optimization/agents/seo-snippet-hunter.md
-- [ ] /home/user/agents/plugins/seo-technical-optimization/agents/seo-structure-architect.md
-- [ ] /home/user/agents/plugins/shell-scripting/agents/bash-pro.md
-- [ ] /home/user/agents/plugins/shell-scripting/agents/posix-shell-pro.md
-- [ ] /home/user/agents/plugins/shell-scripting/skills/bash-defensive-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/shell-scripting/skills/bats-testing-patterns/SKILL.md
-- [ ] /home/user/agents/plugins/shell-scripting/skills/shellcheck-configuration/SKILL.md
-- [ ] /home/user/agents/plugins/systems-programming/agents/c-pro.md
-- [ ] /home/user/agents/plugins/systems-programming/agents/cpp-pro.md
-- [ ] /home/user/agents/plugins/systems-programming/agents/golang-pro.md
-- [ ] /home/user/agents/plugins/systems-programming/agents/rust-pro.md
-- [ ] /home/user/agents/plugins/systems-programming/commands/rust-project.md
-- [ ] /home/user/agents/plugins/tdd-workflows/agents/code-reviewer.md
-- [ ] /home/user/agents/plugins/tdd-workflows/agents/tdd-orchestrator.md
-- [ ] /home/user/agents/plugins/tdd-workflows/commands/tdd-cycle.md
-- [ ] /home/user/agents/plugins/tdd-workflows/commands/tdd-green.md
-- [ ] /home/user/agents/plugins/tdd-workflows/commands/tdd-red.md
+- [x] /home/user/agents/plugins/seo-technical-optimization/agents/seo-structure-architect.md
+- [x] /home/user/agents/plugins/shell-scripting/agents/bash-pro.md
+- [x] /home/user/agents/plugins/shell-scripting/agents/posix-shell-pro.md
+- [x] /home/user/agents/plugins/shell-scripting/skills/bash-defensive-patterns/SKILL.md
+- [x] /home/user/agents/plugins/shell-scripting/skills/bats-testing-patterns/SKILL.md
+- [x] /home/user/agents/plugins/shell-scripting/skills/shellcheck-configuration/SKILL.md
+- [x] /home/user/agents/plugins/systems-programming/agents/c-pro.md
+- [x] /home/user/agents/plugins/systems-programming/agents/cpp-pro.md
+- [x] /home/user/agents/plugins/systems-programming/agents/golang-pro.md
+- [x] /home/user/agents/plugins/systems-programming/agents/rust-pro.md
+- [x] /home/user/agents/plugins/systems-programming/commands/rust-project.md
+- [x] /home/user/agents/plugins/tdd-workflows/agents/code-reviewer.md
+- [x] /home/user/agents/plugins/tdd-workflows/agents/tdd-orchestrator.md
+- [x] /home/user/agents/plugins/tdd-workflows/commands/tdd-cycle.md
+- [x] /home/user/agents/plugins/tdd-workflows/commands/tdd-green.md
+- [x] /home/user/agents/plugins/tdd-workflows/commands/tdd-red.md
 - [ ] /home/user/agents/plugins/tdd-workflows/commands/tdd-refactor.md
 - [ ] /home/user/agents/plugins/team-collaboration/agents/dx-optimizer.md
 - [ ] /home/user/agents/plugins/team-collaboration/commands/issue.md

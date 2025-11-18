@@ -1,34 +1,34 @@
 ---
 name: shellcheck-configuration
-description: Master ShellCheck static analysis configuration and usage for shell script quality. Use when setting up linting infrastructure, fixing code issues, or ensuring script portability.
+description: 精通 ShellCheck 靜態分析配置與使用，提升 shell 腳本品質。適用於設置 linting 基礎設施、修復程式碼問題或確保腳本可移植性的情境。
 ---
 
-# ShellCheck Configuration and Static Analysis
+# ShellCheck 配置與靜態分析
 
-Comprehensive guidance for configuring and using ShellCheck to improve shell script quality, catch common pitfalls, and enforce best practices through static code analysis.
+全面性指南，說明如何配置和使用 ShellCheck 來提升 shell 腳本品質、捕捉常見陷阱，並透過靜態程式碼分析強制執行最佳實務。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Setting up linting for shell scripts in CI/CD pipelines
-- Analyzing existing shell scripts for issues
-- Understanding ShellCheck error codes and warnings
-- Configuring ShellCheck for specific project requirements
-- Integrating ShellCheck into development workflows
-- Suppressing false positives and configuring rule sets
-- Enforcing consistent code quality standards
-- Migrating scripts to meet quality gates
+- 在 CI/CD 流水線中為 shell 腳本設置 linting
+- 分析現有 shell 腳本的問題
+- 理解 ShellCheck 錯誤代碼與警告
+- 針對特定專案需求配置 ShellCheck
+- 將 ShellCheck 整合到開發工作流程中
+- 抑制誤報並配置規則集
+- 強制執行一致的程式碼品質標準
+- 遷移腳本以符合品質閘門要求
 
-## ShellCheck Fundamentals
+## ShellCheck 基礎知識
 
-### What is ShellCheck?
+### 什麼是 ShellCheck？
 
-ShellCheck is a static analysis tool that analyzes shell scripts and detects problematic patterns. It supports:
-- Bash, sh, dash, ksh, and other POSIX shells
-- Over 100 different warnings and errors
-- Configuration for target shell and flags
-- Integration with editors and CI/CD systems
+ShellCheck 是一個靜態分析工具，可分析 shell 腳本並偵測有問題的模式。它支援：
+- Bash、sh、dash、ksh 及其他 POSIX shell
+- 超過 100 種不同的警告與錯誤
+- 針對目標 shell 和旗標的配置
+- 與編輯器和 CI/CD 系統整合
 
-### Installation
+### 安裝
 
 ```bash
 # macOS with Homebrew
@@ -47,11 +47,11 @@ make install
 shellcheck --version
 ```
 
-## Configuration Files
+## 配置檔案
 
-### .shellcheckrc (Project Level)
+### .shellcheckrc（專案層級）
 
-Create `.shellcheckrc` in your project root:
+在專案根目錄建立 `.shellcheckrc`：
 
 ```
 # Specify target shell
@@ -66,7 +66,7 @@ disable=SC1091
 disable=SC2086
 ```
 
-### Environment Variables
+### 環境變數
 
 ```bash
 # Set default shell target
@@ -79,9 +79,9 @@ export SHELLCHECK_STRICT=true
 export SHELLCHECK_CONFIG=~/.shellcheckrc
 ```
 
-## Common ShellCheck Error Codes
+## 常見 ShellCheck 錯誤代碼
 
-### SC1000-1099: Parser Errors
+### SC1000-1099：解析器錯誤
 ```bash
 # SC1004: Backslash continuation not followed by newline
 echo hello\
@@ -93,7 +93,7 @@ if [[ $var =  "value" ]]; then  # Space before ==
 fi
 ```
 
-### SC2000-2099: Shell Issues
+### SC2000-2099：Shell 問題
 
 ```bash
 # SC2009: Consider using pgrep or pidof instead of grep|grep
@@ -112,7 +112,7 @@ echo '$VAR'  # Literal $VAR, not variable expansion
 # when using with scripts for other shells
 ```
 
-### SC2100-2199: Quoting Issues
+### SC2100-2199：引號問題
 
 ```bash
 # SC2086: Double quote to prevent globbing and word splitting
@@ -131,7 +131,7 @@ if [ $? -eq 0 ]; then  # Better: if some_command; then
 array=( $items )  # Should use: array=( $items )
 ```
 
-### SC3000-3999: POSIX Compliance Issues
+### SC3000-3999：POSIX 合規性問題
 
 ```bash
 # SC3010: In POSIX sh, use 'case' instead of 'cond && foo'
@@ -143,9 +143,9 @@ function my_func() {
 }
 ```
 
-## Practical Configuration Examples
+## 實用配置範例
 
-### Minimal Configuration (Strict POSIX)
+### 最小配置（嚴格 POSIX）
 
 ```bash
 #!/bin/bash
@@ -158,7 +158,7 @@ shellcheck \
   script.sh
 ```
 
-### Development Configuration (Bash with Relaxed Rules)
+### 開發配置（Bash 寬鬆規則）
 
 ```bash
 #!/bin/bash
@@ -171,7 +171,7 @@ shellcheck \
   script.sh
 ```
 
-### CI/CD Integration Configuration
+### CI/CD 整合配置
 
 ```bash
 #!/bin/bash
@@ -188,7 +188,7 @@ find . -type f -name "*.sh" | while read -r script; do
 done
 ```
 
-### .shellcheckrc for Project
+### 專案的 .shellcheckrc
 
 ```
 # Shell dialect to analyze against
@@ -208,9 +208,9 @@ disable=SC2119
 external-sources=true
 ```
 
-## Integration Patterns
+## 整合模式
 
-### Pre-commit Hook Configuration
+### Pre-commit Hook 配置
 
 ```bash
 #!/bin/bash
@@ -230,7 +230,7 @@ git diff --cached --name-only | grep '\.sh$' | while read -r script; do
 done
 ```
 
-### GitHub Actions Workflow
+### GitHub Actions 工作流程
 
 ```yaml
 name: ShellCheck
@@ -250,7 +250,7 @@ jobs:
           find . -type f -name "*.sh" -exec shellcheck {} \;
 ```
 
-### GitLab CI Pipeline
+### GitLab CI 流水線
 
 ```yaml
 shellcheck:
@@ -261,9 +261,9 @@ shellcheck:
   allow_failure: false
 ```
 
-## Handling ShellCheck Violations
+## 處理 ShellCheck 違規
 
-### Suppressing Specific Warnings
+### 抑制特定警告
 
 ```bash
 #!/bin/bash
@@ -288,9 +288,9 @@ command_that_fails() {
 source helper.sh
 ```
 
-### Common Violations and Fixes
+### 常見違規與修正方法
 
-#### SC2086: Double quote to prevent word splitting
+#### SC2086：使用雙引號防止字詞分割
 
 ```bash
 # Problem
@@ -301,7 +301,7 @@ for i in $list; do done  # If $list is already quoted, or
 for i in "${list[@]}"; do done  # If list is an array
 ```
 
-#### SC2181: Check exit code directly
+#### SC2181：直接檢查退出碼
 
 ```bash
 # Problem
@@ -316,7 +316,7 @@ if some_command; then
 fi
 ```
 
-#### SC2015: Use if-then instead of && ||
+#### SC2015：使用 if-then 而非 && ||
 
 ```bash
 # Problem
@@ -330,7 +330,7 @@ else
 fi
 ```
 
-#### SC2016: Expressions don't expand in single quotes
+#### SC2016：單引號中的表達式不會展開
 
 ```bash
 # Problem
@@ -340,7 +340,7 @@ echo 'Variable value: $VAR'
 echo "Variable value: $VAR"
 ```
 
-#### SC2009: Use pgrep instead of grep
+#### SC2009：使用 pgrep 而非 grep
 
 ```bash
 # Problem
@@ -350,9 +350,9 @@ ps aux | grep -v grep | grep myprocess
 pgrep -f myprocess
 ```
 
-## Performance Optimization
+## 效能最佳化
 
-### Checking Multiple Files
+### 檢查多個檔案
 
 ```bash
 #!/bin/bash
@@ -367,7 +367,7 @@ find . -name "*.sh" -print0 | \
     xargs -0 -P 4 -n 1 shellcheck
 ```
 
-### Caching Results
+### 快取結果
 
 ```bash
 #!/bin/bash
@@ -399,9 +399,9 @@ find . -name "*.sh" | while read -r script; do
 done
 ```
 
-## Output Formats
+## 輸出格式
 
-### Default Format
+### 預設格式
 
 ```bash
 shellcheck script.sh
@@ -410,7 +410,7 @@ shellcheck script.sh
 # script.sh:1:3: warning: foo is referenced but not assigned. [SC2154]
 ```
 
-### GCC Format (for CI/CD)
+### GCC 格式（用於 CI/CD）
 
 ```bash
 shellcheck --format=gcc script.sh
@@ -419,7 +419,7 @@ shellcheck --format=gcc script.sh
 # script.sh:1:3: warning: foo is referenced but not assigned.
 ```
 
-### JSON Format (for parsing)
+### JSON 格式（用於解析）
 
 ```bash
 shellcheck --format=json script.sh
@@ -428,7 +428,7 @@ shellcheck --format=json script.sh
 # [{"file": "script.sh", "line": 1, "column": 3, "level": "warning", "code": 2154, "message": "..."}]
 ```
 
-### Quiet Format
+### 安靜模式
 
 ```bash
 shellcheck --format=quiet script.sh
@@ -436,19 +436,19 @@ shellcheck --format=quiet script.sh
 # Returns non-zero if issues found, no output otherwise
 ```
 
-## Best Practices
+## 最佳實務
 
-1. **Run ShellCheck in CI/CD** - Catch issues before merging
-2. **Configure for your target shell** - Don't analyze bash as sh
-3. **Document exclusions** - Explain why violations are suppressed
-4. **Address violations** - Don't just disable warnings
-5. **Enable strict mode** - Use `--enable=all` with careful exclusions
-6. **Update regularly** - Keep ShellCheck current for new checks
-7. **Use pre-commit hooks** - Catch issues locally before pushing
-8. **Integrate with editors** - Get real-time feedback during development
+1. **在 CI/CD 中執行 ShellCheck** - 在合併前捕捉問題
+2. **為目標 shell 配置** - 不要將 bash 分析為 sh
+3. **記錄排除項目** - 說明為何抑制違規
+4. **處理違規** - 不要只是停用警告
+5. **啟用嚴格模式** - 謹慎使用 `--enable=all` 並排除特定項目
+6. **定期更新** - 保持 ShellCheck 為最新版本以獲得新檢查
+7. **使用 pre-commit hook** - 在推送前於本地捕捉問題
+8. **與編輯器整合** - 在開發期間獲得即時回饋
 
-## Resources
+## 資源
 
-- **ShellCheck GitHub**: https://github.com/koalaman/shellcheck
-- **ShellCheck Wiki**: https://www.shellcheck.net/wiki/
-- **Error Code Reference**: https://www.shellcheck.net/
+- **ShellCheck GitHub**：https://github.com/koalaman/shellcheck
+- **ShellCheck Wiki**：https://www.shellcheck.net/wiki/
+- **錯誤代碼參考**：https://www.shellcheck.net/

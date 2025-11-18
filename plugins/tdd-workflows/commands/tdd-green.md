@@ -1,138 +1,138 @@
-Implement minimal code to make failing tests pass in TDD green phase:
+實作最少程式碼以通過 TDD 綠燈階段的失敗測試：
 
-[Extended thinking: This tool uses the test-automator agent to implement the minimal code necessary to make tests pass. It focuses on simplicity, avoiding over-engineering while ensuring all tests become green.]
+[延伸思考：此工具使用 test-automator 代理來實作使測試通過所需的最少程式碼。它專注於簡單性，避免過度工程化，同時確保所有測試變為綠燈。]
 
-## Implementation Process
+## 實作流程
 
-Use Task tool with subagent_type="unit-testing::test-automator" to implement minimal passing code.
+使用 Task 工具搭配 subagent_type="unit-testing::test-automator" 來實作最少的通過程式碼。
 
-Prompt: "Implement MINIMAL code to make these failing tests pass: $ARGUMENTS. Follow TDD green phase principles:
+提示：「實作最少程式碼以通過這些失敗的測試：$ARGUMENTS。遵循 TDD 綠燈階段原則：
 
-1. **Pre-Implementation Analysis**
-   - Review all failing tests and their error messages
-   - Identify the simplest path to make tests pass
-   - Map test requirements to minimal implementation needs
-   - Avoid premature optimization or over-engineering
-   - Focus only on making tests green, not perfect code
+1. **實作前分析**
+   - 檢視所有失敗的測試及其錯誤訊息
+   - 識別使測試通過的最簡單路徑
+   - 將測試需求對應到最少的實作需求
+   - 避免過早優化或過度工程化
+   - 只專注於讓測試變綠燈，而非完美的程式碼
 
-2. **Implementation Strategy**
-   - **Fake It**: Return hard-coded values when appropriate
-   - **Obvious Implementation**: When solution is trivial and clear
-   - **Triangulation**: Generalize only when multiple tests require it
-   - Start with the simplest test and work incrementally
-   - One test at a time - don't try to pass all at once
+2. **實作策略**
+   - **假裝實作（Fake It）**：在適當時回傳寫死的值
+   - **明顯實作（Obvious Implementation）**：當解決方案簡單明確時
+   - **三角定位（Triangulation）**：僅在多個測試需要時才泛化
+   - 從最簡單的測試開始並逐步推進
+   - 一次一個測試 - 不要試圖一次全部通過
 
-3. **Code Structure Guidelines**
-   - Write the minimal code that could possibly work
-   - Avoid adding functionality not required by tests
-   - Use simple data structures initially
-   - Defer architectural decisions until refactor phase
-   - Keep methods/functions small and focused
-   - Don't add error handling unless tests require it
+3. **程式碼結構指南**
+   - 撰寫可能可行的最少程式碼
+   - 避免加入測試未要求的功能
+   - 初始使用簡單的資料結構
+   - 將架構決策延後到重構階段
+   - 保持方法/函式小巧且專注
+   - 除非測試要求，否則不要加入錯誤處理
 
-4. **Language-Specific Patterns**
-   - **JavaScript/TypeScript**: Simple functions, avoid classes initially
-   - **Python**: Functions before classes, simple returns
-   - **Java**: Minimal class structure, no patterns yet
-   - **C#**: Basic implementations, no interfaces yet
-   - **Go**: Simple functions, defer goroutines/channels
-   - **Ruby**: Procedural before object-oriented when possible
+4. **語言特定模式**
+   - **JavaScript/TypeScript**：簡單函式，初期避免類別
+   - **Python**：函式優先於類別，簡單回傳
+   - **Java**：最少的類別結構，還不需要模式
+   - **C#**：基本實作，還不需要介面
+   - **Go**：簡單函式，延後 goroutines/channels
+   - **Ruby**：盡可能先用程序式而非物件導向
 
-5. **Progressive Implementation**
-   - Make first test pass with simplest possible code
-   - Run tests after each change to verify progress
-   - Add just enough code for next failing test
-   - Resist urge to implement beyond test requirements
-   - Keep track of technical debt for refactor phase
-   - Document assumptions and shortcuts taken
+5. **漸進式實作**
+   - 以最簡單的程式碼讓第一個測試通過
+   - 每次變更後執行測試以驗證進度
+   - 為下一個失敗測試僅加入足夠的程式碼
+   - 抵抗超出測試需求實作的衝動
+   - 追蹤技術債以供重構階段使用
+   - 記錄所採取的假設和捷徑
 
-6. **Common Green Phase Techniques**
-   - Hard-coded returns for initial tests
-   - Simple if/else for limited test cases
-   - Basic loops only when iteration tests require
-   - Minimal data structures (arrays before complex objects)
-   - In-memory storage before database integration
-   - Synchronous before asynchronous implementation
+6. **常見綠燈階段技巧**
+   - 初始測試使用寫死的回傳值
+   - 有限測試案例使用簡單的 if/else
+   - 僅在迭代測試需要時使用基本迴圈
+   - 最少的資料結構（陣列優先於複雜物件）
+   - 記憶體儲存優先於資料庫整合
+   - 同步優先於非同步實作
 
-7. **Success Criteria**
-   ✓ All tests pass (green)
-   ✓ No extra functionality beyond test requirements
-   ✓ Code is readable even if not optimal
-   ✓ No broken existing functionality
-   ✓ Implementation time is minimized
-   ✓ Clear path to refactoring identified
+7. **成功標準**
+   ✓ 所有測試通過（綠燈）
+   ✓ 沒有超出測試需求的額外功能
+   ✓ 程式碼可讀，即使不是最佳化
+   ✓ 沒有破壞現有功能
+   ✓ 實作時間最小化
+   ✓ 明確識別重構路徑
 
-8. **Anti-Patterns to Avoid**
-   - Gold plating or adding unrequested features
-   - Implementing design patterns prematurely
-   - Complex abstractions without test justification
-   - Performance optimizations without metrics
-   - Adding tests during green phase
-   - Refactoring during implementation
-   - Ignoring test failures to move forward
+8. **要避免的反模式**
+   - 鍍金或加入未要求的功能
+   - 過早實作設計模式
+   - 沒有測試理由的複雜抽象
+   - 沒有指標的效能優化
+   - 在綠燈階段加入測試
+   - 在實作期間重構
+   - 忽略測試失敗以繼續前進
 
-9. **Implementation Metrics**
-   - Time to green: Track implementation duration
-   - Lines of code: Measure implementation size
-   - Cyclomatic complexity: Keep it low initially
-   - Test pass rate: Must reach 100%
-   - Code coverage: Verify all paths tested
+9. **實作指標**
+   - 到達綠燈時間：追蹤實作持續時間
+   - 程式碼行數：測量實作大小
+   - 循環複雜度：初期保持低水平
+   - 測試通過率：必須達到 100%
+   - 程式碼覆蓋率：驗證所有路徑都已測試
 
-10. **Validation Steps**
-    - Run all tests and confirm they pass
-    - Verify no regression in existing tests
-    - Check that implementation is truly minimal
-    - Document any technical debt created
-    - Prepare notes for refactoring phase
+10. **驗證步驟**
+    - 執行所有測試並確認通過
+    - 驗證現有測試沒有退化
+    - 檢查實作確實是最少的
+    - 記錄任何產生的技術債
+    - 為重構階段準備筆記
 
-Output should include:
-- Complete implementation code
-- Test execution results showing all green
-- List of shortcuts taken for later refactoring
-- Implementation time metrics
-- Technical debt documentation
-- Readiness assessment for refactor phase"
+輸出應包括：
+- 完整的實作程式碼
+- 顯示全部綠燈的測試執行結果
+- 為後續重構所採取的捷徑列表
+- 實作時間指標
+- 技術債文件
+- 重構階段的準備度評估」
 
-## Post-Implementation Checks
+## 實作後檢查
 
-After implementation:
-1. Run full test suite to confirm all tests pass
-2. Verify no existing tests were broken
-3. Document areas needing refactoring
-4. Check implementation is truly minimal
-5. Record implementation time for metrics
+實作後：
+1. 執行完整測試套件以確認所有測試通過
+2. 驗證沒有破壞現有測試
+3. 記錄需要重構的區域
+4. 檢查實作確實是最少的
+5. 記錄實作時間以供指標使用
 
-## Recovery Process
+## 復原流程
 
-If tests still fail:
-- Review test requirements carefully
-- Check for misunderstood assertions
-- Add minimal code to address specific failures
-- Avoid the temptation to rewrite from scratch
-- Consider if tests themselves need adjustment
+如果測試仍然失敗：
+- 仔細檢視測試需求
+- 檢查是否誤解斷言
+- 加入最少程式碼以解決特定失敗
+- 避免從頭重寫的誘惑
+- 考慮測試本身是否需要調整
 
-## Integration Points
+## 整合點
 
-- Follows from tdd-red.md test creation
-- Prepares for tdd-refactor.md improvements
-- Updates test coverage metrics
-- Triggers CI/CD pipeline verification
-- Documents technical debt for tracking
+- 從 tdd-red.md 測試建立接續
+- 為 tdd-refactor.md 改進做準備
+- 更新測試覆蓋率指標
+- 觸發 CI/CD 管道驗證
+- 記錄技術債以供追蹤
 
-## Best Practices
+## 最佳實踐
 
-- Embrace "good enough" for this phase
-- Speed over perfection (perfection comes in refactor)
-- Make it work, then make it right, then make it fast
-- Trust that refactoring phase will improve code
-- Keep changes small and incremental
-- Celebrate reaching green state!
+- 在此階段接受「夠好」的標準
+- 速度優先於完美（完美在重構階段達成）
+- 先讓它運作，再讓它正確，然後讓它快速
+- 相信重構階段會改善程式碼
+- 保持變更小而漸進
+- 慶祝達到綠燈狀態！
 
-## Complete Implementation Examples
+## 完整實作範例
 
-### Example 1: Minimal → Production-Ready (User Service)
+### 範例 1：最少實作 → 生產就緒（使用者服務）
 
-**Test Requirements:**
+**測試需求：**
 ```typescript
 describe('UserService', () => {
   it('should create a new user', async () => {
@@ -149,7 +149,7 @@ describe('UserService', () => {
 });
 ```
 
-**Stage 1: Fake It (Minimal)**
+**階段 1：假裝實作（最少）**
 ```typescript
 class UserService {
   create(data: { email: string; name: string }) {
@@ -161,9 +161,9 @@ class UserService {
   }
 }
 ```
-*Tests pass. Implementation is obviously fake but validates test structure.*
+*測試通過。實作顯然是假的，但驗證了測試結構。*
 
-**Stage 2: Simple Real Implementation**
+**階段 2：簡單的真實實作**
 ```typescript
 class UserService {
   private users: Map<string, User> = new Map();
@@ -180,9 +180,9 @@ class UserService {
   }
 }
 ```
-*In-memory storage. Tests pass. Good enough for green phase.*
+*記憶體儲存。測試通過。對綠燈階段來說夠好了。*
 
-**Stage 3: Production-Ready (Refactor Phase)**
+**階段 3：生產就緒（重構階段）**
 ```typescript
 class UserService {
   constructor(private db: Database) {}
@@ -200,11 +200,11 @@ class UserService {
   }
 }
 ```
-*Database integration, error handling, validation - saved for refactor phase.*
+*資料庫整合、錯誤處理、驗證 - 留待重構階段。*
 
-### Example 2: API-First Implementation (Express)
+### 範例 2：API 優先實作（Express）
 
-**Test Requirements:**
+**測試需求：**
 ```javascript
 describe('POST /api/tasks', () => {
   it('should create task and return 201', async () => {
@@ -219,15 +219,15 @@ describe('POST /api/tasks', () => {
 });
 ```
 
-**Stage 1: Hardcoded Response**
+**階段 1：寫死的回應**
 ```javascript
 app.post('/api/tasks', (req, res) => {
   res.status(201).json({ id: '1', title: req.body.title });
 });
 ```
-*Tests pass immediately. No logic needed yet.*
+*測試立即通過。還不需要邏輯。*
 
-**Stage 2: Simple Logic**
+**階段 2：簡單邏輯**
 ```javascript
 let tasks = [];
 let nextId = 1;
@@ -238,9 +238,9 @@ app.post('/api/tasks', (req, res) => {
   res.status(201).json(task);
 });
 ```
-*Minimal state management. Ready for more tests.*
+*最少的狀態管理。準備好接受更多測試。*
 
-**Stage 3: Layered Architecture (Refactor)**
+**階段 3：分層架構（重構）**
 ```javascript
 // Controller
 app.post('/api/tasks', async (req, res) => {
@@ -262,11 +262,11 @@ class TaskService {
   }
 }
 ```
-*Proper separation of concerns added during refactor phase.*
+*在重構階段加入適當的關注點分離。*
 
-### Example 3: Database Integration (Django)
+### 範例 3：資料庫整合（Django）
 
-**Test Requirements:**
+**測試需求：**
 ```python
 def test_product_creation():
     product = Product.objects.create(name="Widget", price=9.99)
@@ -278,15 +278,15 @@ def test_product_price_validation():
         Product.objects.create(name="Widget", price=-1)
 ```
 
-**Stage 1: Model Only**
+**階段 1：僅模型**
 ```python
 class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
 ```
-*First test passes. Second test fails - validation not implemented.*
+*第一個測試通過。第二個測試失敗 - 驗證未實作。*
 
-**Stage 2: Add Validation**
+**階段 2：加入驗證**
 ```python
 class Product(models.Model):
     name = models.CharField(max_length=200)
@@ -300,9 +300,9 @@ class Product(models.Model):
         self.clean()
         super().save(*args, **kwargs)
 ```
-*All tests pass. Minimal validation logic added.*
+*所有測試通過。加入最少的驗證邏輯。*
 
-**Stage 3: Rich Domain Model (Refactor)**
+**階段 3：豐富的領域模型（重構）**
 ```python
 class Product(models.Model):
     name = models.CharField(max_length=200)
@@ -323,11 +323,11 @@ class Product(models.Model):
     def apply_discount(self, percentage: float) -> Decimal:
         return self.price * (1 - percentage / 100)
 ```
-*Additional features, indexes, business logic added when needed.*
+*需要時加入額外功能、索引、業務邏輯。*
 
-### Example 4: React Component Implementation
+### 範例 4：React 元件實作
 
-**Test Requirements:**
+**測試需求：**
 ```typescript
 describe('UserProfile', () => {
   it('should display user name', () => {
@@ -342,7 +342,7 @@ describe('UserProfile', () => {
 });
 ```
 
-**Stage 1: Minimal JSX**
+**階段 1：最少的 JSX**
 ```typescript
 interface UserProfileProps {
   user: { name: string; email: string };
@@ -355,9 +355,9 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => (
   </div>
 );
 ```
-*Tests pass. No styling, no structure.*
+*測試通過。沒有樣式，沒有結構。*
 
-**Stage 2: Basic Structure**
+**階段 2：基本結構**
 ```typescript
 const UserProfile: React.FC<UserProfileProps> = ({ user }) => (
   <div className="user-profile">
@@ -366,9 +366,9 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => (
   </div>
 );
 ```
-*Added semantic HTML, className for styling hook.*
+*加入語意化 HTML，className 作為樣式掛鉤。*
 
-**Stage 3: Production Component (Refactor)**
+**階段 3：生產元件（重構）**
 ```typescript
 const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -389,48 +389,48 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
   );
 };
 ```
-*Accessibility, interaction, additional features added incrementally.*
+*漸進式加入無障礙性、互動、額外功能。*
 
-## Decision Frameworks
+## 決策框架
 
-### Framework 1: Fake vs. Real Implementation
+### 框架 1：假裝實作 vs. 真實實作
 
-**When to Fake It:**
-- First test for a new feature
-- Complex external dependencies (payment gateways, APIs)
-- Implementation approach is still uncertain
-- Need to validate test structure first
-- Time pressure to see all tests green
+**何時該假裝實作：**
+- 新功能的第一個測試
+- 複雜的外部相依性（支付閘道、API）
+- 實作方法仍不確定
+- 需要先驗證測試結構
+- 時間壓力需要看到所有測試綠燈
 
-**When to Go Real:**
-- Second or third test reveals pattern
-- Implementation is obvious and simple
-- Faking would be more complex than real code
-- Need to test integration points
-- Tests explicitly require real behavior
+**何時該真實實作：**
+- 第二或第三個測試揭示模式
+- 實作顯而易見且簡單
+- 假裝實作會比真實程式碼更複雜
+- 需要測試整合點
+- 測試明確要求真實行為
 
-**Decision Matrix:**
+**決策矩陣：**
 ```
-Complexity Low     | High
+複雜度     低        | 高
          ↓         | ↓
-Simple   → REAL    | FAKE first, real later
-Complex  → REAL    | FAKE, evaluate alternatives
+簡單    → 真實實作  | 先假裝，稍後真實
+複雜    → 真實實作  | 假裝，評估替代方案
 ```
 
-### Framework 2: Complexity Trade-off Analysis
+### 框架 2：複雜度權衡分析
 
-**Simplicity Score Calculation:**
+**簡單度分數計算：**
 ```
-Score = (Lines of Code) + (Cyclomatic Complexity × 2) + (Dependencies × 3)
+分數 = (程式碼行數) + (循環複雜度 × 2) + (相依性 × 3)
 
-< 20  → Simple enough, implement directly
-20-50 → Consider simpler alternative
-> 50  → Defer complexity to refactor phase
+< 20  → 夠簡單，直接實作
+20-50 → 考慮更簡單的替代方案
+> 50  → 將複雜度延後到重構階段
 ```
 
-**Example Evaluation:**
+**範例評估：**
 ```typescript
-// Option A: Direct implementation (Score: 45)
+// 選項 A：直接實作（分數：45）
 function calculateShipping(weight: number, distance: number, express: boolean): number {
   let base = weight * 0.5 + distance * 0.1;
   if (express) base *= 2;
@@ -439,39 +439,39 @@ function calculateShipping(weight: number, distance: number, express: boolean): 
   return base;
 }
 
-// Option B: Simplest for green phase (Score: 15)
+// 選項 B：綠燈階段最簡單（分數：15）
 function calculateShipping(weight: number, distance: number, express: boolean): number {
-  return express ? 50 : 25; // Fake it until more tests drive real logic
+  return express ? 50 : 25; // 假裝實作，直到更多測試驅動真實邏輯
 }
 ```
-*Choose Option B for green phase, evolve to Option A as tests require.*
+*綠燈階段選擇選項 B，隨著測試需求演進到選項 A。*
 
-### Framework 3: Performance Consideration Timing
+### 框架 3：效能考量時機
 
-**Green Phase: Focus on Correctness**
+**綠燈階段：專注於正確性**
 ```
-❌ Avoid:
-- Caching strategies
-- Database query optimization
-- Algorithmic complexity improvements
-- Premature memory optimization
+❌ 避免：
+- 快取策略
+- 資料庫查詢優化
+- 演算法複雜度改進
+- 過早的記憶體優化
 
-✓ Accept:
-- O(n²) if it makes code simpler
-- Multiple database queries
-- Synchronous operations
-- Inefficient but clear algorithms
+✓ 接受：
+- O(n²) 如果它讓程式碼更簡單
+- 多次資料庫查詢
+- 同步操作
+- 效率低但清楚的演算法
 ```
 
-**When Performance Matters in Green Phase:**
-1. Performance is explicit test requirement
-2. Implementation would cause timeout in test suite
-3. Memory leak would crash tests
-4. Resource exhaustion prevents testing
+**綠燈階段何時效能很重要：**
+1. 效能是明確的測試需求
+2. 實作會導致測試套件逾時
+3. 記憶體洩漏會使測試當機
+4. 資源耗盡阻止測試
 
-**Performance Testing Integration:**
+**效能測試整合：**
 ```typescript
-// Add performance test AFTER functional tests pass
+// 功能測試通過後才加入效能測試
 describe('Performance', () => {
   it('should handle 1000 users within 100ms', () => {
     const start = Date.now();
@@ -483,116 +483,116 @@ describe('Performance', () => {
 });
 ```
 
-## Framework-Specific Patterns
+## 框架特定模式
 
-### React Patterns
+### React 模式
 
-**Simple Component → Hooks → Context:**
+**簡單元件 → Hooks → Context：**
 ```typescript
-// Green Phase: Props only
+// 綠燈階段：僅使用 Props
 const Counter = ({ count, onIncrement }) => (
   <button onClick={onIncrement}>{count}</button>
 );
 
-// Refactor: Add hooks
+// 重構：加入 hooks
 const Counter = () => {
   const [count, setCount] = useState(0);
   return <button onClick={() => setCount(c => c + 1)}>{count}</button>;
 };
 
-// Refactor: Extract to context
+// 重構：提取到 context
 const Counter = () => {
   const { count, increment } = useCounter();
   return <button onClick={increment}>{count}</button>;
 };
 ```
 
-### Django Patterns
+### Django 模式
 
-**Function View → Class View → Generic View:**
+**函式視圖 → 類別視圖 → 泛型視圖：**
 ```python
-# Green Phase: Simple function
+# 綠燈階段：簡單函式
 def product_list(request):
     products = Product.objects.all()
     return JsonResponse({'products': list(products.values())})
 
-# Refactor: Class-based view
+# 重構：類別式視圖
 class ProductListView(View):
     def get(self, request):
         products = Product.objects.all()
         return JsonResponse({'products': list(products.values())})
 
-# Refactor: Generic view
+# 重構：泛型視圖
 class ProductListView(ListView):
     model = Product
     context_object_name = 'products'
 ```
 
-### Express Patterns
+### Express 模式
 
-**Inline → Middleware → Service Layer:**
+**行內 → 中介軟體 → 服務層：**
 ```javascript
-// Green Phase: Inline logic
+// 綠燈階段：行內邏輯
 app.post('/api/users', (req, res) => {
   const user = { id: Date.now(), ...req.body };
   users.push(user);
   res.json(user);
 });
 
-// Refactor: Extract middleware
+// 重構：提取中介軟體
 app.post('/api/users', validateUser, (req, res) => {
   const user = userService.create(req.body);
   res.json(user);
 });
 
-// Refactor: Full layering
+// 重構：完整分層
 app.post('/api/users',
   validateUser,
   asyncHandler(userController.create)
 );
 ```
 
-## Refactoring Resistance Patterns
+## 重構抵抗模式
 
-### Pattern 1: Test Anchor Points
+### 模式 1：測試錨點
 
-Keep tests green during refactoring by maintaining interface contracts:
+透過維護介面契約，在重構期間保持測試綠燈：
 
 ```typescript
-// Original implementation (tests green)
+// 原始實作（測試綠燈）
 function calculateTotal(items: Item[]): number {
   return items.reduce((sum, item) => sum + item.price, 0);
 }
 
-// Refactoring: Add tax calculation (keep interface)
+// 重構：加入稅金計算（保持介面）
 function calculateTotal(items: Item[]): number {
   const subtotal = items.reduce((sum, item) => sum + item.price, 0);
   const tax = subtotal * 0.1;
   return subtotal + tax;
 }
 
-// Tests still green because return type/behavior unchanged
+// 測試仍然綠燈，因為回傳型別/行為未改變
 ```
 
-### Pattern 2: Parallel Implementation
+### 模式 2：平行實作
 
-Run old and new implementations side by side:
+同時執行舊實作和新實作：
 
 ```python
 def process_order(order):
-    # Old implementation (tests depend on this)
+    # 舊實作（測試依賴於此）
     result_old = legacy_process(order)
 
-    # New implementation (testing in parallel)
+    # 新實作（平行測試）
     result_new = new_process(order)
 
-    # Verify they match
+    # 驗證它們相符
     assert result_old == result_new, "Implementation mismatch"
 
-    return result_old  # Keep tests green
+    return result_old  # 保持測試綠燈
 ```
 
-### Pattern 3: Feature Flags for Refactoring
+### 模式 3：重構的功能旗標
 
 ```javascript
 class PaymentService {
@@ -605,20 +605,20 @@ class PaymentService {
 }
 ```
 
-## Performance-First Green Phase Strategies
+## 效能優先的綠燈階段策略
 
-### Strategy 1: Type-Driven Development
+### 策略 1：型別驅動開發
 
-Use types to guide minimal implementation:
+使用型別來指導最少實作：
 
 ```typescript
-// Types define contract
+// 型別定義契約
 interface UserRepository {
   findById(id: string): Promise<User | null>;
   save(user: User): Promise<void>;
 }
 
-// Green phase: In-memory implementation
+// 綠燈階段：記憶體實作
 class InMemoryUserRepository implements UserRepository {
   private users = new Map<string, User>();
 
@@ -631,7 +631,7 @@ class InMemoryUserRepository implements UserRepository {
   }
 }
 
-// Refactor: Database implementation (same interface)
+// 重構：資料庫實作（相同介面）
 class DatabaseUserRepository implements UserRepository {
   constructor(private db: Database) {}
 
@@ -645,10 +645,10 @@ class DatabaseUserRepository implements UserRepository {
 }
 ```
 
-### Strategy 2: Contract Testing Integration
+### 策略 2：契約測試整合
 
 ```typescript
-// Define contract
+// 定義契約
 const userServiceContract = {
   create: {
     input: { email: 'string', name: 'string' },
@@ -656,14 +656,14 @@ const userServiceContract = {
   }
 };
 
-// Green phase: Implementation matches contract
+// 綠燈階段：實作符合契約
 class UserService {
   create(data: { email: string; name: string }) {
-    return { id: '123', ...data }; // Minimal but contract-compliant
+    return { id: '123', ...data }; // 最少但符合契約
   }
 }
 
-// Contract test ensures compliance
+// 契約測試確保符合性
 describe('UserService Contract', () => {
   it('should match create contract', () => {
     const result = userService.create({ email: 'test@test.com', name: 'Test' });
@@ -674,18 +674,18 @@ describe('UserService Contract', () => {
 });
 ```
 
-### Strategy 3: Continuous Refactoring Workflow
+### 策略 3：持續重構工作流程
 
-**Micro-Refactoring During Green Phase:**
+**綠燈階段的微重構：**
 
 ```python
-# Test passes with this
+# 測試通過
 def calculate_discount(price, customer_type):
     if customer_type == 'premium':
         return price * 0.8
     return price
 
-# Immediate micro-refactor (tests still green)
+# 立即微重構（測試仍然綠燈）
 DISCOUNT_RATES = {
     'premium': 0.8,
     'standard': 1.0
@@ -696,18 +696,18 @@ def calculate_discount(price, customer_type):
     return price * rate
 ```
 
-**Safe Refactoring Checklist:**
-- ✓ Tests green before refactoring
-- ✓ Change one thing at a time
-- ✓ Run tests after each change
-- ✓ Commit after each successful refactor
-- ✓ No behavior changes, only structure
+**安全重構檢查清單：**
+- ✓ 重構前測試綠燈
+- ✓ 一次改變一件事
+- ✓ 每次變更後執行測試
+- ✓ 每次成功重構後提交
+- ✓ 不改變行為，只改變結構
 
-## Modern Development Practices (2024/2025)
+## 現代開發實踐（2024/2025）
 
-### Type-Driven Development
+### 型別驅動開發
 
-**Python Type Hints:**
+**Python 型別提示：**
 ```python
 from typing import Optional, List
 from dataclasses import dataclass
@@ -723,12 +723,12 @@ class UserService:
         return User(id="123", email=email, name=name)
 
     def find_by_email(self, email: str) -> Optional[User]:
-        return None  # Minimal implementation
+        return None  # 最少實作
 ```
 
-**TypeScript Strict Mode:**
+**TypeScript 嚴格模式：**
 ```typescript
-// Enable strict mode in tsconfig.json
+// 在 tsconfig.json 中啟用嚴格模式
 {
   "compilerOptions": {
     "strict": true,
@@ -737,7 +737,7 @@ class UserService:
   }
 }
 
-// Implementation guided by types
+// 由型別指導的實作
 interface CreateUserDto {
   email: string;
   name: string;
@@ -745,36 +745,36 @@ interface CreateUserDto {
 
 class UserService {
   create(data: CreateUserDto): User {
-    // Type system enforces contract
+    // 型別系統強制執行契約
     return { id: '123', email: data.email, name: data.name };
   }
 }
 ```
 
-### AI-Assisted Green Phase
+### AI 輔助綠燈階段
 
-**Using Copilot/AI Tools:**
-1. Write test first (human-driven)
-2. Let AI suggest minimal implementation
-3. Verify suggestion passes tests
-4. Accept if truly minimal, reject if over-engineered
-5. Iterate with AI for refactoring phase
+**使用 Copilot/AI 工具：**
+1. 先寫測試（人類驅動）
+2. 讓 AI 建議最少實作
+3. 驗證建議通過測試
+4. 如果確實是最少的就接受，如果過度工程化就拒絕
+5. 與 AI 迭代進行重構階段
 
-**AI Prompt Pattern:**
+**AI 提示模式：**
 ```
-Given these failing tests:
-[paste tests]
+給定這些失敗的測試：
+[貼上測試]
 
-Provide the MINIMAL implementation that makes tests pass.
-Do not add error handling, validation, or features beyond test requirements.
-Focus on simplicity over completeness.
+提供使測試通過的最少實作。
+不要加入錯誤處理、驗證或超出測試需求的功能。
+專注於簡單性而非完整性。
 ```
 
-### Cloud-Native Patterns
+### 雲原生模式
 
-**Local → Container → Cloud:**
+**本地 → 容器 → 雲端：**
 ```javascript
-// Green Phase: Local implementation
+// 綠燈階段：本地實作
 class CacheService {
   private cache = new Map();
 
@@ -782,7 +782,7 @@ class CacheService {
   set(key, value) { this.cache.set(key, value); }
 }
 
-// Refactor: Redis-compatible interface
+// 重構：Redis 相容介面
 class CacheService {
   constructor(private redis) {}
 
@@ -790,7 +790,7 @@ class CacheService {
   async set(key, value) { return this.redis.set(key, value); }
 }
 
-// Production: Distributed cache with fallback
+// 生產環境：具備備援的分散式快取
 class CacheService {
   constructor(private redis, private fallback) {}
 
@@ -804,23 +804,23 @@ class CacheService {
 }
 ```
 
-### Observability-Driven Development
+### 可觀測性驅動開發
 
-**Add observability hooks during green phase:**
+**在綠燈階段加入可觀測性掛鉤：**
 ```typescript
 class OrderService {
   async createOrder(data: CreateOrderDto): Promise<Order> {
-    console.log('[OrderService] Creating order', { data }); // Simple logging
+    console.log('[OrderService] Creating order', { data }); // 簡單的日誌記錄
 
     const order = { id: '123', ...data };
 
-    console.log('[OrderService] Order created', { orderId: order.id }); // Success log
+    console.log('[OrderService] Order created', { orderId: order.id }); // 成功日誌
 
     return order;
   }
 }
 
-// Refactor: Structured logging
+// 重構：結構化日誌記錄
 class OrderService {
   constructor(private logger: Logger) {}
 
@@ -839,4 +839,4 @@ class OrderService {
 }
 ```
 
-Tests to make pass: $ARGUMENTS
+要使其通過的測試：$ARGUMENTS

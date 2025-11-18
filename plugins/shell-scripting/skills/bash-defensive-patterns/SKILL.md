@@ -1,41 +1,41 @@
 ---
 name: bash-defensive-patterns
-description: Master defensive Bash programming techniques for production-grade scripts. Use when writing robust shell scripts, CI/CD pipelines, or system utilities requiring fault tolerance and safety.
+description: 掌握防禦性 Bash 程式設計技術，用於撰寫生產等級腳本。適用於編寫健壯的 shell 腳本、CI/CD 管線或需要容錯和安全性的系統工具。
 ---
 
-# Bash Defensive Patterns
+# Bash 防禦性編程模式
 
-Comprehensive guidance for writing production-ready Bash scripts using defensive programming techniques, error handling, and safety best practices to prevent common pitfalls and ensure reliability.
+全面指南，教你如何使用防禦性程式設計技術、錯誤處理和安全最佳實踐來撰寫生產就緒的 Bash 腳本，以預防常見陷阱並確保可靠性。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Writing production automation scripts
-- Building CI/CD pipeline scripts
-- Creating system administration utilities
-- Developing error-resilient deployment automation
-- Writing scripts that must handle edge cases safely
-- Building maintainable shell script libraries
-- Implementing comprehensive logging and monitoring
-- Creating scripts that must work across different platforms
+- 撰寫生產環境自動化腳本
+- 建構 CI/CD 管線腳本
+- 建立系統管理工具
+- 開發具容錯能力的部署自動化
+- 撰寫必須安全處理邊緣情況的腳本
+- 建構可維護的 shell 腳本函式庫
+- 實作完整的日誌記錄和監控
+- 建立必須跨不同平台運作的腳本
 
-## Core Defensive Principles
+## 核心防禦性原則
 
-### 1. Strict Mode
-Enable bash strict mode at the start of every script to catch errors early.
+### 1. 嚴格模式 (Strict Mode)
+在每個腳本開頭啟用 bash 嚴格模式以提早捕捉錯誤。
 
 ```bash
 #!/bin/bash
 set -Eeuo pipefail  # Exit on error, unset variables, pipe failures
 ```
 
-**Key flags:**
-- `set -E`: Inherit ERR trap in functions
-- `set -e`: Exit on any error (command returns non-zero)
-- `set -u`: Exit on undefined variable reference
-- `set -o pipefail`: Pipe fails if any command fails (not just last)
+**關鍵旗標：**
+- `set -E`：在函式中繼承 ERR trap
+- `set -e`：任何錯誤時退出（命令返回非零值）
+- `set -u`：引用未定義變數時退出
+- `set -o pipefail`：管線中任何命令失敗就視為失敗（不只是最後一個）
 
-### 2. Error Trapping and Cleanup
-Implement proper cleanup on script exit or error.
+### 2. 錯誤捕捉與清理
+在腳本退出或發生錯誤時實作適當的清理機制。
 
 ```bash
 #!/bin/bash
@@ -48,8 +48,8 @@ TMPDIR=$(mktemp -d)
 # Script code here
 ```
 
-### 3. Variable Safety
-Always quote variables to prevent word splitting and globbing issues.
+### 3. 變數安全性
+始終為變數加上引號以防止字詞分割（word splitting）和萬用字元展開（globbing）問題。
 
 ```bash
 # Wrong - unsafe
@@ -62,8 +62,8 @@ cp "$source" "$dest"
 : "${REQUIRED_VAR:?REQUIRED_VAR is not set}"
 ```
 
-### 4. Array Handling
-Use arrays safely for complex data handling.
+### 4. 陣列處理
+安全地使用陣列進行複雜的資料處理。
 
 ```bash
 # Safe array iteration
@@ -78,8 +78,8 @@ mapfile -t lines < <(some_command)
 readarray -t numbers < <(seq 1 10)
 ```
 
-### 5. Conditional Safety
-Use `[[ ]]` for Bash-specific features, `[ ]` for POSIX.
+### 5. 條件判斷安全性
+使用 `[[ ]]` 處理 Bash 特定功能，使用 `[ ]` 處理 POSIX 相容性。
 
 ```bash
 # Bash - safer
@@ -98,9 +98,9 @@ if [[ -z "${VAR:-}" ]]; then
 fi
 ```
 
-## Fundamental Patterns
+## 基礎模式
 
-### Pattern 1: Safe Script Directory Detection
+### 模式 1：安全的腳本目錄偵測
 
 ```bash
 #!/bin/bash
@@ -113,7 +113,7 @@ SCRIPT_NAME="$(basename -- "${BASH_SOURCE[0]}")"
 echo "Script location: $SCRIPT_DIR/$SCRIPT_NAME"
 ```
 
-### Pattern 2: Comprehensive Function Templat
+### 模式 2：完整的函式範本
 
 ```bash
 #!/bin/bash
@@ -153,7 +153,7 @@ process_files() {
 }
 ```
 
-### Pattern 3: Safe Temporary File Handling
+### 模式 3：安全的暫存檔處理
 
 ```bash
 #!/bin/bash
@@ -174,7 +174,7 @@ touch "$TMPFILE1" "$TMPFILE2"
 echo "Temp files created in: $TMPDIR"
 ```
 
-### Pattern 4: Robust Argument Parsing
+### 模式 4：健壯的參數解析
 
 ```bash
 #!/bin/bash
@@ -237,7 +237,7 @@ done
 [[ -n "$OUTPUT_FILE" ]] || { echo "ERROR: -o/--output is required" >&2; usage 1; }
 ```
 
-### Pattern 5: Structured Logging
+### 模式 5：結構化日誌記錄
 
 ```bash
 #!/bin/bash
@@ -269,7 +269,7 @@ log_warn "Warning message"
 log_error "Error occurred"
 ```
 
-### Pattern 6: Process Orchestration with Signals
+### 模式 6：使用訊號進行流程編排
 
 ```bash
 #!/bin/bash
@@ -307,7 +307,7 @@ PIDS+=($!)
 wait
 ```
 
-### Pattern 7: Safe File Operations
+### 模式 7：安全的檔案操作
 
 ```bash
 #!/bin/bash
@@ -358,7 +358,7 @@ atomic_write() {
 }
 ```
 
-### Pattern 8: Idempotent Script Design
+### 模式 8：冪等性腳本設計
 
 ```bash
 #!/bin/bash
@@ -397,7 +397,7 @@ ensure_directory "/var/cache/myapp"
 ensure_config "/etc/myapp/config" "DEBUG=false"
 ```
 
-### Pattern 9: Safe Command Substitution
+### 模式 9：安全的命令替換
 
 ```bash
 #!/bin/bash
@@ -422,7 +422,7 @@ while IFS= read -r -d '' file; do
 done < <(find /path -type f -print0)
 ```
 
-### Pattern 10: Dry-Run Support
+### 模式 10：模擬執行 (Dry-Run) 支援
 
 ```bash
 #!/bin/bash
@@ -445,9 +445,9 @@ run_cmd rm "$file"
 run_cmd chown "$owner" "$target"
 ```
 
-## Advanced Defensive Techniques
+## 進階防禦性技術
 
-### Named Parameters Pattern
+### 具名參數模式
 
 ```bash
 #!/bin/bash
@@ -484,7 +484,7 @@ process_data() {
 }
 ```
 
-### Dependency Checking
+### 依賴項檢查
 
 ```bash
 #!/bin/bash
@@ -509,24 +509,24 @@ check_dependencies() {
 check_dependencies
 ```
 
-## Best Practices Summary
+## 最佳實踐摘要
 
-1. **Always use strict mode** - `set -Eeuo pipefail`
-2. **Quote all variables** - `"$variable"` prevents word splitting
-3. **Use [[ ]] conditionals** - More robust than [ ]
-4. **Implement error trapping** - Catch and handle errors gracefully
-5. **Validate all inputs** - Check file existence, permissions, formats
-6. **Use functions for reusability** - Prefix with meaningful names
-7. **Implement structured logging** - Include timestamps and levels
-8. **Support dry-run mode** - Allow users to preview changes
-9. **Handle temporary files safely** - Use mktemp, cleanup with trap
-10. **Design for idempotency** - Scripts should be safe to rerun
-11. **Document requirements** - List dependencies and minimum versions
-12. **Test error paths** - Ensure error handling works correctly
-13. **Use `command -v`** - Safer than `which` for checking executables
-14. **Prefer printf over echo** - More predictable across systems
+1. **始終使用嚴格模式** - `set -Eeuo pipefail`
+2. **為所有變數加上引號** - `"$variable"` 可防止字詞分割
+3. **使用 [[ ]] 條件判斷** - 比 [ ] 更健壯
+4. **實作錯誤捕捉** - 優雅地捕捉和處理錯誤
+5. **驗證所有輸入** - 檢查檔案存在性、權限、格式
+6. **使用函式提高可重用性** - 使用有意義的前綴命名
+7. **實作結構化日誌記錄** - 包含時間戳記和日誌級別
+8. **支援模擬執行模式** - 讓使用者能夠預覽變更
+9. **安全處理暫存檔** - 使用 mktemp，透過 trap 進行清理
+10. **設計為冪等性** - 腳本應該能夠安全地重複執行
+11. **記錄需求** - 列出依賴項和最低版本要求
+12. **測試錯誤路徑** - 確保錯誤處理正確運作
+13. **使用 `command -v`** - 比 `which` 更安全地檢查可執行檔
+14. **優先使用 printf 而非 echo** - 跨系統更可預測
 
-## Resources
+## 參考資源
 
 - **Bash Strict Mode**: http://redsymbol.net/articles/unofficial-bash-strict-mode/
 - **Google Shell Style Guide**: https://google.github.io/styleguide/shellguide.html
