@@ -3,7 +3,7 @@
 總檔案數: 307
 已完成: 8
 進行中: 0
-待處理: 85
+待處理: 69
 
 ## 檔案清單
 
@@ -229,22 +229,22 @@
 - [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/few-shot-learning.md
 - [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/prompt-optimization.md
 - [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/prompt-templates.md
-- [ ] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/system-prompts.md
-- [ ] /home/user/agents/plugins/llm-application-dev/skills/rag-implementation/SKILL.md
-- [ ] /home/user/agents/plugins/machine-learning-ops/agents/data-scientist.md
-- [ ] /home/user/agents/plugins/machine-learning-ops/agents/ml-engineer.md
-- [ ] /home/user/agents/plugins/machine-learning-ops/agents/mlops-engineer.md
-- [ ] /home/user/agents/plugins/machine-learning-ops/commands/ml-pipeline.md
-- [ ] /home/user/agents/plugins/machine-learning-ops/skills/ml-pipeline-workflow/SKILL.md
-- [ ] /home/user/agents/plugins/multi-platform-apps/agents/backend-architect.md
-- [ ] /home/user/agents/plugins/multi-platform-apps/agents/flutter-expert.md
-- [ ] /home/user/agents/plugins/multi-platform-apps/agents/frontend-developer.md
-- [ ] /home/user/agents/plugins/multi-platform-apps/agents/ios-developer.md
-- [ ] /home/user/agents/plugins/multi-platform-apps/agents/mobile-developer.md
-- [ ] /home/user/agents/plugins/multi-platform-apps/agents/ui-ux-designer.md
-- [ ] /home/user/agents/plugins/multi-platform-apps/commands/multi-platform.md
-- [ ] /home/user/agents/plugins/observability-monitoring/agents/database-optimizer.md
-- [ ] /home/user/agents/plugins/observability-monitoring/agents/network-engineer.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/prompt-engineering-patterns/references/system-prompts.md
+- [x] /home/user/agents/plugins/llm-application-dev/skills/rag-implementation/SKILL.md
+- [x] /home/user/agents/plugins/machine-learning-ops/agents/data-scientist.md
+- [x] /home/user/agents/plugins/machine-learning-ops/agents/ml-engineer.md
+- [x] /home/user/agents/plugins/machine-learning-ops/agents/mlops-engineer.md
+- [x] /home/user/agents/plugins/machine-learning-ops/commands/ml-pipeline.md
+- [x] /home/user/agents/plugins/machine-learning-ops/skills/ml-pipeline-workflow/SKILL.md
+- [x] /home/user/agents/plugins/multi-platform-apps/agents/backend-architect.md
+- [x] /home/user/agents/plugins/multi-platform-apps/agents/flutter-expert.md
+- [x] /home/user/agents/plugins/multi-platform-apps/agents/frontend-developer.md
+- [x] /home/user/agents/plugins/multi-platform-apps/agents/ios-developer.md
+- [x] /home/user/agents/plugins/multi-platform-apps/agents/mobile-developer.md
+- [x] /home/user/agents/plugins/multi-platform-apps/agents/ui-ux-designer.md
+- [x] /home/user/agents/plugins/multi-platform-apps/commands/multi-platform.md
+- [x] /home/user/agents/plugins/observability-monitoring/agents/database-optimizer.md
+- [x] /home/user/agents/plugins/observability-monitoring/agents/network-engineer.md
 - [ ] /home/user/agents/plugins/observability-monitoring/agents/observability-engineer.md
 - [ ] /home/user/agents/plugins/observability-monitoring/agents/performance-engineer.md
 - [ ] /home/user/agents/plugins/observability-monitoring/commands/monitor-setup.md

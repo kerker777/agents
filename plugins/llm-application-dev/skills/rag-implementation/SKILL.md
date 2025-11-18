@@ -1,63 +1,63 @@
 ---
 name: rag-implementation
-description: Build Retrieval-Augmented Generation (RAG) systems for LLM applications with vector databases and semantic search. Use when implementing knowledge-grounded AI, building document Q&A systems, or integrating LLMs with external knowledge bases.
+description: 為 LLM 應用程式建構 Retrieval-Augmented Generation (RAG) 系統，搭配向量資料庫和語意搜尋。適用於實作知識基礎 AI、建構文件問答系統，或整合 LLM 與外部知識庫。
 ---
 
-# RAG Implementation
+# RAG 實作
 
-Master Retrieval-Augmented Generation (RAG) to build LLM applications that provide accurate, grounded responses using external knowledge sources.
+掌握 Retrieval-Augmented Generation (RAG)，建構能使用外部知識來源提供準確、有根據的回應的 LLM 應用程式。
 
-## When to Use This Skill
+## 何時使用此技能
 
-- Building Q&A systems over proprietary documents
-- Creating chatbots with current, factual information
-- Implementing semantic search with natural language queries
-- Reducing hallucinations with grounded responses
-- Enabling LLMs to access domain-specific knowledge
-- Building documentation assistants
-- Creating research tools with source citation
+- 建構專有文件的問答系統
+- 建立具備即時、真實資訊的聊天機器人
+- 實作自然語言查詢的語意搜尋
+- 透過有根據的回應減少幻覺
+- 讓 LLM 存取領域特定知識
+- 建構文件助理
+- 建立具備來源引用的研究工具
 
-## Core Components
+## 核心元件
 
-### 1. Vector Databases
-**Purpose**: Store and retrieve document embeddings efficiently
+### 1. 向量資料庫
+**用途**：高效儲存和檢索文件嵌入
 
-**Options:**
-- **Pinecone**: Managed, scalable, fast queries
-- **Weaviate**: Open-source, hybrid search
-- **Milvus**: High performance, on-premise
-- **Chroma**: Lightweight, easy to use
-- **Qdrant**: Fast, filtered search
-- **FAISS**: Meta's library, local deployment
+**選項：**
+- **Pinecone**：託管式、可擴展、快速查詢
+- **Weaviate**：開源、混合搜尋
+- **Milvus**：高效能、本地部署
+- **Chroma**：輕量、易於使用
+- **Qdrant**：快速、過濾搜尋
+- **FAISS**：Meta 的函式庫、本地部署
 
-### 2. Embeddings
-**Purpose**: Convert text to numerical vectors for similarity search
+### 2. 嵌入
+**用途**：將文字轉換為數值向量以進行相似度搜尋
 
-**Models:**
-- **text-embedding-ada-002** (OpenAI): General purpose, 1536 dims
-- **all-MiniLM-L6-v2** (Sentence Transformers): Fast, lightweight
-- **e5-large-v2**: High quality, multilingual
-- **Instructor**: Task-specific instructions
-- **bge-large-en-v1.5**: SOTA performance
+**模型：**
+- **text-embedding-ada-002** (OpenAI)：通用目的、1536 維度
+- **all-MiniLM-L6-v2** (Sentence Transformers)：快速、輕量
+- **e5-large-v2**：高品質、多語言
+- **Instructor**：任務特定指令
+- **bge-large-en-v1.5**：最先進效能
 
-### 3. Retrieval Strategies
-**Approaches:**
-- **Dense Retrieval**: Semantic similarity via embeddings
-- **Sparse Retrieval**: Keyword matching (BM25, TF-IDF)
-- **Hybrid Search**: Combine dense + sparse
-- **Multi-Query**: Generate multiple query variations
-- **HyDE**: Generate hypothetical documents
+### 3. 檢索策略
+**方法：**
+- **密集檢索**：透過嵌入的語意相似度
+- **稀疏檢索**：關鍵字比對 (BM25、TF-IDF)
+- **混合搜尋**：結合密集 + 稀疏
+- **多查詢**：生成多個查詢變體
+- **HyDE**：生成假設性文件
 
-### 4. Reranking
-**Purpose**: Improve retrieval quality by reordering results
+### 4. 重新排序
+**用途**：透過重新排序結果來改善檢索品質
 
-**Methods:**
-- **Cross-Encoders**: BERT-based reranking
-- **Cohere Rerank**: API-based reranking
-- **Maximal Marginal Relevance (MMR)**: Diversity + relevance
-- **LLM-based**: Use LLM to score relevance
+**方法：**
+- **Cross-Encoders**：基於 BERT 的重新排序
+- **Cohere Rerank**：基於 API 的重新排序
+- **Maximal Marginal Relevance (MMR)**：多樣性 + 相關性
+- **基於 LLM**：使用 LLM 評分相關性
 
-## Quick Start
+## 快速開始
 
 ```python
 from langchain.document_loaders import DirectoryLoader
@@ -97,9 +97,9 @@ print(result['result'])
 print(result['source_documents'])
 ```
 
-## Advanced RAG Patterns
+## 進階 RAG 模式
 
-### Pattern 1: Hybrid Search
+### 模式 1：混合搜尋
 ```python
 from langchain.retrievers import BM25Retriever, EnsembleRetriever
 
@@ -117,7 +117,7 @@ ensemble_retriever = EnsembleRetriever(
 )
 ```
 
-### Pattern 2: Multi-Query Retrieval
+### 模式 2：多查詢檢索
 ```python
 from langchain.retrievers.multi_query import MultiQueryRetriever
 
@@ -131,7 +131,7 @@ retriever = MultiQueryRetriever.from_llm(
 results = retriever.get_relevant_documents("What is the main topic?")
 ```
 
-### Pattern 3: Contextual Compression
+### 模式 3：脈絡壓縮
 ```python
 from langchain.retrievers import ContextualCompressionRetriever
 from langchain.retrievers.document_compressors import LLMChainExtractor
@@ -147,7 +147,7 @@ compression_retriever = ContextualCompressionRetriever(
 compressed_docs = compression_retriever.get_relevant_documents("query")
 ```
 
-### Pattern 4: Parent Document Retriever
+### 模式 4：父文件檢索器
 ```python
 from langchain.retrievers import ParentDocumentRetriever
 from langchain.storage import InMemoryStore
@@ -167,9 +167,9 @@ retriever = ParentDocumentRetriever(
 )
 ```
 
-## Document Chunking Strategies
+## 文件分塊策略
 
-### Recursive Character Text Splitter
+### 遞迴字元文字分割器
 ```python
 from langchain.text_splitters import RecursiveCharacterTextSplitter
 
@@ -181,7 +181,7 @@ splitter = RecursiveCharacterTextSplitter(
 )
 ```
 
-### Token-Based Splitting
+### 基於 Token 的分割
 ```python
 from langchain.text_splitters import TokenTextSplitter
 
@@ -191,7 +191,7 @@ splitter = TokenTextSplitter(
 )
 ```
 
-### Semantic Chunking
+### 語意分塊
 ```python
 from langchain.text_splitters import SemanticChunker
 
@@ -201,7 +201,7 @@ splitter = SemanticChunker(
 )
 ```
 
-### Markdown Header Splitter
+### Markdown 標題分割器
 ```python
 from langchain.text_splitters import MarkdownHeaderTextSplitter
 
@@ -214,7 +214,7 @@ headers_to_split_on = [
 splitter = MarkdownHeaderTextSplitter(headers_to_split_on=headers_to_split_on)
 ```
 
-## Vector Store Configurations
+## 向量儲存設定
 
 ### Pinecone
 ```python
@@ -238,7 +238,7 @@ client = weaviate.Client("http://localhost:8080")
 vectorstore = Weaviate(client, "Document", "content", embeddings)
 ```
 
-### Chroma (Local)
+### Chroma (本地)
 ```python
 from langchain.vectorstores import Chroma
 
@@ -249,9 +249,9 @@ vectorstore = Chroma(
 )
 ```
 
-## Retrieval Optimization
+## 檢索優化
 
-### 1. Metadata Filtering
+### 1. 中繼資料過濾
 ```python
 # Add metadata during indexing
 chunks_with_metadata = []
@@ -271,7 +271,7 @@ results = vectorstore.similarity_search(
 )
 ```
 
-### 2. Maximal Marginal Relevance
+### 2. 最大邊際相關性
 ```python
 # Balance relevance with diversity
 results = vectorstore.max_marginal_relevance_search(
@@ -282,7 +282,7 @@ results = vectorstore.max_marginal_relevance_search(
 )
 ```
 
-### 3. Reranking with Cross-Encoder
+### 3. 使用 Cross-Encoder 重新排序
 ```python
 from sentence_transformers import CrossEncoder
 
@@ -299,9 +299,9 @@ scores = reranker.predict(pairs)
 reranked = sorted(zip(candidates, scores), key=lambda x: x[1], reverse=True)[:5]
 ```
 
-## Prompt Engineering for RAG
+## RAG 的提示工程
 
-### Contextual Prompt
+### 脈絡提示
 ```python
 prompt_template = """Use the following context to answer the question. If you cannot answer based on the context, say "I don't have enough information."
 
@@ -313,7 +313,7 @@ Question: {question}
 Answer:"""
 ```
 
-### With Citations
+### 帶引用
 ```python
 prompt_template = """Answer the question based on the context below. Include citations using [1], [2], etc.
 
@@ -325,7 +325,7 @@ Question: {question}
 Answer (with citations):"""
 ```
 
-### With Confidence
+### 帶信心度
 ```python
 prompt_template = """Answer the question using the context. Provide a confidence score (0-100%) for your answer.
 
@@ -338,7 +338,7 @@ Answer:
 Confidence:"""
 ```
 
-## Evaluation Metrics
+## 評估指標
 
 ```python
 def evaluate_rag_system(qa_chain, test_cases):
@@ -372,32 +372,32 @@ def evaluate_rag_system(qa_chain, test_cases):
     return {k: sum(v)/len(v) for k, v in metrics.items()}
 ```
 
-## Resources
+## 資源
 
-- **references/vector-databases.md**: Detailed comparison of vector DBs
-- **references/embeddings.md**: Embedding model selection guide
-- **references/retrieval-strategies.md**: Advanced retrieval techniques
-- **references/reranking.md**: Reranking methods and when to use them
-- **references/context-window.md**: Managing context limits
-- **assets/vector-store-config.yaml**: Configuration templates
-- **assets/retriever-pipeline.py**: Complete RAG pipeline
-- **assets/embedding-models.md**: Model comparison and benchmarks
+- **references/vector-databases.md**：向量資料庫的詳細比較
+- **references/embeddings.md**：嵌入模型選擇指南
+- **references/retrieval-strategies.md**：進階檢索技術
+- **references/reranking.md**：重新排序方法和使用時機
+- **references/context-window.md**：管理脈絡限制
+- **assets/vector-store-config.yaml**：設定範本
+- **assets/retriever-pipeline.py**：完整 RAG 流程
+- **assets/embedding-models.md**：模型比較和基準測試
 
-## Best Practices
+## 最佳實務
 
-1. **Chunk Size**: Balance between context and specificity (500-1000 tokens)
-2. **Overlap**: Use 10-20% overlap to preserve context at boundaries
-3. **Metadata**: Include source, page, timestamp for filtering and debugging
-4. **Hybrid Search**: Combine semantic and keyword search for best results
-5. **Reranking**: Improve top results with cross-encoder
-6. **Citations**: Always return source documents for transparency
-7. **Evaluation**: Continuously test retrieval quality and answer accuracy
-8. **Monitoring**: Track retrieval metrics in production
+1. **分塊大小**：在脈絡和特異性之間取得平衡 (500-1000 token)
+2. **重疊**：使用 10-20% 重疊以保留邊界處的脈絡
+3. **中繼資料**：包含來源、頁數、時間戳記以便過濾和除錯
+4. **混合搜尋**：結合語意和關鍵字搜尋以獲得最佳結果
+5. **重新排序**：使用 cross-encoder 改善頂層結果
+6. **引用**：始終回傳來源文件以提高透明度
+7. **評估**：持續測試檢索品質和答案準確性
+8. **監控**：在生產環境中追蹤檢索指標
 
-## Common Issues
+## 常見問題
 
-- **Poor Retrieval**: Check embedding quality, chunk size, query formulation
-- **Irrelevant Results**: Add metadata filtering, use hybrid search, rerank
-- **Missing Information**: Ensure documents are properly indexed
-- **Slow Queries**: Optimize vector store, use caching, reduce k
-- **Hallucinations**: Improve grounding prompt, add verification step
+- **檢索不佳**：檢查嵌入品質、分塊大小、查詢表達方式
+- **不相關的結果**：新增中繼資料過濾、使用混合搜尋、重新排序
+- **資訊遺失**：確保文件已正確索引
+- **查詢緩慢**：優化向量儲存、使用快取、減少 k
+- **幻覺**：改善基礎提示、新增驗證步驟
